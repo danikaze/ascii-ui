@@ -1,0 +1,130 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.example {
+  margin: 1em 1em 2em 1em;
+
+  h2 {
+    font-size: 14px;
+    background: #eee;
+    margin-bottom: 0.5em;
+    padding: 2px 1em;
+  }
+}
+
+.r2-slideshow {
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-item {
+  width: 100px;
+  border: 1px solid #ccc;
+  padding: 5px;
+
+  &.red {
+    background: #ffabab;
+  }
+  &.green {
+    background: #abffab;
+  }
+  &.blue {
+    background: #ababff;
+  }
+  &.yellow {
+    background: #ffffab;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item-name {
+    margin-top: 2px;
+    text-align: center;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  height: 100%;
+  width: 25px;
+  background: #c3c3c3;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+.swiper-button-prev {
+  left: 0;
+}
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  display: none;
+}.swiper-button-prev:active,
+.swiper-button-next:active {
+  background: grey;
+}
+.swiper-pagination {
+  text-align: center;
+
+  &.progress-interactuable .swiper-pagination-bullet {
+    cursor: pointer;
+  }
+
+  .swiper-pagination-bullet {
+    margin: 0 4px;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #ccc;
+
+    &.swiper-pagination-bullet-active {
+      background: #bf0000;
+    }
+  }
+}
+
+.swiper-wrapper .slide-item {
+  width: 100px;
+  // height: 124px;
+
+  &.data-load-error {
+    border-color: #bf0000;
+  }
+
+  &.item-preload {
+    height: 124px;
+  }
+}
+
+.button-column {
+  display: inline-block;
+  width: 150px;
+}
+.button-append {
+  border: 1px solid #105510;
+  background: #f7fff7;
+}
+.button-prepend {
+  border: 1px solid #101055;
+  background: #f7f7ff;
+}
+.removeSlide {
+  border: 1px solid #bf0000;
+  background: #fff7f7;
+}

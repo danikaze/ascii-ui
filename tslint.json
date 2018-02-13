@@ -1,0 +1,53 @@
+{
+  "extends": [
+    "tslint:all",
+    "tslint-eslint-rules"
+  ],
+  "rules": {
+    "comment-format": false,
+    "interface-name": false,
+    "member-access": [true, "no-public"],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "public-static-method",
+          "protected-static-field",
+          "protected-static-method",
+          "private-static-field",
+          "private-static-method",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-constructor",
+          "protected-constructor",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    ],
+    "no-default-export": false,
+    "no-implicit-dependencies": false,
+    "no-inferrable-types": false,
+    "no-submodule-imports": false,
+    "no-trailing-whitespace": [true, "ignore-jsdoc"],
+    "no-unsafe-any": false,
+    "object-literal-sort-keys": [true, "match-declaration-order"],
+    "one-variable-per-declaration": [true, "ignore-for-loop"],
+    "only-arrow-functions": [true, "allow-named-functions"],
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "named-imports-order": "lowercase-last"
+      }
+    ],
+    "promise-function-async": false,
+    "quotemark": [true, "single", "jsx-double"],
+    "strict-boolean-expressions": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+  }
+}

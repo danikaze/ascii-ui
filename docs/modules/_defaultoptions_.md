@@ -24,7 +24,7 @@
 
 **●  columns**:  *`number`*  = 80
 
-*Defined in defaultOptions.ts:6*
+*Defined in [defaultOptions.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/defaultOptions.ts#L6)*
 
 
 
@@ -37,7 +37,7 @@ ___
 
 **●  lines**:  *`number`*  = 25
 
-*Defined in defaultOptions.ts:7*
+*Defined in [defaultOptions.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/defaultOptions.ts#L7)*
 
 
 
@@ -50,7 +50,7 @@ ___
 
 **●  tileHeight**:  *`number`*  = 480
 
-*Defined in defaultOptions.ts:5*
+*Defined in [defaultOptions.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/defaultOptions.ts#L5)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 **●  tileWidth**:  *`number`*  = 640
 
-*Defined in defaultOptions.ts:4*
+*Defined in [defaultOptions.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/defaultOptions.ts#L4)*
 
 
 

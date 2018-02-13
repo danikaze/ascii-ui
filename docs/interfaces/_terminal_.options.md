@@ -12,7 +12,7 @@
 
 **●  columns**:  *`number`* 
 
-*Defined in Terminal.ts:6*
+*Defined in [Terminal.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L6)*
 
 
 
@@ -26,7 +26,7 @@ ___
 
 **●  font**:  *`string`* 
 
-*Defined in Terminal.ts:8*
+*Defined in [Terminal.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L8)*
 
 
 
@@ -40,7 +40,7 @@ ___
 
 **●  lines**:  *`number`* 
 
-*Defined in Terminal.ts:7*
+*Defined in [Terminal.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L7)*
 
 
 
@@ -54,7 +54,7 @@ ___
 
 **●  tileHeight**:  *`number`* 
 
-*Defined in Terminal.ts:5*
+*Defined in [Terminal.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L5)*
 
 
 
@@ -68,7 +68,7 @@ ___
 
 **●  tileWidth**:  *`number`* 
 
-*Defined in Terminal.ts:4*
+*Defined in [Terminal.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L4)*
 
 
 

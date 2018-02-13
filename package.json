@@ -11,8 +11,8 @@
   "scripts": {
     "start": "webpack-dev-server --env=dev",
     "clean": "rimraf lib",
-    "build": "webpack --env=lib",
-    "docs": "typedoc --theme markdown --mode modules --out ./docs/ ./src --hideGenerator",
+    "build": "webpack --env=lib && yarn run docs",
+    "docs": "typedoc ./src",
     "clean:docs": "rimraf docs",
     "prebuild": "yarn run clean",
     "predocs": "yarn run clean:docs"

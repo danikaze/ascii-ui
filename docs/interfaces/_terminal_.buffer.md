@@ -12,7 +12,7 @@
 
 **●  columns**:  *`number`* 
 
-*Defined in Terminal.ts:19*
+*Defined in [Terminal.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L19)*
 
 
 
@@ -26,7 +26,7 @@ ___
 
 **●  lines**:  *`number`* 
 
-*Defined in Terminal.ts:20*
+*Defined in [Terminal.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L20)*
 
 
 
@@ -40,7 +40,7 @@ ___
 
 **●  tiles**:  *[Tile](_terminal_.tile.md)[][]* 
 
-*Defined in Terminal.ts:21*
+*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L21)*
 
 
 

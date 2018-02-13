@@ -10,9 +10,9 @@
 
 ###  bg
 
-**●  bg**:  *`any`* 
+**●  bg**:  *`string`* 
 
-*Defined in Terminal.ts:14*
+*Defined in [Terminal.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L14)*
 
 
 
@@ -26,7 +26,7 @@ ___
 
 **●  char**:  *`string`* 
 
-*Defined in Terminal.ts:12*
+*Defined in [Terminal.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L12)*
 
 
 
@@ -38,9 +38,9 @@ ___
 
 ###  fg
 
-**●  fg**:  *`any`* 
+**●  fg**:  *`string`* 
 
-*Defined in Terminal.ts:15*
+*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L15)*
 
 
 
@@ -52,9 +52,9 @@ ___
 
 ###  style
 
-**●  style**:  *`any`* 
+**●  style**:  *`string`* 
 
-*Defined in Terminal.ts:13*
+*Defined in [Terminal.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L13)*
 
 
 

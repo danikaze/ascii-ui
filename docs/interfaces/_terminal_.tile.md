@@ -4,6 +4,19 @@
 
 # Interface: Tile
 
+## Hierarchy
+
+**Tile**
+
+↳  [InternalTile](_terminal_.internaltile.md)
+
+
+
+
+
+
+
+
 
 ## Properties
 <a id="bg"></a>
@@ -12,7 +25,7 @@
 
 **●  bg**:  *`string`* 
 
-*Defined in [Terminal.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L14)*
+*Defined in [Terminal.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L27)*
 
 
 
@@ -26,7 +39,7 @@ ___
 
 **●  char**:  *`string`* 
 
-*Defined in [Terminal.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L12)*
+*Defined in [Terminal.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L25)*
 
 
 
@@ -40,7 +53,7 @@ ___
 
 **●  fg**:  *`string`* 
 
-*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L15)*
+*Defined in [Terminal.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L28)*
 
 
 
@@ -54,7 +67,7 @@ ___
 
 **●  style**:  *`string`* 
 
-*Defined in [Terminal.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/8e7af1d/src/Terminal.ts#L13)*
+*Defined in [Terminal.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L26)*
 
 
 

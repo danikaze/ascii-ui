@@ -1,8 +1,25 @@
-import { Options } from './Terminal';
+import { Options, DebugOptions } from './Terminal';
 
 export const defaultOptions: Options = {
-  tileWidth: 640,
-  tileHeight: 480,
-  columns: 80,
+  tileWidth: 18,
+  tileHeight: 28,
+  columns: 40,
   lines: 25,
+  font: '20pt Terminal_VT220',
+  autoRender: true,
+  autoSize: true,
+  cursor: true,
+  debug: false,
+  defaultTile: {
+    char: ' ',
+    style: '',
+    bg: '#000000',
+    fg: '#00ff00',
+  },
+};
+
+export const defaultDebugOptions: DebugOptions = {
+  verbose: true,
+  renderGrid: true,
+  gridStyle: '#777',
 };

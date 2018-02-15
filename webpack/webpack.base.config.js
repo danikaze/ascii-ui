@@ -27,20 +27,20 @@ module.exports = (env) => {
 
     module: {
       rules: [
-        {
-          test: /\.tsx?$/,
-          exclude: /(node_modules)|(examples)/,
-          enforce: 'pre',
-          use: [
-            {
-              loader: 'tslint-loader',
-              options: {
-                formatter: 'stylish',
-                typeCheck: true,
-              },
-            },
-          ],
-        },
+        // {
+        //   test: /\.tsx?$/,
+        //   exclude: /(node_modules)|(examples)/,
+        //   enforce: 'pre',
+        //   use: [
+        //     {
+        //       loader: 'tslint-loader',
+        //       options: {
+        //         formatter: 'stylish',
+        //         typeCheck: true,
+        //       },
+        //     },
+        //   ],
+        // },
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
@@ -50,7 +50,7 @@ module.exports = (env) => {
         },
         {
           test: /\.(css|scss|sass|less)$/,
-          use: ExtractTextPlugin.extract({
+          // use: ExtractTextPlugin.extract({
             use: [
               {
                 loader: 'typings-for-css-modules-loader',
@@ -68,17 +68,17 @@ module.exports = (env) => {
                 options: { plugins: () => [autoprefixer('ie >= 9')] },
               },
             ],
-          }),
+          // }),
         },
         {
-          test: /\.(ttf|otf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
           exclude: /node_modules/,
           use: [{
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
               outputPath: 'fonts/',
-              publicPath: '../',
+              publicPath: './',
             },
           }],
         },
@@ -91,24 +91,24 @@ module.exports = (env) => {
               name: '[name].[ext]',
               context: 'build_examples/',
               outputPath: 'img/',
-              publicPath: '../',
+              publicPath: './',
             },
           }],
         },
       ],
     },
     plugins: [
-      new StyleLintPlugin({
-        context: 'src',
-        files: [
-          '**/*.css',
-          '**/*.less',
-          '**/*.sass',
-          '**/*.scss',
-        ],
-      }),
+      // new StyleLintPlugin({
+      //   context: 'src',
+      //   files: [
+      //     '**/*.css',
+      //     '**/*.less',
+      //     '**/*.sass',
+      //     '**/*.scss',
+      //   ],
+      // }),
 
-      new ExtractTextPlugin('[name].css'),
+      // new ExtractTextPlugin('[name].css'),
     ],
   };
 

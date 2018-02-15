@@ -11,7 +11,7 @@
   "scripts": {
     "start": "webpack-dev-server --env=dev",
     "clean": "rimraf lib",
-    "build": "webpack --env=lib && yarn run docs",
+    "build": "webpack --env=lib",
     "docs": "typedoc ./src",
     "clean:docs": "rimraf docs",
     "prebuild": "yarn run clean",
@@ -24,7 +24,10 @@
     "type": "git",
     "url": "https://github.com/danikaze/terminal-in-canvas"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fontfaceobserver": "^2.0.13",
+    "vanilla-type-check": "^1.0.1"
+  },
   "devDependencies": {
     "@types/node": "^9.4.5",
     "@types/webpack-env": "^1.13.5",

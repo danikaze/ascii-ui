@@ -1916,6 +1916,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+fontfaceobserver@^2.0.13:
+  version "2.0.13"
+  resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/fontfaceobserver/-/fontfaceobserver-2.0.13.tgz#47adbb343261eda98cb44db2152196ff124d3221"
+
 for-in@^0.1.3:
   version "0.1.8"
   resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/for-in/-/for-in-0.1.8.tgz#d8773908e31256109952b1fdb9b3fa867d2775e1"
@@ -2671,6 +2675,10 @@ is-dotfile@^1.0.0:
   version "1.0.3"
   resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/is-dotfile/-/is-dotfile-1.0.3.tgz#a6a2f32ffd2dfb04f5ca25ecd0f6b83cf798a1e1"
 
+is-empty-object@^1.1.1:
+  version "1.1.1"
+  resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/is-empty-object/-/is-empty-object-1.1.1.tgz#86d5d4d5c5229cea31ec2772f528bf5efc519f23"
+
 is-equal-shallow@^0.1.3:
   version "0.1.3"
   resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/is-equal-shallow/-/is-equal-shallow-0.1.3.tgz#2238098fc221de0bcfa5d9eac4c45d638aa1c534"
@@ -2862,7 +2870,7 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
 
-isobject@^2.0.0:
+isobject@^2.0.0, isobject@^2.1.0:
   version "2.1.0"
   resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/isobject/-/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"
   dependencies:
@@ -5974,6 +5982,13 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
+
+vanilla-type-check@^1.0.1:
+  version "1.0.1"
+  resolved "https://rwasp-nexus.prod.jp.local/repository/npm-mall-group/vanilla-type-check/-/vanilla-type-check-1.0.1.tgz#7ba3cc6eaaf81e1885cdc08391d27c72daee2744"
+  dependencies:
+    is-empty-object "^1.1.1"
+    isobject "^2.1.0"
 
 vary@~1.1.2:
   version "1.1.2"

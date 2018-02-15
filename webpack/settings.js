@@ -3,10 +3,10 @@ const absPath = require('./util/absPath');
 
 module.exports = {
   entries: {
-    Template: absPath('src/Terminal.ts'),
+    Terminal: absPath('src/Terminal.ts'),
   },
   paths: {
-    build: absPath(`build/${packageJson.version}`),
+    build: absPath(`lib`),
     htmlTemplate: absPath('src/index.html'),
   },
   options: {

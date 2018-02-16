@@ -1,5 +1,12 @@
+/* tslint:disable:typedef */
+
 import * as FontFaceObserver from 'fontfaceobserver';
+
 import { Terminal } from '../../src/Terminal';
+
+interface TestWindow extends Window {
+  terminal: Terminal;
+}
 
 const KEY_UP = 38;
 const KEY_DOWN = 40;
@@ -58,9 +65,10 @@ function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
 }
 
 function run() {
+  /* tslint:disable:no-magic-numbers */
   const columns = 40;
   const lines = 20;
-  const canvas = <HTMLCanvasElement>(document.getElementById('canvas'));
+  const canvas = document.getElementById('canvas') as HTMLCanvasElement;
   const terminal = new Terminal(canvas, {
     columns,
     lines,
@@ -71,11 +79,11 @@ function run() {
 
   terminal.setText('abcdef');
   terminal.setText('foobar', 1, 2);
-  terminal.setText('foobar', 38, 3);
+  terminal.setText('foobar', columns - 2, 3);
 
   bindKeys(terminal);
   bindMouse(terminal, canvas);
-  (<any>window).terminal = terminal;
+  (window as TestWindow).terminal = terminal;
 }
 
 const font = new FontFaceObserver('Terminal_VT220');

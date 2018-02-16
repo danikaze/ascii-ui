@@ -4,6 +4,9 @@ import { isArray } from 'vanilla-type-check';
 import { defaultDebugOptions, defaultOptions } from './defaultOptions';
 import { emptyArray } from './util/emptyArray';
 
+// tslint:disable-next-line:no-import-side-effect
+import './styles.less';
+
 export interface Options {
   /** width of a tile in px */
   tileWidth?: number;

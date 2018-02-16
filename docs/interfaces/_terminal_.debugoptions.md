@@ -12,8 +12,11 @@
 
 **●  gridStyle**:  *`string`* 
 
-*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L21)*
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L36)*
 
+
+
+style to use for the grid (i.e. `#777777`)
 
 
 
@@ -26,8 +29,11 @@ ___
 
 **●  renderGrid**:  *`boolean`* 
 
-*Defined in [Terminal.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L20)*
+*Defined in [Terminal.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L34)*
 
+
+
+`true` to render the grid of tiles
 
 
 
@@ -40,8 +46,11 @@ ___
 
 **●  verbose**:  *`boolean`* 
 
-*Defined in [Terminal.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L19)*
+*Defined in [Terminal.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L32)*
 
+
+
+`true` to print debug information in the console
 
 
 

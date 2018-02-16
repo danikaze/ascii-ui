@@ -71,9 +71,7 @@ function run() {
 
   terminal.setText('abcdef');
   terminal.setText('foobar', 1, 2);
-  terminal.setText('foobar', 38, 2);
-  terminal.setTextBlock(['foo', 'bar'], 0, 4);
-  terminal.setTextBlock(['foo', 'bar'], 38, 8);
+  terminal.setText('foobar', 38, 3);
 
   bindKeys(terminal);
   bindMouse(terminal, canvas);

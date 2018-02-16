@@ -12,8 +12,11 @@
 
 **●  autoRender**:  *`boolean`* 
 
-*Defined in [Terminal.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L11)*
+*Defined in [Terminal.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L17)*
 
+
+
+`true` to let the terminal manage the screen changes
 
 
 
@@ -26,8 +29,11 @@ ___
 
 **●  autoSize**:  *`boolean`* 
 
-*Defined in [Terminal.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L12)*
+*Defined in [Terminal.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L19)*
 
+
+
+if `true`, the containing canvas will be resized to contain the grid
 
 
 
@@ -40,8 +46,11 @@ ___
 
 **●  columns**:  *`number`* 
 
-*Defined in [Terminal.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L8)*
+*Defined in [Terminal.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L11)*
 
+
+
+number of columns of the terminal, in number of tiles
 
 
 
@@ -54,8 +63,28 @@ ___
 
 **●  cursor**:  *`boolean`* 
 
-*Defined in [Terminal.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L13)*
+*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L21)*
 
+
+
+`true` to show the cursor
+
+
+
+
+___
+
+<a id="cursorfrequency"></a>
+
+### «Optional» cursorFrequency
+
+**●  cursorFrequency**:  *`number`* 
+
+*Defined in [Terminal.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L23)*
+
+
+
+blinking frequency of the cursor. If set to `0` the blink will be disabled
 
 
 
@@ -68,8 +97,11 @@ ___
 
 **●  debug**:  *`boolean`⎮[DebugOptions](_terminal_.debugoptions.md)* 
 
-*Defined in [Terminal.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L14)*
+*Defined in [Terminal.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L25)*
 
+
+
+`true` to enable default debug options, `false` to disable it, an object to specify each option
 
 
 
@@ -82,8 +114,11 @@ ___
 
 **●  defaultTile**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L15)*
+*Defined in [Terminal.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L27)*
 
+
+
+default properties of the tiles (for initializing the grid)
 
 
 
@@ -96,8 +131,11 @@ ___
 
 **●  font**:  *`string`* 
 
-*Defined in [Terminal.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L10)*
+*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L15)*
 
+
+
+font or font-family to use in the terminal
 
 
 
@@ -110,8 +148,11 @@ ___
 
 **●  lines**:  *`number`* 
 
-*Defined in [Terminal.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L9)*
+*Defined in [Terminal.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L13)*
 
+
+
+number of rows of the terminal, in number of tiles
 
 
 
@@ -124,8 +165,11 @@ ___
 
 **●  tileHeight**:  *`number`* 
 
-*Defined in [Terminal.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L7)*
+*Defined in [Terminal.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L9)*
 
+
+
+height of a tile in px
 
 
 
@@ -138,8 +182,11 @@ ___
 
 **●  tileWidth**:  *`number`* 
 
-*Defined in [Terminal.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L6)*
+*Defined in [Terminal.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L7)*
 
+
+
+width of a tile in px
 
 
 

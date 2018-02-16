@@ -25,8 +25,11 @@
 
 **●  bg**:  *`string`* 
 
-*Defined in [Terminal.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L27)*
+*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L45)*
 
+
+
+background color (i.e. `#000000`)
 
 
 
@@ -39,8 +42,11 @@ ___
 
 **●  char**:  *`string`* 
 
-*Defined in [Terminal.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L25)*
+*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L41)*
 
+
+
+char to display in the tile
 
 
 
@@ -53,8 +59,11 @@ ___
 
 **●  fg**:  *`string`* 
 
-*Defined in [Terminal.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L28)*
+*Defined in [Terminal.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L47)*
 
+
+
+foreground color (i.e. `#00ff00`)
 
 
 
@@ -67,8 +76,11 @@ ___
 
 **●  style**:  *`string`* 
 
-*Defined in [Terminal.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/808c3d1/src/Terminal.ts#L26)*
+*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L43)*
 
+
+
+style of the displayed char
 
 
 

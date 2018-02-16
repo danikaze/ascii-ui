@@ -11,6 +11,7 @@ export interface Options {
   autoRender?: boolean;
   autoSize?: boolean;
   cursor?: boolean;
+  cursorFrequency?: number,
   debug?: boolean|DebugOptions,
   defaultTile?: Tile;
 }
@@ -45,12 +46,13 @@ export class Terminal {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
   private options: Options;
-  private buffer: InternalTile[][]; // [y][x]
-  private activeBuffer: number;
+  private buffer: InternalTile[][] = []; // [y][x]
   private cursorX: number = 0;
   private cursorY: number = 0;
-  private dirtyTiles: InternalTile[];
+  private dirtyTiles: InternalTile[] = [];
   private lastRenderLength: number;
+  private cursorVisible: boolean = true;
+  private updateCursorInterval;
 
   constructor(canvas: HTMLCanvasElement, options?: Options) {
     this.canvas = canvas;
@@ -64,6 +66,7 @@ export class Terminal {
       this.canvas.height = this.options.lines * this.options.tileHeight;
     }
 
+    this.setCursorFrequency(this.options.cursorFrequency);
     this.clear();
 
     if (this.options.debug) {
@@ -89,11 +92,10 @@ export class Terminal {
 
   clear(): void {
     const start = window.performance.now();
-    const buffer = [];
-    const dirtyTiles = [];
-    this.buffer = buffer;
-    this.dirtyTiles = dirtyTiles;
+    const dirtyTiles = this.dirtyTiles;
+    const buffer = this.buffer;
 
+    this.dirtyTiles.splice(0, this.dirtyTiles.length);
     for (let y = 0; y < this.options.lines; y++) {
       this.buffer[y] = [];
       for (let x = 0; x < this.options.columns; x++) {
@@ -123,12 +125,13 @@ export class Terminal {
     const nTiles = this.dirtyTiles.length;
     const cursorX = this.cursorX * w;
     const cursorY = this.cursorY * h;
+    const drawCursor = this.options.cursor && this.cursorVisible;
 
     ctx.font = this.options.font;
     ctx.textBaseline = 'bottom';
     this.dirtyTiles.forEach((tile) => {
       // cursor
-      if (tile.x === cursorX && tile.y === cursorY) {
+      if (drawCursor && tile.x === cursorX && tile.y === cursorY) {
         // bg
         ctx.fillStyle = tile.fg;
         ctx.fillRect(tile.x, tile.y, w, h);
@@ -187,6 +190,19 @@ export class Terminal {
     this.info(`debugRender: ${nTiles} tiles: ${this.lastRenderLength} ms.`);
   }
 
+  private setCursorFrequency(frequency: number) {
+    clearInterval(this.updateCursorInterval);
+    if (frequency > 0) {
+      this.updateCursorInterval = setInterval(() => {
+        this.cursorVisible = !this.cursorVisible;
+        this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+        if (this.options.autoRender) {
+          this.render();
+        }
+      }, frequency);
+    }
+  }
+
   getCursor(): TilePosition {
     return {
       col: this.cursorX,
@@ -219,6 +235,7 @@ export class Terminal {
     const newTile = this.buffer[line][col];
     if (oldTile !== newTile) {
       this.dirtyTiles.push(oldTile, newTile);
+      this.cursorVisible = true;
       if (this.options.autoRender) {
         this.render();
       }

@@ -9,6 +9,7 @@ export const defaultOptions: Options = {
   autoRender: true,
   autoSize: true,
   cursor: true,
+  cursorFrequency: 700,
   debug: false,
   defaultTile: {
     char: ' ',

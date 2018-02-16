@@ -7,6 +7,7 @@ const KEY_LEFT = 37;
 const KEY_RIGHT = 39;
 const KEY_BACKSPACE = 8;
 const KEY_DELETE = 46;
+const KEY_ENTER = 13;
 
 function hideLoad() {
   const elem = document.getElementById('loading');
@@ -32,6 +33,8 @@ function bindKeys(terminal: Terminal) {
     } else if (event.keyCode === KEY_DELETE) {
       terminal.setText(' ');
       terminal.moveCursor(-1, 0);
+    } else if (event.keyCode === KEY_ENTER) {
+      terminal.setCursor(0, terminal.getCursor().line + 1);
     } else {
       terminal.setText(String.fromCharCode(event.which || event.keyCode));
     }

@@ -12,7 +12,7 @@
 
 **●  gridStyle**:  *`string`* 
 
-*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L36)*
+*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L38)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  renderGrid**:  *`boolean`* 
 
-*Defined in [Terminal.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L34)*
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L36)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 **●  verbose**:  *`boolean`* 
 
-*Defined in [Terminal.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L32)*
+*Defined in [Terminal.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L34)*
 
 
 

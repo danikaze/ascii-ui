@@ -1,4 +1,4 @@
-import { Options, DebugOptions } from './Terminal';
+import { DebugOptions, Options } from './Terminal';
 
 export const defaultOptions: Options = {
   tileWidth: 18,

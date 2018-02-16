@@ -32,6 +32,7 @@
     "no-default-export": false,
     "no-implicit-dependencies": false,
     "no-inferrable-types": false,
+    "no-parameter-reassignment": false,
     "no-submodule-imports": false,
     "no-trailing-whitespace": [true, "ignore-jsdoc"],
     "no-unsafe-any": false,

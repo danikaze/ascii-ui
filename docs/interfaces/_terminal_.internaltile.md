@@ -27,7 +27,7 @@
 
 *Inherited from [Tile](_terminal_.tile.md).[bg](_terminal_.tile.md#bg)*
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L45)*
+*Defined in [Terminal.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L47)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 *Inherited from [Tile](_terminal_.tile.md).[char](_terminal_.tile.md#char)*
 
-*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L41)*
+*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L43)*
 
 
 
@@ -65,7 +65,7 @@ ___
 
 *Inherited from [Tile](_terminal_.tile.md).[fg](_terminal_.tile.md#fg)*
 
-*Defined in [Terminal.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L47)*
+*Defined in [Terminal.ts:49](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L49)*
 
 
 
@@ -84,7 +84,7 @@ ___
 
 *Inherited from [Tile](_terminal_.tile.md).[style](_terminal_.tile.md#style)*
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L45)*
 
 
 
@@ -101,7 +101,7 @@ ___
 
 **●  x**:  *`number`* 
 
-*Defined in [Terminal.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L52)*
+*Defined in [Terminal.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L54)*
 
 
 
@@ -118,7 +118,7 @@ ___
 
 **●  y**:  *`number`* 
 
-*Defined in [Terminal.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L54)*
+*Defined in [Terminal.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L56)*
 
 
 

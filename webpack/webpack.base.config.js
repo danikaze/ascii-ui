@@ -27,20 +27,20 @@ module.exports = (env) => {
 
     module: {
       rules: [
-        // {
-        //   test: /\.tsx?$/,
-        //   exclude: /(node_modules)|(examples)/,
-        //   enforce: 'pre',
-        //   use: [
-        //     {
-        //       loader: 'tslint-loader',
-        //       options: {
-        //         formatter: 'stylish',
-        //         typeCheck: true,
-        //       },
-        //     },
-        //   ],
-        // },
+        {
+          test: /\.tsx?$/,
+          exclude: /(node_modules)|(examples)/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'tslint-loader',
+              options: {
+                formatter: 'stylish',
+                typeCheck: true,
+              },
+            },
+          ],
+        },
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,

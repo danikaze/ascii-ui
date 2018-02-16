@@ -17,9 +17,6 @@
     "prebuild": "yarn run clean",
     "predocs": "yarn run clean:docs"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/danikaze/terminal-in-canvas"

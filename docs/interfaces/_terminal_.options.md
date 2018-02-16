@@ -12,7 +12,7 @@
 
 **●  autoRender**:  *`boolean`* 
 
-*Defined in [Terminal.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L17)*
+*Defined in [Terminal.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L19)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  autoSize**:  *`boolean`* 
 
-*Defined in [Terminal.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L19)*
+*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L21)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 **●  columns**:  *`number`* 
 
-*Defined in [Terminal.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L11)*
+*Defined in [Terminal.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L13)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 **●  cursor**:  *`boolean`* 
 
-*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L21)*
+*Defined in [Terminal.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L23)*
 
 
 
@@ -80,7 +80,7 @@ ___
 
 **●  cursorFrequency**:  *`number`* 
 
-*Defined in [Terminal.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L23)*
+*Defined in [Terminal.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L25)*
 
 
 
@@ -97,7 +97,7 @@ ___
 
 **●  debug**:  *`boolean`⎮[DebugOptions](_terminal_.debugoptions.md)* 
 
-*Defined in [Terminal.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L25)*
+*Defined in [Terminal.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L27)*
 
 
 
@@ -114,7 +114,7 @@ ___
 
 **●  defaultTile**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [Terminal.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L27)*
+*Defined in [Terminal.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L29)*
 
 
 
@@ -131,7 +131,7 @@ ___
 
 **●  font**:  *`string`* 
 
-*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L15)*
+*Defined in [Terminal.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L17)*
 
 
 
@@ -148,7 +148,7 @@ ___
 
 **●  lines**:  *`number`* 
 
-*Defined in [Terminal.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L13)*
+*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L15)*
 
 
 
@@ -165,7 +165,7 @@ ___
 
 **●  tileHeight**:  *`number`* 
 
-*Defined in [Terminal.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L9)*
+*Defined in [Terminal.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L11)*
 
 
 
@@ -182,7 +182,7 @@ ___
 
 **●  tileWidth**:  *`number`* 
 
-*Defined in [Terminal.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/00ecf77/src/Terminal.ts#L7)*
+*Defined in [Terminal.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L9)*
 
 
 

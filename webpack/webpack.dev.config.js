@@ -43,6 +43,6 @@ module.exports = (env) => {
   const baseConfig = getBaseConfig(env);
   const exampleConfig = getExamplesData(env);
   const config = merge(baseConfig, moduleConfig, exampleConfig);
-  console.log(config.entry);
+
   return config;
 };

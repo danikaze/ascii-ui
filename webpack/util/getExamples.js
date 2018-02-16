@@ -33,7 +33,7 @@ function getEntryPoints() {
         const filePath = path.join(folder, file);
         if (fs.existsSync(filePath)) {
           const output = path.relative(EXAMPLES_PATH, filePath);
-          entries[output] = `./${filePath}`;
+          entries[output] = path.resolve(path.join('.', filePath));
         }
       }
     });
@@ -65,8 +65,8 @@ function generateHtmlIndex(entries) {
 
   const examplesHtml = [];
   const folders = {};
-  const fileRegExp = /^[^/]+\/(.*)\.([jt]sx?)$/;
-  const folderRegExp = /^([^/]+)\/.*$/;
+  const fileRegExp = /^[^/\\]+[\/\\](.*)\.([jt]sx?)$/;
+  const folderRegExp = /^([^/\\]+)[\/\\].*$/;
 
   // group files by its folder
   Object.keys(entries).forEach((output, index) => {

@@ -8,6 +8,14 @@ const KEY_RIGHT = 39;
 const KEY_BACKSPACE = 8;
 const KEY_DELETE = 46;
 const KEY_ENTER = 13;
+const KEY_SHIFT = 16;
+const KEY_COMMAND_WIN_LEFT = 91;
+const KEY_COMMAND_WIN_RIGHT = 93;
+const KEY_ALT = 18;
+const KEY_CTRL = 17;
+const KEY_CAPS = 20;
+const KEY_TAB = 9;
+const KEY_ESC = 27;
 
 function hideLoad() {
   const elem = document.getElementById('loading');
@@ -35,9 +43,17 @@ function bindKeys(terminal: Terminal) {
       terminal.moveCursor(-1, 0);
     } else if (event.keyCode === KEY_ENTER) {
       terminal.setCursor(0, terminal.getCursor().line + 1);
-    } else {
-      terminal.setText(String.fromCharCode(event.which || event.keyCode));
+    } else if (event.key.length === 1) {
+      terminal.setText(event.key);
     }
+  });
+}
+
+function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
+  canvas.addEventListener('click', (event) => {
+    const bounds = canvas.getBoundingClientRect();
+    const tile = terminal.getTilePosition(event.x - bounds.left, event.y - bounds.top);
+    terminal.setCursor(tile.col, tile.line);
   });
 }
 
@@ -48,8 +64,10 @@ function run() {
   const terminal = new Terminal(canvas, {
     columns,
     lines,
-    debug: true
   });
+
+  canvas.parentElement.style.width = `${canvas.width}px`;
+  canvas.parentElement.style.height = `${canvas.height}px`;
 
   terminal.setText('abcdef');
   terminal.setText('foobar', 1, 2);
@@ -58,6 +76,7 @@ function run() {
   terminal.setTextBlock(['foo', 'bar'], 38, 8);
 
   bindKeys(terminal);
+  bindMouse(terminal, canvas);
   (<any>window).terminal = terminal;
 }
 

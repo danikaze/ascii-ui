@@ -80,9 +80,6 @@ export interface TilePosition {
 
 type IterateTileCallback = (InternalTile, i) => void;
 
-// tslint:disable-next-line:no-empty completed-docs
-function noop(): void {}
-
 /**
  * Basic terminal features rendered into a Canvas object
  */
@@ -509,6 +506,12 @@ export class Terminal {
       c++;
     }
 
+    if (c >= nColumns) {
+      c = 0;
+      if (line < nLines - 1) {
+        this.cursorY++;
+      }
+    }
     this.cursorX = c;
   }
 

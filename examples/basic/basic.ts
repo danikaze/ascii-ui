@@ -56,6 +56,15 @@ function bindKeys(terminal: Terminal) {
   });
 }
 
+function setColor(terminal: Terminal, text: string, index: number): number {
+  const ESCAPE_TXT_LENGTH = 2;
+  const COLOR_TXT_LENGTH = 7;
+  const color = text.substr(index + ESCAPE_TXT_LENGTH, COLOR_TXT_LENGTH);
+  terminal.setOptions({ fg: color });
+
+  return COLOR_TXT_LENGTH;
+}
+
 function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
   canvas.addEventListener('click', (event) => {
     const bounds = canvas.getBoundingClientRect();
@@ -72,14 +81,34 @@ function run() {
   const terminal = new Terminal(canvas, {
     columns,
     lines,
+    debug: { verbose: true },
   });
+
+  const commands = {
+    '\\c': setColor.bind(undefined, terminal),
+    ':x:': (text: string, index: number) => {
+      terminal.setText('injected text');
+      terminal.moveCursor(-1, 0);
+
+      return 0;
+    },
+  };
 
   canvas.parentElement.style.width = `${canvas.width}px`;
   canvas.parentElement.style.height = `${canvas.height}px`;
 
   terminal.setText('abcdef');
   terminal.setText('foobar', 1, 2);
-  terminal.setText('foobar', columns - 2, 3);
+  terminal.setText('line overflow', columns - 3, 3);
+
+  terminal.setOptions({ commands });
+
+  terminal.setCursor(1, 6);
+  terminal.setText('[\\c#ff00ffmagenta \\c#00ffffcyan \\c#ffff00yellow\\c#00ff00]');
+  terminal.setText('[\\c#ffffffwhite \\c#ff0000red\\c#00ff00]', 3, 8);
+  terminal.setText('>:x:<', 2, 10);
+
+  terminal.setDebug(false);
 
   bindKeys(terminal);
   bindMouse(terminal, canvas);

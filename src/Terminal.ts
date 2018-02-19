@@ -7,6 +7,8 @@ import { emptyArray } from './util/emptyArray';
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
 
+export type EscapeCallback = (text: string, index: number) => number;
+
 export interface Options {
   /** width of a tile in px */
   tileWidth?: number;
@@ -32,6 +34,8 @@ export interface Options {
   cursorFrequency?: number;
   /** `true` to enable default debug options, `false` to disable it, an object to specify each option */
   debug?: boolean | DebugOptions;
+  /** escape secuences to parse and their callback functions */
+  commands?: { [key: string]: EscapeCallback };
 }
 
 export interface DebugOptions {
@@ -68,6 +72,14 @@ export interface TilePosition {
   line: number;
 }
 
+interface CommandMatch {
+  index: number;
+  text: string;
+}
+
+// tslint:disable-next-line:no-empty completed-docs
+function noop(): void {}
+
 /**
  * Basic terminal features rendered into a Canvas object
  */
@@ -79,7 +91,7 @@ export class Terminal {
   /** grid of tiles */
   private readonly buffer: InternalTile[][] = []; // [y][x]
   /** terminal options */
-  private options: Options;
+  private readonly options: Options;
   /** list of tiles marked to re-render */
   private dirtyTiles: InternalTile[] = [];
   /** x-position of the cursor */
@@ -90,6 +102,8 @@ export class Terminal {
   private cursorVisible: boolean = true;
   /** handler returned by `setInterval` to control the `cursorVisible` status */
   private updateCursorInterval: number;
+  /** cached string to create the RegExp to escape characters */
+  private escapeCharactersRegExpString: string;
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -100,7 +114,9 @@ export class Terminal {
   constructor(canvas: HTMLCanvasElement, options?: Options) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.options = { ...defaultOptions, ...options };
+    this.options = { ...defaultOptions };
+
+    this.setOptions(options);
 
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;
@@ -121,7 +137,11 @@ export class Terminal {
    * @param options new options to set
    */
   setOptions(options: Options): void {
-    this.options = { ...this.options, ...options };
+    Object.assign(this.options, options);
+
+    // options.commands
+    const commandList = this.options.commands && Object.keys(this.options.commands);
+    this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
   }
 
   /**
@@ -322,27 +342,75 @@ export class Terminal {
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
   setText(text: string, col?: number, line?: number): void {
+    this.info(`setText: ${text}`);
+
     const dirtyTiles = this.dirtyTiles;
     const options = this.options;
+    const matches: CommandMatch[] = [];
+    let textOffset = 0;
+    let regExp;
+    // autorender is disabled in case of nested calls (only the most external one will be autorendered)
+    const autoRender = this.options.autoRender;
+    this.options.autoRender = false;
 
-    let newPosition = this.iterateTiles(
-      text.length,
-      (tile, i) => {
-        tile.char = text[i];
-        tile.font = options.font;
-        tile.fg = options.fg;
-        tile.bg = options.bg;
-        dirtyTiles.push(tile);
-      },
-      col,
-      line,
-    );
+    if (this.escapeCharactersRegExpString) {
+      // regExp is created in each setText in case of nested calls
+      regExp = new RegExp(this.escapeCharactersRegExpString, 'g');
+      let match = regExp.exec(text);
+      while (match) {
+        matches.push({ index: match.index, text: match[0] });
+        match = regExp.exec(text);
+      }
+    }
 
-    // tslint:disable-next-line:no-empty
-    newPosition = this.iterateTiles(1, () => {}, newPosition.col, newPosition.line);
-    this.setCursor(newPosition.col - 1, newPosition.line);
+    // tslint:disable-next-line:completed-docs
+    function setTile(tile: InternalTile, i: number): void {
+      tile.char = text[i + textOffset];
+      tile.font = options.font;
+      tile.fg = options.fg;
+      tile.bg = options.bg;
+      dirtyTiles.push(tile);
+    }
 
-    if (this.options.autoRender) {
+    // no text-parse
+    if (matches.length === 0) {
+      this.iterateTiles(text.length, setTile, col, line);
+
+    // with text-parse
+    } else {
+      let i = 0;
+      let m = 0;
+
+      // `cursorXY` is set to the parameters for the first `iterateTiles` call
+      // in the next calls is auto updated by the function itself
+      if (typeof col !== 'undefined') {
+        this.cursorX = col;
+      }
+      if (typeof line !== 'undefined') {
+        this.cursorY = line;
+      }
+
+      while (i < text.length && m < matches.length) {
+        const match = matches[m];
+        const nextMatch: number = match.index;
+        textOffset = i;
+        this.iterateTiles(nextMatch - i, setTile);
+        i = nextMatch + match.text.length + this.options.commands[match.text](text, nextMatch);
+        m++;
+      }
+
+      if (i < text.length) {
+        textOffset = i;
+        this.iterateTiles(text.length - i, setTile);
+      }
+    }
+
+    // update the cursor to the next tile
+    this.iterateTiles(1, noop);
+    this.setCursor(this.cursorX, this.cursorY);
+
+    this.options.autoRender = autoRender;
+    if (autoRender) {
       this.render();
     }
   }
@@ -357,6 +425,8 @@ export class Terminal {
    */
   getText(size: number = 1, col?: number, line?: number): string {
     let text = '';
+    const cursorX = this.cursorX;
+    const cursorY = this.cursorY;
 
     this.iterateTiles(
       size,
@@ -366,6 +436,9 @@ export class Terminal {
       col,
       line,
     );
+
+    this.cursorX = cursorX;
+    this.cursorY = cursorY;
 
     return text;
   }
@@ -409,7 +482,7 @@ export class Terminal {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  private iterateTiles(size: number, callback: (InternalTile, i) => void, col?: number, line?: number): TilePosition {
+  private iterateTiles(size: number, callback: (InternalTile, i) => void, col?: number, line?: number): void {
     const buffer = this.buffer;
     const nLines = this.options.lines;
     const nColumns = this.options.columns;
@@ -434,14 +507,14 @@ export class Terminal {
         c++;
         continue;
       }
+      // cursor is updated inside this function in case that `setText` is called nested via escaped commands
+      this.cursorX = c;
+      this.cursorY = line;
       callback(buffer[line][c], i);
       c++;
     }
 
-    return {
-      col: c,
-      line,
-    };
+    this.cursorX = c;
   }
 
   /**

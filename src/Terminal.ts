@@ -18,6 +18,10 @@ export interface Options {
   lines?: number;
   /** font or font-family to use in the terminal */
   font?: string;
+  /** foreground color (i.e. `#00ff00`) */
+  fg?: string;
+  /** background color (i.e. `#000000`) */
+  bg?: string;
   /** `true` to let the terminal manage the screen changes */
   autoRender?: boolean;
   /** if `true`, the containing canvas will be resized to contain the grid */
@@ -28,8 +32,6 @@ export interface Options {
   cursorFrequency?: number;
   /** `true` to enable default debug options, `false` to disable it, an object to specify each option */
   debug?: boolean | DebugOptions;
-  /** default properties of the tiles (for initializing the grid) */
-  defaultTile?: Tile;
 }
 
 export interface DebugOptions {
@@ -44,12 +46,12 @@ export interface DebugOptions {
 export interface Tile {
   /** char to display in the tile */
   char: string;
-  /** style of the displayed char */
-  style: string;
-  /** background color (i.e. `#000000`) */
-  bg: string;
+  /** font or font-family to use in the terminal */
+  font: string;
   /** foreground color (i.e. `#00ff00`) */
   fg: string;
+  /** background color (i.e. `#000000`) */
+  bg: string;
 }
 
 interface InternalTile extends Tile {
@@ -74,10 +76,10 @@ export class Terminal {
   private readonly canvas: HTMLCanvasElement;
   /** 2d context of the canvas object */
   private readonly ctx: CanvasRenderingContext2D;
-  /** terminal options */
-  private readonly options: Options;
   /** grid of tiles */
   private readonly buffer: InternalTile[][] = []; // [y][x]
+  /** terminal options */
+  private options: Options;
   /** list of tiles marked to re-render */
   private dirtyTiles: InternalTile[] = [];
   /** x-position of the cursor */
@@ -114,6 +116,15 @@ export class Terminal {
   }
 
   /**
+   * Update the values of the Terminal options
+   *
+   * @param options new options to set
+   */
+  setOptions(options: Options): void {
+    this.options = { ...this.options, ...options };
+  }
+
+  /**
    * Set the debug options
    *
    * @param options `true` to enable default debug options, `false` to disable it, an object to specify each option
@@ -147,7 +158,10 @@ export class Terminal {
       this.buffer[y] = [];
       for (let x = 0; x < this.options.columns; x++) {
         const tile = {
-          ...this.options.defaultTile,
+          bg: this.options.bg,
+          char: ' ',
+          fg: this.options.fg,
+          font: this.options.font,
           x: x * this.options.tileWidth,
           y: y * this.options.tileHeight,
         };
@@ -181,9 +195,9 @@ export class Terminal {
     const cursorY = this.cursorY * h;
     const drawCursor = this.options.cursor && this.cursorVisible;
 
-    ctx.font = this.options.font;
     ctx.textBaseline = 'bottom';
     for (const tile of this.dirtyTiles) {
+      ctx.font = tile.font;
       // cursor
       if (drawCursor && tile.x === cursorX && tile.y === cursorY) {
         // bg
@@ -309,11 +323,15 @@ export class Terminal {
    */
   setText(text: string, col?: number, line?: number): void {
     const dirtyTiles = this.dirtyTiles;
+    const options = this.options;
 
     let newPosition = this.iterateTiles(
       text.length,
       (tile, i) => {
         tile.char = text[i];
+        tile.font = options.font;
+        tile.fg = options.fg;
+        tile.bg = options.bg;
         dirtyTiles.push(tile);
       },
       col,
@@ -483,24 +501,4 @@ export class Terminal {
       console.log(`[Terminal] ${text}`);
     }
   }
-
-  /**
-   * Output the given text as a warning, if `debug` and `verbose` options are enabled
-   * @param text text to output
-   */
-  // private warn(text: string): void {
-  //   if (this.options.debug && (<DebugOptions> this.options.debug).verbose) {
-  //     console.error(`[Terminal] ${text}`);
-  //   }
-  // }
-
-  /**
-   * Output the given text as an error, if `debug` and `verbose` options are enabled
-   * @param text text to output
-   */
-  // private error(text: string): void {
-  //   if (this.options.debug && (<DebugOptions> this.options.debug).verbose) {
-  //     console.error(`[Terminal] ${text}`);
-  //   }
-  // }
 }

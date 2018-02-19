@@ -6,17 +6,13 @@ export const defaultOptions: Options = {
   columns: 40,
   lines: 25,
   font: '20pt Terminal_VT220',
+  fg: '#00ff00',
+  bg: '#000000',
   autoRender: true,
   autoSize: true,
   cursor: true,
   cursorFrequency: 700,
   debug: false,
-  defaultTile: {
-    char: ' ',
-    style: '',
-    bg: '#000000',
-    fg: '#00ff00',
-  },
 };
 
 export const defaultDebugOptions: DebugOptions = {

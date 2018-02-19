@@ -7,6 +7,12 @@ import { emptyArray } from './util/emptyArray';
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
 
+/**
+ * Function called when the matching command is found
+ * @param text The whole text
+ * @param index Position of the matching commmand in the text
+ * @return index where the text processing should be continued
+ */
 export type EscapeCallback = (text: string, index: number) => number;
 
 export interface Options {
@@ -72,10 +78,7 @@ export interface TilePosition {
   line: number;
 }
 
-interface CommandMatch {
-  index: number;
-  text: string;
-}
+type IterateTileCallback = (InternalTile, i) => void;
 
 // tslint:disable-next-line:no-empty completed-docs
 function noop(): void {}
@@ -346,9 +349,9 @@ export class Terminal {
 
     const dirtyTiles = this.dirtyTiles;
     const options = this.options;
-    const matches: CommandMatch[] = [];
     let textOffset = 0;
     let regExp;
+    let match;
     // autorender is disabled in case of nested calls (only the most external one will be autorendered)
     const autoRender = this.options.autoRender;
     this.options.autoRender = false;
@@ -356,11 +359,7 @@ export class Terminal {
     if (this.escapeCharactersRegExpString) {
       // regExp is created in each setText in case of nested calls
       regExp = new RegExp(this.escapeCharactersRegExpString, 'g');
-      let match = regExp.exec(text);
-      while (match) {
-        matches.push({ index: match.index, text: match[0] });
-        match = regExp.exec(text);
-      }
+      match = regExp.exec(text);
     }
 
     // tslint:disable-next-line:completed-docs
@@ -373,13 +372,12 @@ export class Terminal {
     }
 
     // no text-parse
-    if (matches.length === 0) {
+    if (!match) {
       this.iterateTiles(text.length, setTile, col, line);
 
     // with text-parse
     } else {
       let i = 0;
-      let m = 0;
 
       // `cursorXY` is set to the parameters for the first `iterateTiles` call
       // in the next calls is auto updated by the function itself
@@ -390,13 +388,11 @@ export class Terminal {
         this.cursorY = line;
       }
 
-      while (i < text.length && m < matches.length) {
-        const match = matches[m];
-        const nextMatch: number = match.index;
+      while (i < text.length && match) {
         textOffset = i;
-        this.iterateTiles(nextMatch - i, setTile);
-        i = nextMatch + match.text.length + this.options.commands[match.text](text, nextMatch);
-        m++;
+        this.iterateTiles(match.index - i, setTile);
+        i = this.options.commands[match[0]](text, match.index);
+        match = regExp.exec(text);
       }
 
       if (i < text.length) {
@@ -406,7 +402,6 @@ export class Terminal {
     }
 
     // update the cursor to the next tile
-    this.iterateTiles(1, noop);
     this.setCursor(this.cursorX, this.cursorY);
 
     this.options.autoRender = autoRender;
@@ -482,7 +477,7 @@ export class Terminal {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  private iterateTiles(size: number, callback: (InternalTile, i) => void, col?: number, line?: number): void {
+  private iterateTiles(size: number, callback: IterateTileCallback, col?: number, line?: number): void {
     const buffer = this.buffer;
     const nLines = this.options.lines;
     const nColumns = this.options.columns;

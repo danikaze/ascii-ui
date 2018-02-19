@@ -56,21 +56,28 @@ function bindKeys(terminal: Terminal) {
   });
 }
 
-function setColor(terminal: Terminal, text: string, index: number): number {
-  const ESCAPE_TXT_LENGTH = 2;
-  const COLOR_TXT_LENGTH = 7;
-  const color = text.substr(index + ESCAPE_TXT_LENGTH, COLOR_TXT_LENGTH);
-  terminal.setOptions({ fg: color });
-
-  return COLOR_TXT_LENGTH;
-}
-
 function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
   canvas.addEventListener('click', (event) => {
     const bounds = canvas.getBoundingClientRect();
     const tile = terminal.getTilePosition(event.x - bounds.left, event.y - bounds.top);
     terminal.setCursor(tile.col, tile.line);
   });
+}
+
+function setColor(terminal: Terminal, text: string, index: number): number {
+  const ESCAPE_TXT_LENGTH = 2;
+  const COLOR_TXT_LENGTH = 7;
+  const color = text.substr(index + ESCAPE_TXT_LENGTH, COLOR_TXT_LENGTH);
+  terminal.setOptions({ fg: color });
+
+  return index + ESCAPE_TXT_LENGTH + COLOR_TXT_LENGTH;
+}
+
+function injectText(terminal: Terminal, text: string, index: number) {
+  const ESCAPED_TEXT_LENGTH = 3;
+  terminal.setText('injected text');
+
+  return index + ESCAPED_TEXT_LENGTH;
 }
 
 function run() {
@@ -86,12 +93,7 @@ function run() {
 
   const commands = {
     '\\c': setColor.bind(undefined, terminal),
-    ':x:': (text: string, index: number) => {
-      terminal.setText('injected text');
-      terminal.moveCursor(-1, 0);
-
-      return 0;
-    },
+    ':x:': injectText.bind(undefined, terminal),
   };
 
   canvas.parentElement.style.width = `${canvas.width}px`;

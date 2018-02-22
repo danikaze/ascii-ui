@@ -3,6 +3,7 @@ import { isArray } from 'vanilla-type-check';
 
 import { defaultDebugOptions, defaultOptions } from './defaultOptions';
 import { emptyArray } from './util/emptyArray';
+import { requestAnimationFrame } from './util/requestAnimationFrame';
 
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
@@ -26,6 +27,10 @@ export interface Options {
   lines?: number;
   /** font or font-family to use in the terminal */
   font?: string;
+  /** x-offset to apply to each character inside the tile */
+  fontOffsetX?: number;
+  /** y-offset to apply to each character inside the tile */
+  fontOffsetY?: number;
   /** foreground color (i.e. `#00ff00`) */
   fg?: string;
   /** background color (i.e. `#000000`) */
@@ -38,6 +43,10 @@ export interface Options {
   cursor?: boolean;
   /** blinking frequency of the cursor. If set to `0` the blink will be disabled */
   cursorFrequency?: number;
+  /** if > 0, milliseconds that the characters will take before disapear when changing */
+  decayTime?: number;
+  /** initial opacity for the decay tile, from 0 to 1 */
+  decayInitialAlpha?: number;
   /** `true` to enable default debug options, `false` to disable it, an object to specify each option */
   debug?: boolean | DebugOptions;
   /** escape secuences to parse and their callback functions */
@@ -71,6 +80,17 @@ interface InternalTile extends Tile {
   y: number;
 }
 
+interface DecayTile {
+  /** char to display in the tile */
+  char: string;
+  /** font or font-family to use in the terminal */
+  font: string;
+  /** foreground color (i.e. `#00ff00`) */
+  fg: string;
+  /** current opacity */
+  alpha: number;
+}
+
 export interface TilePosition {
   /** x-coordinate of a tile in the grid */
   col: number;
@@ -94,6 +114,10 @@ export class Terminal {
   private readonly options: Options;
   /** list of tiles marked to re-render */
   private dirtyTiles: InternalTile[] = [];
+  /** map of tiles to render with decay */
+  private readonly decayTiles: { [key: string]: DecayTile } = {}; // key being `${x},${y}`
+  /** How much to change the opacity of the decayTiles when updating them */
+  private decayChange: number;
   /** x-position of the cursor */
   private cursorX: number = 0;
   /** y-position of the cursor */
@@ -104,6 +128,8 @@ export class Terminal {
   private updateCursorInterval: number;
   /** cached string to create the RegExp to escape characters */
   private escapeCharactersRegExpString: string;
+  /** time of the last render */
+  private lastRenderTime: number = 0;
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -115,6 +141,7 @@ export class Terminal {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.options = { ...defaultOptions };
+    this.decayChange = options.decayInitialAlpha / options.decayTime;
 
     this.setOptions(options);
 
@@ -138,6 +165,9 @@ export class Terminal {
    */
   setOptions(options: Options): void {
     Object.assign(this.options, options);
+
+    // decay
+    this.decayChange = this.options.decayInitialAlpha / this.options.decayTime;
 
     // options.commands
     const commandList = this.options.commands && Object.keys(this.options.commands);
@@ -213,36 +243,68 @@ export class Terminal {
     const nTiles = this.dirtyTiles.length;
     const cursorX = this.cursorX * w;
     const cursorY = this.cursorY * h;
+    const offsetX = this.options.fontOffsetX;
+    const offsetY = this.options.fontOffsetY;
     const drawCursor = this.options.cursor && this.cursorVisible;
+    const originalAlpha = ctx.globalAlpha;
+    const tilesToRedraw: InternalTile[] = [];
+    const decayChange = this.decayChange * (start - this.lastRenderTime);
 
     ctx.textBaseline = 'bottom';
     for (const tile of this.dirtyTiles) {
+      const x = tile.x;
+      const y = tile.y;
+      const decayKey = `${x},${y}`;
+      const decayTile = this.decayTiles[decayKey];
+
       ctx.font = tile.font;
       // cursor
-      if (drawCursor && tile.x === cursorX && tile.y === cursorY) {
+      if (drawCursor && x === cursorX && y === cursorY) {
         // bg
         ctx.fillStyle = tile.fg;
-        ctx.fillRect(tile.x, tile.y, w, h);
+        ctx.fillRect(x, y, w, h);
+
         // fg
         ctx.fillStyle = tile.bg;
-        ctx.fillText(tile.char, tile.x, tile.y + h);
+        ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
       } else {
         // bg
         ctx.fillStyle = tile.bg;
-        ctx.fillRect(tile.x, tile.y, w, h);
+        ctx.fillRect(x, y, w, h);
+
+        // decay
+        if (decayTile) {
+          if (decayTile.alpha > decayChange) {
+            decayTile.alpha -= decayChange;
+            ctx.fillStyle = decayTile.fg;
+            ctx.font = decayTile.font;
+            ctx.globalAlpha = decayTile.alpha;
+            ctx.fillText(decayTile.char, x + offsetX, y + h + offsetY);
+            ctx.globalAlpha = originalAlpha;
+            ctx.font = tile.font;
+          } else {
+            this.decayTiles[decayKey] = undefined;
+          }
+          tilesToRedraw.push(tile);
+        }
+
         // fg
         ctx.fillStyle = tile.fg;
-        ctx.fillText(tile.char, tile.x, tile.y + h);
+        ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
       }
     }
 
-    this.info(`render: ${nTiles} tiles: ${window.performance.now() - start} ms.`);
+    this.lastRenderTime = window.performance.now();
+    this.info(`render: ${nTiles} tiles: ${this.lastRenderTime - start} ms.`);
 
     if (this.options.debug) {
       this.renderDebug();
     }
 
-    this.dirtyTiles = emptyArray(this.dirtyTiles);
+    this.dirtyTiles = tilesToRedraw;
+    if (tilesToRedraw.length > 0 && this.options.autoRender) {
+      requestAnimationFrame(this.render.bind(this));
+    }
   }
 
   /**
@@ -345,6 +407,8 @@ export class Terminal {
     this.info(`setText: ${text}`);
 
     const dirtyTiles = this.dirtyTiles;
+    const decayTiles = this.decayTiles;
+    const decayEnabled = !!this.decayChange;
     const options = this.options;
     let textOffset = 0;
     let regExp;
@@ -361,6 +425,15 @@ export class Terminal {
 
     // tslint:disable-next-line:completed-docs
     function setTile(tile: InternalTile, i: number): void {
+      if (decayEnabled && tile.char && tile.char !== ' ') {
+        decayTiles[`${tile.x},${tile.y}`] = {
+          char: tile.char,
+          font: tile.font,
+          fg: tile.fg,
+          alpha: options.decayInitialAlpha,
+        };
+      }
+
       tile.char = text[i + textOffset];
       tile.font = options.font;
       tile.fg = options.fg;

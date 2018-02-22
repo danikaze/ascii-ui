@@ -283,7 +283,7 @@ export class Terminal {
             ctx.globalAlpha = originalAlpha;
             ctx.font = tile.font;
           } else {
-            delete this.decayTiles[decayKey];
+            this.decayTiles[decayKey] = undefined;
           }
           tilesToRedraw.push(tile);
         }

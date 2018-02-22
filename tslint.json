@@ -30,6 +30,7 @@
       }
     ],
     "no-default-export": false,
+    "no-dynamic-delete": false,
     "no-implicit-dependencies": false,
     "no-inferrable-types": false,
     "no-parameter-reassignment": false,

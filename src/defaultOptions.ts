@@ -6,12 +6,16 @@ export const defaultOptions: Options = {
   columns: 40,
   lines: 25,
   font: '20pt Terminal_VT220',
+  fontOffsetX: 1,
+  fontOffsetY: -1,
   fg: '#00ff00',
   bg: '#000000',
   autoRender: true,
   autoSize: true,
   cursor: true,
   cursorFrequency: 700,
+  decayTime: 400,
+  decayInitialAlpha: 0.9,
   debug: false,
 };
 

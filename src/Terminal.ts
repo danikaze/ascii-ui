@@ -274,16 +274,14 @@ export class Terminal {
 
         // decay
         if (decayTile) {
-          //tslint:disable:no-console
-          ctx.fillStyle = decayTile.fg;
-          ctx.font = decayTile.font;
-          ctx.globalAlpha = decayTile.alpha;
-          ctx.fillText(decayTile.char, x + offsetX, y + h + offsetY);
-          ctx.globalAlpha = originalAlpha;
-          ctx.font = tile.font;
-
           if (decayTile.alpha > decayChange) {
             decayTile.alpha -= decayChange;
+            ctx.fillStyle = decayTile.fg;
+            ctx.font = decayTile.font;
+            ctx.globalAlpha = decayTile.alpha;
+            ctx.fillText(decayTile.char, x + offsetX, y + h + offsetY);
+            ctx.globalAlpha = originalAlpha;
+            ctx.font = tile.font;
           } else {
             delete this.decayTiles[decayKey];
           }

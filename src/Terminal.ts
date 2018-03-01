@@ -104,14 +104,14 @@ type IterateTileCallback = (InternalTile, i) => void;
  * Basic terminal features rendered into a Canvas object
  */
 export class Terminal {
+  /** terminal options */
+  protected readonly options: Options;
   /** canvas object associated with the terminal */
   private readonly canvas: HTMLCanvasElement;
   /** 2d context of the canvas object */
   private readonly ctx: CanvasRenderingContext2D;
   /** grid of tiles */
   private readonly buffer: InternalTile[][] = []; // [y][x]
-  /** terminal options */
-  private readonly options: Options;
   /** list of tiles marked to re-render */
   private dirtyTiles: InternalTile[] = [];
   /** map of tiles to render with decay */
@@ -150,7 +150,6 @@ export class Terminal {
       this.canvas.height = this.options.lines * this.options.tileHeight;
     }
 
-    this.setCursorFrequency(this.options.cursorFrequency);
     this.clear();
 
     if (this.options.debug) {
@@ -172,6 +171,13 @@ export class Terminal {
     // options.commands
     const commandList = this.options.commands && Object.keys(this.options.commands);
     this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
+
+    // cursor
+    if (this.options.cursor) {
+      this.setCursorFrequency(this.options.cursorFrequency);
+    } else if (this.buffer.length > 0) {
+      this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+    }
   }
 
   /**

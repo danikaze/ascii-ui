@@ -1,5 +1,13 @@
 import { CharStyle } from '../Terminal';
 
+/**
+ * Copy the `CharStyle` properties of `source` into `target`.
+ * Properties will be copied only if defined, and others will be ignored as well
+ *
+ * @param target object to be modified
+ * @param source data source
+ * @returns `target`
+ */
 export function assignCharStyle(target: CharStyle, source: CharStyle): CharStyle {
   if (source.font) {
     target.font = source.font;

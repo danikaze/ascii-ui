@@ -16,7 +16,7 @@ import './styles.less';
  */
 export type EscapeCallback = (text: string, index: number) => number;
 
-export interface Options {
+export interface TerminalOptions {
   /** width of a tile in px */
   tileWidth?: number;
   /** height of a tile in px */
@@ -105,7 +105,7 @@ type IterateTileCallback = (InternalTile, i) => void;
  */
 export class Terminal {
   /** terminal options */
-  protected readonly options: Options;
+  protected readonly options: TerminalOptions;
   /** canvas object associated with the terminal */
   private readonly canvas: HTMLCanvasElement;
   /** 2d context of the canvas object */
@@ -137,7 +137,7 @@ export class Terminal {
    * @param canvas `<canvas>` element associated to the Terminal
    * @param options
    */
-  constructor(canvas: HTMLCanvasElement, options?: Options) {
+  constructor(canvas: HTMLCanvasElement, options?: TerminalOptions) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.options = { ...defaultOptions };
@@ -162,7 +162,7 @@ export class Terminal {
    *
    * @param options new options to set
    */
-  setOptions(options: Options): void {
+  setOptions(options: TerminalOptions): void {
     Object.assign(this.options, options);
 
     // decay

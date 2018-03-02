@@ -1,6 +1,6 @@
-import { DebugOptions, Options } from './Terminal';
+import { DebugOptions, TerminalOptions } from './Terminal';
 
-export const defaultOptions: Options = {
+export const defaultOptions: TerminalOptions = {
   tileWidth: 18,
   tileHeight: 28,
   columns: 40,

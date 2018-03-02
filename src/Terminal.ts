@@ -198,33 +198,53 @@ export class Terminal {
   }
 
   /**
-   * Clear the terminal, reseting it to the `options.defaultTile`
+   * Clear the whole terminal
    */
-  clear(): void {
+  clear(): void;
+
+  /**
+   * Clear only the specified part of the terminal
+   *
+   * @param col
+   * @param line
+   * @param width
+   * @param height
+   */
+  clear(col: number, line: number, width: number, height: number);
+
+  clear(col?: number, line?: number, width?: number, height?: number): void {
     const start = window.performance.now();
     const dirtyTiles = this.dirtyTiles;
     const buffer = this.buffer;
+    const options = this.options;
 
-    this.dirtyTiles.splice(0, this.dirtyTiles.length);
-    for (let y = 0; y < this.options.lines; y++) {
-      this.buffer[y] = [];
-      for (let x = 0; x < this.options.columns; x++) {
+    if (col === undefined) {
+      col = 0;
+      line = 0;
+      width = options.columns;
+      height = options.lines;
+    }
+
+    dirtyTiles.splice(0, dirtyTiles.length);
+    for (let y = line; y < height; y++) {
+      buffer[y] = [];
+      for (let x = col; x < width; x++) {
         const tile = {
-          bg: this.options.bg,
           char: ' ',
-          fg: this.options.fg,
-          font: this.options.font,
-          fontOffsetX: this.options.fontOffsetX,
-          fontOffsetY: this.options.fontOffsetY,
-          x: x * this.options.tileWidth,
-          y: y * this.options.tileHeight,
+          bg: options.bg,
+          fg: options.fg,
+          font: options.font,
+          fontOffsetX: options.fontOffsetX,
+          fontOffsetY: options.fontOffsetY,
+          x: x * options.tileWidth,
+          y: y * options.tileHeight,
         };
         buffer[y][x] = tile;
         dirtyTiles.push(tile);
       }
     }
 
-    this.info(`clear: ${this.options.columns * this.options.lines} tiles: ${window.performance.now() - start} ms.`);
+    this.info(`clear: ${options.columns * options.lines} tiles: ${window.performance.now() - start} ms.`);
     this.render();
   }
 

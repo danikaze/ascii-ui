@@ -92,10 +92,8 @@ export class TerminalUiBox extends Terminal {
     });
 
     const boxTitle = this.options.boxTitle;
-    // tslint:disable:no-magic-numbers (2 is because of the corners)
+    // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
     const titleMaxLength = width - boxTitle.marginLeft - boxTitle.marginRight - 2;
-    const horizontalMaxRepeat = width - 2;
-    // tslint:enable:no-magic-numbers
 
     if (title && title.length > titleMaxLength) {
       title = (`${title.substr(0, titleMaxLength - boxTitle.ellipsis.length)}`
@@ -168,6 +166,9 @@ export class TerminalUiBox extends Terminal {
     return tiles;
   }
 
+  /**
+   * Set the style properties of the tiles in the pool
+   */
   private styleBoxTiles(): void {
     const pool = this.boxTilesPool;
     const style = { ...assignCharStyle({}, this.options.boxTitle) };

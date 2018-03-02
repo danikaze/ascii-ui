@@ -2,6 +2,7 @@
 import { isArray } from 'vanilla-type-check';
 
 import { defaultDebugOptions, defaultOptions } from './defaultOptions';
+import { assignCharStyle } from './util/assignCharStyle';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
 
@@ -16,16 +17,12 @@ import './styles.less';
  */
 export type EscapeCallback = (text: string, index: number) => number;
 
-export interface TerminalOptions {
-  /** width of a tile in px */
-  tileWidth?: number;
-  /** height of a tile in px */
-  tileHeight?: number;
-  /** number of columns of the terminal, in number of tiles */
-  columns?: number;
-  /** number of rows of the terminal, in number of tiles */
-  lines?: number;
-  /** font or font-family to use in the terminal */
+export interface CharStyle {
+  /**
+   * font or font-family to use in the terminal
+   * The format is in this order:
+   * [style] [variant] [weight] [family]
+   */
   font?: string;
   /** x-offset to apply to each character inside the tile */
   fontOffsetX?: number;
@@ -35,6 +32,17 @@ export interface TerminalOptions {
   fg?: string;
   /** background color (i.e. `#000000`) */
   bg?: string;
+}
+
+export interface TerminalOptions extends CharStyle {
+  /** width of a tile in px */
+  tileWidth?: number;
+  /** height of a tile in px */
+  tileHeight?: number;
+  /** number of columns of the terminal, in number of tiles */
+  columns?: number;
+  /** number of rows of the terminal, in number of tiles */
+  lines?: number;
   /** `true` to let the terminal manage the screen changes */
   autoRender?: boolean;
   /** if `true`, the containing canvas will be resized to contain the grid */
@@ -62,15 +70,9 @@ export interface DebugOptions {
   gridStyle?: string;
 }
 
-export interface Tile {
+export interface Tile extends CharStyle {
   /** char to display in the tile */
   char: string;
-  /** font or font-family to use in the terminal */
-  font: string;
-  /** foreground color (i.e. `#00ff00`) */
-  fg: string;
-  /** background color (i.e. `#000000`) */
-  bg: string;
 }
 
 interface InternalTile extends Tile {
@@ -80,13 +82,7 @@ interface InternalTile extends Tile {
   y: number;
 }
 
-interface DecayTile {
-  /** char to display in the tile */
-  char: string;
-  /** font or font-family to use in the terminal */
-  font: string;
-  /** foreground color (i.e. `#00ff00`) */
-  fg: string;
+interface DecayTile extends Tile {
   /** current opacity */
   alpha: number;
 }
@@ -218,6 +214,8 @@ export class Terminal {
           char: ' ',
           fg: this.options.fg,
           font: this.options.font,
+          fontOffsetX: this.options.fontOffsetX,
+          fontOffsetY: this.options.fontOffsetY,
           x: x * this.options.tileWidth,
           y: y * this.options.tileHeight,
         };
@@ -249,8 +247,6 @@ export class Terminal {
     const nTiles = this.dirtyTiles.length;
     const cursorX = this.cursorX * w;
     const cursorY = this.cursorY * h;
-    const offsetX = this.options.fontOffsetX;
-    const offsetY = this.options.fontOffsetY;
     const drawCursor = this.options.cursor && this.cursorVisible;
     const originalAlpha = ctx.globalAlpha;
     const tilesToRedraw: InternalTile[] = [];
@@ -260,6 +256,8 @@ export class Terminal {
     for (const tile of this.dirtyTiles) {
       const x = tile.x;
       const y = tile.y;
+      const offsetX = tile.fontOffsetX;
+      const offsetY = tile.fontOffsetY;
       const decayKey = `${x},${y}`;
       const decayTile = this.decayTiles[decayKey];
 
@@ -285,7 +283,7 @@ export class Terminal {
             ctx.fillStyle = decayTile.fg;
             ctx.font = decayTile.font;
             ctx.globalAlpha = decayTile.alpha;
-            ctx.fillText(decayTile.char, x + offsetX, y + h + offsetY);
+            ctx.fillText(decayTile.char, x + decayTile.fontOffsetX, y + h + decayTile.fontOffsetY);
             ctx.globalAlpha = originalAlpha;
             ctx.font = tile.font;
           } else {
@@ -399,6 +397,32 @@ export class Terminal {
   }
 
   /**
+   * Set the style to apply in the `setText` calls.
+   * Passed `style` object can have other properties,
+   * but only the ones related to the style will be applied.
+   *
+   * @param style new style to set for future text
+   */
+  setTextStyle(style: CharStyle): void {
+    assignCharStyle(this.options, style);
+  }
+
+  /**
+   * Get the current style being applied to the `setText` calls
+   */
+  getTextStyle(): CharStyle {
+    const ctx = this.ctx;
+
+    return {
+      font: ctx.font,
+      fontOffsetX: this.options.fontOffsetX,
+      fontOffsetY: this.options.fontOffsetY,
+      fg: this.options.fg,
+      bg: this.options.bg,
+    };
+  }
+
+  /**
    * Input a simple text in the terminal. By default the text will be set in the current position
    * of the cursor.
    * If the text reaches the right side of the terminal, will break into a new line as is
@@ -435,6 +459,8 @@ export class Terminal {
         decayTiles[`${tile.x},${tile.y}`] = {
           char: tile.char,
           font: tile.font,
+          fontOffsetX: tile.fontOffsetX,
+          fontOffsetY: tile.fontOffsetY,
           fg: tile.fg,
           alpha: options.decayInitialAlpha,
         };
@@ -442,6 +468,8 @@ export class Terminal {
 
       tile.char = text[i + textOffset];
       tile.font = options.font;
+      tile.fontOffsetX = options.fontOffsetX;
+      tile.fontOffsetY = options.fontOffsetY;
       tile.fg = options.fg;
       tile.bg = options.bg;
       dirtyTiles.push(tile);

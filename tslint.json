@@ -41,7 +41,7 @@
     "no-submodule-imports": false,
     "no-trailing-whitespace": [true, "ignore-jsdoc"],
     "no-unsafe-any": false,
-    "object-literal-sort-keys": [true, "match-declaration-order"],
+    "object-literal-sort-keys": false,
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "only-arrow-functions": [true, "allow-named-functions"],
     "ordered-imports": [

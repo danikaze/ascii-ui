@@ -2,10 +2,10 @@
 
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { TerminalUi } from '../../src/TerminalUi/TerminalUi';
+import { TerminalUiBox } from '../../src/TerminalUi/TerminalUi';
 
 interface TestWindow extends Window {
-  terminal: TerminalUi;
+  terminal: TerminalUiBox;
 }
 
 function hideLoad() {
@@ -18,7 +18,7 @@ function run() {
   const columns = 40;
   const lines = 20;
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-  const terminal = new TerminalUi(canvas, {
+  const terminal = new TerminalUiBox(canvas, {
     columns,
     lines,
     cursor: false,
@@ -28,9 +28,9 @@ function run() {
   canvas.parentElement.style.width = `${canvas.width}px`;
   canvas.parentElement.style.height = `${canvas.height}px`;
 
-  terminal.box(1, 1, 20, 3);
-  terminal.box(1, 5, 20, 3, 'Title');
-  terminal.box(1, 9, 20, 3, 'Very long title for real');
+  terminal.drawBox(1, 1, 20, 4);
+  terminal.drawBox(1, 6, 20, 4, 'Title');
+  terminal.drawBox(1, 11, 20, 4, 'Very long title for real');
 
   (window as TestWindow).terminal = terminal;
 }

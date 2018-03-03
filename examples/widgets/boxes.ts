@@ -2,10 +2,11 @@
 
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { TerminalUiBox } from '../../src/TerminalUi/TerminalUi';
+import { Terminal } from '../../src/Terminal';
+import { Box, BoxOptions } from '../../src/widgets/Box';
 
 interface TestWindow extends Window {
-  terminal: TerminalUiBox;
+  terminal: Terminal;
 }
 
 function hideLoad() {
@@ -18,7 +19,7 @@ function run() {
   const columns = 40;
   const lines = 20;
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-  const terminal = new TerminalUiBox(canvas, {
+  const terminal = new Terminal(canvas, {
     columns,
     lines,
     cursor: false,
@@ -28,9 +29,24 @@ function run() {
   canvas.parentElement.style.width = `${canvas.width}px`;
   canvas.parentElement.style.height = `${canvas.height}px`;
 
-  terminal.drawBox(1, 1, 20, 4);
-  terminal.drawBox(1, 6, 20, 4, 'Title');
-  terminal.drawBox(1, 11, 20, 4, 'Very long title for real');
+  const options: BoxOptions = {
+    col: 1,
+    line: 1,
+    width: 20,
+    height: 5,
+  };
+  //const b1 = new Box(terminal, options);
+  const b1 = terminal.attachWidget(Box, options);
+
+  options.line = 7;
+  options.title = 'Title';
+  // const b2 = new Box(terminal, options);
+  const b2 = terminal.attachWidget(Box, options);
+
+  options.line = 13;
+  options.title = 'Very long title for real';
+  // const b3 = new Box(terminal, options);
+  const b3 = terminal.attachWidget(Box, options);
 
   (window as TestWindow).terminal = terminal;
 }

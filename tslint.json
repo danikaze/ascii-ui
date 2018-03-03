@@ -54,6 +54,7 @@
     "promise-function-async": false,
     "quotemark": [true, "single", "jsx-double"],
     "strict-boolean-expressions": false,
+    "typedef": false,
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
   }
 }

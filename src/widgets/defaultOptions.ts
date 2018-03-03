@@ -1,4 +1,4 @@
-import { BoxBorderOptions, BoxTitleOptions } from './TerminalUi';
+import { BoxBorderOptions, BoxTitleOptions } from './Box';
 
 export const boxBorderDefaultOptions: BoxBorderOptions = {
   topLeft: '┌',

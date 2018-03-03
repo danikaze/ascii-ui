@@ -5,6 +5,7 @@ import { defaultDebugOptions, defaultOptions } from './defaultOptions';
 import { assignCharStyle } from './util/assignCharStyle';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
+import { Widget } from './Widget';
 
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
@@ -100,6 +101,9 @@ type IterateTileCallback = (InternalTile, i) => void;
  * Basic terminal features rendered into a Canvas object
  */
 export class Terminal {
+  /** widget id counter to generate unique ids */
+  private static widgetIds: number = 0;
+
   /** terminal options */
   protected readonly options: TerminalOptions;
   /** canvas object associated with the terminal */
@@ -126,6 +130,8 @@ export class Terminal {
   private escapeCharactersRegExpString: string;
   /** time of the last render */
   private lastRenderTime: number = 0;
+  /** list of attached widgets as { id: widget } */
+  private readonly attachedWidgets: { [key: number]: Widget } = {};
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -589,6 +595,46 @@ export class Terminal {
     if (this.options.autoRender) {
       this.render();
     }
+  }
+
+  /**
+   * Attach a specified widget to this instance of the terminal
+   *
+   * @param widget instance of the widget to attach
+   * @return handler of the attached widget. Required to deattach it.
+   */
+  attachWidget(widget: Widget): number;
+
+  /**
+   * Create and attach a widget to this instance of the terminal
+   *
+   * @param WidgetClass Class of the widget
+   * @param args Options for the widget constructor
+   * @return handler of the attached widget. Required to deattach it.
+   */
+  attachWidget(WidgetClass: typeof Widget, ...args): number;
+
+  attachWidget(WidgetClass, ...args): number {
+    let widget: Widget;
+    if (typeof WidgetClass === 'function') {
+      widget = typeof WidgetClass === 'function'
+        ? Reflect.construct(WidgetClass, [this, ...args])
+        : WidgetClass;
+    }
+
+    this.attachedWidgets[++Terminal.widgetIds] = widget;
+    widget.render();
+
+    return Terminal.widgetIds;
+  }
+
+  /**
+   * Dettach a widget from this terminal
+   *
+   * @param handler Value returned by `attachWidget`
+   */
+  deattachWidget(handler: number): void {
+    this.attachedWidgets[handler] = undefined;
   }
 
   /**

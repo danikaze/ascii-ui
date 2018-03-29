@@ -1,9 +1,13 @@
 /* tslint:disable:typedef */
 import { Widget } from './Widget';
 
+/**
+ * A widget that can contains other widgets.
+ * It provide the usual methods and others to control internal widgets.
+ */
 export abstract class WidgetContainer extends Widget {
   private static widgetIds: number = 0;
-  private attachedWidgets: Widget[] = [];
+  private readonly attachedWidgets: Widget[] = [];
 
   /**
    * Attach a widget to this istance of the terminal
@@ -11,7 +15,7 @@ export abstract class WidgetContainer extends Widget {
    * @param widget instance of the widget to attach
    * @return handler of the attached widget. Required to deattach it.
    */
-  attachWidget(widget: Widget): number {
+  protected attachWidget(widget: Widget): number {
     const handler = ++WidgetContainer.widgetIds;
     this.attachedWidgets[handler] = widget;
 
@@ -23,9 +27,7 @@ export abstract class WidgetContainer extends Widget {
    *
    * @param handler Value returned by `attachWidget`
    */
-  deattachWidget(handler: number): void {
+  protected deattachWidget(handler: number): void {
     this.attachedWidgets[handler] = undefined;
   }
 }
-
-export default WidgetContainer;

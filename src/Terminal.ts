@@ -43,7 +43,7 @@ export interface TerminalOptions extends CharStyle {
   /** number of columns of the terminal, in number of tiles */
   columns?: number;
   /** number of rows of the terminal, in number of tiles */
-  lines?: number;
+  rows?: number;
   /** `true` to let the terminal manage the screen changes */
   autoRender?: boolean;
   /** if `true`, the containing canvas will be resized to contain the grid */
@@ -74,6 +74,13 @@ export interface DebugOptions {
 export interface Tile extends CharStyle {
   /** char to display in the tile */
   char: string;
+}
+
+export interface TerminalSize {
+  /** number of columns of the terminal, in number of tiles */
+  columns: number;
+  /** number of rows of the terminal, in number of tiles */
+  rows: number;
 }
 
 interface InternalTile extends Tile {
@@ -149,7 +156,7 @@ export class Terminal {
 
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;
-      this.canvas.height = this.options.lines * this.options.tileHeight;
+      this.canvas.height = this.options.rows * this.options.tileHeight;
     }
 
     this.clear();
@@ -228,7 +235,7 @@ export class Terminal {
       col = 0;
       line = 0;
       width = options.columns;
-      height = options.lines;
+      height = options.rows;
     }
 
     dirtyTiles.splice(0, dirtyTiles.length);
@@ -250,7 +257,7 @@ export class Terminal {
       }
     }
 
-    this.info(`clear: ${options.columns * options.lines} tiles: ${window.performance.now() - start} ms.`);
+    this.info(`clear: ${options.columns * options.rows} tiles: ${window.performance.now() - start} ms.`);
     this.render();
   }
 
@@ -342,7 +349,7 @@ export class Terminal {
    */
   renderAll(): void {
     this.dirtyTiles = emptyArray(this.dirtyTiles);
-    for (let y = 0; y < this.options.lines; y++) {
+    for (let y = 0; y < this.options.rows; y++) {
       for (let x = 0; x < this.options.columns; x++) {
         this.dirtyTiles.push(this.buffer[y][x]);
       }
@@ -351,7 +358,17 @@ export class Terminal {
   }
 
   /**
-   * Get the current position of the cursor, in tile coordinates
+   * @returns Size of the terminal, measured in tiles
+   */
+  getSize(): TerminalSize {
+    return {
+      columns: this.options.columns,
+      rows: this.options.rows,
+    };
+  }
+
+  /**
+   * @returns current position of the cursor, in tile coordinates
    */
   getCursor(): TilePosition {
     return {
@@ -369,7 +386,7 @@ export class Terminal {
   setCursor(col: number, line: number): void {
     const oldTile = this.buffer[this.cursorY][this.cursorX];
 
-    if (col >= this.options.columns && line < this.options.lines - 1) {
+    if (col >= this.options.columns && line < this.options.rows - 1) {
       col = 0;
       line++;
     } else if (col < 0 && line > 0) {
@@ -379,8 +396,8 @@ export class Terminal {
       col = Math.max(0, Math.min(col, this.options.columns - 1));
     }
 
-    if (line >= this.options.lines) {
-      line = this.options.lines - 1;
+    if (line >= this.options.rows) {
+      line = this.options.rows - 1;
     } else if (line < 0) {
       line = 0;
     }
@@ -615,12 +632,9 @@ export class Terminal {
   attachWidget(WidgetClass: typeof Widget, ...args): number;
 
   attachWidget(WidgetClass, ...args): number {
-    let widget: Widget;
-    if (typeof WidgetClass === 'function') {
-      widget = typeof WidgetClass === 'function'
-        ? Reflect.construct(WidgetClass, [this, ...args])
-        : WidgetClass;
-    }
+    const widget: Widget = typeof WidgetClass === 'function'
+      ? Reflect.construct(WidgetClass, [this, ...args])
+      : WidgetClass;
 
     this.attachedWidgets[++Terminal.widgetIds] = widget;
     widget.render();
@@ -649,7 +663,7 @@ export class Terminal {
    */
   private iterateTiles(size: number, callback: IterateTileCallback, col?: number, line?: number): void {
     const buffer = this.buffer;
-    const nLines = this.options.lines;
+    const nLines = this.options.rows;
     const nColumns = this.options.columns;
 
     if (typeof col === 'undefined') {

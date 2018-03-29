@@ -26,5 +26,3 @@ export const requestAnimationFrame: requestAnimationFrameFn = window.requestAnim
   (window as VendorWindow).oRequestAnimationFrame.bind(window) ||
   (window as VendorWindow).msRequestAnimationFrame.bind(window) ||
   customRequestAnimationFrame;
-
-export default requestAnimationFrame;

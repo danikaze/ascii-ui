@@ -4,7 +4,7 @@ export const defaultOptions: TerminalOptions = {
   tileWidth: 18,
   tileHeight: 28,
   columns: 40,
-  lines: 25,
+  rows: 25,
   autoRender: true,
   autoSize: true,
   cursor: true,

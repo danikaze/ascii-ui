@@ -1,6 +1,6 @@
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
-import { Widget, WidgetOptions } from '../Widget';
+import { WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
 import { boxBorderDefaultOptions, boxTitleDefaultOptions } from './defaultOptions';
@@ -80,6 +80,10 @@ export class Box extends WidgetContainer {
   }
 
   render(): void {
+    if (!this.allocated) {
+      return;
+    }
+
     let title = this.options.title;
     const boxTitle = this.options.boxTitle;
     // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
@@ -154,5 +158,3 @@ export class Box extends WidgetContainer {
     return tiles;
   }
 }
-
-export default Box;

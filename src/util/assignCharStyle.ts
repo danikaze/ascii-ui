@@ -27,5 +27,3 @@ export function assignCharStyle(target: CharStyle, source: CharStyle): CharStyle
 
   return target;
 }
-
-export default assignCharStyle;

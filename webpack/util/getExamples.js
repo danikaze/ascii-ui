@@ -31,7 +31,8 @@ function getEntryPoints() {
       const match = /^(.*)\.([jt]sx?)$/.exec(file);
       if (match) {
         const filePath = path.join(folder, file);
-        if (fs.existsSync(filePath)) {
+        const htmlFile = `${stripExtension(filePath)}.html`;
+        if (fs.existsSync(htmlFile)) {
           const output = path.relative(EXAMPLES_PATH, filePath);
           entries[output] = path.resolve(path.join('.', filePath));
         }

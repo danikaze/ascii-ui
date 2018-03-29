@@ -12,5 +12,3 @@ export function emptyArray<T>(arr: T[]): T[] {
 
   return arr;
 }
-
-export default emptyArray;

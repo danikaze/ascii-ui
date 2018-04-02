@@ -83,7 +83,9 @@ export interface TerminalSize {
   rows: number;
 }
 
+/** List of events the Terminal can trigger */
 export const enum TerminalEvent {
+  /** Triggered when the Terminal has been resized */
   RESIZED = 'resized',
 }
 
@@ -200,8 +202,8 @@ export class Terminal {
     }
 
     // resize
-    if ((oldColumns && this.options.columns !== oldColumns) || (oldRows && this.options.rows !== oldRows)) {
-      this.trigger(TerminalEvent.RESIZED, this.options.columns, this.options.rows);
+    if (this.options.columns !== oldColumns || this.options.rows !== oldRows) {
+      this.resize(oldColumns || 0, oldRows || 0, this.options.columns, this.options.rows);
     }
   }
 
@@ -252,12 +254,11 @@ export class Terminal {
       line = 0;
       width = options.columns;
       height = options.rows;
+      dirtyTiles.splice(0, dirtyTiles.length);
     }
 
-    dirtyTiles.splice(0, dirtyTiles.length);
-    for (let y = line; y < height; y++) {
-      buffer[y] = [];
-      for (let x = col; x < width; x++) {
+    for (let y = line, yy = y + height; y < yy; y++) {
+      for (let x = col, xx = x + width; x < xx; x++) {
         const tile = {
           char: ' ',
           bg: options.bg,
@@ -273,8 +274,10 @@ export class Terminal {
       }
     }
 
-    this.info(`clear: ${options.columns * options.rows} tiles: ${window.performance.now() - start} ms.`);
-    this.render();
+    this.info(`clear: ${width * height} tiles: ${window.performance.now() - start} ms.`);
+    if (this.options.autoRender) {
+      this.render();
+    }
   }
 
   /**
@@ -804,5 +807,44 @@ export class Terminal {
         listener.apply(undefined, args);
       });
     }
+  }
+
+  /**
+   *
+   * @param width
+   * @param height
+   */
+  private resize(oldWidth: number, oldHeight: number, width: number, height: number): void {
+    const buffer = this.buffer;
+    const autoRender = this.options.autoRender;
+    this.options.autoRender = !this.options.autoSize;
+
+    if (height > oldHeight) {
+      for (let y = oldHeight; y < height; y++) {
+        buffer[y] = [];
+      }
+      this.clear(0, oldHeight, oldWidth, height - oldHeight);
+    } else if (height < oldHeight) {
+      buffer.splice(height);
+    }
+
+    if (width > oldWidth) {
+      this.clear(oldWidth, 0, width - oldWidth, height);
+    } else if (width < oldWidth) {
+      for (let y = 0; y < height; y++) {
+        buffer[y].splice(width);
+      }
+    }
+
+    if (this.options.autoSize) {
+      this.canvas.width = this.options.columns * this.options.tileWidth;
+      this.canvas.height = this.options.rows * this.options.tileHeight;
+      if (autoRender) {
+        this.renderAll();
+      }
+    }
+
+    this.options.autoRender = autoRender;
+    this.trigger(TerminalEvent.RESIZED, this.options.columns, this.options.rows);
   }
 }

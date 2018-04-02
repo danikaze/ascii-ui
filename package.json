@@ -22,7 +22,6 @@
     "url": "https://github.com/danikaze/terminal-in-canvas"
   },
   "dependencies": {
-    "fontfaceobserver": "^2.0.13",
     "vanilla-type-check": "^1.0.1"
   },
   "devDependencies": {
@@ -31,6 +30,7 @@
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "fontfaceobserver": "^2.0.13",
     "html-webpack-plugin": "^2.30.1",
     "include-all": "^4.0.3",
     "less": "^3.0.0",

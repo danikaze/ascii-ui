@@ -83,6 +83,12 @@ export interface TerminalSize {
   rows: number;
 }
 
+export const enum TerminalEvent {
+  RESIZED = 'resized',
+}
+
+export type EventListener = (...args) => void;
+
 interface InternalTile extends Tile {
   /** pre-calculated tile x-position in pixels */
   x: number;
@@ -139,6 +145,8 @@ export class Terminal {
   private lastRenderTime: number = 0;
   /** list of attached widgets as { id: widget } */
   private readonly attachedWidgets: { [key: number]: Widget } = {};
+  /** listeners registered to the terminal events */
+  private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -172,6 +180,9 @@ export class Terminal {
    * @param options new options to set
    */
   setOptions(options: TerminalOptions): void {
+    const oldColumns = this.options.columns;
+    const oldRows = this.options.rows;
+
     Object.assign(this.options, options);
 
     // decay
@@ -186,6 +197,11 @@ export class Terminal {
       this.setCursorFrequency(this.options.cursorFrequency);
     } else if (this.buffer.length > 0) {
       this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+    }
+
+    // resize
+    if ((oldColumns && this.options.columns !== oldColumns) || (oldRows && this.options.rows !== oldRows)) {
+      this.trigger(TerminalEvent.RESIZED, this.options.columns, this.options.rows);
     }
   }
 
@@ -652,6 +668,21 @@ export class Terminal {
   }
 
   /**
+   * Register a listener to a specific event
+   *
+   * @param event event to listen
+   * @param listener callback to register
+   */
+  listen(event: TerminalEvent, listener: EventListener): void {
+    const list = this.eventListeners.get(event);
+    if (list) {
+      list.push(listener);
+    } else {
+      this.eventListeners.set(event, [listener]);
+    }
+  }
+
+  /**
    * Iterate `size` number of tiles.
    * If it reaches the end of a line it continues in the next one.
    * `callback` is not called if the tile is in a non visible tile (over/under the screen)
@@ -757,6 +788,21 @@ export class Terminal {
     if (this.options.debug && (this.options.debug as DebugOptions).verbose) {
       // tslint:disable-next-line:no-console
       console.log(`[Terminal] ${text}`);
+    }
+  }
+
+  /**
+   * Trigger an event
+   *
+   * @param event event to trigger
+   * @param args arguments to pass to the listeners
+   */
+  private trigger(event: TerminalEvent, ...args): void {
+    const listeners = this.eventListeners.get(event);
+    if (listeners) {
+      listeners.forEach((listener) => {
+        listener.apply(undefined, args);
+      });
     }
   }
 }

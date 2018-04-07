@@ -5,7 +5,7 @@ import { defaultDebugOptions, defaultOptions } from './defaultOptions';
 import { assignCharStyle } from './util/assignCharStyle';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
-import { Widget } from './Widget';
+import { Widget, WidgetOptions } from './Widget';
 
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
@@ -187,6 +187,12 @@ export class Terminal {
 
     Object.assign(this.options, options);
 
+    // don't accept invalid sizes
+    if (options.columns <= 0 || options.rows <= 0) {
+      this.options.columns = oldColumns;
+      this.options.rows = oldRows;
+    }
+
     // decay
     this.decayChange = this.options.decayInitialAlpha / this.options.decayTime;
 
@@ -195,15 +201,18 @@ export class Terminal {
     this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
 
     // cursor
-    if (this.options.cursor) {
-      this.setCursorFrequency(this.options.cursorFrequency);
-    } else if (this.buffer.length > 0) {
+    this.setCursorFrequency(this.options.cursorFrequency);
+    if (!this.options.cursor && this.buffer.length > 0 && this.cursorVisible) {
+      this.cursorVisible = false;
       this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+      if (this.options.autoRender) {
+        this.render();
+      }
     }
 
     // resize
     if (this.options.columns !== oldColumns || this.options.rows !== oldRows) {
-      this.resize(oldColumns || 0, oldRows || 0, this.options.columns, this.options.rows);
+      this.resize(this.options.columns, this.options.rows, oldColumns || 0, oldRows || 0);
     }
   }
 
@@ -276,6 +285,7 @@ export class Terminal {
 
     this.info(`clear: ${width * height} tiles: ${window.performance.now() - start} ms.`);
     if (this.options.autoRender) {
+      // maybe this can be optimized with just a this.ctx.fillRect call
       this.render();
     }
   }
@@ -377,6 +387,8 @@ export class Terminal {
   }
 
   /**
+   * Get the terminal size, measured in tiles
+   *
    * @returns Size of the terminal, measured in tiles
    */
   getSize(): TerminalSize {
@@ -387,6 +399,8 @@ export class Terminal {
   }
 
   /**
+   * Get the position of the cursor, in tile coordinates
+   *
    * @returns current position of the cursor, in tile coordinates
    */
   getCursor(): TilePosition {
@@ -666,8 +680,44 @@ export class Terminal {
    *
    * @param handler Value returned by `attachWidget`
    */
-  deattachWidget(handler: number): void {
+  dettachWidget(handler: number): void {
     this.attachedWidgets[handler] = undefined;
+  }
+
+  /**
+   * Get a previously attached widget
+   *
+   * @param handler Value returned by `attachWidget`
+   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   */
+  getWidget(handler: number): Widget;
+
+  /**
+   * Get a previously attached widget by its position
+   *
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   */
+  getWidget(column: number, line?: number): Widget {
+    if (typeof line === 'undefined') {
+      return this.attachedWidgets[column];
+    }
+
+    let widget;
+    Object.keys(this.attachedWidgets)
+      .forEach((handler) => {
+        const options: WidgetOptions = this.attachedWidgets[handler].widgetOptions;
+
+        if (options.col >= column
+          && options.col < column + options.width
+          && options.line >= line
+          && options.line < line + options.height) {
+          widget = options;
+        }
+      });
+
+    return widget;
   }
 
   /**
@@ -770,7 +820,7 @@ export class Terminal {
    */
   private setCursorFrequency(frequency: number): void {
     clearInterval(this.updateCursorInterval);
-    if (frequency > 0) {
+    if (this.options.cursor && frequency > 0) {
       this.updateCursorInterval = window.setInterval(
         () => {
           this.cursorVisible = !this.cursorVisible;
@@ -810,11 +860,15 @@ export class Terminal {
   }
 
   /**
+   * Resize the terminal and re-calculate the needed internal properties
+   * It triggers the RESIZED event.
    *
-   * @param width
-   * @param height
+   * @param width New terminal width (in tiles)
+   * @param height New terminal height (in tiles)
+   * @param oldWidth Terminal width (in tiles) before being  resized
+   * @param oldHeight Terminal height (in tiles) before being resized
    */
-  private resize(oldWidth: number, oldHeight: number, width: number, height: number): void {
+  private resize(width: number, height: number, oldWidth: number, oldHeight: number): void {
     const buffer = this.buffer;
     const autoRender = this.options.autoRender;
     this.options.autoRender = !this.options.autoSize;
@@ -839,12 +893,17 @@ export class Terminal {
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;
       this.canvas.height = this.options.rows * this.options.tileHeight;
-      if (autoRender) {
-        this.renderAll();
-      }
+
+      this.ctx.fillStyle = this.options.bg;
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+      // if (autoRender) {
+      //   this.renderAll(); // is this needed?
+      // }
     }
 
     this.options.autoRender = autoRender;
-    this.trigger(TerminalEvent.RESIZED, this.options.columns, this.options.rows);
+    this.info(`resized to: ${width} x ${height}`);
+    this.trigger(TerminalEvent.RESIZED, width, height, oldWidth, oldHeight);
   }
 }

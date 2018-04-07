@@ -17,11 +17,11 @@ function hideLoad() {
 function run() {
   /* tslint:disable:no-magic-numbers */
   const columns = 40;
-  const lines = 20;
+  const rows = 20;
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
   const terminal = new Terminal(canvas, {
     columns,
-    lines,
+    rows,
     cursor: false,
     debug: { verbose: true },
   });

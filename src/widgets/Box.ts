@@ -1,7 +1,6 @@
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
-import { WidgetOptions } from '../Widget';
-import { WidgetContainer } from '../WidgetContainer';
+import { Widget, WidgetOptions } from '../Widget';
 
 import { boxBorderDefaultOptions, boxTitleDefaultOptions } from './defaultOptions';
 
@@ -51,7 +50,7 @@ interface BoxPoolTiles {
 /**
  * Very basic `WidgetContainer` which draws a box around the attached content
  */
-export class Box extends WidgetContainer {
+export class Box extends Widget {
   /** Pool of Tiles to avoid creating always new objects */
   private static readonly boxTilesPool: BoxPoolTiles = {
     title: [],
@@ -67,7 +66,7 @@ export class Box extends WidgetContainer {
   };
 
   /** Extended options */
-  protected readonly options: BoxOptions;
+  protected readonly widgetOptions: BoxOptions;
 
   constructor(terminal: Terminal, options: BoxOptions) {
     const opt: BoxOptions = {
@@ -79,24 +78,27 @@ export class Box extends WidgetContainer {
     super(terminal, opt);
   }
 
+  /**
+   * Render the widget in the associated terminal
+   */
   render(): void {
     if (!this.allocated) {
       return;
     }
 
-    let title = this.options.title;
-    const boxTitle = this.options.boxTitle;
+    let title = this.widgetOptions.title;
+    const boxTitle = this.widgetOptions.boxTitle;
     // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
-    const titleMaxLength = this.options.width - boxTitle.marginLeft - boxTitle.marginRight - 2;
+    const titleMaxLength = this.widgetOptions.width - boxTitle.marginLeft - boxTitle.marginRight - 2;
 
     if (title && title.length > titleMaxLength) {
       title = (`${title.substr(0, titleMaxLength - boxTitle.ellipsis.length)}`
-        + `${this.options.boxTitle.ellipsis}`).substr(0, titleMaxLength);
+        + `${this.widgetOptions.boxTitle.ellipsis}`).substr(0, titleMaxLength);
     }
 
     const tiles = this.getBoxTiles(title);
     for (let j = 0; j < tiles.length; j++) {
-      this.terminal.setTiles(tiles[j], this.options.col, this.options.line + j);
+      this.terminal.setTiles(tiles[j], this.widgetOptions.col, this.widgetOptions.line + j);
     }
   }
 
@@ -111,9 +113,9 @@ export class Box extends WidgetContainer {
   private getBoxTiles(title: string): Tile[][] {
     const tiles = [];
     const pool = Box.boxTilesPool;
-    const width = this.options.width;
-    const height = this.options.height;
-    const titleStyle = { ...assignCharStyle({}, this.options.boxTitle) };
+    const width = this.widgetOptions.width;
+    const height = this.widgetOptions.height;
+    const titleStyle = { ...assignCharStyle({}, this.widgetOptions.boxTitle) };
 
     // top line
     const top = Array(width);
@@ -122,7 +124,7 @@ export class Box extends WidgetContainer {
     top[width - 1] = pool.topRight;
 
     if (title) {
-      const titleStart = this.options.boxTitle.marginLeft + 1;
+      const titleStart = this.widgetOptions.boxTitle.marginLeft + 1;
       for (let i = 0; i < title.length; i++) {
         let tile = pool.title[i];
 

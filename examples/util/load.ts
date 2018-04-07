@@ -1,6 +1,6 @@
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { Terminal, TerminalOptions } from '../../src/Terminal';
+import { Terminal, TerminalEvent, TerminalOptions } from '../../src/Terminal';
 
 interface TestWindow extends Window {
   terminal: Terminal;
@@ -11,6 +11,11 @@ function hideLoad() {
   elem.parentElement.removeChild(elem);
 }
 
+function terminalResizedHandler(canvas) {
+  canvas.parentElement.style.width = `${canvas.width}px`;
+  canvas.parentElement.style.height = `${canvas.height}px`;
+}
+
 export function load(terminalOptions: TerminalOptions): Promise<Terminal> {
   const font = new FontFaceObserver('Terminal_VT220');
 
@@ -19,8 +24,9 @@ export function load(terminalOptions: TerminalOptions): Promise<Terminal> {
     .then(() => new Promise((resolve, reject) => {
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
       const terminal = new Terminal(canvas, terminalOptions);
-      canvas.parentElement.style.width = `${canvas.width}px`;
-      canvas.parentElement.style.height = `${canvas.height}px`;
+
+      terminalResizedHandler(canvas);
+      terminal.listen(TerminalEvent.RESIZED, terminalResizedHandler.bind(0, canvas));
 
       (window as TestWindow).terminal = terminal;
       resolve(terminal);

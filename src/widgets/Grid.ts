@@ -39,7 +39,7 @@ export class Grid extends Widget {
   /** Incremental widget ids counter */
   private static widgetIds: number = 0;
   /** Grid options */
-  protected gridOptions: GridOptions;
+  protected options: GridOptions;
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
   /** list of the first tile of each column */
@@ -49,16 +49,16 @@ export class Grid extends Widget {
 
   constructor(terminal: Terminal, options: GridOptions) {
     super(terminal, options);
-    this.gridOptions = { ...this.gridOptions, ...options };
-    if (!this.gridOptions.calculateStarts) {
-      this.gridOptions.calculateStarts = calculateStarts;
+    this.options = { ...this.options, ...options };
+    if (!this.options.calculateStarts) {
+      this.options.calculateStarts = calculateStarts;
     }
     if (typeof options.fullSize === 'undefined') {
-      this.gridOptions.fullSize = true;
+      this.options.fullSize = true;
     }
 
     const terminalSize = terminal.getSize();
-    if (this.gridOptions.fullSize) {
+    if (this.options.fullSize) {
       this.setOptions({
         col: 0,
         line: 0,
@@ -200,23 +200,23 @@ export class Grid extends Widget {
    * calculation method
    */
   private recalculateCellSizes(): void {
-    this.columnStarts = this.gridOptions.calculateStarts(
-      this.widgetOptions.width,
-      this.gridOptions.columns,
+    this.columnStarts = this.options.calculateStarts(
+      this.options.width,
+      this.options.columns,
       false,
       this.terminal,
     );
-    this.columnStarts.push(this.widgetOptions.width);
-    this.columnStarts = this.columnStarts.map((value) => value + this.widgetOptions.col);
+    this.columnStarts.push(this.options.width);
+    this.columnStarts = this.columnStarts.map((value) => value + this.options.col);
 
-    this.rowStarts = this.gridOptions.calculateStarts(
-      this.widgetOptions.height,
-      this.gridOptions.rows,
+    this.rowStarts = this.options.calculateStarts(
+      this.options.height,
+      this.options.rows,
       true,
       this.terminal,
     );
-    this.rowStarts.push(this.widgetOptions.height);  // where starts the end, for calculating widget sizes
-    this.rowStarts = this.rowStarts.map((value) => value + this.widgetOptions.line);
+    this.rowStarts.push(this.options.height);  // where starts the end, for calculating widget sizes
+    this.rowStarts = this.rowStarts.map((value) => value + this.options.line);
 
     this.align();
   }
@@ -228,7 +228,7 @@ export class Grid extends Widget {
    * @param height new size of the terminal in rows
    */
   private resizedEventHandler(width: number, height: number): void {
-    if (this.gridOptions.fullSize) {
+    if (this.options.fullSize) {
       const terminalSize = this.terminal.getSize();
 
       this.setOptions({

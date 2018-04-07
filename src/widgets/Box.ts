@@ -66,7 +66,7 @@ export class Box extends Widget {
   };
 
   /** Extended options */
-  protected readonly widgetOptions: BoxOptions;
+  protected readonly options: BoxOptions;
 
   constructor(terminal: Terminal, options: BoxOptions) {
     const opt: BoxOptions = {
@@ -86,19 +86,19 @@ export class Box extends Widget {
       return;
     }
 
-    let title = this.widgetOptions.title;
-    const boxTitle = this.widgetOptions.boxTitle;
+    let title = this.options.title;
+    const boxTitle = this.options.boxTitle;
     // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
-    const titleMaxLength = this.widgetOptions.width - boxTitle.marginLeft - boxTitle.marginRight - 2;
+    const titleMaxLength = this.options.width - boxTitle.marginLeft - boxTitle.marginRight - 2;
 
     if (title && title.length > titleMaxLength) {
       title = (`${title.substr(0, titleMaxLength - boxTitle.ellipsis.length)}`
-        + `${this.widgetOptions.boxTitle.ellipsis}`).substr(0, titleMaxLength);
+        + `${this.options.boxTitle.ellipsis}`).substr(0, titleMaxLength);
     }
 
     const tiles = this.getBoxTiles(title);
     for (let j = 0; j < tiles.length; j++) {
-      this.terminal.setTiles(tiles[j], this.widgetOptions.col, this.widgetOptions.line + j);
+      this.terminal.setTiles(tiles[j], this.options.col, this.options.line + j);
     }
   }
 
@@ -113,9 +113,9 @@ export class Box extends Widget {
   private getBoxTiles(title: string): Tile[][] {
     const tiles = [];
     const pool = Box.boxTilesPool;
-    const width = this.widgetOptions.width;
-    const height = this.widgetOptions.height;
-    const titleStyle = { ...assignCharStyle({}, this.widgetOptions.boxTitle) };
+    const width = this.options.width;
+    const height = this.options.height;
+    const titleStyle = { ...assignCharStyle({}, this.options.boxTitle) };
 
     // top line
     const top = Array(width);
@@ -124,7 +124,7 @@ export class Box extends Widget {
     top[width - 1] = pool.topRight;
 
     if (title) {
-      const titleStart = this.widgetOptions.boxTitle.marginLeft + 1;
+      const titleStart = this.options.boxTitle.marginLeft + 1;
       for (let i = 0; i < title.length; i++) {
         let tile = pool.title[i];
 

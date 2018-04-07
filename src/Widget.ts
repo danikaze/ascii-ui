@@ -22,7 +22,7 @@ export abstract class Widget {
   /** Reference to the parent terminal where it should be rendered */
   protected terminal: Terminal;
   /** Widget options */
-  protected widgetOptions: WidgetOptions;
+  protected options: WidgetOptions;
   /** If the widget is focused or not */
   protected focused: boolean;
   /** If the widget has been allocated or not */
@@ -48,12 +48,12 @@ export abstract class Widget {
    */
   setOptions(options: WidgetOptions): void {
     // tslint:disable-next-line:prefer-object-spread
-    this.widgetOptions = Object.assign(this.widgetOptions || {}, options);
+    this.options = Object.assign(this.options || {}, options);
 
-    this.allocated = this.widgetOptions.col >= 0
-      && this.widgetOptions.line >= 0
-      && this.widgetOptions.width >= 0
-      && this.widgetOptions.height >= 0;
+    this.allocated = this.options.col >= 0
+      && this.options.line >= 0
+      && this.options.width >= 0
+      && this.options.height >= 0;
   }
 
   /**
@@ -63,8 +63,8 @@ export abstract class Widget {
    */
   getSize(): TerminalSize {
     return {
-      columns: this.widgetOptions.width,
-      rows: this.widgetOptions.height,
+      columns: this.options.width,
+      rows: this.options.height,
     };
   }
 
@@ -75,8 +75,8 @@ export abstract class Widget {
    */
   getPosition(): TilePosition {
     return {
-      col: this.widgetOptions.col,
-      line: this.widgetOptions.line,
+      col: this.options.col,
+      line: this.options.line,
     };
   }
 

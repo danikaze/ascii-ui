@@ -48,7 +48,8 @@ interface BoxPoolTiles {
 }
 
 /**
- * Very basic `WidgetContainer` which draws a box around the attached content
+ * Very basic `WidgetContainer` which draws a box around the attached content.
+ * It allows only one children inside the box (which can be a Grid or any other container)
  */
 export class Box extends Widget {
   /** Pool of Tiles to avoid creating always new objects */
@@ -68,11 +69,14 @@ export class Box extends Widget {
   /** Extended options */
   protected readonly options: BoxOptions;
 
+  /** Attached widget if any */
+  private attachedWidget: Widget;
+
   constructor(terminal: Terminal, options: BoxOptions) {
     const opt: BoxOptions = {
-      ...options,
       boxTitle: { ...boxTitleDefaultOptions, ...options.boxTitle },
       boxBorders: { ...boxBorderDefaultOptions, ...options.boxBorders },
+      ...options,
     };
 
     super(terminal, opt);
@@ -100,6 +104,68 @@ export class Box extends Widget {
     for (let j = 0; j < tiles.length; j++) {
       this.terminal.setTiles(tiles[j], this.options.col, this.options.line + j);
     }
+
+    if (this.attachedWidget) {
+      this.attachedWidget.render();
+    }
+  }
+
+  /**
+   * Attach a specified widget to this box
+   *
+   * @param widget instance of the widget to attach
+   * @return provided widget instance itself
+   */
+  attachWidget(widget: Widget): Widget;
+
+  /**
+   * Create and attach a widget to this instance of the terminal
+   *
+   * @param WidgetClass Class of the widget
+   * @param args Options for the widget constructor
+   * @return Created widget instance attached to the box
+   */
+  attachWidget(WidgetClass: typeof Widget, ...args): Widget;
+
+  attachWidget(WidgetClass, ...args): Widget {
+    this.attachedWidget = typeof WidgetClass === 'function'
+      ? Reflect.construct(WidgetClass, [this.terminal, ...args])
+      : WidgetClass;
+
+    // tslint:disable:no-magic-numbers
+    this.attachedWidget.setOptions({
+      col: this.options.col + 1,
+      line: this.options.line + 1,
+      width: this.options.width - 2,
+      height: this.options.height - 2,
+    });
+    // tslint:enable:no-magic-numbers
+    this.attachedWidget.render();
+
+    return this.attachedWidget;
+  }
+
+  /**
+   * Dettach the widget from this box, if any
+   *
+   * @returns the dettached widget (can be `undefined`)
+   */
+  dettachWidget(): Widget {
+    const widget = this.attachedWidget;
+    this.attachedWidget = undefined;
+
+    if (widget) {
+      // tslint:disable:no-magic-numbers
+      this.terminal.clear(
+        this.options.col + 1,
+        this.options.line + 1,
+        this.options.width - 2,
+        this.options.height - 2,
+      );
+      // tslint:enable:no-magic-numbers
+    }
+
+    return widget;
   }
 
   /**

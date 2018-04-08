@@ -679,9 +679,24 @@ export class Terminal {
    * Dettach a widget from this terminal
    *
    * @param handler Value returned by `attachWidget`
+   * @returns attached widget if any (can be `undefined`)
    */
-  dettachWidget(handler: number): void {
-    this.attachedWidgets[handler] = undefined;
+  dettachWidget(handler: number): Widget {
+    const widget = this.attachedWidgets[handler];
+    delete this.attachedWidgets[handler];
+
+    if (widget) {
+      const pos = widget.getPosition();
+      const size = widget.getSize();
+      this.clear(
+        pos.col,
+        pos.line,
+        size.columns,
+        size.rows,
+      );
+    }
+
+    return widget;
   }
 
   /**

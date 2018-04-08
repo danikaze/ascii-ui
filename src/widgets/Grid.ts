@@ -38,8 +38,10 @@ interface AttachedWidget {
 export class Grid extends Widget {
   /** Incremental widget ids counter */
   private static widgetIds: number = 0;
+
   /** Grid options */
   protected options: GridOptions;
+
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
   /** list of the first tile of each column */

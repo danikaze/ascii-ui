@@ -1,5 +1,6 @@
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
+import { deepAssign } from '../util/deepAssign';
 import { Widget, WidgetOptions } from '../Widget';
 
 import { boxBorderDefaultOptions, boxDefaultOptions } from './defaultOptions';
@@ -86,12 +87,7 @@ export class Box extends Widget {
   private attachedWidget: Widget;
 
   constructor(terminal: Terminal, options: BoxOptions) {
-    const opt: BoxOptions = {
-      ...boxDefaultOptions,
-      ...options,
-    };
-
-    super(terminal, opt);
+    super(terminal, deepAssign(boxDefaultOptions, options));
   }
 
   /**

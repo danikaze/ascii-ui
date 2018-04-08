@@ -2,7 +2,7 @@ import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
 import { Widget, WidgetOptions } from '../Widget';
 
-import { boxBorderDefaultOptions, boxTitleDefaultOptions } from './defaultOptions';
+import { boxBorderDefaultOptions, boxDefaultOptions } from './defaultOptions';
 
 export interface BoxBorderOptions extends CharStyle {
   topLeft: string;
@@ -25,6 +25,17 @@ export interface BoxTitleOptions extends CharStyle {
   ellipsis?: string;
 }
 
+export interface BoxPaddingOptions {
+  /** Number of blank tiles to leave between the top border and the attached widget */
+  top?: number;
+  /** Number of blank tiles to leave between the right border and the attached widget */
+  right?: number;
+  /** Number of blank tiles to leave between the bottom border and the attached widget */
+  bottom?: number;
+  /** Number of blank tiles to leave between the left border and the attached widget */
+  left?: number;
+}
+
 export interface BoxOptions extends WidgetOptions {
   /** Title to display at the top of the box */
   title?: string;
@@ -32,6 +43,8 @@ export interface BoxOptions extends WidgetOptions {
   boxTitle?: BoxTitleOptions;
   /** Options related to the border of the box */
   boxBorders?: BoxBorderOptions;
+  /** Number of blank tiles to leave between the border and the attached widget */
+  padding?: BoxPaddingOptions;
 }
 
 interface BoxPoolTiles {
@@ -74,8 +87,7 @@ export class Box extends Widget {
 
   constructor(terminal: Terminal, options: BoxOptions) {
     const opt: BoxOptions = {
-      boxTitle: { ...boxTitleDefaultOptions, ...options.boxTitle },
-      boxBorders: { ...boxBorderDefaultOptions, ...options.boxBorders },
+      ...boxDefaultOptions,
       ...options,
     };
 
@@ -132,12 +144,15 @@ export class Box extends Widget {
       ? Reflect.construct(WidgetClass, [this.terminal, ...args])
       : WidgetClass;
 
+    const options = this.options;
+    const padding = options.padding;
+
     // tslint:disable:no-magic-numbers
     this.attachedWidget.setOptions({
-      col: this.options.col + 1,
-      line: this.options.line + 1,
-      width: this.options.width - 2,
-      height: this.options.height - 2,
+      col: options.col + padding.left + 1,
+      line: options.line + padding.top + 1,
+      width: options.width - padding.left - padding.right - 2,
+      height: options.height - padding.top - padding.bottom - 2,
     });
     // tslint:enable:no-magic-numbers
     this.attachedWidget.render();

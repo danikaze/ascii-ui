@@ -15,6 +15,12 @@ export const defaultOptions: TerminalOptions = {
   fontOffsetY: -1,
   fg: '#00ff00',
   bg: '#000000',
+  viewport: {
+    top: undefined,
+    right: undefined,
+    bottom: undefined,
+    left: undefined,
+  },
 };
 
 export const defaultDebugOptions: DebugOptions = {

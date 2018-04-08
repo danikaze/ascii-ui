@@ -3,6 +3,8 @@ import { isArray } from 'vanilla-type-check';
 
 import { defaultDebugOptions, defaultOptions } from './defaultOptions';
 import { assignCharStyle } from './util/assignCharStyle';
+import { deepAssign } from './util/deepAssign';
+import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget, WidgetOptions } from './Widget';
@@ -35,6 +37,17 @@ export interface CharStyle {
   bg?: string;
 }
 
+export interface ViewPortOptions {
+  /** Top coordinate (in tiles) of the Terminal viewport (-1 to stick always to 0) */
+  top?: number;
+  /** Right coordinate (in tiles) of the Terminal viewport (-1 to stick always to `width`) */
+  right?: number;
+  /** Bottom coordinate (in tiles) of the Terminal viewport (-1 to stick always to `height`) */
+  bottom?: number;
+  /** Left coordinate (in tiles) of the Terminal viewport (-1 to stick always to `0`) */
+  left?: number;
+}
+
 export interface TerminalOptions extends CharStyle {
   /** width of a tile in px */
   tileWidth?: number;
@@ -60,6 +73,8 @@ export interface TerminalOptions extends CharStyle {
   debug?: boolean | DebugOptions;
   /** escape secuences to parse and their callback functions */
   commands?: { [key: string]: EscapeCallback };
+  /** Limit within the Terminal will draw */
+  viewport?: ViewPortOptions;
 }
 
 export interface DebugOptions {
@@ -120,7 +135,7 @@ export class Terminal {
   private static widgetIds: number = 0;
 
   /** terminal options */
-  protected readonly options: TerminalOptions;
+  protected readonly options: TerminalOptions = {};
   /** canvas object associated with the terminal */
   private readonly canvas: HTMLCanvasElement;
   /** 2d context of the canvas object */
@@ -159,10 +174,7 @@ export class Terminal {
   constructor(canvas: HTMLCanvasElement, options?: TerminalOptions) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.options = { ...defaultOptions };
-    this.decayChange = options.decayInitialAlpha / options.decayTime;
-
-    this.setOptions(options);
+    this.setOptions(deepAssign(defaultOptions, options));
 
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;
@@ -185,10 +197,10 @@ export class Terminal {
     const oldColumns = this.options.columns;
     const oldRows = this.options.rows;
 
-    Object.assign(this.options, options);
+    const changed: TerminalOptions = deepAssignAndDiff(this.options, options);
 
     // don't accept invalid sizes
-    if (options.columns <= 0 || options.rows <= 0) {
+    if (changed.columns <= 0 || changed.rows <= 0) {
       this.options.columns = oldColumns;
       this.options.rows = oldRows;
     }
@@ -197,8 +209,10 @@ export class Terminal {
     this.decayChange = this.options.decayInitialAlpha / this.options.decayTime;
 
     // options.commands
-    const commandList = this.options.commands && Object.keys(this.options.commands);
-    this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
+    if (changed.commands) {
+      const commandList = this.options.commands && Object.keys(this.options.commands);
+      this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
+    }
 
     // cursor
     this.setCursorFrequency(this.options.cursorFrequency);
@@ -211,7 +225,7 @@ export class Terminal {
     }
 
     // resize
-    if (this.options.columns !== oldColumns || this.options.rows !== oldRows) {
+    if (changed.columns !== undefined || changed.rows !== undefined) {
       this.resize(this.options.columns, this.options.rows, oldColumns || 0, oldRows || 0);
     }
   }
@@ -384,6 +398,15 @@ export class Terminal {
       }
     }
     this.render();
+  }
+
+  /**
+   * Get the drawing limits (viewport) of the terminal
+   *
+   * @returns Current viewport of the terminal
+   */
+  getViewport(): ViewPortOptions {
+    return { ...this.options.viewport };
   }
 
   /**
@@ -619,7 +642,7 @@ export class Terminal {
   }
 
   /**
-   * Works like `setText1 but specifying all the properties of a tile, not only the text.
+   * Works like `setText` but specifying all the properties of a tile, not only the text.
    *
    * @param tiles Tile or list of tiles to set
    * @param col x-position of the starting tile. Current position of the cursor if not specified
@@ -762,8 +785,10 @@ export class Terminal {
    */
   private iterateTiles(size: number, callback: IterateTileCallback, col?: number, line?: number): void {
     const buffer = this.buffer;
-    const nLines = this.options.rows;
-    const nColumns = this.options.columns;
+    const viewPortTop = this.options.viewport.top || 0;
+    const viewPortRight = this.options.viewport.right || this.options.columns - 1;
+    const viewPortBottom = this.options.viewport.bottom || this.options.rows - 1;
+    const viewPortLeft = this.options.viewport.left || 0;
 
     if (typeof col === 'undefined') {
       col = this.cursorX;
@@ -774,14 +799,14 @@ export class Terminal {
 
     let c = col;
     for (let i = 0; i < size; i++) {
-      if (c >= nColumns) {
-        c = 0;
+      if (c > viewPortRight) {
+        c = viewPortLeft;
         line++;
       }
-      if (line >= nLines) {
+      if (line > viewPortBottom) {
         break;
       }
-      if (line < 0) {
+      if (line < viewPortTop) {
         c++;
         continue;
       }
@@ -792,9 +817,9 @@ export class Terminal {
       c++;
     }
 
-    if (c >= nColumns) {
-      c = 0;
-      if (line < nLines - 1) {
+    if (c >= viewPortRight) {
+      c = viewPortLeft;
+      if (line < viewPortBottom) {
         this.cursorY++;
       }
     }

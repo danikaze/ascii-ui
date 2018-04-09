@@ -2,8 +2,12 @@
 import { isArray } from 'vanilla-type-check';
 
 import { defaultDebugOptions, defaultOptions } from './defaultOptions';
+import { assignCharStyle } from './util/assignCharStyle';
+import { deepAssign } from './util/deepAssign';
+import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
+import { Widget, WidgetOptions } from './Widget';
 
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
@@ -16,16 +20,12 @@ import './styles.less';
  */
 export type EscapeCallback = (text: string, index: number) => number;
 
-export interface Options {
-  /** width of a tile in px */
-  tileWidth?: number;
-  /** height of a tile in px */
-  tileHeight?: number;
-  /** number of columns of the terminal, in number of tiles */
-  columns?: number;
-  /** number of rows of the terminal, in number of tiles */
-  lines?: number;
-  /** font or font-family to use in the terminal */
+export interface CharStyle {
+  /**
+   * font or font-family to use in the terminal
+   * The format is in this order:
+   * [style] [variant] [weight] [family]
+   */
   font?: string;
   /** x-offset to apply to each character inside the tile */
   fontOffsetX?: number;
@@ -35,6 +35,28 @@ export interface Options {
   fg?: string;
   /** background color (i.e. `#000000`) */
   bg?: string;
+}
+
+export interface ViewPortOptions {
+  /** Top coordinate (in tiles) of the Terminal viewport (-1 to stick always to 0) */
+  top?: number;
+  /** Right coordinate (in tiles) of the Terminal viewport (-1 to stick always to `width`) */
+  right?: number;
+  /** Bottom coordinate (in tiles) of the Terminal viewport (-1 to stick always to `height`) */
+  bottom?: number;
+  /** Left coordinate (in tiles) of the Terminal viewport (-1 to stick always to `0`) */
+  left?: number;
+}
+
+export interface TerminalOptions extends CharStyle {
+  /** width of a tile in px */
+  tileWidth?: number;
+  /** height of a tile in px */
+  tileHeight?: number;
+  /** number of columns of the terminal, in number of tiles */
+  columns?: number;
+  /** number of rows of the terminal, in number of tiles */
+  rows?: number;
   /** `true` to let the terminal manage the screen changes */
   autoRender?: boolean;
   /** if `true`, the containing canvas will be resized to contain the grid */
@@ -51,6 +73,8 @@ export interface Options {
   debug?: boolean | DebugOptions;
   /** escape secuences to parse and their callback functions */
   commands?: { [key: string]: EscapeCallback };
+  /** Limit within the Terminal will draw */
+  viewport?: ViewPortOptions;
 }
 
 export interface DebugOptions {
@@ -62,16 +86,25 @@ export interface DebugOptions {
   gridStyle?: string;
 }
 
-export interface Tile {
+export interface Tile extends CharStyle {
   /** char to display in the tile */
   char: string;
-  /** font or font-family to use in the terminal */
-  font: string;
-  /** foreground color (i.e. `#00ff00`) */
-  fg: string;
-  /** background color (i.e. `#000000`) */
-  bg: string;
 }
+
+export interface TerminalSize {
+  /** number of columns of the terminal, in number of tiles */
+  columns: number;
+  /** number of rows of the terminal, in number of tiles */
+  rows: number;
+}
+
+/** List of events the Terminal can trigger */
+export const enum TerminalEvent {
+  /** Triggered when the Terminal has been resized */
+  RESIZED = 'resized',
+}
+
+export type EventListener = (...args) => void;
 
 interface InternalTile extends Tile {
   /** pre-calculated tile x-position in pixels */
@@ -80,13 +113,7 @@ interface InternalTile extends Tile {
   y: number;
 }
 
-interface DecayTile {
-  /** char to display in the tile */
-  char: string;
-  /** font or font-family to use in the terminal */
-  font: string;
-  /** foreground color (i.e. `#00ff00`) */
-  fg: string;
+interface DecayTile extends Tile {
   /** current opacity */
   alpha: number;
 }
@@ -104,8 +131,11 @@ type IterateTileCallback = (InternalTile, i) => void;
  * Basic terminal features rendered into a Canvas object
  */
 export class Terminal {
+  /** widget id counter to generate unique ids */
+  private static widgetIds: number = 0;
+
   /** terminal options */
-  protected readonly options: Options;
+  protected readonly options: TerminalOptions = {};
   /** canvas object associated with the terminal */
   private readonly canvas: HTMLCanvasElement;
   /** 2d context of the canvas object */
@@ -130,6 +160,10 @@ export class Terminal {
   private escapeCharactersRegExpString: string;
   /** time of the last render */
   private lastRenderTime: number = 0;
+  /** list of attached widgets as { id: widget } */
+  private readonly attachedWidgets: { [key: number]: Widget } = {};
+  /** listeners registered to the terminal events */
+  private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -137,17 +171,14 @@ export class Terminal {
    * @param canvas `<canvas>` element associated to the Terminal
    * @param options
    */
-  constructor(canvas: HTMLCanvasElement, options?: Options) {
+  constructor(canvas: HTMLCanvasElement, options?: TerminalOptions) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.options = { ...defaultOptions };
-    this.decayChange = options.decayInitialAlpha / options.decayTime;
-
-    this.setOptions(options);
+    this.setOptions(deepAssign(defaultOptions, options));
 
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;
-      this.canvas.height = this.options.lines * this.options.tileHeight;
+      this.canvas.height = this.options.rows * this.options.tileHeight;
     }
 
     this.clear();
@@ -162,21 +193,40 @@ export class Terminal {
    *
    * @param options new options to set
    */
-  setOptions(options: Options): void {
-    Object.assign(this.options, options);
+  setOptions(options: TerminalOptions): void {
+    const oldColumns = this.options.columns;
+    const oldRows = this.options.rows;
+
+    const changed: TerminalOptions = deepAssignAndDiff(this.options, options);
+
+    // don't accept invalid sizes
+    if (changed.columns <= 0 || changed.rows <= 0) {
+      this.options.columns = oldColumns;
+      this.options.rows = oldRows;
+    }
 
     // decay
     this.decayChange = this.options.decayInitialAlpha / this.options.decayTime;
 
     // options.commands
-    const commandList = this.options.commands && Object.keys(this.options.commands);
-    this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
+    if (changed.commands) {
+      const commandList = this.options.commands && Object.keys(this.options.commands);
+      this.escapeCharactersRegExpString = commandList ? `(${commandList.join(')|(')})` : undefined;
+    }
 
     // cursor
-    if (this.options.cursor) {
-      this.setCursorFrequency(this.options.cursorFrequency);
-    } else if (this.buffer.length > 0) {
+    this.setCursorFrequency(this.options.cursorFrequency);
+    if (!this.options.cursor && this.buffer.length > 0 && this.cursorVisible) {
+      this.cursorVisible = false;
       this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+      if (this.options.autoRender) {
+        this.render();
+      }
+    }
+
+    // resize
+    if (changed.columns !== undefined || changed.rows !== undefined) {
+      this.resize(this.options.columns, this.options.rows, oldColumns || 0, oldRows || 0);
     }
   }
 
@@ -202,32 +252,56 @@ export class Terminal {
   }
 
   /**
-   * Clear the terminal, reseting it to the `options.defaultTile`
+   * Clear the whole terminal
    */
-  clear(): void {
+  clear(): void;
+
+  /**
+   * Clear only the specified part of the terminal
+   *
+   * @param col
+   * @param line
+   * @param width
+   * @param height
+   */
+  clear(col: number, line: number, width: number, height: number);
+
+  clear(col?: number, line?: number, width?: number, height?: number): void {
     const start = window.performance.now();
     const dirtyTiles = this.dirtyTiles;
     const buffer = this.buffer;
+    const options = this.options;
 
-    this.dirtyTiles.splice(0, this.dirtyTiles.length);
-    for (let y = 0; y < this.options.lines; y++) {
-      this.buffer[y] = [];
-      for (let x = 0; x < this.options.columns; x++) {
+    if (col === undefined) {
+      col = 0;
+      line = 0;
+      width = options.columns;
+      height = options.rows;
+      dirtyTiles.splice(0, dirtyTiles.length);
+    }
+
+    for (let y = line, yy = y + height; y < yy; y++) {
+      for (let x = col, xx = x + width; x < xx; x++) {
         const tile = {
-          bg: this.options.bg,
           char: ' ',
-          fg: this.options.fg,
-          font: this.options.font,
-          x: x * this.options.tileWidth,
-          y: y * this.options.tileHeight,
+          bg: options.bg,
+          fg: options.fg,
+          font: options.font,
+          fontOffsetX: options.fontOffsetX,
+          fontOffsetY: options.fontOffsetY,
+          x: x * options.tileWidth,
+          y: y * options.tileHeight,
         };
         buffer[y][x] = tile;
         dirtyTiles.push(tile);
       }
     }
 
-    this.info(`clear: ${this.options.columns * this.options.lines} tiles: ${window.performance.now() - start} ms.`);
-    this.render();
+    this.info(`clear: ${width * height} tiles: ${window.performance.now() - start} ms.`);
+    if (this.options.autoRender) {
+      // maybe this can be optimized with just a this.ctx.fillRect call
+      this.render();
+    }
   }
 
   /**
@@ -249,8 +323,6 @@ export class Terminal {
     const nTiles = this.dirtyTiles.length;
     const cursorX = this.cursorX * w;
     const cursorY = this.cursorY * h;
-    const offsetX = this.options.fontOffsetX;
-    const offsetY = this.options.fontOffsetY;
     const drawCursor = this.options.cursor && this.cursorVisible;
     const originalAlpha = ctx.globalAlpha;
     const tilesToRedraw: InternalTile[] = [];
@@ -260,6 +332,8 @@ export class Terminal {
     for (const tile of this.dirtyTiles) {
       const x = tile.x;
       const y = tile.y;
+      const offsetX = tile.fontOffsetX;
+      const offsetY = tile.fontOffsetY;
       const decayKey = `${x},${y}`;
       const decayTile = this.decayTiles[decayKey];
 
@@ -285,7 +359,7 @@ export class Terminal {
             ctx.fillStyle = decayTile.fg;
             ctx.font = decayTile.font;
             ctx.globalAlpha = decayTile.alpha;
-            ctx.fillText(decayTile.char, x + offsetX, y + h + offsetY);
+            ctx.fillText(decayTile.char, x + decayTile.fontOffsetX, y + h + decayTile.fontOffsetY);
             ctx.globalAlpha = originalAlpha;
             ctx.font = tile.font;
           } else {
@@ -318,7 +392,7 @@ export class Terminal {
    */
   renderAll(): void {
     this.dirtyTiles = emptyArray(this.dirtyTiles);
-    for (let y = 0; y < this.options.lines; y++) {
+    for (let y = 0; y < this.options.rows; y++) {
       for (let x = 0; x < this.options.columns; x++) {
         this.dirtyTiles.push(this.buffer[y][x]);
       }
@@ -327,7 +401,30 @@ export class Terminal {
   }
 
   /**
-   * Get the current position of the cursor, in tile coordinates
+   * Get the drawing limits (viewport) of the terminal
+   *
+   * @returns Current viewport of the terminal
+   */
+  getViewport(): ViewPortOptions {
+    return { ...this.options.viewport };
+  }
+
+  /**
+   * Get the terminal size, measured in tiles
+   *
+   * @returns Size of the terminal, measured in tiles
+   */
+  getSize(): TerminalSize {
+    return {
+      columns: this.options.columns,
+      rows: this.options.rows,
+    };
+  }
+
+  /**
+   * Get the position of the cursor, in tile coordinates
+   *
+   * @returns current position of the cursor, in tile coordinates
    */
   getCursor(): TilePosition {
     return {
@@ -345,7 +442,7 @@ export class Terminal {
   setCursor(col: number, line: number): void {
     const oldTile = this.buffer[this.cursorY][this.cursorX];
 
-    if (col >= this.options.columns && line < this.options.lines - 1) {
+    if (col >= this.options.columns && line < this.options.rows - 1) {
       col = 0;
       line++;
     } else if (col < 0 && line > 0) {
@@ -355,8 +452,8 @@ export class Terminal {
       col = Math.max(0, Math.min(col, this.options.columns - 1));
     }
 
-    if (line >= this.options.lines) {
-      line = this.options.lines - 1;
+    if (line >= this.options.rows) {
+      line = this.options.rows - 1;
     } else if (line < 0) {
       line = 0;
     }
@@ -399,6 +496,32 @@ export class Terminal {
   }
 
   /**
+   * Set the style to apply in the `setText` calls.
+   * Passed `style` object can have other properties,
+   * but only the ones related to the style will be applied.
+   *
+   * @param style new style to set for future text
+   */
+  setTextStyle(style: CharStyle): void {
+    assignCharStyle(this.options, style);
+  }
+
+  /**
+   * Get the current style being applied to the `setText` calls
+   */
+  getTextStyle(): CharStyle {
+    const ctx = this.ctx;
+
+    return {
+      font: ctx.font,
+      fontOffsetX: this.options.fontOffsetX,
+      fontOffsetY: this.options.fontOffsetY,
+      fg: this.options.fg,
+      bg: this.options.bg,
+    };
+  }
+
+  /**
    * Input a simple text in the terminal. By default the text will be set in the current position
    * of the cursor.
    * If the text reaches the right side of the terminal, will break into a new line as is
@@ -435,6 +558,8 @@ export class Terminal {
         decayTiles[`${tile.x},${tile.y}`] = {
           char: tile.char,
           font: tile.font,
+          fontOffsetX: tile.fontOffsetX,
+          fontOffsetY: tile.fontOffsetY,
           fg: tile.fg,
           alpha: options.decayInitialAlpha,
         };
@@ -442,6 +567,8 @@ export class Terminal {
 
       tile.char = text[i + textOffset];
       tile.font = options.font;
+      tile.fontOffsetX = options.fontOffsetX;
+      tile.fontOffsetY = options.fontOffsetY;
       tile.fg = options.fg;
       tile.bg = options.bg;
       dirtyTiles.push(tile);
@@ -515,7 +642,7 @@ export class Terminal {
   }
 
   /**
-   * Works like `setText1 but specifying all the properties of a tile, not only the text.
+   * Works like `setText` but specifying all the properties of a tile, not only the text.
    *
    * @param tiles Tile or list of tiles to set
    * @param col x-position of the starting tile. Current position of the cursor if not specified
@@ -544,6 +671,109 @@ export class Terminal {
   }
 
   /**
+   * Attach a specified widget to this instance of the terminal
+   *
+   * @param widget instance of the widget to attach
+   * @return handler of the attached widget. Required to deattach it.
+   */
+  attachWidget(widget: Widget): number;
+
+  /**
+   * Create and attach a widget to this instance of the terminal
+   *
+   * @param WidgetClass Class of the widget
+   * @param args Options for the widget constructor
+   * @return handler of the attached widget. Required to deattach it.
+   */
+  attachWidget(WidgetClass: typeof Widget, ...args): number;
+
+  attachWidget(WidgetClass, ...args): number {
+    const widget: Widget = typeof WidgetClass === 'function'
+      ? Reflect.construct(WidgetClass, [this, ...args])
+      : WidgetClass;
+
+    this.attachedWidgets[++Terminal.widgetIds] = widget;
+    widget.render();
+
+    return Terminal.widgetIds;
+  }
+
+  /**
+   * Dettach a widget from this terminal
+   *
+   * @param handler Value returned by `attachWidget`
+   * @returns attached widget if any (can be `undefined`)
+   */
+  dettachWidget(handler: number): Widget {
+    const widget = this.attachedWidgets[handler];
+    delete this.attachedWidgets[handler];
+
+    if (widget) {
+      const pos = widget.getPosition();
+      const size = widget.getSize();
+      this.clear(
+        pos.col,
+        pos.line,
+        size.columns,
+        size.rows,
+      );
+    }
+
+    return widget;
+  }
+
+  /**
+   * Get a previously attached widget
+   *
+   * @param handler Value returned by `attachWidget`
+   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   */
+  getWidget(handler: number): Widget;
+
+  /**
+   * Get a previously attached widget by its position
+   *
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   */
+  getWidget(column: number, line?: number): Widget {
+    if (typeof line === 'undefined') {
+      return this.attachedWidgets[column];
+    }
+
+    let widget;
+    Object.keys(this.attachedWidgets)
+      .forEach((handler) => {
+        const options: WidgetOptions = this.attachedWidgets[handler].widgetOptions;
+
+        if (options.col >= column
+          && options.col < column + options.width
+          && options.line >= line
+          && options.line < line + options.height) {
+          widget = options;
+        }
+      });
+
+    return widget;
+  }
+
+  /**
+   * Register a listener to a specific event
+   *
+   * @param event event to listen
+   * @param listener callback to register
+   */
+  listen(event: TerminalEvent, listener: EventListener): void {
+    const list = this.eventListeners.get(event);
+    if (list) {
+      list.push(listener);
+    } else {
+      this.eventListeners.set(event, [listener]);
+    }
+  }
+
+  /**
    * Iterate `size` number of tiles.
    * If it reaches the end of a line it continues in the next one.
    * `callback` is not called if the tile is in a non visible tile (over/under the screen)
@@ -555,8 +785,10 @@ export class Terminal {
    */
   private iterateTiles(size: number, callback: IterateTileCallback, col?: number, line?: number): void {
     const buffer = this.buffer;
-    const nLines = this.options.lines;
-    const nColumns = this.options.columns;
+    const viewPortTop = this.options.viewport.top || 0;
+    const viewPortRight = this.options.viewport.right || this.options.columns - 1;
+    const viewPortBottom = this.options.viewport.bottom || this.options.rows - 1;
+    const viewPortLeft = this.options.viewport.left || 0;
 
     if (typeof col === 'undefined') {
       col = this.cursorX;
@@ -567,14 +799,14 @@ export class Terminal {
 
     let c = col;
     for (let i = 0; i < size; i++) {
-      if (c >= nColumns) {
-        c = 0;
+      if (c > viewPortRight) {
+        c = viewPortLeft;
         line++;
       }
-      if (line >= nLines) {
+      if (line > viewPortBottom) {
         break;
       }
-      if (line < 0) {
+      if (line < viewPortTop) {
         c++;
         continue;
       }
@@ -585,9 +817,9 @@ export class Terminal {
       c++;
     }
 
-    if (c >= nColumns) {
-      c = 0;
-      if (line < nLines - 1) {
+    if (c >= viewPortRight) {
+      c = viewPortLeft;
+      if (line < viewPortBottom) {
         this.cursorY++;
       }
     }
@@ -628,7 +860,7 @@ export class Terminal {
    */
   private setCursorFrequency(frequency: number): void {
     clearInterval(this.updateCursorInterval);
-    if (frequency > 0) {
+    if (this.options.cursor && frequency > 0) {
       this.updateCursorInterval = window.setInterval(
         () => {
           this.cursorVisible = !this.cursorVisible;
@@ -650,5 +882,68 @@ export class Terminal {
       // tslint:disable-next-line:no-console
       console.log(`[Terminal] ${text}`);
     }
+  }
+
+  /**
+   * Trigger an event
+   *
+   * @param event event to trigger
+   * @param args arguments to pass to the listeners
+   */
+  private trigger(event: TerminalEvent, ...args): void {
+    const listeners = this.eventListeners.get(event);
+    if (listeners) {
+      listeners.forEach((listener) => {
+        listener.apply(undefined, args);
+      });
+    }
+  }
+
+  /**
+   * Resize the terminal and re-calculate the needed internal properties
+   * It triggers the RESIZED event.
+   *
+   * @param width New terminal width (in tiles)
+   * @param height New terminal height (in tiles)
+   * @param oldWidth Terminal width (in tiles) before being  resized
+   * @param oldHeight Terminal height (in tiles) before being resized
+   */
+  private resize(width: number, height: number, oldWidth: number, oldHeight: number): void {
+    const buffer = this.buffer;
+    const autoRender = this.options.autoRender;
+    this.options.autoRender = !this.options.autoSize;
+
+    if (height > oldHeight) {
+      for (let y = oldHeight; y < height; y++) {
+        buffer[y] = [];
+      }
+      this.clear(0, oldHeight, oldWidth, height - oldHeight);
+    } else if (height < oldHeight) {
+      buffer.splice(height);
+    }
+
+    if (width > oldWidth) {
+      this.clear(oldWidth, 0, width - oldWidth, height);
+    } else if (width < oldWidth) {
+      for (let y = 0; y < height; y++) {
+        buffer[y].splice(width);
+      }
+    }
+
+    if (this.options.autoSize) {
+      this.canvas.width = this.options.columns * this.options.tileWidth;
+      this.canvas.height = this.options.rows * this.options.tileHeight;
+
+      this.ctx.fillStyle = this.options.bg;
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+      // if (autoRender) {
+      //   this.renderAll(); // is this needed?
+      // }
+    }
+
+    this.options.autoRender = autoRender;
+    this.info(`resized to: ${width} x ${height}`);
+    this.trigger(TerminalEvent.RESIZED, width, height, oldWidth, oldHeight);
   }
 }

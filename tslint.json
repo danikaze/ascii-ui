@@ -12,17 +12,21 @@
       {
         "order": [
           "public-static-field",
-          "public-static-method",
           "protected-static-field",
-          "protected-static-method",
           "private-static-field",
-          "private-static-method",
-          "public-instance-field",
+
           "protected-instance-field",
+          "public-instance-field",
           "private-instance-field",
+
           "public-constructor",
           "protected-constructor",
           "private-constructor",
+
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+
           "public-instance-method",
           "protected-instance-method",
           "private-instance-method"
@@ -37,7 +41,7 @@
     "no-submodule-imports": false,
     "no-trailing-whitespace": [true, "ignore-jsdoc"],
     "no-unsafe-any": false,
-    "object-literal-sort-keys": [true, "match-declaration-order"],
+    "object-literal-sort-keys": false,
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "only-arrow-functions": [true, "allow-named-functions"],
     "ordered-imports": [
@@ -50,6 +54,7 @@
     "promise-function-async": false,
     "quotemark": [true, "single", "jsx-double"],
     "strict-boolean-expressions": false,
+    "typedef": false,
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
   }
 }

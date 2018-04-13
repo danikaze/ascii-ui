@@ -1,4 +1,5 @@
 import { Terminal, TerminalSize, TilePosition } from './Terminal';
+import { deepAssign } from './util/deepAssign';
 
 export interface WidgetOptions {
   /** x-position of the widget in terminal tiles */
@@ -47,8 +48,7 @@ export abstract class Widget {
    * @param options Options to change.
    */
   setOptions(options: WidgetOptions): void {
-    // tslint:disable-next-line:prefer-object-spread
-    this.options = Object.assign(this.options || {}, options);
+    this.options = deepAssign(this.options || {}, options);
 
     this.allocated = this.options.col >= 0
       && this.options.line >= 0

@@ -174,7 +174,7 @@ export class Terminal {
   constructor(canvas: HTMLCanvasElement, options?: TerminalOptions) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.setOptions(deepAssign(defaultOptions, options));
+    this.setOptions(deepAssign({}, defaultOptions, options));
 
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;

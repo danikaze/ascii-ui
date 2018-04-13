@@ -87,7 +87,7 @@ export class Box extends Widget {
   private attachedWidget: Widget;
 
   constructor(terminal: Terminal, options: BoxOptions) {
-    super(terminal, deepAssign(boxDefaultOptions, options));
+    super(terminal, deepAssign({}, boxDefaultOptions, options));
   }
 
   /**

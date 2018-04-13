@@ -1,4 +1,5 @@
 import { Terminal, TerminalSize, TilePosition } from './Terminal';
+import { deepAssign } from './util/deepAssign';
 
 export interface WidgetOptions {
   /** x-position of the widget in terminal tiles */
@@ -40,15 +41,14 @@ export abstract class Widget {
   }
 
   /**
-   * Update the options. Always use this setter so the trigger knows about the change
+   * Update the options. Always use this setter so the widget knows about the change
    * instead of changing the (protected) variable directly.
-   * The trigger might do some internal calcs when this method is called.
+   * The widget might do some internal calcs when this method is called.
    *
    * @param options Options to change.
    */
   setOptions(options: WidgetOptions): void {
-    // tslint:disable-next-line:prefer-object-spread
-    this.options = Object.assign(this.options || {}, options);
+    this.options = deepAssign(this.options || {}, options);
 
     this.allocated = this.options.col >= 0
       && this.options.line >= 0

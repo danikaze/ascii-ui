@@ -1,4 +1,5 @@
 import { BoxBorderOptions, BoxOptions, BoxPaddingOptions, BoxTitleOptions } from './Box';
+import { TextOptions } from './Text';
 
 export const boxBorderDefaultOptions: BoxBorderOptions = {
   topLeft: '┌',
@@ -29,4 +30,9 @@ export const boxDefaultOptions: BoxOptions = {
   boxBorders: boxBorderDefaultOptions,
   boxTitle: boxTitleDefaultOptions,
   padding: boxPaddingDefaultOptions,
+};
+
+export const textDefaultOptions: TextOptions = {
+  tokenizer: true,
+  fitPageEnd: false,
 };

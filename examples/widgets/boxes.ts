@@ -52,7 +52,9 @@ function run() {
   // const b3 = new Box(terminal, options);
   const b3 = terminal.attachWidget(Box, options);
   const textWidget = new Text(terminal, {
-    text: 'This is a long '
+    text: ''
+    //  |--------------------| // box size
+      + 'This is a long '
       + 'text inside a box '
       + 'with no margins '
       + 'but it doesn\'t fit '
@@ -61,6 +63,7 @@ function run() {
       + 'several lines like '
       + 'this variable is '
       + 'defined.',
+    //  |--------------------| // box size
   });
   (terminal.getWidget(b3) as Box).attachWidget(textWidget);
 

@@ -129,8 +129,9 @@ export class Text extends Widget {
    * Set the starting line of the text
    *
    * @param line First line to draw
+   * @return `true` if there is more content after `line`, or `false` if it was the end
    */
-  setOffset(line: number): void {
+  setScroll(line: number): boolean {
     const currentOffset = this.startLine;
     const maxLine = this.options.fitPageEnd
       ? this.splittedText.length - this.options.height
@@ -141,24 +142,28 @@ export class Text extends Widget {
     if (currentOffset !== this.startLine) {
       this.render();
     }
+
+    return this.startLine < maxLine;
   }
 
   /**
    * Move the starting line of the text
    *
    * @param lines Number of lines to scroll the text
+   * @return `true` if there is more content after `line`, or `false` if it was the last line
    */
-  moveOffset(lines: number): void {
-    this.setOffset(this.startLine + lines);
+  scrollLines(lines: number): boolean {
+    return this.setScroll(this.startLine + lines);
   }
 
   /**
    * Move the starting line of the text by pages
    *
    * @param pages Number of pages to scroll
+   * @return `true` if there is more pages or `false` if it was the last one
    */
-  movePages(pages: number): void {
-    this.setOffset(this.startLine + pages * this.options.height);
+  scrollPages(pages: number): boolean {
+    return this.setScroll(this.startLine + pages * this.options.height);
   }
 
   /**

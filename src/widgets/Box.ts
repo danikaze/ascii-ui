@@ -1,3 +1,5 @@
+import * as isEmptyObject from 'is-empty-object';
+
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
 import { deepAssign } from '../util/deepAssign';
@@ -130,27 +132,34 @@ export class Box extends Widget {
    * Create and attach a widget to this instance of the terminal
    *
    * @param WidgetClass Class of the widget
-   * @param args Options for the widget constructor
+   * @param options Options for the widget constructor
    * @return Created widget instance attached to the box
    */
-  attachWidget(WidgetClass: typeof Widget, ...args): Widget;
+  attachWidget(WidgetClass: typeof Widget, options, ...args): Widget;
 
-  attachWidget(WidgetClass, ...args): Widget {
-    this.attachedWidget = typeof WidgetClass === 'function'
-      ? Reflect.construct(WidgetClass, [this.terminal, ...args])
-      : WidgetClass;
-
-    const options = this.options;
-    const padding = options.padding;
-
+  attachWidget(WidgetClass, options?, ...args): Widget {
+    const boxOptions = this.options;
+    const padding = boxOptions.padding;
     // tslint:disable:no-magic-numbers
-    this.attachedWidget.setOptions({
-      col: options.col + padding.left + 1,
-      line: options.line + padding.top + 1,
-      width: options.width - padding.left - padding.right - 2,
-      height: options.height - padding.top - padding.bottom - 2,
-    });
+    const positionOptions = {
+      col: boxOptions.col + padding.left + 1,
+      line: boxOptions.line + padding.top + 1,
+      width: boxOptions.width - padding.left - padding.right - 2,
+      height: boxOptions.height - padding.top - padding.bottom - 2,
+    };
     // tslint:enable:no-magic-numbers
+
+    if (typeof WidgetClass === 'function') {
+      const newWidgetOptions = {
+        ...options,
+        ...positionOptions,
+      };
+      this.attachedWidget = Reflect.construct(WidgetClass, [this.terminal, newWidgetOptions, ...args]);
+    } else {
+      this.attachedWidget = WidgetClass;
+      this.attachedWidget.setOptions(positionOptions);
+    }
+
     this.attachedWidget.render();
 
     return this.attachedWidget;
@@ -177,6 +186,18 @@ export class Box extends Widget {
     }
 
     return widget;
+  }
+
+  /**
+   * `setOptions` will assign the options to `this.options`,
+   * but any derivated calculation should be done here.
+   *
+   * @param changedOptions Object with only the changed options
+   */
+  protected updateOptions(changes: BoxOptions): void {
+    if (!isEmptyObject(changes)) {
+      this.render();
+    }
   }
 
   /**

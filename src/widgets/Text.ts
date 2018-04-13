@@ -63,6 +63,9 @@ export class Text extends Widget {
    * Render the widget in the associated terminal
    */
   render(): void {
+    if (!this.splittedText) {
+      return;
+    }
     // const viewport = this.terminal.getViewport();
     // this.terminal.setTextStyle(this.options.textStyle);
     // this.terminal.setOptions({
@@ -91,37 +94,6 @@ export class Text extends Widget {
     while (terminalLine < lastLine) {
       this.terminal.setText(emptyLine, terminalColumn, terminalLine);
       terminalLine++;
-    }
-  }
-
-  /**
-   * Update the options. Always use this setter so the widget knows about the change
-   * instead of changing the (protected) variable directly.
-   * The widget might do some internal calcs when this method is called.
-   *
-   * @param options Options to change.
-   */
-  setOptions(options: TextOptions): void {
-    const wasAllocated = this.allocated;
-    const dirtyText = options.tokenizer !== undefined || options.text !== undefined;
-    super.setOptions(options);
-
-    if (options.tokenizer !== undefined) {
-      if (!options.tokenizer) {
-        this.tokenizer = undefined;
-        this.splittedText = [this.options.text];
-      } else {
-        this.tokenizer = options.tokenizer === true
-          ? tokenizer
-          : this.options.tokenizer as TokenizerFunction;
-      }
-    }
-
-    if (this.allocated) {
-      if (!wasAllocated || (this.tokenizer && dirtyText)) {
-        this.splittedText = this.splitText(this.options.text);
-        this.render();
-      }
     }
   }
 
@@ -167,12 +139,42 @@ export class Text extends Widget {
   }
 
   /**
+   * `setOptions` will assign the options to `this.options`,
+   * but any derivated calculation should be done here.
+   *
+   * @param changedOptions Object with only the changed options
+   */
+  protected updateOptions(options: TextOptions): void {
+    const dirtyText = options.tokenizer !== undefined || options.text !== undefined;
+
+    if (options.tokenizer !== undefined) {
+      if (!options.tokenizer) {
+        this.tokenizer = undefined;
+        this.splittedText = [this.options.text];
+      } else {
+        this.tokenizer = options.tokenizer === true
+          ? tokenizer
+          : this.options.tokenizer as TokenizerFunction;
+      }
+    }
+
+    if (!this.splittedText || dirtyText) {
+      this.splittedText = this.splitText(this.options.text);
+      this.render();
+    }
+  }
+
+  /**
    * Splits a text into different lines
    *
    * @param text Text to split
    * @return Splitted text for each line
    */
   private splitText(text: string): string[] {
+    if (!this.allocated || !this.tokenizer) {
+      return undefined;
+    }
+
     const res = [];
     const tokenizedText = this.tokenizer(text);
     const lineWidth = this.options.width;

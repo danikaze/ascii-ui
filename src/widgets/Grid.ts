@@ -198,6 +198,17 @@ export class Grid extends Widget {
   }
 
   /**
+   * `setOptions` will assign the options to `this.options`,
+   * but any derivated calculation should be done here.
+   *
+   * @param changedOptions Object with only the changed options
+   */
+  // tslint:disable-next-line:prefer-function-over-method
+  protected updateOptions(changes: GridOptions): void {
+    //
+  }
+
+  /**
    * Recalculate the start of each grid row and column based in the grid position, size and
    * calculation method
    */

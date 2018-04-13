@@ -1,5 +1,5 @@
 import { Terminal, TerminalSize, TilePosition } from './Terminal';
-import { deepAssign } from './util/deepAssign';
+import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 
 export interface WidgetOptions {
   /** x-position of the widget in terminal tiles */
@@ -23,7 +23,7 @@ export abstract class Widget {
   /** Reference to the parent terminal where it should be rendered */
   protected terminal: Terminal;
   /** Widget options */
-  protected options: WidgetOptions;
+  protected options: WidgetOptions = {};
   /** If the widget is focused or not */
   protected focused: boolean;
   /** If the widget has been allocated or not */
@@ -45,15 +45,22 @@ export abstract class Widget {
    * instead of changing the (protected) variable directly.
    * The widget might do some internal calcs when this method is called.
    *
+   * Do not reimplement this setter in any subclass, but implement `updateOptions`
+   *
    * @param options Options to change.
+   *
+   * @final
+   * @see updateOptions
    */
   setOptions(options: WidgetOptions): void {
-    this.options = deepAssign(this.options || {}, options);
+    const changes = deepAssignAndDiff(this.options, options);
 
     this.allocated = this.options.col >= 0
       && this.options.line >= 0
       && this.options.width >= 0
       && this.options.height >= 0;
+
+    this.updateOptions(changes);
   }
 
   /**
@@ -109,4 +116,12 @@ export abstract class Widget {
    * Render the widget in the associated terminal (if any)
    */
   abstract render(): void;
+
+  /**
+   * `setOptions` will assign the options to `this.options`,
+   * but any derivated calculation should be done here.
+   *
+   * @param changedOptions Object with only the changed options
+   */
+  protected abstract updateOptions(changedOptions: WidgetOptions): void;
 }

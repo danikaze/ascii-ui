@@ -24,7 +24,6 @@ function run() {
     columns,
     rows,
     cursor: false,
-    debug: { verbose: true },
   });
 
   canvas.parentElement.style.width = `${canvas.width}px`;

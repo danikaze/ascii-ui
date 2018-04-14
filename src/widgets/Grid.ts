@@ -1,5 +1,6 @@
 import { Terminal, TerminalEvent, TerminalSize } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
+import { WidgetContainer } from '../WidgetContainer';
 
 export interface GridOptions extends WidgetOptions {
   /** Number of rows of the grid */
@@ -35,7 +36,7 @@ interface AttachedWidget {
 /**
  * Provides a dynamic grid system for Terminal Widgets
  */
-export class Grid extends Widget {
+export class Grid extends Widget implements WidgetContainer {
   /** Incremental widget ids counter */
   private static widgetIds: number = 0;
 
@@ -118,10 +119,15 @@ export class Grid extends Widget {
   /**
    * Attach a widget to the grid
    *
-   * @param widget instance of the widget to attach
-   * @return handler of the attached widget. Required to deattach it.
+   * @param col column of the grid
+   * @param line row of the grid
+   * @param width how many grid columns the widget should occupy
+   * @param height how many grid rows the widget should occupy
+   * @param WidgetClass Class of the widget to attach
+   * @param options Options to pass to the Widget when creating it
+   * @return widget instance
    */
-  attachWidget(col: number, line: number, width: number, height: number, WidgetClass: typeof Widget, ...args): number {
+  attachWidget(col: number, line: number, width: number, height: number, WidgetClass: typeof Widget, ...args): Widget {
     const widget: Widget = Reflect.construct(WidgetClass, [this.terminal, ...args]);
     const attachedWidget: AttachedWidget = {
       id: ++Grid.widgetIds,
@@ -135,7 +141,7 @@ export class Grid extends Widget {
     this.attachedWidgets.push(attachedWidget);
     this.align(attachedWidget);
 
-    return attachedWidget.id;
+    return widget;
   }
 
   /**
@@ -144,11 +150,11 @@ export class Grid extends Widget {
    * @param handler Value returned by `attachWidget`
    * @return `true` if the widget was found (and removed). `false` if not found
    */
-  dettachWidget(handler: number): boolean {
-    const index = this.attachedWidgets.findIndex((instance) => instance.id === handler);
+  dettachWidget(widget: Widget): boolean {
+    const index = this.attachedWidgets.findIndex((instance) => instance.widget === widget);
 
     if (index !== -1) {
-      const widget = this.attachedWidgets.splice(index, 1)[0].widget;
+      this.attachedWidgets.splice(index, 1);
       const position = widget.getPosition();
       const size = widget.getSize();
       this.terminal.clear(position.col, position.line, size.columns, size.rows);
@@ -158,27 +164,33 @@ export class Grid extends Widget {
   }
 
   /**
-   * Get a previously attached widget by its handler
+   * Get a previously attached widget by its position in the terminal
    *
-   * @param handler Value returned by `attachWidget`
-   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return widget or `undefined` if not found
    */
-  getWidget(handler: number): Widget;
+  getWidgetAt(column: number, line: number): Widget {
+    for (const instance of this.attachedWidgets) {
+      if (instance.widget.isAt(column, line)) {
+        return instance.widget;
+      }
+    }
 
+    return undefined;
+  }
   /**
-   * Get a previously attached widget by its position
+   * Get a previously attached widget by its position in the Grid
    *
    * @param column column of the grid
    * @param line line of the grid
-   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   * @return widget or `undefined` if not found
    */
-  getWidget(column: number, line?: number): Widget {
-    const attachedWidget = typeof line === 'undefined'
-      ? this.attachedWidgets.filter((instance) => instance.id === column)[0]
-      : this.attachedWidgets.filter((instance) => instance.col >= column
-        && instance.col < column + instance.width
-        && instance.line >= line
-        && instance.line < line + instance.height)[0];
+  getWidgetGrid(column: number, line: number): Widget {
+    const attachedWidget = this.attachedWidgets.filter((instance) => instance.col >= column
+      && instance.col < column + instance.width
+      && instance.line >= line
+      && instance.line < line + instance.height)[0];
 
     return attachedWidget ? attachedWidget.widget : undefined;
   }

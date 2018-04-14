@@ -7,7 +7,8 @@ import { deepAssign } from './util/deepAssign';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
-import { Widget, WidgetOptions } from './Widget';
+import { Widget } from './Widget';
+import { WidgetContainer } from './WidgetContainer';
 
 // tslint:disable-next-line:no-import-side-effect
 import './styles.less';
@@ -130,10 +131,7 @@ type IterateTileCallback = (InternalTile, i) => void;
 /**
  * Basic terminal features rendered into a Canvas object
  */
-export class Terminal {
-  /** widget id counter to generate unique ids */
-  private static widgetIds: number = 0;
-
+export class Terminal implements WidgetContainer {
   /** terminal options */
   protected readonly options: TerminalOptions = {};
   /** canvas object associated with the terminal */
@@ -160,8 +158,8 @@ export class Terminal {
   private escapeCharactersRegExpString: string;
   /** time of the last render */
   private lastRenderTime: number = 0;
-  /** list of attached widgets as { id: widget } */
-  private readonly attachedWidgets: { [key: number]: Widget } = {};
+  /** list of attached widgets */
+  private readonly attachedWidgets: Widget[] = [];
   /** listeners registered to the terminal events */
   private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
@@ -674,9 +672,9 @@ export class Terminal {
    * Attach a specified widget to this instance of the terminal
    *
    * @param widget instance of the widget to attach
-   * @return handler of the attached widget. Required to deattach it.
+   * @return widget instance
    */
-  attachWidget(widget: Widget): number;
+  attachWidget(widget: Widget): Widget;
 
   /**
    * Create and attach a widget to this instance of the terminal
@@ -685,50 +683,37 @@ export class Terminal {
    * @param args Options for the widget constructor
    * @return handler of the attached widget. Required to deattach it.
    */
-  attachWidget(WidgetClass: typeof Widget, ...args): number;
+  attachWidget(WidgetClass: typeof Widget, ...args): Widget;
 
-  attachWidget(WidgetClass, ...args): number {
+  attachWidget(WidgetClass, options?, ...args): Widget {
     const widget: Widget = typeof WidgetClass === 'function'
-      ? Reflect.construct(WidgetClass, [this, ...args])
+      ? Reflect.construct(WidgetClass, [this, options, ...args])
       : WidgetClass;
 
-    this.attachedWidgets[++Terminal.widgetIds] = widget;
+    this.attachedWidgets.push(widget);
     widget.render();
-
-    return Terminal.widgetIds;
-  }
-
-  /**
-   * Dettach a widget from this terminal
-   *
-   * @param handler Value returned by `attachWidget`
-   * @returns attached widget if any (can be `undefined`)
-   */
-  dettachWidget(handler: number): Widget {
-    const widget = this.attachedWidgets[handler];
-    delete this.attachedWidgets[handler];
-
-    if (widget) {
-      const pos = widget.getPosition();
-      const size = widget.getSize();
-      this.clear(
-        pos.col,
-        pos.line,
-        size.columns,
-        size.rows,
-      );
-    }
 
     return widget;
   }
 
   /**
-   * Get a previously attached widget
+   * Dettach a widget from the terminal
    *
-   * @param handler Value returned by `attachWidget`
-   * @return widget or `undefined` if not found (wrong id or previously dettached)
+   * @param widget Widget to dettach
+   * @return `true` if the widget was found (and removed). `false` if not found
    */
-  getWidget(handler: number): Widget;
+  dettachWidget(widget: Widget): boolean {
+    const index = this.attachedWidgets.findIndex((w) => w === widget);
+
+    if (index !== -1) {
+      this.attachedWidgets.splice(index, 1);
+      const position = widget.getPosition();
+      const size = widget.getSize();
+      this.clear(position.col, position.line, size.columns, size.rows);
+    }
+
+    return index !== -1;
+  }
 
   /**
    * Get a previously attached widget by its position
@@ -737,25 +722,14 @@ export class Terminal {
    * @param line line of the terminal
    * @return widget or `undefined` if not found (wrong id or previously dettached)
    */
-  getWidget(column: number, line?: number): Widget {
-    if (typeof line === 'undefined') {
-      return this.attachedWidgets[column];
+  getWidgetAt(column: number, line: number): Widget {
+    for (const widget of this.attachedWidgets) {
+      if (widget.isAt(column, line)) {
+        return widget;
+      }
     }
 
-    let widget;
-    Object.keys(this.attachedWidgets)
-      .forEach((handler) => {
-        const options: WidgetOptions = this.attachedWidgets[handler].widgetOptions;
-
-        if (options.col >= column
-          && options.col < column + options.width
-          && options.line >= line
-          && options.line < line + options.height) {
-          widget = options;
-        }
-      });
-
-    return widget;
+    return undefined;
   }
 
   /**

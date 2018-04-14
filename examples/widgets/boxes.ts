@@ -15,6 +15,19 @@ function hideLoad() {
   elem.parentElement.removeChild(elem);
 }
 
+function scrollText(text: Text) {
+  const KEY_DOWN = 40;
+  const KEY_UP = 38;
+
+  document.addEventListener('keydown', (event) => {
+    if (event.keyCode === KEY_DOWN) {
+      text.scrollLines(1);
+    } else if (event.keyCode === KEY_UP) {
+      text.scrollLines(-1);
+    }
+  });
+}
+
 function run() {
   /* tslint:disable:no-magic-numbers */
   const columns = 40;
@@ -35,21 +48,18 @@ function run() {
     width: 20,
     height: 5,
   };
-  //const b1 = new Box(terminal, options);
-  const b1 = terminal.attachWidget(Box, options);
+  const box1 = terminal.attachWidget(Box, options);
 
   options.line = 7;
   options.title = 'Title';
   // const b2 = new Box(terminal, options);
-  const b2 = terminal.attachWidget(Box, options);
-  const box = terminal.getWidget(b2) as Box;
-  box.attachWidget(Text, { text: '1 tile margin', textStyle: { fg: '#ffff00' } });
+  const box2 = terminal.attachWidget(Box, options) as Box;
+  box2.attachWidget(Text, { text: '1 tile margin', textStyle: { fg: '#ffff00' } });
 
   options.line = 13;
   options.title = 'Very long title for real';
   options.padding = { top: 0, bottom: 0, right: 0, left: 0};
-  // const b3 = new Box(terminal, options);
-  const b3 = terminal.attachWidget(Box, options);
+  const box3 = terminal.attachWidget(Box, options) as Box;
   const textWidget = new Text(terminal, {
     text: ''
     //  |--------------------| // box size
@@ -64,7 +74,8 @@ function run() {
       + 'defined.',
     //  |--------------------| // box size
   });
-  (terminal.getWidget(b3) as Box).attachWidget(textWidget);
+  box3.attachWidget(textWidget);
+  scrollText(textWidget);
 
   (window as TestWindow).terminal = terminal;
 }

@@ -4,6 +4,7 @@ import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
 import { deepAssign } from '../util/deepAssign';
 import { Widget, WidgetOptions } from '../Widget';
+import { WidgetContainer } from '../WidgetContainer';
 
 import { boxBorderDefaultOptions, boxDefaultOptions } from './defaultOptions';
 
@@ -67,7 +68,7 @@ interface BoxPoolTiles {
  * Very basic `WidgetContainer` which draws a box around the attached content.
  * It allows only one children inside the box (which can be a Grid or any other container)
  */
-export class Box extends Widget {
+export class Box extends Widget implements WidgetContainer {
   /** Pool of Tiles to avoid creating always new objects */
   private static readonly boxTilesPool: BoxPoolTiles = {
     title: [],
@@ -166,12 +167,17 @@ export class Box extends Widget {
   }
 
   /**
-   * Dettach the widget from this box, if any
+   * Dettach a widget from the container
    *
-   * @returns the dettached widget (can be `undefined`)
+   * @param widget Widget to dettach
+   * @return `true` if the widget was found (and removed). `false` if not found
    */
-  dettachWidget(): Widget {
-    const widget = this.attachedWidget;
+  dettachWidget(widget: Widget): boolean {
+    if (widget !== this.attachedWidget) {
+      return false;
+    }
+
+    widget = this.attachedWidget;
     this.attachedWidget = undefined;
 
     if (widget) {
@@ -185,7 +191,20 @@ export class Box extends Widget {
       // tslint:enable:no-magic-numbers
     }
 
-    return widget;
+    return true;
+  }
+
+  /**
+   * Get a previously attached widget by its position
+   *
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return widget or `undefined` if not found
+   */
+  getWidgetAt(column: number, line: number): Widget {
+    return (this.attachedWidget && this.attachedWidget.isAt(column, line))
+      ? this.attachedWidget
+      : undefined;
   }
 
   /**

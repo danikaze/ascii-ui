@@ -88,6 +88,22 @@ export abstract class Widget {
   }
 
   /**
+   * Check if the widget is (overlaps) the specified position
+   *
+   * @param column x-position of the terminal (in tiles)
+   * @param line y-position of the terminal (in tiles)
+   * @return `true` if the specified tile is _inside_ the widget
+   */
+  isAt(column: number, line: number): boolean {
+    const options = this.options;
+
+    return options.col >= column
+      && options.col < column + options.width
+      && options.line >= line
+      && options.line < line + options.height;
+  }
+
+  /**
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
    */

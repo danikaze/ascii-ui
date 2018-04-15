@@ -61,6 +61,7 @@ function run() {
   options.padding = { top: 0, bottom: 0, right: 0, left: 0};
   const box3 = terminal.attachWidget(Box, options) as Box;
   const textWidget = new Text(terminal, {
+    typewritterDelay: 50,
     text: ''
     //  |--------------------| // box size
       + 'This is a long '

@@ -21,6 +21,7 @@ export const defaultOptions: TerminalOptions = {
     bottom: undefined,
     left: undefined,
   },
+  avoidDoubleRendering: true,
 };
 
 export const defaultDebugOptions: DebugOptions = {

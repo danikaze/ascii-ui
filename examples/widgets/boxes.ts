@@ -16,14 +16,21 @@ function hideLoad() {
 }
 
 function scrollText(text: Text) {
-  const KEY_DOWN = 40;
-  const KEY_UP = 38;
-
   document.addEventListener('keydown', (event) => {
-    if (event.keyCode === KEY_DOWN) {
-      text.scrollLines(1);
-    } else if (event.keyCode === KEY_UP) {
-      text.scrollLines(-1);
+    switch (event.key) {
+      case 'ArrowDown':
+        text.scrollLines(1);
+        break;
+      case 'ArrowUp':
+        text.scrollLines(-1);
+        break;
+      case 'PageUp':
+        text.scrollPages(-1);
+        break;
+      case 'PageDown':
+        text.scrollPages(1);
+        break;
+      default:
     }
   });
 }
@@ -61,6 +68,7 @@ function run() {
   options.padding = { top: 0, bottom: 0, right: 0, left: 0};
   const box3 = terminal.attachWidget(Box, options) as Box;
   const textWidget = new Text(terminal, {
+    typewritterDelay: 50,
     text: ''
     //  |--------------------| // box size
       + 'This is a long '

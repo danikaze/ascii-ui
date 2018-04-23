@@ -76,6 +76,8 @@ export interface TerminalOptions extends CharStyle {
   commands?: { [key: string]: EscapeCallback };
   /** Limit within the Terminal will draw */
   viewport?: ViewPortOptions;
+  /** Optimization? If `true` it will check if the tile to render is already in the queue to avoid rendering it twice */
+  avoidDoubleRendering?: boolean;
 }
 
 export interface DebugOptions {
@@ -216,7 +218,7 @@ export class Terminal implements WidgetContainer {
     this.setCursorFrequency(this.options.cursorFrequency);
     if (!this.options.cursor && this.buffer.length > 0 && this.cursorVisible) {
       this.cursorVisible = false;
-      this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+      this.addDirtyTile(this.buffer[this.cursorY][this.cursorX], this.dirtyTiles);
       if (this.options.autoRender) {
         this.render();
       }
@@ -291,7 +293,7 @@ export class Terminal implements WidgetContainer {
           y: y * options.tileHeight,
         };
         buffer[y][x] = tile;
-        dirtyTiles.push(tile);
+        this.addDirtyTile(tile, dirtyTiles);
       }
     }
 
@@ -315,6 +317,7 @@ export class Terminal implements WidgetContainer {
     }
 
     const start = window.performance.now();
+    console.log(start - this.lastRenderTime);
     const ctx = this.ctx;
     const w = this.options.tileWidth;
     const h = this.options.tileHeight;
@@ -363,7 +366,7 @@ export class Terminal implements WidgetContainer {
           } else {
             this.decayTiles[decayKey] = undefined;
           }
-          tilesToRedraw.push(tile);
+          this.addDirtyTile(tile, tilesToRedraw);
         }
 
         // fg
@@ -372,8 +375,8 @@ export class Terminal implements WidgetContainer {
       }
     }
 
-    this.lastRenderTime = window.performance.now();
     this.info(`render: ${nTiles} tiles: ${this.lastRenderTime - start} ms.`);
+    this.lastRenderTime = start;
 
     if (this.options.debug) {
       this.renderDebug();
@@ -461,7 +464,8 @@ export class Terminal implements WidgetContainer {
 
     const newTile = this.buffer[line][col];
     if (oldTile !== newTile) {
-      this.dirtyTiles.push(oldTile, newTile);
+      this.addDirtyTile(oldTile, this.dirtyTiles);
+      this.addDirtyTile(newTile, this.dirtyTiles);
       this.cursorVisible = true;
       if (this.options.autoRender) {
         this.render();
@@ -537,6 +541,7 @@ export class Terminal implements WidgetContainer {
     const decayTiles = this.decayTiles;
     const decayEnabled = !!this.decayChange;
     const options = this.options;
+    const addDirtyTile = this.addDirtyTile.bind(this);
     let textOffset = 0;
     let regExp;
     let match;
@@ -569,7 +574,7 @@ export class Terminal implements WidgetContainer {
       tile.fontOffsetY = options.fontOffsetY;
       tile.fg = options.fg;
       tile.bg = options.bg;
-      dirtyTiles.push(tile);
+      addDirtyTile(tile, dirtyTiles);
     }
 
     // no text-parse
@@ -657,7 +662,7 @@ export class Terminal implements WidgetContainer {
       (tiles as Tile[]).length,
       (tile, i) => {
         Object.assign(tile, tiles[i]);
-        dirtyTiles.push(tile);
+        this.addDirtyTile(tile, dirtyTiles);
       },
       col,
       line,
@@ -838,7 +843,7 @@ export class Terminal implements WidgetContainer {
       this.updateCursorInterval = window.setInterval(
         () => {
           this.cursorVisible = !this.cursorVisible;
-          this.dirtyTiles.push(this.buffer[this.cursorY][this.cursorX]);
+          this.addDirtyTile(this.buffer[this.cursorY][this.cursorX], this.dirtyTiles);
           if (this.options.autoRender) {
             this.render();
           }
@@ -856,6 +861,24 @@ export class Terminal implements WidgetContainer {
       // tslint:disable-next-line:no-console
       console.log(`[Terminal] ${text}`);
     }
+  }
+
+  /**
+   * Add a tile to be drawn in the next `render` only if it's not already queued
+   *
+   * @param dirtyTile tile to queue to draw
+   * @param container usually `this.dirtyTiles`, but can be another temporal container
+   */
+  private addDirtyTile(dirtyTile: InternalTile, container: InternalTile[] = this.dirtyTiles): void {
+    if (this.options.avoidDoubleRendering) {
+      for (const tile of container) {
+        if (tile.x === dirtyTile.x && tile.y === dirtyTile.y) {
+          return;
+        }
+      }
+    }
+
+    container.push(dirtyTile);
   }
 
   /**

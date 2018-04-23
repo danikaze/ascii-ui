@@ -35,4 +35,5 @@ export const boxDefaultOptions: BoxOptions = {
 export const textDefaultOptions: TextOptions = {
   tokenizer: true,
   fitPageEnd: false,
+  typewritterDelay: 0,
 };

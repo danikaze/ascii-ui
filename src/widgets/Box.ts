@@ -161,7 +161,7 @@ export class Box extends Widget implements WidgetContainer {
       this.attachedWidget.setOptions(positionOptions);
     }
 
-    this.attachedWidget.render();
+    // this.attachedWidget.render();
 
     return this.attachedWidget;
   }

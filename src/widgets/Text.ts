@@ -39,6 +39,11 @@ export interface TextOptions extends WidgetOptions {
    * to the last of the previous page)
    */
   fitPageEnd?: boolean;
+  /**
+   * Ms. to wait between each character when writting new text
+   * Set to `0` (default) to disable it
+   */
+  typewritterDelay?: number;
 }
 
 /**
@@ -53,6 +58,10 @@ export class Text extends Widget {
   private splittedText: string[];
   /** Offset of what line to display first */
   private startLine: number = 0;
+  /** setTimeout handler to cancel the typewritter effect when the text is scrolled */
+  private typewritterTimer;
+  /** Line where to start applying the typewritter effect if enabled */
+  private typewritterLine = 0;
 
   constructor(terminal: Terminal, options: TextOptions) {
     super(terminal, options);
@@ -66,34 +75,38 @@ export class Text extends Widget {
     if (!this.splittedText) {
       return;
     }
-    // const viewport = this.terminal.getViewport();
-    // this.terminal.setTextStyle(this.options.textStyle);
-    // this.terminal.setOptions({
-    //   viewport: {
-    //     top: this.options.line,
-    //     right: this.options.col + this.options.width - 1,
-    //     bottom: this.options.line + this.options.height - 1,
-    //     left: this.options.col,
-    //   },
-    // });
-    // this.terminal.setText(this.options.text, this.options.col, this.options.line);
-    // this.terminal.setOptions({ viewport });
+    const typewritterEnabled = this.options.typewritterDelay > 0;
+
     const terminalColumn = this.options.col;
-    let lastLine = Math.min(this.startLine + this.options.height, this.splittedText.length);
     let terminalLine = this.options.line;
+    let lastLine = Math.min(this.startLine + this.options.height, this.splittedText.length);
+    const completedLines = typewritterEnabled ? Math.min(lastLine, this.startLine + this.typewritterLine) : lastLine;
     let line = this.startLine;
 
-    while (line < lastLine) {
+    // draw complete lines
+    while (line < completedLines) {
       this.terminal.setText(this.splittedText[line], terminalColumn, terminalLine);
       line++;
       terminalLine++;
     }
 
+    // draw remaining lines as blank
     lastLine = this.options.line + this.options.height;
     const emptyLine = ' '.repeat(this.options.width);
     while (terminalLine < lastLine) {
       this.terminal.setText(emptyLine, terminalColumn, terminalLine);
       terminalLine++;
+    }
+
+    if (typewritterEnabled && this.typewritterLine < this.options.height && completedLines < this.splittedText.length) {
+      this.typewritterTimer = setTimeout(
+        this.renderInProgressText.bind(this),
+        this.options.typewritterDelay,
+        0,
+        completedLines,
+        terminalColumn,
+        this.options.line,
+      );
     }
   }
 
@@ -104,12 +117,14 @@ export class Text extends Widget {
    * @return `true` if there is more content after `line`, or `false` if it was the end
    */
   setScroll(line: number): boolean {
+    clearTimeout(this.typewritterTimer);
     const currentOffset = this.startLine;
     const maxLine = this.options.fitPageEnd
       ? this.splittedText.length - this.options.height
       : this.splittedText.length - 1;
 
     this.startLine = clamp(line, 0, maxLine);
+    this.typewritterLine = this.options.height - this.startLine + currentOffset;
 
     if (currentOffset !== this.startLine) {
       this.render();
@@ -161,6 +176,38 @@ export class Text extends Widget {
     if (!this.splittedText || dirtyText) {
       this.splittedText = this.splitText(this.options.text);
       this.render();
+    }
+  }
+
+  /**
+   * Renders the next character when applying the typewritter effect
+   * It will call itself again after `this.options.typewritterDelay` ms.
+   * to draw the next character
+   *
+   * @param textCol column of the current line in `this.splittedText` to draw
+   * @param textLine line of `this.splittedText` to draw
+   * @param outputCol initial column of the terminal
+   * @param outputLine initial line of the terminal
+   */
+  private renderInProgressText(textCol: number, textLine: number, outputCol: number, outputLine: number) {
+    const partialText = this.splittedText[textLine][textCol];
+    this.terminal.setText(partialText, outputCol + textCol, outputLine + textLine - this.startLine);
+
+    textCol++;
+    if (textCol >= this.splittedText[textLine].trim().length) {
+      textCol = 0;
+      textLine++;
+    }
+
+    if (textLine - this.startLine < this.options.height && textLine < this.splittedText.length) {
+      this.typewritterTimer = setTimeout(
+        this.renderInProgressText.bind(this),
+        this.options.typewritterDelay,
+        textCol,
+        textLine,
+        outputCol,
+        outputLine,
+      );
     }
   }
 

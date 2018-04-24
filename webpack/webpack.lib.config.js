@@ -3,16 +3,17 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const MergeFilesPlugin = require('merge-files-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const autoprefixer = require('autoprefixer');
 const getStylesConfig = require('./util/libStyles');
 const getBaseConfig = require('./webpack.base.config');
 const settings = require('./settings');
 const packageJson = require('../package.json');
+const absPath = require('./util/absPath');
 
 const moduleConfig = {
   output: {
-    path: path.resolve(path.join(__dirname, '..', 'lib')),
     library: settings.options.fileName,
     libraryTarget: settings.options.libraryTarget,
     auxiliaryComment: settings.options.auxiliaryComment,
@@ -26,6 +27,11 @@ const moduleConfig = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(
+      [settings.paths.build],
+      { root: absPath('.'), verbose: false },
+    ),
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),

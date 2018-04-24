@@ -31,6 +31,11 @@ const moduleConfig = {
     contentBase: settings.paths.build,
     // Match the output.publicPath
     publicPath: settings.options.publicPath,
+    stats: {
+      assetsSort: 'name',
+      modules: false,
+      children: false,
+    },
   },
 
   plugins: [

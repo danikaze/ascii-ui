@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const stripExtension = require('./util/stripExtension');
 const settings = require('./settings');
 
@@ -17,6 +18,8 @@ module.exports = (env) => {
     },
 
     stats: {
+      assetsSort: 'name',
+      modules: false,
       children: false,
     },
 
@@ -98,6 +101,7 @@ module.exports = (env) => {
       ],
     },
     plugins: [
+      new ProgressBarPlugin(),
       // new StyleLintPlugin({
       //   context: 'src',
       //   files: [

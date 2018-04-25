@@ -91,29 +91,12 @@ export class Grid extends Widget implements WidgetContainer {
   }
 
   /**
-   * Here's where the calculation of the real size of the attached widget is done
-   * Widget won't be placed properly until this method is not called (to avoid duplicated calculations)
+   * Do the calculation of the real size of the attached widgets
+   * Widgets won't be placed properly until this method is not called (to avoid duplicated calculations)
+   * This is called automatically when using `attachWidget` but is provided in case it needs to be called manually
    */
-  align(attachedWidget?: AttachedWidget): void {
-    const columnStarts = this.columnStarts;
-    const rowStarts = this.rowStarts;
-
-    /** Update the options of a widget after being aligned */
-    function alignOne(w: AttachedWidget) {
-      const col = columnStarts[w.col];
-      const line = rowStarts[w.line];
-      const width = columnStarts[w.col + w.width] - col;
-      const height = rowStarts[w.line + w.height] - line;
-
-      w.widget.setOptions({ col, line, width, height });
-      w.widget.render();
-    }
-
-    if (attachedWidget) {
-      alignOne(attachedWidget);
-    } else {
-      this.attachedWidgets.forEach(alignOne);
-    }
+  align(): void {
+    this.alignWidgets();
   }
 
   /**
@@ -139,7 +122,7 @@ export class Grid extends Widget implements WidgetContainer {
     };
 
     this.attachedWidgets.push(attachedWidget);
-    this.align(attachedWidget);
+    this.alignWidgets(attachedWidget);
 
     return widget;
   }
@@ -221,6 +204,32 @@ export class Grid extends Widget implements WidgetContainer {
   }
 
   /**
+   * Here's where the calculation of the real size of the attached widget is done
+   * Widget won't be placed properly until this method is not called (to avoid duplicated calculations)
+   */
+  private alignWidgets(attachedWidget?: AttachedWidget): void {
+    const columnStarts = this.columnStarts;
+    const rowStarts = this.rowStarts;
+
+    /** Update the options of a widget after being aligned */
+    function alignOne(w: AttachedWidget) {
+      const col = columnStarts[w.col];
+      const line = rowStarts[w.line];
+      const width = columnStarts[w.col + w.width] - col;
+      const height = rowStarts[w.line + w.height] - line;
+
+      w.widget.setOptions({ col, line, width, height });
+      w.widget.render();
+    }
+
+    if (attachedWidget) {
+      alignOne(attachedWidget);
+    } else {
+      this.attachedWidgets.forEach(alignOne);
+    }
+  }
+
+  /**
    * Recalculate the start of each grid row and column based in the grid position, size and
    * calculation method
    */
@@ -243,7 +252,7 @@ export class Grid extends Widget implements WidgetContainer {
     this.rowStarts.push(this.options.height);  // where starts the end, for calculating widget sizes
     this.rowStarts = this.rowStarts.map((value) => value + this.options.line);
 
-    this.align();
+    this.alignWidgets();
   }
 
   /**

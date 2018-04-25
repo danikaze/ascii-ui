@@ -3,75 +3,25 @@
 <head>
   <meta charset="utf-8">
   <title>Terminal Widget: Grid</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    @font-face {
-      font-family: 'Terminal_VT220';
-      src: url(../fonts/Glass_TTY_VT220.ttf);
-    }
-
-    .canvas-container {
-      border: 10px solid #333;
-    }
-
-    #controls {
-      position: relative;
-      display: inline-block;
-      border: 1px solid green;
-      margin-bottom: 10px;
-      width: 122px;
-      height: 32px;
-    }
-
-    #left, #right, #up, #down {
-      position: absolute;
-      top: 5px;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      border: 1px solid blue;
-      text-align: center;
-      user-select: none;
-    }
-
-    #left:hover, #right:hover, #up:hover, #down:hover {
-      background: blue;
-      color: white;
-    }
-
-    #left {
-      left: 5px;
-    }
-
-    #right {
-      left: 35px;
-    }
-
-    #up {
-      left: 65px;
-    }
-
-    #down {
-      left: 95px;
-    }
-
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-<body>
-  <h1>Grid example</h1>
-  <div id="back-link"><a href="/">Go back</a></div>
 
-  <div id="loading">Wait while loading fonts...</div>
-  <div id="controls">
-    <div id="left">◀</div>
-    <div id="right">▶</div>
-    <div id="up">▲</div>
-    <div id="down">▼</div>
-  </div>
-  <div class="canvas-container">
-    <canvas id="canvas"></canvas>
-  </div>
-</body>
+<body>
+  <div class="container-fluid">
+    <h1>widget/Grid</h1>
+
+    <%= htmlWebpackPlugin.options.breadcrumbs %>
+
+    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+      <button id="left" type="button" class="btn btn-secondary">width--</button>
+      <button id="right" type="button" class="btn btn-secondary">width++</button>
+      <button id="up" type="button" class="btn btn-secondary">height--</button>
+      <button id="down" type="button" class="btn btn-secondary">height++</button>
+    </div>
+
+    <div id="loading">Wait while loading fonts...</div>
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div>
+  </body>
 </html>

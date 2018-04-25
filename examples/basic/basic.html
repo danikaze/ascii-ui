@@ -3,23 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>Terminal basic example</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    @font-face {
-      font-family: 'Terminal_VT220';
-      src: url(../fonts/Glass_TTY_VT220.ttf);
-    }
-
-    .canvas-container {
-      border: 10px solid #333;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
+
 <body>
-  <p>Example 1</p>
-  <div id="loading">Wait while loading fonts...</div>
-  <div class="canvas-container">
-    <canvas id="canvas"></canvas>
-  </div>
-</body>
+  <div class="container-fluid">
+    <h1>Terminal/basic example</h1>
+
+    <%= htmlWebpackPlugin.options.breadcrumbs %>
+
+    <div id="loading">Wait while loading fonts...</div>
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div>
+  </body>
 </html>

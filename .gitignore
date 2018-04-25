@@ -2,7 +2,7 @@
 # Project Files
 # =========================
 lib
-build_examples
+buildExamples
 
 # =========================
 # Process Files

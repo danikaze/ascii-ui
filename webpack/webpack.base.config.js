@@ -1,21 +1,25 @@
 const autoprefixer = require('autoprefixer');
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const mkdirp = require('mkdirp').sync;
 const stripExtension = require('./util/stripExtension');
 const settings = require('./settings');
+const absPath = require('./util/absPath');
 
 module.exports = (env) => {
   const baseConfig = {
-    entry: settings.entries,
-
     output: {
       filename: settings.options.fileName,
       path: settings.paths.build,
     },
+
+    devtool: 'source-map',
 
     stats: {
       assetsSort: 'name',
@@ -48,12 +52,19 @@ module.exports = (env) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
-            { loader: 'ts-loader' },
+            {
+              loader: 'ts-loader',
+              options: {
+                compilerOptions: {
+                  declaration: false,
+                },
+              },
+            },
           ],
         },
         {
           test: /\.(css|scss|sass|less)$/,
-          // use: ExtractTextPlugin.extract({
+          use: ExtractTextPlugin.extract({
             use: [
               {
                 loader: 'typings-for-css-modules-loader',
@@ -63,7 +74,7 @@ module.exports = (env) => {
                   namedExport: true,
                   camelCase: true,
                   sourceMap: true,
-                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                  localIdentName: '[local]',
                 },
               },
               {
@@ -71,7 +82,7 @@ module.exports = (env) => {
                 options: { plugins: () => [autoprefixer('ie >= 9')] },
               },
             ],
-          // }),
+          }),
         },
         {
           test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
@@ -80,8 +91,8 @@ module.exports = (env) => {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts/',
-              publicPath: './',
+              useRelativePath: true,
+              outputPath: settings.paths.fonts,
             },
           }],
         },
@@ -92,7 +103,7 @@ module.exports = (env) => {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              context: 'build_examples/',
+              useRelativePath: true,
               outputPath: 'img/',
               publicPath: './',
             },
@@ -102,19 +113,18 @@ module.exports = (env) => {
     },
     plugins: [
       new ProgressBarPlugin(),
-      // new StyleLintPlugin({
-      //   context: 'src',
-      //   files: [
-      //     '**/*.css',
-      //     '**/*.less',
-      //     '**/*.sass',
-      //     '**/*.scss',
-      //   ],
-      // }),
-
-      // new ExtractTextPlugin('[name].css'),
+      new ExtractTextPlugin('[name].css'),
+      new CopyWebpackPlugin([{
+        from: path.join(settings.paths.examples, settings.paths.assets),
+        to: settings.paths.assets,
+      }]),
     ],
   };
+
+  const assetsAbsolutePath = absPath(path.join(settings.paths.examples, settings.paths.assets));
+  if (!fs.existsSync(assetsAbsolutePath)) {
+    mkdirp(assetsAbsolutePath);
+  }
 
   return baseConfig;
 };

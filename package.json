@@ -13,6 +13,7 @@
     "start": "webpack-dev-server --env=dev",
     "clean": "rimraf lib",
     "build": "tsc",
+    "examples": "webpack --env=examples",
     "prebuild": "yarn run clean",
     "docs": "typedoc ./src",
     "clean:docs": "rimraf docs",
@@ -30,6 +31,7 @@
     "@types/node": "^9.4.5",
     "@types/webpack-env": "^1.13.5",
     "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
@@ -39,6 +41,7 @@
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
     "merge-files-webpack-plugin": "^1.1.2",
+    "mkdirp": "^0.5.1",
     "node-sass": "^4.7.2",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.0",
@@ -60,7 +63,7 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
-    "webpack-bundle-analyzer": "^2.10.0",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
   }

@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "outDir": "./lib/",
     "paths": {
-      "src/*": ["src/*"]
+      "@src/*": ["src/*"]
     },
     "preserveConstEnums": true,
     "removeComments": true,

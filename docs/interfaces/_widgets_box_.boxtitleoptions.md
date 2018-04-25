@@ -1,25 +1,15 @@
-[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [Tile](../interfaces/_terminal_.tile.md)
+[terminal-in-canvas](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxTitleOptions](../interfaces/_widgets_box_.boxtitleoptions.md)
 
 
 
-# Interface: Tile
+# Interface: BoxTitleOptions
 
 ## Hierarchy
 
 
  [CharStyle](_terminal_.charstyle.md)
 
-**↳ Tile**
-
-↳  [InternalTile](_terminal_.internaltile.md)
-
-
-
-
-↳  [DecayTile](_terminal_.decaytile.md)
-
-
-
+**↳ BoxTitleOptions**
 
 
 
@@ -48,17 +38,17 @@ background color (i.e. `#000000`)
 
 ___
 
-<a id="char"></a>
+<a id="ellipsis"></a>
 
-###  char
+### «Optional» ellipsis
 
-**●  char**:  *`string`* 
+**●  ellipsis**:  *`string`* 
 
-*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L94)*
+*Defined in [widgets/Box.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L29)*
 
 
 
-char to display in the tile
+String to use when the title doesn't fit in the box
 
 
 
@@ -135,6 +125,40 @@ ___
 
 
 y-offset to apply to each character inside the tile
+
+
+
+
+___
+
+<a id="marginleft"></a>
+
+### «Optional» marginLeft
+
+**●  marginLeft**:  *`number`* 
+
+*Defined in [widgets/Box.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L25)*
+
+
+
+Number of border tiles to leave to the left of the title
+
+
+
+
+___
+
+<a id="marginright"></a>
+
+### «Optional» marginRight
+
+**●  marginRight**:  *`number`* 
+
+*Defined in [widgets/Box.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L27)*
+
+
+
+Number of border tiles to leave to the right of the title
 
 
 

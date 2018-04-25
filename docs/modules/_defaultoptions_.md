@@ -25,7 +25,7 @@
 
 **●  gridStyle**:  *`string`*  = "#777"
 
-*Defined in [defaultOptions.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L25)*
+*Defined in [defaultOptions.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L30)*
 
 
 
@@ -38,7 +38,7 @@ ___
 
 **●  renderGrid**:  *`boolean`*  = true
 
-*Defined in [defaultOptions.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L24)*
+*Defined in [defaultOptions.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L29)*
 
 
 
@@ -51,7 +51,7 @@ ___
 
 **●  verbose**:  *`boolean`*  = true
 
-*Defined in [defaultOptions.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L23)*
+*Defined in [defaultOptions.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L28)*
 
 
 
@@ -70,7 +70,7 @@ ___
 
 **●  autoRender**:  *`boolean`*  = true
 
-*Defined in [defaultOptions.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L9)*
+*Defined in [defaultOptions.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L6)*
 
 
 
@@ -83,20 +83,33 @@ ___
 
 **●  autoSize**:  *`boolean`*  = true
 
-*Defined in [defaultOptions.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L10)*
+*Defined in [defaultOptions.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L7)*
 
 
 
 
 
 ___
-<a id="defaultoptions.columns"></a>
+<a id="defaultoptions.avoiddoublerendering"></a>
 
-###  columns
+###  avoidDoubleRendering
 
-**●  columns**:  *`number`*  = 40
+**●  avoidDoubleRendering**:  *`boolean`*  = true
 
-*Defined in [defaultOptions.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L6)*
+*Defined in [defaultOptions.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L24)*
+
+
+
+
+
+___
+<a id="defaultoptions.bg"></a>
+
+###  bg
+
+**●  bg**:  *`string`*  = "#000000"
+
+*Defined in [defaultOptions.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L17)*
 
 
 
@@ -109,7 +122,7 @@ ___
 
 **●  cursor**:  *`boolean`*  = true
 
-*Defined in [defaultOptions.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L11)*
+*Defined in [defaultOptions.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L8)*
 
 
 
@@ -122,7 +135,7 @@ ___
 
 **●  cursorFrequency**:  *`number`*  = 700
 
-*Defined in [defaultOptions.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L12)*
+*Defined in [defaultOptions.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L9)*
 
 
 
@@ -135,7 +148,46 @@ ___
 
 **●  debug**:  *`boolean`*  = false
 
-*Defined in [defaultOptions.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L13)*
+*Defined in [defaultOptions.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L12)*
+
+
+
+
+
+___
+<a id="defaultoptions.decayinitialalpha"></a>
+
+###  decayInitialAlpha
+
+**●  decayInitialAlpha**:  *`number`*  = 0.7
+
+*Defined in [defaultOptions.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L11)*
+
+
+
+
+
+___
+<a id="defaultoptions.decaytime"></a>
+
+###  decayTime
+
+**●  decayTime**:  *`number`*  = 200
+
+*Defined in [defaultOptions.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L10)*
+
+
+
+
+
+___
+<a id="defaultoptions.fg"></a>
+
+###  fg
+
+**●  fg**:  *`string`*  = "#00ff00"
+
+*Defined in [defaultOptions.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L16)*
 
 
 
@@ -148,20 +200,33 @@ ___
 
 **●  font**:  *`string`*  = "20pt Terminal_VT220"
 
-*Defined in [defaultOptions.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L8)*
+*Defined in [defaultOptions.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L13)*
 
 
 
 
 
 ___
-<a id="defaultoptions.lines"></a>
+<a id="defaultoptions.fontoffsetx"></a>
 
-###  lines
+###  fontOffsetX
 
-**●  lines**:  *`number`*  = 25
+**●  fontOffsetX**:  *`number`*  = 1
 
-*Defined in [defaultOptions.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L7)*
+*Defined in [defaultOptions.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L14)*
+
+
+
+
+
+___
+<a id="defaultoptions.fontoffsety"></a>
+
+###  fontOffsetY
+
+**●  fontOffsetY**:  *`number`*  =  -1
+
+*Defined in [defaultOptions.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L15)*
 
 
 
@@ -174,7 +239,7 @@ ___
 
 **●  tileHeight**:  *`number`*  = 28
 
-*Defined in [defaultOptions.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L5)*
+*Defined in [defaultOptions.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L5)*
 
 
 
@@ -187,70 +252,70 @@ ___
 
 **●  tileWidth**:  *`number`*  = 18
 
-*Defined in [defaultOptions.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L4)*
+*Defined in [defaultOptions.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L4)*
 
 
 
 
 
 ___
-<a id="defaultoptions.defaulttile"></a>
+<a id="defaultoptions.viewport"></a>
 
-###  defaultTile
+###  viewport
 
-** defaultTile**:  *`object`* 
+** viewport**:  *`object`* 
 
-*Defined in [defaultOptions.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L14)*
-
-
-
-
-<a id="defaultoptions.defaulttile.bg"></a>
-
-###  bg
-
-**●  bg**:  *`string`*  = "#000000"
-
-*Defined in [defaultOptions.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L17)*
+*Defined in [defaultOptions.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L18)*
 
 
 
 
+<a id="defaultoptions.viewport.bottom"></a>
 
-___
-<a id="defaultoptions.defaulttile.char"></a>
+###  bottom
 
-###  char
+**●  bottom**:  *`undefined`*  =  undefined
 
-**●  char**:  *`string`*  = " "
-
-*Defined in [defaultOptions.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L15)*
+*Defined in [defaultOptions.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L21)*
 
 
 
 
 
 ___
-<a id="defaultoptions.defaulttile.fg"></a>
+<a id="defaultoptions.viewport.left"></a>
 
-###  fg
+###  left
 
-**●  fg**:  *`string`*  = "#00ff00"
+**●  left**:  *`undefined`*  =  undefined
 
-*Defined in [defaultOptions.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L18)*
+*Defined in [defaultOptions.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L22)*
 
 
 
 
 
 ___
-<a id="defaultoptions.defaulttile.style"></a>
+<a id="defaultoptions.viewport.right"></a>
 
-###  style
+###  right
 
-**●  style**:  *`string`*  = ""
+**●  right**:  *`undefined`*  =  undefined
 
-*Defined in [defaultOptions.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/defaultOptions.ts#L16)*
+*Defined in [defaultOptions.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L20)*
+
+
+
+
+
+___
+<a id="defaultoptions.viewport.top"></a>
+
+###  top
+
+**●  top**:  *`undefined`*  =  undefined
+
+*Defined in [defaultOptions.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/defaultOptions.ts#L19)*
 
 
 

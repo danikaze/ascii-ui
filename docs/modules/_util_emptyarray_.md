@@ -22,7 +22,7 @@
 
 
 
-*Defined in [util/emptyArray.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/util/emptyArray.ts#L8)*
+*Defined in [util/emptyArray.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/util/emptyArray.ts#L8)*
 
 
 

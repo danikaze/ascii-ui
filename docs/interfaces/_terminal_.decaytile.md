@@ -1,25 +1,15 @@
-[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [Tile](../interfaces/_terminal_.tile.md)
+[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [DecayTile](../interfaces/_terminal_.decaytile.md)
 
 
 
-# Interface: Tile
+# Interface: DecayTile
 
 ## Hierarchy
 
 
- [CharStyle](_terminal_.charstyle.md)
+↳  [Tile](_terminal_.tile.md)
 
-**↳ Tile**
-
-↳  [InternalTile](_terminal_.internaltile.md)
-
-
-
-
-↳  [DecayTile](_terminal_.decaytile.md)
-
-
-
+**↳ DecayTile**
 
 
 
@@ -29,6 +19,23 @@
 
 
 ## Properties
+<a id="alpha"></a>
+
+###  alpha
+
+**●  alpha**:  *`number`* 
+
+*Defined in [Terminal.ts:121](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L121)*
+
+
+
+current opacity
+
+
+
+
+___
+
 <a id="bg"></a>
 
 ### «Optional» bg
@@ -53,6 +60,8 @@ ___
 ###  char
 
 **●  char**:  *`string`* 
+
+*Inherited from [Tile](_terminal_.tile.md).[char](_terminal_.tile.md#char)*
 
 *Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L94)*
 

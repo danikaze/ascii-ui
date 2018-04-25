@@ -1,17 +1,19 @@
 {
   "name": "terminal-in-canvas",
   "version": "0.1.0",
-  "description": "Terminal emulator for HTML canvas elements",
+  "description": "Graphic terminal emulator for HTML canvas elements",
   "author": {
     "name": "danikaze",
     "email": "danikaze@gmail.com"
   },
+  "bugs": "https://github.com/danikaze/terminal-in-canvas/issues",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --env=dev",
     "clean": "rimraf lib",
-    "build": "webpack --env=lib",
+    "build": "tsc",
+    "prebuild": "yarn run clean",
     "docs": "typedoc ./src",
     "clean:docs": "rimraf docs",
     "predocs": "yarn run clean:docs"

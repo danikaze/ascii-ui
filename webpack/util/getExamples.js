@@ -4,8 +4,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const getFolders = require('./getFolders');
 const stripExtension = require('./stripExtension');
 const settings = require('../settings');
+const packageJson = require('../../package.json');
 
 const EXAMPLES_ENV = 'examples';
+
+/**
+ * Get the current date as a formated string
+ */
+function getDate() {
+  const now = new Date();
+  const locale = 'ja';
+  const options = {
+    timeZone: 'Asia/Tokyo',
+    hour12: false,
+    hourCycle: 'h23',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
+
+  return now.toLocaleString(locale, options);
+}
 
 /**
  * Generate an object with the entry points for each example
@@ -100,6 +122,8 @@ function generateHtmlIndex(entries, env) {
       ? `<a href="${settings.paths.buildInfo}">Build Info</a>`
       : undefined,
     assets: settings.paths.assets,
+    version: packageJson.version,
+    date: getDate(),
   });
 }
 
@@ -135,6 +159,8 @@ function getHtmlWebpackPlugin(chunk) {
     backLink: '../index.html',
     assets: `../${settings.paths.assets}`,
     breadcrumbs: getBreadCrumbsHtml(chunk),
+    version: packageJson.version,
+    date: getDate(),
   });
 }
 

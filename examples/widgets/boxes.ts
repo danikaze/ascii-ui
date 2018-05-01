@@ -56,6 +56,19 @@ function run() {
     line: 1,
     width: 20,
     height: 5,
+    focusable: true,
+    base: {
+      boxBorders: { fg: '#00ff00' },
+      boxTitle: { fg: '#00ff00' },
+    },
+    focus: {
+      boxBorders: { fg: '#ffff00' },
+      boxTitle: { fg: '#ffff00' },
+    },
+    disabled: {
+      boxBorders: { fg: '#009900' },
+      boxTitle: { fg: '#009900' },
+    },
   };
   const box1 = terminal.attachWidget(Box, options);
 

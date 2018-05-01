@@ -11,7 +11,7 @@ export interface WidgetOptions {
   /** widget height in terminal tiles */
   height?: number;
   /** if `true`, the widget can be selectable */
-  selectable?: boolean;
+  focusable?: boolean;
   /** value use for ordering the selection order with the keys */
   tabIndex?: number;
 }
@@ -54,6 +54,10 @@ export abstract class Widget {
    */
   setOptions(options: WidgetOptions): void {
     const changes = deepAssignAndDiff(this.options, options);
+
+    if (!this.options.focusable && this.focused) {
+      this.blur();
+    }
 
     this.allocated = this.options.col >= 0
       && this.options.line >= 0
@@ -108,7 +112,13 @@ export abstract class Widget {
    * (so the previously focused widget is blurred)
    */
   focus(): void {
-    this.focused = true;
+    if (this.options.focusable) {
+      const wasFocused = this.focused;
+      this.focused = true;
+      if (!wasFocused) {
+        this.render();
+      }
+    }
   }
 
   /**
@@ -116,7 +126,11 @@ export abstract class Widget {
    * Usually done by a upper level that controls other widgets.
    */
   blur(): void {
+    const wasFocused = this.focused;
     this.focused = false;
+    if (wasFocused) {
+      this.render();
+    }
   }
 
   /**

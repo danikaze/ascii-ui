@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "baseUrl": ".",
-    "module": "commonjs",
-    "outDir": "./build/",
-    "target": "es5",
-    "lib": ["es6", "dom"],
+    "declaration": true,
+    "module": "ES6",
     "moduleResolution": "node",
+    "outDir": "./lib/",
+    "paths": {
+      "@src/*": ["src/*"]
+    },
     "preserveConstEnums": true,
     "removeComments": true,
-    "paths": {
-      "src/*": ["src/*"]
-    }
+    "sourceMap": true,
+    "target": "ES6"
   },
   "include": [
    "global.d.ts",

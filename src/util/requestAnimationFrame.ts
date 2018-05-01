@@ -1,4 +1,4 @@
-type requestAnimationFrameFn = (callback: FrameRequestCallback) => number;
+export type requestAnimationFrameFn = (callback: FrameRequestCallback) => number;
 
 interface VendorWindow extends Window {
   mozRequestAnimationFrame?: requestAnimationFrameFn;

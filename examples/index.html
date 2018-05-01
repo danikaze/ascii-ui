@@ -3,16 +3,29 @@
 <head>
   <meta charset="utf-8">
   <title>Examples Index</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="<%= htmlWebpackPlugin.options.assets %>/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-  <h1>Examples Index</h1>
-  <p>List of examples generated automatically from the <b>example/</b> folder:</p>
-  <div id="examples">
-    <%= htmlWebpackPlugin.options.exampleIndex %>
+  <div class="container">
+    <h1>Examples Index</h1>
+
+    <p>
+      <small class="text-secondary h-50">
+        Generated on
+        <span class="text-info"><%= htmlWebpackPlugin.options.date %></span>
+        from version
+        <span class="text-info"><%= htmlWebpackPlugin.options.version %></span>
+      </small>
+    </p>
+
+    <p><%= htmlWebpackPlugin.options.buildInfoLink %></p>
+
+    <p>List of examples generated automatically from the <code>examples/</code> folder:</p>
+
+    <div id="examples">
+      <%= htmlWebpackPlugin.options.exampleIndex %>
+    </div>
   </div>
 </body>
 </html>

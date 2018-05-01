@@ -1,20 +1,22 @@
 {
   "name": "terminal-in-canvas",
   "version": "0.1.0",
-  "description": "Terminal emulator for HTML canvas elements",
+  "description": "Graphic terminal emulator for HTML canvas elements",
   "author": {
     "name": "danikaze",
     "email": "danikaze@gmail.com"
   },
+  "bugs": "https://github.com/danikaze/terminal-in-canvas/issues",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --env=dev",
     "clean": "rimraf lib",
-    "build": "webpack --env=lib",
+    "build": "tsc",
+    "examples": "webpack --env=examples",
+    "prebuild": "yarn run clean",
     "docs": "typedoc ./src",
     "clean:docs": "rimraf docs",
-    "prebuild": "yarn run clean",
     "predocs": "yarn run clean:docs"
   },
   "repository": {
@@ -28,6 +30,8 @@
   "devDependencies": {
     "@types/node": "^9.4.5",
     "@types/webpack-env": "^1.13.5",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
@@ -37,10 +41,12 @@
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
     "merge-files-webpack-plugin": "^1.1.2",
+    "mkdirp": "^0.5.1",
     "node-sass": "^4.7.2",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.0",
     "pre-commit": "^1.2.2",
+    "progress-bar-webpack-plugin": "^1.11.0",
     "rimraf": "^2.6.2",
     "sass": "^1.0.0-beta.5.2",
     "sass-loader": "^6.0.6",
@@ -57,7 +63,7 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
-    "webpack-bundle-analyzer": "^2.10.0",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
   }

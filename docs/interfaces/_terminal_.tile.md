@@ -6,9 +6,19 @@
 
 ## Hierarchy
 
-**Tile**
+
+ [CharStyle](_terminal_.charstyle.md)
+
+**↳ Tile**
 
 ↳  [InternalTile](_terminal_.internaltile.md)
+
+
+
+
+↳  [DecayTile](_terminal_.decaytile.md)
+
+
 
 
 
@@ -21,11 +31,13 @@
 ## Properties
 <a id="bg"></a>
 
-###  bg
+### «Optional» bg
 
 **●  bg**:  *`string`* 
 
-*Defined in [Terminal.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L47)*
+*Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
+
+*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L38)*
 
 
 
@@ -42,7 +54,7 @@ ___
 
 **●  char**:  *`string`* 
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L94)*
 
 
 
@@ -55,11 +67,13 @@ ___
 
 <a id="fg"></a>
 
-###  fg
+### «Optional» fg
 
 **●  fg**:  *`string`* 
 
-*Defined in [Terminal.ts:49](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L49)*
+*Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
+
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L36)*
 
 
 
@@ -70,17 +84,57 @@ foreground color (i.e. `#00ff00`)
 
 ___
 
-<a id="style"></a>
+<a id="font"></a>
 
-###  style
+### «Optional» font
 
-**●  style**:  *`string`* 
+**●  font**:  *`string`* 
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/34567b2/src/Terminal.ts#L45)*
+*Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
+
+*Defined in [Terminal.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L30)*
 
 
 
-style of the displayed char
+font or font-family to use in the terminal The format is in this order: [style] [variant] [weight] [family]
+
+
+
+
+___
+
+<a id="fontoffsetx"></a>
+
+### «Optional» fontOffsetX
+
+**●  fontOffsetX**:  *`number`* 
+
+*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
+
+*Defined in [Terminal.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L32)*
+
+
+
+x-offset to apply to each character inside the tile
+
+
+
+
+___
+
+<a id="fontoffsety"></a>
+
+### «Optional» fontOffsetY
+
+**●  fontOffsetY**:  *`number`* 
+
+*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
+
+*Defined in [Terminal.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L34)*
+
+
+
+y-offset to apply to each character inside the tile
 
 
 

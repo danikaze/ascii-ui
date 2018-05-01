@@ -2,9 +2,11 @@
 
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { Terminal } from '../../src/Terminal';
-import { Box, BoxOptions } from '../../src/widgets/Box';
-import { Text, TextOptions } from '../../src/widgets/Text';
+import { Terminal } from '@src/Terminal';
+import { Box, BoxOptions } from '@src/widgets/Box';
+import { Text, TextOptions } from '@src/widgets/Text';
+
+import '../styles/examples.less';
 
 interface TestWindow extends Window {
   terminal: Terminal;

@@ -1,10 +1,33 @@
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const EXAMPLES_PATH = './examples';
-const EXAMPLES_BUILD_PATH = './build_examples';
 const getFolders = require('./getFolders');
 const stripExtension = require('./stripExtension');
+const settings = require('../settings');
+const packageJson = require('../../package.json');
+
+const EXAMPLES_ENV = 'examples';
+
+/**
+ * Get the current date as a formated string
+ */
+function getDate() {
+  const now = new Date();
+  const locale = 'ja';
+  const options = {
+    timeZone: 'Asia/Tokyo',
+    hour12: false,
+    hourCycle: 'h23',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
+
+  return now.toLocaleString(locale, options);
+}
 
 /**
  * Generate an object with the entry points for each example
@@ -24,7 +47,7 @@ const stripExtension = require('./stripExtension');
  */
 function getEntryPoints() {
   const entries = {};
-  const folders = getFolders(EXAMPLES_PATH);
+  const folders = getFolders(settings.paths.examples);
 
   folders.forEach((folder) => {
     fs.readdirSync(folder).forEach((file) => {
@@ -33,7 +56,7 @@ function getEntryPoints() {
         const filePath = path.join(folder, file);
         const htmlFile = `${stripExtension(filePath)}.html`;
         if (fs.existsSync(htmlFile)) {
-          const output = path.relative(EXAMPLES_PATH, filePath);
+          const output = stripExtension(path.relative(settings.paths.examples, filePath));
           entries[output] = path.resolve(path.join('.', filePath));
         }
       }
@@ -44,12 +67,9 @@ function getEntryPoints() {
 }
 
 /**
- *
- *
- * @param {any} entries
- * @returns
+ * Generate the HtmlWebpackPlugin with the data for the examples index page
  */
-function generateHtmlIndex(entries) {
+function generateHtmlIndex(entries, env) {
   function getHtmlTitle(file) {
     const regExp = /<title>(.*)<\/title>/;
     const html = fs.readFileSync(file);
@@ -60,76 +80,96 @@ function generateHtmlIndex(entries) {
 
   function getEntryHtml(folder, htmlFile) {
     const relativePath = path.join(folder, htmlFile);
-    const fullPath = path.join(EXAMPLES_PATH, relativePath);
-    return `<a href="${relativePath}"><b>${htmlFile}:</b> <em>${getHtmlTitle(fullPath)}</em></a>`;
+    const fullPath = path.join(settings.paths.examples, relativePath);
+
+    return `<a class="list-group-item" href="${relativePath}">
+        <b>${path.basename(htmlFile)}:</b>
+        <em>${getHtmlTitle(fullPath)}</em>
+      </a>`;
   }
 
   const examplesHtml = [];
   const folders = {};
-  const fileRegExp = /^[^/\\]+[\/\\](.*)\.([jt]sx?)$/;
-  const folderRegExp = /^([^/\\]+)[\/\\].*$/;
 
   // group files by its folder
   Object.keys(entries).forEach((output, index) => {
-    const fileMatch = fileRegExp.exec(output);
-    const folderMatch = folderRegExp.exec(output);
-    const folder = folderMatch[1];
-    const htmlFile = `${fileMatch[1]}.html`;
+    const folderFile = output.split(path.sep);
+    const folder = folderFile[0];
+    const htmlFile = `${folderFile[1]}.html`;
     if (!folders[folder]) {
       folders[folder] = [];
     }
-    folders[folder].push(htmlFile);
+    folders[folder].push(getEntryHtml(folder, htmlFile));
   });
 
   // generate output
   Object.keys(folders).forEach((folder) => {
-    const listHtmls = folders[folder].map((file) => getEntryHtml(folder, file));
-    const listHtml = `<ul><li>${listHtmls.join('</li> <li>')}</li></ul>`;
-    const folderHtml = `<li><b>${folder}/</b>${listHtml}</li>`;
+    const folderHtml = `<div class="list-group shadow my-4">
+        <h5 class="list-group-item list-group-item-primary">${folder}/</h5>
+        ${folders[folder].join('\n')}
+      </div>`;
     examplesHtml.push(folderHtml);
   });
 
   return new HtmlWebpackPlugin({
-    template: path.join(EXAMPLES_PATH, 'index.html'),
+    template: path.join(settings.paths.examples, 'index.html'),
     filename: 'index.html',
     chunks: [],
     minify: false,
-    exampleIndex: `<ul>\n${examplesHtml.join('\n')}\n</ul>`,
+    // options for templates
+    exampleIndex: `${examplesHtml.join('\n')}`,
+    buildInfoLink: env === EXAMPLES_ENV
+      ? `<a href="${settings.paths.buildInfo}">Build Info</a>`
+      : undefined,
+    assets: settings.paths.assets,
+    version: packageJson.version,
+    date: getDate(),
   });
 }
 
 /**
- *
- *
- * @param {any} chunk
- * @returns
+ * Generate the HTML for the breadcrumbs associated to an example page
  */
-function getHtmlWebpackPlugin(jsInput) {
-  const jsOutput = path.join(EXAMPLES_BUILD_PATH, jsInput);
-  let match = /^(.*)\.([jt]sx?)$/.exec(jsInput);
+function getBreadCrumbsHtml(chunk) {
+  let html = '<li class="breadcrumb-item"><a href="../index.html">Examples</a></li>';
+  const steps = chunk.split(path.sep);
 
-  const template = path.join(EXAMPLES_PATH, `${match[1]}.html`);
-  match = /^(.*)\.([jt]sx?)$/.exec(jsOutput);
+  for (let i = 0; i < steps.length; i++) {
+    const activeClass = i === steps.length - 1 ? ' active' : '';
+    html += `<li class="breadcrumb-item${activeClass}">${steps[i]}</li>`;
+  }
 
-  const filename = path.relative(EXAMPLES_BUILD_PATH, `${match[1]}.html`);
+  return `<ol class="breadcrumb">${html}</ol>`;
+}
+
+/**
+ * Generate the HtmlWebpackPlugin with the data for one example page
+ */
+function getHtmlWebpackPlugin(chunk) {
+  const template = path.join(settings.paths.examples, `${chunk}.html`);
+  const filename = `${chunk}.html`;
 
   return new HtmlWebpackPlugin({
     template,
     filename,
-    chunks: [jsInput],
+    chunks: [chunk],
     inject: true,
     minify: false,
+    // options for templates
+    backLink: '../index.html',
+    assets: `../${settings.paths.assets}`,
+    breadcrumbs: getBreadCrumbsHtml(chunk),
+    version: packageJson.version,
+    date: getDate(),
   });
 }
 
 /**
- *
- *
- * @param {any} entries
+ * Get all the HtmlWebpackPlugins instances needed (index + examples)
  */
-function getHtmlWebpackPlugins(entries) {
+function getHtmlWebpackPlugins(entries, env) {
   const plugins = [];
-  plugins.push(generateHtmlIndex(entries));
+  plugins.push(generateHtmlIndex(entries, env));
   Object.keys(entries).forEach((file) => {
     const pluginInstance = getHtmlWebpackPlugin(file);
     plugins.push(pluginInstance);
@@ -137,9 +177,12 @@ function getHtmlWebpackPlugins(entries) {
   return plugins;
 }
 
+/**
+ * Returns an object to be merged with the webpack configuration with the examples data
+ */
 function get(env) {
   const entry = getEntryPoints();
-  const plugins = getHtmlWebpackPlugins(entry);
+  const plugins = getHtmlWebpackPlugins(entry, env);
 
   return {
     entry,

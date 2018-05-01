@@ -15,10 +15,8 @@ const moduleConfig = {
   },
 
   output: {
-    path: path.resolve(path.join(__dirname, '../build_examples')),
+    path: settings.paths.buildExamples,
   },
-
-  devtool: 'inline-source-map',
 
   // Configuration for dev server
   devServer: {
@@ -28,9 +26,15 @@ const moduleConfig = {
     // Listen port
     port: settings.options.devPort,
     // Match the output.path
-    contentBase: settings.paths.build,
+    contentBase: settings.paths.buildExamples,
     // Match the output.publicPath
     publicPath: settings.options.publicPath,
+    stats: {
+      assetsSort: 'name',
+      modules: false,
+      children: false,
+      excludeAssets: [/hot(-update)?\.js(on)?/, /webpack-dev-server/],
+    },
   },
 
   plugins: [

@@ -10,9 +10,6 @@ import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget } from './Widget';
 import { WidgetContainer } from './WidgetContainer';
 
-// tslint:disable-next-line:no-import-side-effect
-import './styles.less';
-
 /**
  * Function called when the matching command is found
  * @param text The whole text
@@ -317,7 +314,6 @@ export class Terminal implements WidgetContainer {
     }
 
     const start = window.performance.now();
-    console.log(start - this.lastRenderTime);
     const ctx = this.ctx;
     const w = this.options.tileWidth;
     const h = this.options.tileHeight;

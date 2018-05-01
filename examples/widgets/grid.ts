@@ -1,8 +1,10 @@
-import { Terminal, TerminalOptions } from '../../src/Terminal';
-import { Box } from '../../src/widgets/Box';
-import { Grid, GridOptions } from '../../src/widgets/Grid';
+import { Terminal, TerminalOptions } from '@src/Terminal';
+import { Box } from '@src/widgets/Box';
+import { Grid, GridOptions } from '@src/widgets/Grid';
 
 import { load } from '../util/load';
+
+import '../styles/examples.less';
 
 function resizeTerminal(terminal: Terminal, w: number, h: number) {
   const currentSize = terminal.getSize();

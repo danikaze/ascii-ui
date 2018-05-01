@@ -2,12 +2,17 @@ const packageJson = require('../package.json');
 const absPath = require('./util/absPath');
 
 module.exports = {
-  entries: {
-    Terminal: absPath('src/Terminal.ts'),
-  },
   paths: {
-    build: absPath(`lib`),
-    htmlTemplate: absPath('src/index.html'),
+    /* relative to PROJECT_ROOT */
+    examples: 'examples',
+    /* absolute */
+    buildExamples: absPath('buildExamples'),
+    /* relative to examples */
+    buildInfo: 'info.html',
+    /* relative to examples */
+    assets: 'assets',
+    /* relative to examples */
+    fonts: 'fonts',
   },
   options: {
     fileName: '[name].js',
@@ -15,16 +20,16 @@ module.exports = {
     vendorContent: [
       'babel-polyfill',
     ],
-    jsonpFunction: 'wp_ichibaItemPc',
+    jsonpFunction: 'wp_ajax',
     publicPath: '',
     devPort: 8084,
     devHost: 'localhost',
     minimizeBuild: false,
     libraryTarget: 'umd',
-    auxiliaryComment: 'Test comment',
+    auxiliaryComment: 'terminal-in-canvas',
   },
   // aliases need to be defined also in tsconfig.json (compilerOptions.paths)
   alias: {
-    'Terminal': absPath('src'),
+    '@src': absPath('src'),
   },
 };

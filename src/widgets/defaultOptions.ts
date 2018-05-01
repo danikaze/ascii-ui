@@ -27,9 +27,11 @@ export const boxPaddingDefaultOptions: BoxPaddingOptions = {
 };
 
 export const boxDefaultOptions: BoxOptions = {
-  boxBorders: boxBorderDefaultOptions,
-  boxTitle: boxTitleDefaultOptions,
   padding: boxPaddingDefaultOptions,
+  base: {
+    boxBorders: boxBorderDefaultOptions,
+    boxTitle: boxTitleDefaultOptions,
+  },
 };
 
 export const textDefaultOptions: TextOptions = {

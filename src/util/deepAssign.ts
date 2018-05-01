@@ -6,7 +6,7 @@ import { isObject } from 'vanilla-type-check';
  * @param args
  */
 export function deepAssign(...args) {
-  const target = args[0];
+  const target = args[0] || {};
 
   for (let i = 1, n = args.length; i < n; i++) {
     const obj = args[i];

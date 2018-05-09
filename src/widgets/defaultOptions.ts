@@ -1,7 +1,15 @@
 import { BoxBorderOptions, BoxOptions, BoxPaddingOptions, BoxTitleOptions } from './Box';
+import { GridOptions } from './Grid';
 import { TextOptions } from './Text';
 
+export const gridDefaultOptions: GridOptions = {
+  rows: undefined,
+  columns: undefined,
+  focusable: true,
+};
+
 export const boxBorderDefaultOptions: BoxBorderOptions = {
+  fg: '#00ff00',
   topLeft: '┌',
   top: '─',
   topRight: '┐',
@@ -14,6 +22,7 @@ export const boxBorderDefaultOptions: BoxBorderOptions = {
 };
 
 export const boxTitleDefaultOptions: BoxTitleOptions = {
+  fg: '#00ff00',
   marginLeft: 1,
   marginRight: 1,
   ellipsis: '...',
@@ -28,9 +37,18 @@ export const boxPaddingDefaultOptions: BoxPaddingOptions = {
 
 export const boxDefaultOptions: BoxOptions = {
   padding: boxPaddingDefaultOptions,
+  focusable: true,
   base: {
     boxBorders: boxBorderDefaultOptions,
     boxTitle: boxTitleDefaultOptions,
+  },
+  focus: {
+    boxBorders: { fg: '#ffff00' },
+    boxTitle: { fg: '#ffff00' },
+  },
+  disabled: {
+    boxBorders: { fg: '#009900' },
+    boxTitle: { fg: '#009900' },
   },
 };
 

@@ -108,6 +108,15 @@ export abstract class Widget {
   }
 
   /**
+   * Check if this widget is focusable (when cycling over widgets)
+   *
+   * @returns `true` if focusable, `false` if not
+   */
+  isFocusable(): boolean {
+    return this.options.focusable;
+  }
+
+  /**
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
    */

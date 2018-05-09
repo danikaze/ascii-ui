@@ -8,7 +8,7 @@ import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget } from './Widget';
-import { WidgetContainer } from './WidgetContainer';
+import { WidgetContainer, isWidgetContainer } from './WidgetContainer';
 
 /**
  * Function called when the matching command is found
@@ -159,6 +159,8 @@ export class Terminal implements WidgetContainer {
   private lastRenderTime: number = 0;
   /** list of attached widgets */
   private readonly attachedWidgets: Widget[] = [];
+  /** index of the currently focused widget (in `attachedWidgets`) */
+  private focusedWidgetIndex: number;
   /** listeners registered to the terminal events */
   private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
@@ -728,6 +730,68 @@ export class Terminal implements WidgetContainer {
       if (widget.isAt(column, line)) {
         return widget;
       }
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Cycle over the focusable widgets.
+   *
+   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
+   * @returns focused widget or `undefined` if finished the cycle
+   */
+  cycleFocus(reverse?: boolean): Widget {
+    if (this.attachedWidgets.length === 0) {
+      return undefined;
+    }
+
+    let chosen;
+    const delta = reverse ? -1 : 1;
+    const currentFocusedWidget = this.focusedWidgetIndex >= 0
+      ? this.attachedWidgets[this.focusedWidgetIndex]
+      : undefined;
+
+    if (isWidgetContainer(currentFocusedWidget)) {
+      chosen = currentFocusedWidget.cycleFocus(reverse);
+    }
+
+    if (!chosen) {
+      while (!chosen) {
+        if (this.focusedWidgetIndex === undefined) {
+          this.focusedWidgetIndex = 0;
+        } else {
+          this.focusedWidgetIndex = (this.focusedWidgetIndex + this.attachedWidgets.length + delta)
+            % this.attachedWidgets.length;
+        }
+        if (this.attachedWidgets[this.focusedWidgetIndex].isFocusable()) {
+          chosen = true;
+        }
+      }
+    }
+
+    const newFocusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
+    if (newFocusedWidget !== currentFocusedWidget) {
+      if (currentFocusedWidget) {
+        currentFocusedWidget.blur();
+      }
+    }
+    if (newFocusedWidget) {
+      newFocusedWidget.focus();
+    }
+
+    return newFocusedWidget;
+  }
+
+  /**
+   * Retrieve the focused widget if any
+   *
+   * @returns The focused widget or `undefined` if no one has the focus
+   */
+  getFocusedWidget(): Widget {
+    const focusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
+    if (focusedWidget && focusedWidget.isFocused()) {
+      return focusedWidget;
     }
 
     return undefined;

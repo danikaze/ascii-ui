@@ -1,6 +1,8 @@
 import { Terminal, TerminalEvent, TerminalSize } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
-import { WidgetContainer } from '../WidgetContainer';
+import { WidgetContainer, isWidgetContainer } from '../WidgetContainer';
+
+import { gridDefaultOptions } from './defaultOptions';
 
 export interface GridOptions extends WidgetOptions {
   /** Number of rows of the grid */
@@ -45,6 +47,8 @@ export class Grid extends Widget implements WidgetContainer {
 
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
+  /** index of the currently focused widget (in `attachedWidgets`) */
+  private focusedWidgetIndex: number;
   /** list of the first tile of each column */
   private columnStarts: number[] = [];
   /** list of the first tile of each row */
@@ -52,7 +56,7 @@ export class Grid extends Widget implements WidgetContainer {
 
   constructor(terminal: Terminal, options: GridOptions) {
     super(terminal, options);
-    this.options = { ...this.options, ...options };
+    this.options = { ...gridDefaultOptions, ...this.options, ...options };
     if (!this.options.calculateStarts) {
       this.options.calculateStarts = calculateStarts;
     }
@@ -162,6 +166,105 @@ export class Grid extends Widget implements WidgetContainer {
 
     return undefined;
   }
+
+  /**
+   * Set this Widget as focused. Usually done by a upper level that controls other widgets
+   * (so the previously focused widget is blurred)
+   */
+  focus(): void {
+    if (this.options.focusable) {
+      if (!this.focused) {
+        this.focused = true;
+        if (this.attachedWidgets.length > 0) {
+          this.focusedWidgetIndex = 0;
+          this.attachedWidgets[this.focusedWidgetIndex].widget.focus();
+        }
+        this.render();
+      } else if (this.focusedWidgetIndex === 0) {
+        this.attachedWidgets[this.focusedWidgetIndex].widget.focus();
+      }
+    }
+  }
+
+  /**
+   * Remove the focus from this widget.
+   * Usually done by a upper level that controls other widgets.
+   */
+  blur(): void {
+    if (this.focused) {
+      this.focused = false;
+      if (this.attachedWidgets.length > 0) {
+        this.attachedWidgets[this.focusedWidgetIndex].widget.blur();
+        this.focusedWidgetIndex = 0;
+      }
+      this.render();
+    }
+  }
+
+  /**
+   * Cycle over the focusable widgets.
+   *
+   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
+   * @returns focused widget or `undefined` if finished the cycle
+   */
+  cycleFocus(reverse?: boolean): Widget {
+    if (this.attachedWidgets.length === 0) {
+      return undefined;
+    }
+
+    let chosen;
+    const delta = reverse ? -1 : 1;
+    const currentFocusedWidget = this.focusedWidgetIndex >= 0
+      ? this.attachedWidgets[this.focusedWidgetIndex].widget
+      : undefined;
+
+    if (isWidgetContainer(currentFocusedWidget)) {
+      chosen = currentFocusedWidget.cycleFocus(reverse);
+    }
+
+    if (!chosen) {
+      while (chosen === undefined) {
+        if (this.focusedWidgetIndex === undefined) {
+          this.focusedWidgetIndex = 0;
+        } else {
+          this.focusedWidgetIndex = (this.focusedWidgetIndex + this.attachedWidgets.length + delta)
+            % this.attachedWidgets.length;
+        }
+        if (this.focusedWidgetIndex === 0) {
+          chosen = false;
+        } else if (this.attachedWidgets[this.focusedWidgetIndex].widget.isFocusable()) {
+          chosen = true;
+        }
+      }
+    }
+
+    const newFocusedWidget = chosen ? this.attachedWidgets[this.focusedWidgetIndex].widget : undefined;
+    if (newFocusedWidget !== currentFocusedWidget) {
+      if (currentFocusedWidget) {
+        currentFocusedWidget.blur();
+      }
+    }
+    if (newFocusedWidget) {
+      newFocusedWidget.focus();
+    }
+
+    return newFocusedWidget;
+  }
+
+  /**
+   * Retrieve the focused widget if any
+   *
+   * @returns The focused widget or `undefined` if no one has the focus
+   */
+  getFocusedWidget(): Widget {
+    const focusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
+    if (focusedWidget && focusedWidget.widget.isFocused()) {
+      return focusedWidget.widget;
+    }
+
+    return undefined;
+  }
+
   /**
    * Get a previously attached widget by its position in the Grid
    *

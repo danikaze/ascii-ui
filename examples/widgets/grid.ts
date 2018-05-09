@@ -14,7 +14,7 @@ function resizeTerminal(terminal: Terminal, w: number, h: number) {
   });
 }
 
-function enableControls(terminal: Terminal) {
+function enableControls(terminal: Terminal, canvas: HTMLCanvasElement) {
   document.getElementById('left')
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, -1, 0));
   document.getElementById('right')
@@ -23,9 +23,21 @@ function enableControls(terminal: Terminal) {
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
   document.getElementById('down')
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
+
+  document.getElementById('prev')
+    .addEventListener('click', terminal.cycleFocus.bind(terminal, true));
+  document.getElementById('next')
+    .addEventListener('click', terminal.cycleFocus.bind(terminal, false));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      terminal.cycleFocus(event.shiftKey);
+      event.preventDefault();
+    }
+  });
 }
 
-function run(terminal: Terminal): void {
+function run({terminal, canvas }): void {
   /* tslint:disable:no-magic-numbers */
   const options: GridOptions = {
     columns: 4,
@@ -34,7 +46,7 @@ function run(terminal: Terminal): void {
 
   const grid = new Grid(terminal, options);
   terminal.attachWidget(grid);
-  enableControls(terminal);
+  enableControls(terminal, canvas);
 
   // grid.attachWidget(0, 0, 2, 1, Box, { title: 'A' });
   // grid.attachWidget(2, 0, 1, 2, Box, { title: 'B' });
@@ -46,9 +58,9 @@ function run(terminal: Terminal): void {
   grid.attachWidget(3, 0, 1, 3, Box, { title: '(1x3)' });
   grid.attachWidget(0, 1, 3, 1, Box, { title: '(3x1)' });
   grid.attachWidget(0, 2, 2, 2, Box, { title: '(2x2)' });
-  const id = grid.attachWidget(2, 2, 1, 1, Box, { title: '(1x1)' });
+  const widget = grid.attachWidget(2, 2, 1, 1, Box, { title: '(1x1)' });
   grid.attachWidget(2, 3, 2, 1, Box, { title: '(2x1)' });
-  grid.dettachWidget(id);
+  grid.dettachWidget(widget);
 }
 
 const terminalOptions: TerminalOptions = {

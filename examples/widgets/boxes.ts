@@ -37,11 +37,10 @@ function scrollText(text: Text) {
   });
 }
 
-function run() {
+function run({ canvas }) {
   /* tslint:disable:no-magic-numbers */
   const columns = 40;
   const rows = 20;
-  const canvas = document.getElementById('canvas') as HTMLCanvasElement;
   const terminal = new Terminal(canvas, {
     columns,
     rows,
@@ -56,19 +55,6 @@ function run() {
     line: 1,
     width: 20,
     height: 5,
-    focusable: true,
-    base: {
-      boxBorders: { fg: '#00ff00' },
-      boxTitle: { fg: '#00ff00' },
-    },
-    focus: {
-      boxBorders: { fg: '#ffff00' },
-      boxTitle: { fg: '#ffff00' },
-    },
-    disabled: {
-      boxBorders: { fg: '#009900' },
-      boxTitle: { fg: '#009900' },
-    },
   };
   const box1 = terminal.attachWidget(Box, options);
 

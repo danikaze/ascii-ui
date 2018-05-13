@@ -1,5 +1,6 @@
 import { Terminal, TerminalSize, TilePosition } from './Terminal';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
+import { WidgetContainer } from './WidgetContainer';
 
 export interface WidgetOptions {
   /** x-position of the widget in terminal tiles */
@@ -22,6 +23,8 @@ export interface WidgetOptions {
 export abstract class Widget {
   /** Reference to the parent terminal where it should be rendered */
   protected terminal: Terminal;
+  /** container of the widget, if any */
+  protected parent?: WidgetContainer;
   /** Widget options */
   protected options: WidgetOptions = {};
   /** If the widget is focused or not */
@@ -34,10 +37,21 @@ export abstract class Widget {
    *
    * @param terminal
    * @param options
+   * @param parent
    */
-  constructor(terminal: Terminal, options?: WidgetOptions) {
+  constructor(terminal: Terminal, options?: WidgetOptions, parent?: WidgetContainer) {
     this.terminal = terminal;
+    this.parent = parent;
     this.setOptions(options);
+  }
+
+  /**
+   * Get the reference to the parent of the widget, if any
+   *
+   * @returns parent if any, or `undefined`
+   */
+  getParent(): WidgetContainer {
+    return this.parent;
   }
 
   /**

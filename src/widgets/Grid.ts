@@ -54,8 +54,8 @@ export class Grid extends Widget implements WidgetContainer {
   /** list of the first tile of each row */
   private rowStarts: number[] = [];
 
-  constructor(terminal: Terminal, options: GridOptions) {
-    super(terminal, options);
+  constructor(terminal: Terminal, options: GridOptions, parent?: WidgetContainer) {
+    super(terminal, options, parent);
     this.options = { ...gridDefaultOptions, ...this.options, ...options };
     if (!this.options.calculateStarts) {
       this.options.calculateStarts = calculateStarts;
@@ -114,8 +114,13 @@ export class Grid extends Widget implements WidgetContainer {
    * @param options Options to pass to the Widget when creating it
    * @return widget instance
    */
-  attachWidget(col: number, line: number, width: number, height: number, WidgetClass: typeof Widget, ...args): Widget {
-    const widget: Widget = Reflect.construct(WidgetClass, [this.terminal, ...args]);
+  attachWidget(col: number, line: number, width: number, height: number,
+               WidgetClass: typeof Widget, options): Widget {
+    const widget: Widget = Reflect.construct(WidgetClass, [
+      this.terminal,
+      options,
+      this,
+    ]);
     const attachedWidget: AttachedWidget = {
       id: ++Grid.widgetIds,
       widget,

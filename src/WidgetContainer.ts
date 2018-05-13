@@ -6,6 +6,13 @@ import { Widget } from './Widget';
  */
 export interface WidgetContainer {
   /**
+   * Get the reference to the parent of the widget, if any
+   *
+   * @returns parent if any, or `undefined`
+   */
+  getParent(): WidgetContainer;
+
+  /**
    * Attach a Widget to the container.
    * The parameters depends on each container
    *

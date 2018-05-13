@@ -97,10 +97,10 @@ export abstract class Widget {
   isAt(column: number, line: number): boolean {
     const options = this.options;
 
-    return options.col >= column
-      && options.col < column + options.width
-      && options.line >= line
-      && options.line < line + options.height;
+    return column >= options.col
+      && column < options.col + options.width
+      && line >= options.line
+      && line < options.line + options.height;
   }
 
   /**

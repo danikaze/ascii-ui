@@ -300,6 +300,42 @@ export class Grid extends Widget implements WidgetContainer {
     };
   }
 
+  [Symbol.iterator](startWidget?: Widget): Iterator<Widget> {
+    const data = this.attachedWidgets;
+    let index = startWidget
+      ? data.findIndex((attachedWidget) => attachedWidget.widget === startWidget)
+      : -1;
+
+    return {
+      next: () => {
+        const attachedWidget = data[++index];
+
+        return {
+          value: attachedWidget && attachedWidget.widget,
+          done: !(index in data),
+        };
+      },
+    };
+  }
+
+  reverseIterator(startWidget?: Widget): Iterator<Widget> {
+    const data = this.attachedWidgets;
+    let index = startWidget
+      ? data.findIndex((attachedWidget) => attachedWidget.widget === startWidget)
+      : data.length;
+
+    return {
+      next: () => {
+        const attachedWidget = data[--index];
+
+        return {
+          value: attachedWidget && attachedWidget.widget,
+          done: !(index in data),
+        };
+      },
+    };
+  }
+
   /**
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.

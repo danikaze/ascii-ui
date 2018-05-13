@@ -103,8 +103,8 @@ export class Box extends Widget implements WidgetContainer {
   /** Attached widget if any */
   private attachedWidget: Widget;
 
-  constructor(terminal: Terminal, options: BoxOptions) {
-    super(terminal, deepAssign({}, boxDefaultOptions, options));
+  constructor(terminal: Terminal, options?: BoxOptions, parent?: WidgetContainer) {
+    super(terminal, deepAssign({}, boxDefaultOptions, options), parent);
   }
 
   /**
@@ -137,23 +137,13 @@ export class Box extends Widget implements WidgetContainer {
   }
 
   /**
-   * Attach a specified widget to this box
-   *
-   * @param widget instance of the widget to attach
-   * @return provided widget instance itself
-   */
-  attachWidget(widget: Widget): Widget;
-
-  /**
    * Create and attach a widget to this instance of the terminal
    *
    * @param WidgetClass Class of the widget
    * @param options Options for the widget constructor
    * @return Created widget instance attached to the box
    */
-  attachWidget(WidgetClass: typeof Widget, options, ...args): Widget;
-
-  attachWidget(WidgetClass, options?, ...args): Widget {
+  attachWidget(WidgetClass: typeof Widget, options): Widget {
     const boxOptions = this.options;
     const padding = boxOptions.padding;
     // tslint:disable:no-magic-numbers
@@ -165,16 +155,15 @@ export class Box extends Widget implements WidgetContainer {
     };
     // tslint:enable:no-magic-numbers
 
-    if (typeof WidgetClass === 'function') {
       const newWidgetOptions = {
         ...options,
         ...positionOptions,
       };
-      this.attachedWidget = Reflect.construct(WidgetClass, [this.terminal, newWidgetOptions, ...args]);
-    } else {
-      this.attachedWidget = WidgetClass;
-      this.attachedWidget.setOptions(positionOptions);
-    }
+    this.attachedWidget = Reflect.construct(WidgetClass, [
+      this.terminal,
+      newWidgetOptions,
+      parent,
+    ]);
 
     // this.attachedWidget.render();
 

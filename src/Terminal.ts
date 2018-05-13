@@ -672,26 +672,28 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Attach a specified widget to this instance of the terminal
+   * Get the reference to the parent of the widget, if any
    *
-   * @param widget instance of the widget to attach
-   * @return widget instance
+   * @returns parent if any, or `undefined`
    */
-  attachWidget(widget: Widget): Widget;
+  // tslint:disable-next-line:prefer-function-over-method
+  getParent(): WidgetContainer {
+    return undefined;
+  }
 
   /**
    * Create and attach a widget to this instance of the terminal
    *
    * @param WidgetClass Class of the widget
-   * @param args Options for the widget constructor
+   * @param options Options for the widget constructor
    * @return handler of the attached widget. Required to deattach it.
    */
-  attachWidget(WidgetClass: typeof Widget, ...args): Widget;
-
-  attachWidget(WidgetClass, options?, ...args): Widget {
-    const widget: Widget = typeof WidgetClass === 'function'
-      ? Reflect.construct(WidgetClass, [this, options, ...args])
-      : WidgetClass;
+  attachWidget(WidgetClass: typeof Widget, options?): Widget {
+    const widget: Widget = Reflect.construct(WidgetClass, [
+      this,
+      options,
+      this,
+    ]);
 
     this.attachedWidgets.push(widget);
     widget.render();
@@ -733,6 +735,49 @@ export class Terminal implements WidgetContainer {
     }
 
     return undefined;
+  }
+
+  /**
+   * Traverse the containers to get the last possible widget at the specified position
+   *
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return widget or `undefined` if not found
+   */
+  getLeafWidgetAt(column: number, line: number): Widget {
+    // tslint:disable-next-line:no-this-assignment
+    let container: WidgetContainer = this;
+    let widget;
+    let validWidget;
+
+    do {
+      widget = container.getWidgetAt(column, line);
+      if (widget) {
+        validWidget = widget;
+        container = isWidgetContainer(widget) ? widget : undefined;
+      }
+    } while (widget && container);
+
+    return validWidget;
+  }
+
+  /**
+   * Get the list of widgets from the widget until the terminal itself (not included)
+   * The result will be `undefined` if the widget is not found as a descendant of this terminal
+   *
+   * @param widget Widget to start the list with
+   * @returns list of widgets from the `widget` itself (included) to the terminal (not included)
+   */
+  getAttachedWidgetBranch(widget: Widget): Array<Widget | WidgetContainer> {
+    const branch: Array<Widget | WidgetContainer> = [widget];
+    let current = widget.getParent();
+
+    while (current !== this && current !== undefined) {
+      branch.push(current);
+      current = current.getParent();
+    }
+
+    return current === this ? branch : undefined;
   }
 
   /**

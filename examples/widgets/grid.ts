@@ -1,4 +1,7 @@
+/* tslint:disable:no-magic-numbers */
+
 import { Terminal, TerminalOptions } from '@src/Terminal';
+import { isWidgetContainer } from '@src/WidgetContainer';
 import { Box } from '@src/widgets/Box';
 import { Grid, GridOptions } from '@src/widgets/Grid';
 
@@ -35,17 +38,23 @@ function enableControls(terminal: Terminal, canvas: HTMLCanvasElement) {
       event.preventDefault();
     }
   });
+
+  canvas.addEventListener('click', (event) => {
+    const cell = terminal.getTilePosition(event.offsetX, event.offsetY);
+    const widget = terminal.getLeafWidgetAt(cell.col, cell.line);
+    if (widget) {
+      widget.focus();
+    }
+  });
 }
 
-function run({terminal, canvas }): void {
-  /* tslint:disable:no-magic-numbers */
+function run({ terminal, canvas }): void {
   const options: GridOptions = {
     columns: 4,
     rows: 4,
   };
 
-  const grid = new Grid(terminal, options);
-  terminal.attachWidget(grid);
+  const grid = terminal.attachWidget(Grid, options);
   enableControls(terminal, canvas);
 
   // grid.attachWidget(0, 0, 2, 1, Box, { title: 'A' });

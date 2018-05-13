@@ -101,10 +101,19 @@ export abstract class Widget {
   isAt(column: number, line: number): boolean {
     const options = this.options;
 
-    return options.col >= column
-      && options.col < column + options.width
-      && options.line >= line
-      && options.line < line + options.height;
+    return column >= options.col
+      && column < options.col + options.width
+      && line >= options.line
+      && line < options.line + options.height;
+  }
+
+  /**
+   * Check if this widget is focusable (when cycling over widgets)
+   *
+   * @returns `true` if focusable, `false` if not
+   */
+  isFocusable(): boolean {
+    return this.options.focusable;
   }
 
   /**

@@ -223,6 +223,59 @@ export class Box extends Widget implements WidgetContainer {
   }
 
   /**
+   * Set this Widget as focused. Usually done by a upper level that controls other widgets
+   * (so the previously focused widget is blurred)
+   */
+  focus(): void {
+    if (this.options.focusable) {
+      if (!this.focused) {
+        this.focused = true;
+        if (this.attachedWidget) {
+          this.attachedWidget.focus();
+        }
+        this.render();
+      }
+    }
+  }
+
+  /**
+   * Remove the focus from this widget.
+   * Usually done by a upper level that controls other widgets.
+   */
+  blur(): void {
+    if (this.focused) {
+      this.focused = false;
+      if (this.attachedWidget) {
+        this.attachedWidget.blur();
+      }
+      this.render();
+    }
+  }
+
+  /**
+   * Cycle over the focusable widgets.
+   *
+   * @returns focused widget or `undefined` if finished the cycle
+   */
+  // tslint:disable-next-line:prefer-function-over-method
+  cycleFocus(reverse?: boolean): Widget {
+    return undefined;
+  }
+
+  /**
+   * Retrieve the focused widget if any
+   *
+   * @returns The focused widget or `undefined` if no one has the focus
+   */
+  getFocusedWidget(): Widget {
+    if (this.attachedWidget && this.attachedWidget.isFocused()) {
+      return this.attachedWidget;
+    }
+
+    return undefined;
+  }
+
+  /**
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *

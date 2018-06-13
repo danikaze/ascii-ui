@@ -64,21 +64,21 @@ export class Grid extends Widget implements WidgetContainer {
       this.options.fullSize = true;
     }
 
-    const terminalSize = terminal.getSize();
-    if (this.options.fullSize) {
+    if (parent instanceof Terminal && this.options.fullSize) {
+      const parentSize = parent.getSize();
       this.setOptions({
         col: 0,
         line: 0,
-        width: terminalSize.columns,
-        height: terminalSize.rows,
+        width: parentSize.columns,
+        height: parentSize.rows,
       });
       terminal.listen(TerminalEvent.RESIZED, this.resizedEventHandler.bind(this));
     } else {
       this.setOptions({
         col: options.col || 0,
         line: options.line || 0,
-        width: options.width || terminalSize.columns,
-        height: options.height || terminalSize.rows,
+        width: options.width,
+        height: options.height,
       });
     }
 
@@ -344,7 +344,14 @@ export class Grid extends Widget implements WidgetContainer {
    */
   // tslint:disable-next-line:prefer-function-over-method
   protected updateOptions(changes: GridOptions): void {
-    //
+    if (!this.options.calculateStarts &&  !changes.calculateStarts) {
+      this.options.calculateStarts = calculateStarts;
+    }
+
+    if (changes.width || changes.height || changes.col || changes.line) {
+      this.recalculateCellSizes();
+      this.align();
+    }
   }
 
   /**
@@ -368,7 +375,7 @@ export class Grid extends Widget implements WidgetContainer {
 
     if (attachedWidget) {
       alignOne(attachedWidget);
-    } else {
+    } else if (this.attachedWidgets) {
       this.attachedWidgets.forEach(alignOne);
     }
   }
@@ -406,8 +413,8 @@ export class Grid extends Widget implements WidgetContainer {
    * @param height new size of the terminal in rows
    */
   private resizedEventHandler(width: number, height: number): void {
-    if (this.options.fullSize) {
-      const terminalSize = this.terminal.getSize();
+    if (this.parent instanceof Terminal && this.options.fullSize) {
+      const terminalSize = this.parent.getSize();
 
       this.setOptions({
         col: 0,
@@ -416,6 +423,7 @@ export class Grid extends Widget implements WidgetContainer {
         height: terminalSize.rows,
       });
     }
+
     this.recalculateCellSizes();
   }
 }

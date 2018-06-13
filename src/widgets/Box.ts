@@ -144,16 +144,7 @@ export class Box extends Widget implements WidgetContainer {
    * @return Created widget instance attached to the box
    */
   attachWidget(WidgetClass: typeof Widget, options): Widget {
-    const boxOptions = this.options;
-    const padding = boxOptions.padding;
-    // tslint:disable:no-magic-numbers
-    const positionOptions = {
-      col: boxOptions.col + padding.left + 1,
-      line: boxOptions.line + padding.top + 1,
-      width: boxOptions.width - padding.left - padding.right - 2,
-      height: boxOptions.height - padding.top - padding.bottom - 2,
-    };
-    // tslint:enable:no-magic-numbers
+    const positionOptions = this.getAvailableSpace();
 
       const newWidgetOptions = {
         ...options,
@@ -274,6 +265,13 @@ export class Box extends Widget implements WidgetContainer {
     if (!isEmptyObject(changes)) {
       this.optionsFocus = deepAssign(this.optionsFocus, this.options.base, this.options.focus);
       this.optionsDisabled = deepAssign(this.optionsDisabled, this.options.base, this.options.disabled);
+
+      if (changes.width || changes.height || changes.col || changes.line) {
+        if (this.attachedWidget) {
+          this.attachedWidget.setOptions(this.getAvailableSpace());
+        }
+      }
+
       this.render();
     }
   }
@@ -379,5 +377,25 @@ export class Box extends Widget implements WidgetContainer {
     }
 
     return this.options.base;
+  }
+
+  /**
+   * Calculate the available space and the position for the attached widget
+   *
+   */
+  private getAvailableSpace() {
+    const boxOptions = this.options;
+    const padding = boxOptions.padding;
+
+    // tslint:disable:no-magic-numbers
+    const positionOptions = {
+      col: boxOptions.col + padding.left + 1,
+      line: boxOptions.line + padding.top + 1,
+      width: boxOptions.width - padding.left - padding.right - 2,
+      height: boxOptions.height - padding.top - padding.bottom - 2,
+    };
+    // tslint:enable:no-magic-numbers
+
+    return positionOptions;
   }
 }

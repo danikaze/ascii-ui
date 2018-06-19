@@ -5,7 +5,6 @@ import { TextOptions } from './Text';
 export const gridDefaultOptions: GridOptions = {
   rows: undefined,
   columns: undefined,
-  focusable: true,
 };
 
 export const boxBorderDefaultOptions: BoxBorderOptions = {
@@ -37,7 +36,6 @@ export const boxPaddingDefaultOptions: BoxPaddingOptions = {
 
 export const boxDefaultOptions: BoxOptions = {
   padding: boxPaddingDefaultOptions,
-  focusable: true,
   base: {
     boxBorders: boxBorderDefaultOptions,
     boxTitle: boxTitleDefaultOptions,

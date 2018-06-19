@@ -8,7 +8,7 @@ import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget } from './Widget';
-import { WidgetContainer, isWidgetContainer } from './WidgetContainer';
+import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './WidgetContainer';
 
 /**
  * Function called when the matching command is found
@@ -17,6 +17,13 @@ import { WidgetContainer, isWidgetContainer } from './WidgetContainer';
  * @return index where the text processing should be continued
  */
 export type EscapeCallback = (text: string, index: number) => number;
+
+export interface TileSize {
+  /** number of columns of the terminal, in number of tiles */
+  columns: number;
+  /** number of rows of the terminal, in number of tiles */
+  rows: number;
+}
 
 export interface CharStyle {
   /**
@@ -91,21 +98,6 @@ export interface Tile extends CharStyle {
   char: string;
 }
 
-export interface TerminalSize {
-  /** number of columns of the terminal, in number of tiles */
-  columns: number;
-  /** number of rows of the terminal, in number of tiles */
-  rows: number;
-}
-
-/** List of events the Terminal can trigger */
-export const enum TerminalEvent {
-  /** Triggered when the Terminal has been resized */
-  RESIZED = 'resized',
-}
-
-export type EventListener = (...args) => void;
-
 interface InternalTile extends Tile {
   /** pre-calculated tile x-position in pixels */
   x: number;
@@ -159,10 +151,6 @@ export class Terminal implements WidgetContainer {
   private lastRenderTime: number = 0;
   /** list of attached widgets */
   private readonly attachedWidgets: Widget[] = [];
-  /** index of the currently focused widget (in `attachedWidgets`) */
-  private focusedWidgetIndex: number;
-  /** listeners registered to the terminal events */
-  private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -413,7 +401,7 @@ export class Terminal implements WidgetContainer {
    *
    * @returns Size of the terminal, measured in tiles
    */
-  getSize(): TerminalSize {
+  getSize(): TileSize {
     return {
       columns: this.options.columns,
       rows: this.options.rows,
@@ -768,7 +756,7 @@ export class Terminal implements WidgetContainer {
    * @param widget Widget to start the list with
    * @returns list of widgets from the `widget` itself (included) to the terminal (not included)
    */
-  getAttachedWidgetBranch(widget: Widget): Array<Widget | WidgetContainer> {
+  getWidgetPath(widget: Widget): Array<Widget | WidgetContainer> {
     const branch: Array<Widget | WidgetContainer> = [widget];
     let current = widget.getParent();
 
@@ -781,80 +769,47 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Cycle over the focusable widgets.
+   * Get a bidirectional iterator to move across the attached widgets of the container
    *
-   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
-   * @returns focused widget or `undefined` if finished the cycle
+   * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
    */
-  cycleFocus(reverse?: boolean): Widget {
-    if (this.attachedWidgets.length === 0) {
-      return undefined;
-    }
+  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
+    const data = this.attachedWidgets;
+    let index;
 
-    let chosen;
-    const delta = reverse ? -1 : 1;
-    const currentFocusedWidget = this.focusedWidgetIndex >= 0
-      ? this.attachedWidgets[this.focusedWidgetIndex]
-      : undefined;
-
-    if (isWidgetContainer(currentFocusedWidget)) {
-      chosen = currentFocusedWidget.cycleFocus(reverse);
-    }
-
-    if (!chosen) {
-      while (!chosen) {
-        if (this.focusedWidgetIndex === undefined) {
-          this.focusedWidgetIndex = 0;
+    if (typeof startWidget === 'number') {
+      index = startWidget < 0 ? this.attachedWidgets.length - startWidget - 1 : startWidget;
+    } else if (startWidget) {
+      index = this.attachedWidgets.indexOf(startWidget);
         } else {
-          this.focusedWidgetIndex = (this.focusedWidgetIndex + this.attachedWidgets.length + delta)
-            % this.attachedWidgets.length;
+      index = -1;
         }
-        if (this.attachedWidgets[this.focusedWidgetIndex].isFocusable()) {
-          chosen = true;
-        }
-      }
-    }
 
-    const newFocusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
-    if (newFocusedWidget !== currentFocusedWidget) {
-      if (currentFocusedWidget) {
-        currentFocusedWidget.blur();
+    return {
+      next: () => {
+        index++;
+        if (index > this.attachedWidgets.length) {
+          index = this.attachedWidgets.length;
       }
-    }
-    if (newFocusedWidget) {
-      newFocusedWidget.focus();
-    }
 
-    return newFocusedWidget;
+        return {
+          value: data[index],
+          done: !(index in data),
+        };
+      },
+
+      prev: () => {
+        index--;
+        if (index < -1) {
+          index = -1;
   }
 
-  /**
-   * Retrieve the focused widget if any
-   *
-   * @returns The focused widget or `undefined` if no one has the focus
-   */
-  getFocusedWidget(): Widget {
-    const focusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
-    if (focusedWidget && focusedWidget.isFocused()) {
-      return focusedWidget;
-    }
-
-    return undefined;
-  }
-
-  /**
-   * Register a listener to a specific event
-   *
-   * @param event event to listen
-   * @param listener callback to register
-   */
-  listen(event: TerminalEvent, listener: EventListener): void {
-    const list = this.eventListeners.get(event);
-    if (list) {
-      list.push(listener);
-    } else {
-      this.eventListeners.set(event, [listener]);
-    }
+        return {
+          value: data[index],
+          done: !(index in data),
+        };
+      },
+    };
   }
 
   /**
@@ -987,21 +942,6 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Trigger an event
-   *
-   * @param event event to trigger
-   * @param args arguments to pass to the listeners
-   */
-  private trigger(event: TerminalEvent, ...args): void {
-    const listeners = this.eventListeners.get(event);
-    if (listeners) {
-      listeners.forEach((listener) => {
-        listener.apply(undefined, args);
-      });
-    }
-  }
-
-  /**
    * Resize the terminal and re-calculate the needed internal properties
    * It triggers the RESIZED event.
    *
@@ -1046,6 +986,5 @@ export class Terminal implements WidgetContainer {
 
     this.options.autoRender = autoRender;
     this.info(`resized to: ${width} x ${height}`);
-    this.trigger(TerminalEvent.RESIZED, width, height, oldWidth, oldHeight);
   }
 }

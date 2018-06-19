@@ -1,11 +1,11 @@
+import { CharStyle, Terminal } from '../Terminal';
+import { Widget, WidgetOptions } from '../Widget';
+import { WidgetContainer } from '../WidgetContainer';
+
 import { clamp } from '../util/clamp';
 import { deepAssign } from '../util/deepAssign';
 
-import { CharStyle, Terminal } from '../Terminal';
-import { Widget, WidgetOptions } from '../Widget';
-
 import { textDefaultOptions } from './defaultOptions';
-import { WidgetContainer } from '@src/WidgetContainer';
 
 export type TokenizerFunction = (text: string) => TextToken[];
 

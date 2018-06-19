@@ -1,6 +1,14 @@
 import { Widget } from './Widget';
 
 /**
+ * Extended Iterator interface that will return a `next` and a `prev` methods.
+ */
+export interface BidirectionalIterator<T> extends Iterator<T> {
+  // tslint:disable-next-line:no-any
+  prev(value?: any): IteratorResult<T>;
+}
+
+/**
  * A Widget that can contain other Widgets should implement several common methods
  * This is their interface
  */
@@ -38,19 +46,40 @@ export interface WidgetContainer {
   getWidgetAt(column: number, line: number): Widget;
 
   /**
-   * Cycle over the focusable widgets
+   * Get a bidirectional iterator to move across the attached widgets of the container
    *
-   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
-   * @returns focused widget or `undefined` if finished the cycle
-   */
-  cycleFocus(reverse?: boolean): Widget;
-
-  /**
-   * Retrieve the focused widget if any
+   * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
    *
-   * @returns The focused widget or `undefined` if no one has the focus
+   * @example
+   * // Given the items [A, B, C, D] of the WidgetContainer w
+   * it = w[Symbol.iterator]();
+   * it.next(); // A
+   * it.next(); // B
+   * it.next(); // C
+   * it.prev(); // B
+   * it.next(); // C
+   * it.next(); // D
+   * it.next(); // null
+   *
+   * it = w[Symbol.iterator](C);
+   * it.next(); // D
+   *
+   * it = w[Symbol.iterator](C);
+   * it.prev(); // B
+   *
+   * it = w[Symbol.iterator](0);
+   * it.next(); // B
+   *
+   * it = w[Symbol.iterator](2);
+   * it.prev(); // B
+   *
+   * it = w[Symbol.iterator](-1);
+   * it.prev(); // D
+   *
+   * it = w[Symbol.iterator](-2);
+   * it.prev(); // C
    */
-  getFocusedWidget(): Widget;
+  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget>;
 }
 
 /**
@@ -61,5 +90,5 @@ export interface WidgetContainer {
  */
 // tslint:disable-next-line:no-any
 export function isWidgetContainer(object: any): object is WidgetContainer {
-  return typeof(object) === 'object' && 'cycleFocus' in object;
+  return typeof(object) === 'object' && 'attachWidget' in object;
 }

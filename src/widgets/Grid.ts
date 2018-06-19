@@ -1,6 +1,6 @@
-import { Terminal, TerminalEvent, TerminalSize } from '../Terminal';
+import { Terminal, TileSize } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
-import { WidgetContainer, isWidgetContainer } from '../WidgetContainer';
+import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
 import { gridDefaultOptions } from './defaultOptions';
 
@@ -9,7 +9,7 @@ export interface GridOptions extends WidgetOptions {
   rows: number;
   /** Number of columns of the grid */
   columns: number;
-  /** Expand (or not) to the full size of the terminal */
+  /** Expand (or not) to the full size of the terminal (only applies when the parent is the terminal) */
   fullSize?: boolean;
   /**
    * Function used to calculate the starts of the rows/columns
@@ -47,8 +47,6 @@ export class Grid extends Widget implements WidgetContainer {
 
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
-  /** index of the currently focused widget (in `attachedWidgets`) */
-  private focusedWidgetIndex: number;
   /** list of the first tile of each column */
   private columnStarts: number[] = [];
   /** list of the first tile of each row */
@@ -57,9 +55,7 @@ export class Grid extends Widget implements WidgetContainer {
   constructor(terminal: Terminal, options: GridOptions, parent?: WidgetContainer) {
     super(terminal, options, parent);
     this.options = { ...gridDefaultOptions, ...this.options, ...options };
-    if (!this.options.calculateStarts) {
-      this.options.calculateStarts = calculateStarts;
-    }
+
     if (typeof options.fullSize === 'undefined') {
       this.options.fullSize = true;
     }
@@ -173,101 +169,47 @@ export class Grid extends Widget implements WidgetContainer {
   }
 
   /**
-   * Set this Widget as focused. Usually done by a upper level that controls other widgets
-   * (so the previously focused widget is blurred)
-   */
-  focus(): void {
-    if (this.options.focusable) {
-      if (!this.focused) {
-        this.focused = true;
-        if (this.attachedWidgets.length > 0) {
-          this.focusedWidgetIndex = 0;
-          this.attachedWidgets[this.focusedWidgetIndex].widget.focus();
-        }
-        this.render();
-      } else if (this.focusedWidgetIndex === 0) {
-        this.attachedWidgets[this.focusedWidgetIndex].widget.focus();
-      }
-    }
-  }
-
-  /**
-   * Remove the focus from this widget.
-   * Usually done by a upper level that controls other widgets.
-   */
-  blur(): void {
-    if (this.focused) {
-      this.focused = false;
-      if (this.attachedWidgets.length > 0) {
-        this.attachedWidgets[this.focusedWidgetIndex].widget.blur();
-        this.focusedWidgetIndex = 0;
-      }
-      this.render();
-    }
-  }
-
-  /**
-   * Cycle over the focusable widgets.
+   * Get a bidirectional iterator to move across the attached widgets of the container
    *
-   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
-   * @returns focused widget or `undefined` if finished the cycle
+   * @param startWidget if specified, the iterator will start with this widget
    */
-  cycleFocus(reverse?: boolean): Widget {
-    if (this.attachedWidgets.length === 0) {
-      return undefined;
-    }
+  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
+    const data = this.attachedWidgets;
+    let index;
 
-    let chosen;
-    const delta = reverse ? -1 : 1;
-    const currentFocusedWidget = this.focusedWidgetIndex >= 0
-      ? this.attachedWidgets[this.focusedWidgetIndex].widget
-      : undefined;
-
-    if (isWidgetContainer(currentFocusedWidget)) {
-      chosen = currentFocusedWidget.cycleFocus(reverse);
-    }
-
-    if (!chosen) {
-      while (chosen === undefined) {
-        if (this.focusedWidgetIndex === undefined) {
-          this.focusedWidgetIndex = 0;
+    if (typeof startWidget === 'number') {
+      index = startWidget < 0 ? this.attachedWidgets.length - startWidget - 1 : startWidget;
+    } else if (startWidget) {
+      index = data.findIndex((attachedWidget) => attachedWidget.widget === startWidget);
         } else {
-          this.focusedWidgetIndex = (this.focusedWidgetIndex + this.attachedWidgets.length + delta)
-            % this.attachedWidgets.length;
+      index = -1;
         }
-        if (this.focusedWidgetIndex === 0) {
-          chosen = false;
-        } else if (this.attachedWidgets[this.focusedWidgetIndex].widget.isFocusable()) {
-          chosen = true;
-        }
-      }
+
+    return {
+      next: () => {
+        const attachedWidget = data[++index];
+        if (index > this.attachedWidgets.length) {
+          index = this.attachedWidgets.length;
     }
 
-    const newFocusedWidget = chosen ? this.attachedWidgets[this.focusedWidgetIndex].widget : undefined;
-    if (newFocusedWidget !== currentFocusedWidget) {
-      if (currentFocusedWidget) {
-        currentFocusedWidget.blur();
-      }
-    }
-    if (newFocusedWidget) {
-      newFocusedWidget.focus();
-    }
+        return {
+          value: attachedWidget && attachedWidget.widget,
+          done: !(index in data),
+        };
+      },
 
-    return newFocusedWidget;
-  }
-
-  /**
-   * Retrieve the focused widget if any
-   *
-   * @returns The focused widget or `undefined` if no one has the focus
-   */
-  getFocusedWidget(): Widget {
-    const focusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
-    if (focusedWidget && focusedWidget.widget.isFocused()) {
-      return focusedWidget.widget;
+      prev: () => {
+        const attachedWidget = data[--index];
+        if (index < -1) {
+          index = -1;
     }
 
-    return undefined;
+        return {
+          value: attachedWidget && attachedWidget.widget,
+          done: !(index in data),
+        };
+      },
+    };
   }
 
   /**
@@ -293,46 +235,10 @@ export class Grid extends Widget implements WidgetContainer {
    * @param line line of the grid
    * @return size of a cell
    */
-  getCellSize(column: number, line: number): TerminalSize {
+  getCellSize(column: number, line: number): TileSize {
     return {
       columns: this.columnStarts[column + 1] - this.columnStarts[column],
       rows: this.rowStarts[line + 1] - this.rowStarts[line],
-    };
-  }
-
-  [Symbol.iterator](startWidget?: Widget): Iterator<Widget> {
-    const data = this.attachedWidgets;
-    let index = startWidget
-      ? data.findIndex((attachedWidget) => attachedWidget.widget === startWidget)
-      : -1;
-
-    return {
-      next: () => {
-        const attachedWidget = data[++index];
-
-        return {
-          value: attachedWidget && attachedWidget.widget,
-          done: !(index in data),
-        };
-      },
-    };
-  }
-
-  reverseIterator(startWidget?: Widget): Iterator<Widget> {
-    const data = this.attachedWidgets;
-    let index = startWidget
-      ? data.findIndex((attachedWidget) => attachedWidget.widget === startWidget)
-      : data.length;
-
-    return {
-      next: () => {
-        const attachedWidget = data[--index];
-
-        return {
-          value: attachedWidget && attachedWidget.widget,
-          done: !(index in data),
-        };
-      },
     };
   }
 

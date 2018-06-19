@@ -1,4 +1,4 @@
-import { Terminal, TerminalSize, TilePosition } from './Terminal';
+import { Terminal, TilePosition, TileSize } from './Terminal';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { WidgetContainer } from './WidgetContainer';
 
@@ -42,7 +42,10 @@ export abstract class Widget {
   constructor(terminal: Terminal, options?: WidgetOptions, parent?: WidgetContainer) {
     this.terminal = terminal;
     this.parent = parent;
-    this.setOptions(options);
+    this.setOptions({
+      focusable: true,
+      ...options,
+    });
   }
 
   /**
@@ -86,7 +89,7 @@ export abstract class Widget {
    *
    * @returns Size of the widget, measured in tiles
    */
-  getSize(): TerminalSize {
+  getSize(): TileSize {
     return {
       columns: this.options.width,
       rows: this.options.height,

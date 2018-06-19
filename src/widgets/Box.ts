@@ -4,7 +4,7 @@ import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
 import { deepAssign } from '../util/deepAssign';
 import { Widget, WidgetOptions } from '../Widget';
-import { WidgetContainer } from '../WidgetContainer';
+import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
 import { boxBorderDefaultOptions, boxDefaultOptions } from './defaultOptions';
 
@@ -146,14 +146,14 @@ export class Box extends Widget implements WidgetContainer {
   attachWidget(WidgetClass: typeof Widget, options): Widget {
     const positionOptions = this.getAvailableSpace();
 
-      const newWidgetOptions = {
-        ...options,
-        ...positionOptions,
-      };
+    const newWidgetOptions = {
+      ...options,
+      ...positionOptions,
+    };
     this.attachedWidget = Reflect.construct(WidgetClass, [
       this.terminal,
       newWidgetOptions,
-      parent,
+      this,
     ]);
 
     // this.attachedWidget.render();
@@ -203,56 +203,47 @@ export class Box extends Widget implements WidgetContainer {
   }
 
   /**
-   * Set this Widget as focused. Usually done by a upper level that controls other widgets
-   * (so the previously focused widget is blurred)
+   * Get a bidirectional iterator to move across the attached widgets of the container
+   *
+   * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
    */
-  focus(): void {
-    if (this.options.focusable) {
-      if (!this.focused) {
-        this.focused = true;
-        if (this.attachedWidget) {
-          this.attachedWidget.focus();
+  [Symbol.iterator](startWidget?: Widget | number, reverse?: boolean): BidirectionalIterator<Widget> {
+    const widget = this.attachedWidget;
+    let index;
+
+    if (typeof startWidget === 'number') {
+      index = startWidget < 0 ? 0 - startWidget : startWidget - 1;
+    } else if (startWidget) {
+      index = this.attachedWidget === startWidget ? 0 : -1;
+    } else {
+      index = -1;
+    }
+
+    return {
+      next: () => {
+        index++;
+        if (index > 1) {
+          index = 1;
         }
-        this.render();
-      }
-    }
-  }
 
-  /**
-   * Remove the focus from this widget.
-   * Usually done by a upper level that controls other widgets.
-   */
-  blur(): void {
-    if (this.focused) {
-      this.focused = false;
-      if (this.attachedWidget) {
-        this.attachedWidget.blur();
-      }
-      this.render();
-    }
-  }
+        return {
+          value: index === 0 ? widget : undefined,
+          done: index !== 0,
+        };
+      },
 
-  /**
-   * Cycle over the focusable widgets.
-   *
-   * @returns focused widget or `undefined` if finished the cycle
-   */
-  // tslint:disable-next-line:prefer-function-over-method
-  cycleFocus(reverse?: boolean): Widget {
-    return undefined;
-  }
+      prev: () => {
+        index--;
+        if (index < -1) {
+          index = -1;
+        }
 
-  /**
-   * Retrieve the focused widget if any
-   *
-   * @returns The focused widget or `undefined` if no one has the focus
-   */
-  getFocusedWidget(): Widget {
-    if (this.attachedWidget && this.attachedWidget.isFocused()) {
-      return this.attachedWidget;
-    }
-
-    return undefined;
+        return {
+          value: index === 0 ? widget : undefined,
+          done: index !== 0,
+        };
+      },
+    };
   }
 
   /**

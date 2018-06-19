@@ -1,9 +1,8 @@
 /* tslint:disable:no-magic-numbers */
-
 import { Terminal, TerminalOptions } from '@src/Terminal';
-import { isWidgetContainer } from '@src/WidgetContainer';
 import { Box } from '@src/widgets/Box';
 import { Grid, GridOptions } from '@src/widgets/Grid';
+import { Text } from '@src/widgets/Text';
 
 import { load } from '../util/load';
 
@@ -26,26 +25,6 @@ function enableControls(terminal: Terminal, canvas: HTMLCanvasElement) {
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
   document.getElementById('down')
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
-
-  document.getElementById('prev')
-    .addEventListener('click', terminal.cycleFocus.bind(terminal, true));
-  document.getElementById('next')
-    .addEventListener('click', terminal.cycleFocus.bind(terminal, false));
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Tab') {
-      terminal.cycleFocus(event.shiftKey);
-      event.preventDefault();
-    }
-  });
-
-  canvas.addEventListener('click', (event) => {
-    const cell = terminal.getTilePosition(event.offsetX, event.offsetY);
-    const widget = terminal.getLeafWidgetAt(cell.col, cell.line);
-    if (widget) {
-      widget.focus();
-    }
-  });
 }
 
 function run({ terminal, canvas }): void {
@@ -53,23 +32,35 @@ function run({ terminal, canvas }): void {
     columns: 4,
     rows: 4,
   };
+  const zeroPadding = {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  };
 
   const grid = terminal.attachWidget(Grid, options);
   enableControls(terminal, canvas);
 
-  // grid.attachWidget(0, 0, 2, 1, Box, { title: 'A' });
-  // grid.attachWidget(2, 0, 1, 2, Box, { title: 'B' });
-  // grid.attachWidget(1, 2, 2, 1, Box, { title: 'C' });
-  // grid.attachWidget(0, 1, 1, 2, Box, { title: 'D' });
+  grid.attachWidget(0, 0, 1, 1, Box, { title: '(1x1)', padding: zeroPadding })
+      .attachWidget(Text, { text: 'Text A'});
+  grid.attachWidget(1, 0, 2, 1, Box, { title: '(2x1)', padding: zeroPadding })
+      .attachWidget(Text, { text: 'Text B'});
+  grid.attachWidget(3, 0, 1, 3, Box, { title: '(1x3)', padding: zeroPadding })
+      .attachWidget(Text, { text: 'Text C'});
+  const internalGridBox = grid.attachWidget(0, 1, 2, 3, Box, { title: 'Grid', padding: zeroPadding });
+  const widgetToDelete = grid.attachWidget(2, 2, 1, 1, Box, { title: '(1x1)', padding: zeroPadding });
+  grid.attachWidget(2, 3, 2, 1, Box, { title: '(2x1)', padding: zeroPadding })
+      .attachWidget(Text, { text: 'Text D'});
+  grid.dettachWidget(widgetToDelete);
 
-  grid.attachWidget(0, 0, 1, 1, Box, { title: '(1x1)' });
-  grid.attachWidget(1, 0, 2, 1, Box, { title: '(2x1)' });
-  grid.attachWidget(3, 0, 1, 3, Box, { title: '(1x3)' });
-  grid.attachWidget(0, 1, 3, 1, Box, { title: '(3x1)' });
-  grid.attachWidget(0, 2, 2, 2, Box, { title: '(2x2)' });
-  const widget = grid.attachWidget(2, 2, 1, 1, Box, { title: '(1x1)' });
-  grid.attachWidget(2, 3, 2, 1, Box, { title: '(2x1)' });
-  grid.dettachWidget(widget);
+  const internalGrid = internalGridBox.attachWidget(Grid, { columns: 1, rows: 3 });
+  internalGrid.attachWidget(0, 0, 1, 1, Box, { title: '(X)', padding: zeroPadding })
+    .attachWidget(Text, { text: 'Text X' });
+  internalGrid.attachWidget(0, 1, 1, 1, Box, { title: '(Y)', padding: zeroPadding })
+    .attachWidget(Text, { text: 'Text Y' });
+  internalGrid.attachWidget(0, 2, 1, 1, Box, { title: '(Z)', padding: zeroPadding })
+    .attachWidget(Text, { text: 'Text Z' });
 }
 
 const terminalOptions: TerminalOptions = {

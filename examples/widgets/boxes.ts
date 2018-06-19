@@ -1,3 +1,4 @@
+/* tslint:disable:no-magic-numbers */
 /* tslint:disable:typedef */
 
 import * as FontFaceObserver from 'fontfaceobserver';
@@ -6,15 +7,12 @@ import { Terminal } from '@src/Terminal';
 import { Box, BoxOptions } from '@src/widgets/Box';
 import { Text, TextOptions } from '@src/widgets/Text';
 
+import { load } from '../util/load';
+
 import '../styles/examples.less';
 
 interface TestWindow extends Window {
   terminal: Terminal;
-}
-
-function hideLoad() {
-  const elem = document.getElementById('loading');
-  elem.parentElement.removeChild(elem);
 }
 
 function scrollText(text: Text) {
@@ -37,17 +35,8 @@ function scrollText(text: Text) {
   });
 }
 
-function run() {
+function run({ terminal, canvas }) {
   /* tslint:disable:no-magic-numbers */
-  const columns = 40;
-  const rows = 20;
-  const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-  const terminal = new Terminal(canvas, {
-    columns,
-    rows,
-    cursor: false,
-  });
-
   canvas.parentElement.style.width = `${canvas.width}px`;
   canvas.parentElement.style.height = `${canvas.height}px`;
 
@@ -69,7 +58,7 @@ function run() {
   options.title = 'Very long title for real';
   options.padding = { top: 0, bottom: 0, right: 0, left: 0};
   const box3 = terminal.attachWidget(Box, options) as Box;
-  const textWidget = new Text(terminal, {
+  const textWidget = box3.attachWidget(Text, {
     typewritterDelay: 50,
     text: ''
     //  |--------------------| // box size
@@ -83,14 +72,18 @@ function run() {
       + 'this variable is '
       + 'defined.',
     //  |--------------------| // box size
-  });
-  box3.attachWidget(textWidget);
+  }) as Text;
   scrollText(textWidget);
 
   (window as TestWindow).terminal = terminal;
 }
 
 const font = new FontFaceObserver('Terminal_VT220');
-font.load()
-  .then(hideLoad)
+const terminalOptions = {
+  columns: 40,
+  rows: 20,
+  cursor: false,
+};
+
+load(terminalOptions)
   .then(run);

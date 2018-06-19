@@ -1,6 +1,8 @@
 import { Terminal, TerminalEvent, TerminalSize } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
-import { WidgetContainer } from '../WidgetContainer';
+import { WidgetContainer, isWidgetContainer } from '../WidgetContainer';
+
+import { gridDefaultOptions } from './defaultOptions';
 
 export interface GridOptions extends WidgetOptions {
   /** Number of rows of the grid */
@@ -45,14 +47,16 @@ export class Grid extends Widget implements WidgetContainer {
 
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
+  /** index of the currently focused widget (in `attachedWidgets`) */
+  private focusedWidgetIndex: number;
   /** list of the first tile of each column */
   private columnStarts: number[] = [];
   /** list of the first tile of each row */
   private rowStarts: number[] = [];
 
-  constructor(terminal: Terminal, options: GridOptions) {
-    super(terminal, options);
-    this.options = { ...this.options, ...options };
+  constructor(terminal: Terminal, options: GridOptions, parent?: WidgetContainer) {
+    super(terminal, options, parent);
+    this.options = { ...gridDefaultOptions, ...this.options, ...options };
     if (!this.options.calculateStarts) {
       this.options.calculateStarts = calculateStarts;
     }
@@ -60,21 +64,21 @@ export class Grid extends Widget implements WidgetContainer {
       this.options.fullSize = true;
     }
 
-    const terminalSize = terminal.getSize();
-    if (this.options.fullSize) {
+    if (parent instanceof Terminal && this.options.fullSize) {
+      const parentSize = parent.getSize();
       this.setOptions({
         col: 0,
         line: 0,
-        width: terminalSize.columns,
-        height: terminalSize.rows,
+        width: parentSize.columns,
+        height: parentSize.rows,
       });
       terminal.listen(TerminalEvent.RESIZED, this.resizedEventHandler.bind(this));
     } else {
       this.setOptions({
         col: options.col || 0,
         line: options.line || 0,
-        width: options.width || terminalSize.columns,
-        height: options.height || terminalSize.rows,
+        width: options.width,
+        height: options.height,
       });
     }
 
@@ -110,8 +114,13 @@ export class Grid extends Widget implements WidgetContainer {
    * @param options Options to pass to the Widget when creating it
    * @return widget instance
    */
-  attachWidget(col: number, line: number, width: number, height: number, WidgetClass: typeof Widget, ...args): Widget {
-    const widget: Widget = Reflect.construct(WidgetClass, [this.terminal, ...args]);
+  attachWidget(col: number, line: number, width: number, height: number,
+               WidgetClass: typeof Widget, options): Widget {
+    const widget: Widget = Reflect.construct(WidgetClass, [
+      this.terminal,
+      options,
+      this,
+    ]);
     const attachedWidget: AttachedWidget = {
       id: ++Grid.widgetIds,
       widget,
@@ -162,6 +171,105 @@ export class Grid extends Widget implements WidgetContainer {
 
     return undefined;
   }
+
+  /**
+   * Set this Widget as focused. Usually done by a upper level that controls other widgets
+   * (so the previously focused widget is blurred)
+   */
+  focus(): void {
+    if (this.options.focusable) {
+      if (!this.focused) {
+        this.focused = true;
+        if (this.attachedWidgets.length > 0) {
+          this.focusedWidgetIndex = 0;
+          this.attachedWidgets[this.focusedWidgetIndex].widget.focus();
+        }
+        this.render();
+      } else if (this.focusedWidgetIndex === 0) {
+        this.attachedWidgets[this.focusedWidgetIndex].widget.focus();
+      }
+    }
+  }
+
+  /**
+   * Remove the focus from this widget.
+   * Usually done by a upper level that controls other widgets.
+   */
+  blur(): void {
+    if (this.focused) {
+      this.focused = false;
+      if (this.attachedWidgets.length > 0) {
+        this.attachedWidgets[this.focusedWidgetIndex].widget.blur();
+        this.focusedWidgetIndex = 0;
+      }
+      this.render();
+    }
+  }
+
+  /**
+   * Cycle over the focusable widgets.
+   *
+   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
+   * @returns focused widget or `undefined` if finished the cycle
+   */
+  cycleFocus(reverse?: boolean): Widget {
+    if (this.attachedWidgets.length === 0) {
+      return undefined;
+    }
+
+    let chosen;
+    const delta = reverse ? -1 : 1;
+    const currentFocusedWidget = this.focusedWidgetIndex >= 0
+      ? this.attachedWidgets[this.focusedWidgetIndex].widget
+      : undefined;
+
+    if (isWidgetContainer(currentFocusedWidget)) {
+      chosen = currentFocusedWidget.cycleFocus(reverse);
+    }
+
+    if (!chosen) {
+      while (chosen === undefined) {
+        if (this.focusedWidgetIndex === undefined) {
+          this.focusedWidgetIndex = 0;
+        } else {
+          this.focusedWidgetIndex = (this.focusedWidgetIndex + this.attachedWidgets.length + delta)
+            % this.attachedWidgets.length;
+        }
+        if (this.focusedWidgetIndex === 0) {
+          chosen = false;
+        } else if (this.attachedWidgets[this.focusedWidgetIndex].widget.isFocusable()) {
+          chosen = true;
+        }
+      }
+    }
+
+    const newFocusedWidget = chosen ? this.attachedWidgets[this.focusedWidgetIndex].widget : undefined;
+    if (newFocusedWidget !== currentFocusedWidget) {
+      if (currentFocusedWidget) {
+        currentFocusedWidget.blur();
+      }
+    }
+    if (newFocusedWidget) {
+      newFocusedWidget.focus();
+    }
+
+    return newFocusedWidget;
+  }
+
+  /**
+   * Retrieve the focused widget if any
+   *
+   * @returns The focused widget or `undefined` if no one has the focus
+   */
+  getFocusedWidget(): Widget {
+    const focusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
+    if (focusedWidget && focusedWidget.widget.isFocused()) {
+      return focusedWidget.widget;
+    }
+
+    return undefined;
+  }
+
   /**
    * Get a previously attached widget by its position in the Grid
    *
@@ -192,6 +300,42 @@ export class Grid extends Widget implements WidgetContainer {
     };
   }
 
+  [Symbol.iterator](startWidget?: Widget): Iterator<Widget> {
+    const data = this.attachedWidgets;
+    let index = startWidget
+      ? data.findIndex((attachedWidget) => attachedWidget.widget === startWidget)
+      : -1;
+
+    return {
+      next: () => {
+        const attachedWidget = data[++index];
+
+        return {
+          value: attachedWidget && attachedWidget.widget,
+          done: !(index in data),
+        };
+      },
+    };
+  }
+
+  reverseIterator(startWidget?: Widget): Iterator<Widget> {
+    const data = this.attachedWidgets;
+    let index = startWidget
+      ? data.findIndex((attachedWidget) => attachedWidget.widget === startWidget)
+      : data.length;
+
+    return {
+      next: () => {
+        const attachedWidget = data[--index];
+
+        return {
+          value: attachedWidget && attachedWidget.widget,
+          done: !(index in data),
+        };
+      },
+    };
+  }
+
   /**
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
@@ -200,7 +344,14 @@ export class Grid extends Widget implements WidgetContainer {
    */
   // tslint:disable-next-line:prefer-function-over-method
   protected updateOptions(changes: GridOptions): void {
-    //
+    if (!this.options.calculateStarts &&  !changes.calculateStarts) {
+      this.options.calculateStarts = calculateStarts;
+    }
+
+    if (changes.width || changes.height || changes.col || changes.line) {
+      this.recalculateCellSizes();
+      this.align();
+    }
   }
 
   /**
@@ -224,7 +375,7 @@ export class Grid extends Widget implements WidgetContainer {
 
     if (attachedWidget) {
       alignOne(attachedWidget);
-    } else {
+    } else if (this.attachedWidgets) {
       this.attachedWidgets.forEach(alignOne);
     }
   }
@@ -262,8 +413,8 @@ export class Grid extends Widget implements WidgetContainer {
    * @param height new size of the terminal in rows
    */
   private resizedEventHandler(width: number, height: number): void {
-    if (this.options.fullSize) {
-      const terminalSize = this.terminal.getSize();
+    if (this.parent instanceof Terminal && this.options.fullSize) {
+      const terminalSize = this.parent.getSize();
 
       this.setOptions({
         col: 0,
@@ -272,6 +423,7 @@ export class Grid extends Widget implements WidgetContainer {
         height: terminalSize.rows,
       });
     }
+
     this.recalculateCellSizes();
   }
 }

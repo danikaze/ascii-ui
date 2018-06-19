@@ -9,15 +9,15 @@ import { WidgetContainer } from '../WidgetContainer';
 import { boxBorderDefaultOptions, boxDefaultOptions } from './defaultOptions';
 
 export interface BoxBorderOptions extends CharStyle {
-  topLeft: string;
-  top: string;
-  topRight: string;
-  left: string;
-  center: string;
-  right: string;
-  bottomLeft: string;
-  bottom: string;
-  bottomRight: string;
+  topLeft?: string;
+  top?: string;
+  topRight?: string;
+  left?: string;
+  center?: string;
+  right?: string;
+  bottomLeft?: string;
+  bottom?: string;
+  bottomRight?: string;
 }
 
 export interface BoxTitleOptions extends CharStyle {
@@ -40,15 +40,24 @@ export interface BoxPaddingOptions {
   left?: number;
 }
 
-export interface BoxOptions extends WidgetOptions {
-  /** Title to display at the top of the box */
-  title?: string;
+export interface BoxAspectOptions {
   /** Options related to the title, if used */
   boxTitle?: BoxTitleOptions;
   /** Options related to the border of the box */
   boxBorders?: BoxBorderOptions;
+}
+
+export interface BoxOptions extends WidgetOptions {
+  /** Title to display at the top of the box */
+  title?: string;
   /** Number of blank tiles to leave between the border and the attached widget */
   padding?: BoxPaddingOptions;
+  /** Options used when the widget is focuseable but not focused */
+  base?: BoxAspectOptions;
+  /** Options used when the widget is focused */
+  focus?: BoxAspectOptions;
+  /** Options used when the widget is not focuseable */
+  disabled?: BoxAspectOptions;
 }
 
 interface BoxPoolTiles {
@@ -86,11 +95,16 @@ export class Box extends Widget implements WidgetContainer {
   /** Extended options */
   protected readonly options: BoxOptions;
 
+  /** Cached options used when rendering the widget focused */
+  private optionsFocus: BoxAspectOptions;
+  /** Cached options used when rendering the widget diabled */
+  private optionsDisabled: BoxAspectOptions;
+
   /** Attached widget if any */
   private attachedWidget: Widget;
 
-  constructor(terminal: Terminal, options: BoxOptions) {
-    super(terminal, deepAssign({}, boxDefaultOptions, options));
+  constructor(terminal: Terminal, options?: BoxOptions, parent?: WidgetContainer) {
+    super(terminal, deepAssign({}, boxDefaultOptions, options), parent);
   }
 
   /**
@@ -101,14 +115,15 @@ export class Box extends Widget implements WidgetContainer {
       return;
     }
 
+    const baseOptions = this.getAspectOptions();
     let title = this.options.title;
-    const boxTitle = this.options.boxTitle;
+    const boxTitle = baseOptions.boxTitle;
     // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
     const titleMaxLength = this.options.width - boxTitle.marginLeft - boxTitle.marginRight - 2;
 
     if (title && title.length > titleMaxLength) {
       title = (`${title.substr(0, titleMaxLength - boxTitle.ellipsis.length)}`
-        + `${this.options.boxTitle.ellipsis}`).substr(0, titleMaxLength);
+        + `${baseOptions.boxTitle.ellipsis}`).substr(0, titleMaxLength);
     }
 
     const tiles = this.getBoxTiles(title);
@@ -122,44 +137,24 @@ export class Box extends Widget implements WidgetContainer {
   }
 
   /**
-   * Attach a specified widget to this box
-   *
-   * @param widget instance of the widget to attach
-   * @return provided widget instance itself
-   */
-  attachWidget(widget: Widget): Widget;
-
-  /**
    * Create and attach a widget to this instance of the terminal
    *
    * @param WidgetClass Class of the widget
    * @param options Options for the widget constructor
    * @return Created widget instance attached to the box
    */
-  attachWidget(WidgetClass: typeof Widget, options, ...args): Widget;
+  attachWidget(WidgetClass: typeof Widget, options): Widget {
+    const positionOptions = this.getAvailableSpace();
 
-  attachWidget(WidgetClass, options?, ...args): Widget {
-    const boxOptions = this.options;
-    const padding = boxOptions.padding;
-    // tslint:disable:no-magic-numbers
-    const positionOptions = {
-      col: boxOptions.col + padding.left + 1,
-      line: boxOptions.line + padding.top + 1,
-      width: boxOptions.width - padding.left - padding.right - 2,
-      height: boxOptions.height - padding.top - padding.bottom - 2,
-    };
-    // tslint:enable:no-magic-numbers
-
-    if (typeof WidgetClass === 'function') {
       const newWidgetOptions = {
         ...options,
         ...positionOptions,
       };
-      this.attachedWidget = Reflect.construct(WidgetClass, [this.terminal, newWidgetOptions, ...args]);
-    } else {
-      this.attachedWidget = WidgetClass;
-      this.attachedWidget.setOptions(positionOptions);
-    }
+    this.attachedWidget = Reflect.construct(WidgetClass, [
+      this.terminal,
+      newWidgetOptions,
+      parent,
+    ]);
 
     // this.attachedWidget.render();
 
@@ -208,6 +203,59 @@ export class Box extends Widget implements WidgetContainer {
   }
 
   /**
+   * Set this Widget as focused. Usually done by a upper level that controls other widgets
+   * (so the previously focused widget is blurred)
+   */
+  focus(): void {
+    if (this.options.focusable) {
+      if (!this.focused) {
+        this.focused = true;
+        if (this.attachedWidget) {
+          this.attachedWidget.focus();
+        }
+        this.render();
+      }
+    }
+  }
+
+  /**
+   * Remove the focus from this widget.
+   * Usually done by a upper level that controls other widgets.
+   */
+  blur(): void {
+    if (this.focused) {
+      this.focused = false;
+      if (this.attachedWidget) {
+        this.attachedWidget.blur();
+      }
+      this.render();
+    }
+  }
+
+  /**
+   * Cycle over the focusable widgets.
+   *
+   * @returns focused widget or `undefined` if finished the cycle
+   */
+  // tslint:disable-next-line:prefer-function-over-method
+  cycleFocus(reverse?: boolean): Widget {
+    return undefined;
+  }
+
+  /**
+   * Retrieve the focused widget if any
+   *
+   * @returns The focused widget or `undefined` if no one has the focus
+   */
+  getFocusedWidget(): Widget {
+    if (this.attachedWidget && this.attachedWidget.isFocused()) {
+      return this.attachedWidget;
+    }
+
+    return undefined;
+  }
+
+  /**
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
@@ -215,8 +263,46 @@ export class Box extends Widget implements WidgetContainer {
    */
   protected updateOptions(changes: BoxOptions): void {
     if (!isEmptyObject(changes)) {
+      this.optionsFocus = deepAssign(this.optionsFocus, this.options.base, this.options.focus);
+      this.optionsDisabled = deepAssign(this.optionsDisabled, this.options.base, this.options.disabled);
+
+      if (changes.width || changes.height || changes.col || changes.line) {
+        if (this.attachedWidget) {
+          this.attachedWidget.setOptions(this.getAvailableSpace());
+        }
+      }
+
       this.render();
     }
+  }
+
+  /**
+   * Assign the proper values to the pool of tiles for the border based on the
+   * current status of the widget and the defined options
+   */
+  private setBorderPool(): void {
+    const pool = Box.boxTilesPool;
+    const aspectOptions = this.getAspectOptions().boxBorders;
+
+    pool.topLeft.char = aspectOptions.topLeft;
+    pool.top.char = aspectOptions.top;
+    pool.topRight.char = aspectOptions.topRight;
+    pool.left.char = aspectOptions.left;
+    pool.center.char = aspectOptions.center;
+    pool.right.char = aspectOptions.right;
+    pool.bottomLeft.char = aspectOptions.bottomLeft;
+    pool.bottom.char = aspectOptions.bottom;
+    pool.bottomRight.char = aspectOptions.bottomRight;
+
+    assignCharStyle(pool.topLeft, aspectOptions);
+    assignCharStyle(pool.top, aspectOptions);
+    assignCharStyle(pool.topRight, aspectOptions);
+    assignCharStyle(pool.left, aspectOptions);
+    assignCharStyle(pool.center, aspectOptions);
+    assignCharStyle(pool.right, aspectOptions);
+    assignCharStyle(pool.bottomLeft, aspectOptions);
+    assignCharStyle(pool.bottom, aspectOptions);
+    assignCharStyle(pool.bottomRight, aspectOptions);
   }
 
   /**
@@ -232,7 +318,10 @@ export class Box extends Widget implements WidgetContainer {
     const pool = Box.boxTilesPool;
     const width = this.options.width;
     const height = this.options.height;
-    const titleStyle = { ...assignCharStyle({}, this.options.boxTitle) };
+    const aspectOptions = this.getAspectOptions();
+    const titleStyle = { ...assignCharStyle({}, aspectOptions.boxTitle) };
+
+    this.setBorderPool();
 
     // top line
     const top = Array(width);
@@ -241,7 +330,7 @@ export class Box extends Widget implements WidgetContainer {
     top[width - 1] = pool.topRight;
 
     if (title) {
-      const titleStart = this.options.boxTitle.marginLeft + 1;
+      const titleStart = aspectOptions.boxTitle.marginLeft + 1;
       for (let i = 0; i < title.length; i++) {
         let tile = pool.title[i];
 
@@ -275,5 +364,38 @@ export class Box extends Widget implements WidgetContainer {
     tiles[height - 1] = bottom;
 
     return tiles;
+  }
+
+  /**
+   * Get the options object depending on the focused state
+   */
+  private getAspectOptions(): BoxAspectOptions {
+    if (!this.options.focusable) {
+      return this.optionsDisabled;
+    } else if (this.isFocused()) {
+      return this.optionsFocus;
+    }
+
+    return this.options.base;
+  }
+
+  /**
+   * Calculate the available space and the position for the attached widget
+   *
+   */
+  private getAvailableSpace() {
+    const boxOptions = this.options;
+    const padding = boxOptions.padding;
+
+    // tslint:disable:no-magic-numbers
+    const positionOptions = {
+      col: boxOptions.col + padding.left + 1,
+      line: boxOptions.line + padding.top + 1,
+      width: boxOptions.width - padding.left - padding.right - 2,
+      height: boxOptions.height - padding.top - padding.bottom - 2,
+    };
+    // tslint:enable:no-magic-numbers
+
+    return positionOptions;
   }
 }

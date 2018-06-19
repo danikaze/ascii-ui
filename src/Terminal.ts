@@ -8,7 +8,7 @@ import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget } from './Widget';
-import { WidgetContainer } from './WidgetContainer';
+import { WidgetContainer, isWidgetContainer } from './WidgetContainer';
 
 /**
  * Function called when the matching command is found
@@ -159,6 +159,8 @@ export class Terminal implements WidgetContainer {
   private lastRenderTime: number = 0;
   /** list of attached widgets */
   private readonly attachedWidgets: Widget[] = [];
+  /** index of the currently focused widget (in `attachedWidgets`) */
+  private focusedWidgetIndex: number;
   /** listeners registered to the terminal events */
   private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
@@ -670,26 +672,28 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Attach a specified widget to this instance of the terminal
+   * Get the reference to the parent of the widget, if any
    *
-   * @param widget instance of the widget to attach
-   * @return widget instance
+   * @returns parent if any, or `undefined`
    */
-  attachWidget(widget: Widget): Widget;
+  // tslint:disable-next-line:prefer-function-over-method
+  getParent(): WidgetContainer {
+    return undefined;
+  }
 
   /**
    * Create and attach a widget to this instance of the terminal
    *
    * @param WidgetClass Class of the widget
-   * @param args Options for the widget constructor
+   * @param options Options for the widget constructor
    * @return handler of the attached widget. Required to deattach it.
    */
-  attachWidget(WidgetClass: typeof Widget, ...args): Widget;
-
-  attachWidget(WidgetClass, options?, ...args): Widget {
-    const widget: Widget = typeof WidgetClass === 'function'
-      ? Reflect.construct(WidgetClass, [this, options, ...args])
-      : WidgetClass;
+  attachWidget(WidgetClass: typeof Widget, options?): Widget {
+    const widget: Widget = Reflect.construct(WidgetClass, [
+      this,
+      options,
+      this,
+    ]);
 
     this.attachedWidgets.push(widget);
     widget.render();
@@ -728,6 +732,111 @@ export class Terminal implements WidgetContainer {
       if (widget.isAt(column, line)) {
         return widget;
       }
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Traverse the containers to get the last possible widget at the specified position
+   *
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return widget or `undefined` if not found
+   */
+  getLeafWidgetAt(column: number, line: number): Widget {
+    // tslint:disable-next-line:no-this-assignment
+    let container: WidgetContainer = this;
+    let widget;
+    let validWidget;
+
+    do {
+      widget = container.getWidgetAt(column, line);
+      if (widget) {
+        validWidget = widget;
+        container = isWidgetContainer(widget) ? widget : undefined;
+      }
+    } while (widget && container);
+
+    return validWidget;
+  }
+
+  /**
+   * Get the list of widgets from the widget until the terminal itself (not included)
+   * The result will be `undefined` if the widget is not found as a descendant of this terminal
+   *
+   * @param widget Widget to start the list with
+   * @returns list of widgets from the `widget` itself (included) to the terminal (not included)
+   */
+  getAttachedWidgetBranch(widget: Widget): Array<Widget | WidgetContainer> {
+    const branch: Array<Widget | WidgetContainer> = [widget];
+    let current = widget.getParent();
+
+    while (current !== this && current !== undefined) {
+      branch.push(current);
+      current = current.getParent();
+    }
+
+    return current === this ? branch : undefined;
+  }
+
+  /**
+   * Cycle over the focusable widgets.
+   *
+   * @param reverse If `true` it will return the previous widget. Returns the next widget otherwise
+   * @returns focused widget or `undefined` if finished the cycle
+   */
+  cycleFocus(reverse?: boolean): Widget {
+    if (this.attachedWidgets.length === 0) {
+      return undefined;
+    }
+
+    let chosen;
+    const delta = reverse ? -1 : 1;
+    const currentFocusedWidget = this.focusedWidgetIndex >= 0
+      ? this.attachedWidgets[this.focusedWidgetIndex]
+      : undefined;
+
+    if (isWidgetContainer(currentFocusedWidget)) {
+      chosen = currentFocusedWidget.cycleFocus(reverse);
+    }
+
+    if (!chosen) {
+      while (!chosen) {
+        if (this.focusedWidgetIndex === undefined) {
+          this.focusedWidgetIndex = 0;
+        } else {
+          this.focusedWidgetIndex = (this.focusedWidgetIndex + this.attachedWidgets.length + delta)
+            % this.attachedWidgets.length;
+        }
+        if (this.attachedWidgets[this.focusedWidgetIndex].isFocusable()) {
+          chosen = true;
+        }
+      }
+    }
+
+    const newFocusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
+    if (newFocusedWidget !== currentFocusedWidget) {
+      if (currentFocusedWidget) {
+        currentFocusedWidget.blur();
+      }
+    }
+    if (newFocusedWidget) {
+      newFocusedWidget.focus();
+    }
+
+    return newFocusedWidget;
+  }
+
+  /**
+   * Retrieve the focused widget if any
+   *
+   * @returns The focused widget or `undefined` if no one has the focus
+   */
+  getFocusedWidget(): Widget {
+    const focusedWidget = this.attachedWidgets[this.focusedWidgetIndex];
+    if (focusedWidget && focusedWidget.isFocused()) {
+      return focusedWidget;
     }
 
     return undefined;

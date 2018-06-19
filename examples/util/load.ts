@@ -6,6 +6,11 @@ interface TestWindow extends Window {
   terminal: Terminal;
 }
 
+interface LoadData {
+  canvas: HTMLCanvasElement;
+  terminal: Terminal;
+}
+
 function hideLoad() {
   const elem = document.getElementById('loading');
   elem.parentElement.removeChild(elem);
@@ -16,7 +21,7 @@ function terminalResizedHandler(canvas) {
   canvas.parentElement.style.height = `${canvas.height}px`;
 }
 
-export function load(terminalOptions: TerminalOptions): Promise<Terminal> {
+export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
   const font = new FontFaceObserver('Terminal_VT220');
 
   return font.load()
@@ -29,6 +34,6 @@ export function load(terminalOptions: TerminalOptions): Promise<Terminal> {
       terminal.listen(TerminalEvent.RESIZED, terminalResizedHandler.bind(0, canvas));
 
       (window as TestWindow).terminal = terminal;
-      resolve(terminal);
+      resolve({ canvas, terminal });
     }));
 }

@@ -1,5 +1,6 @@
 import { Terminal, TerminalSize, TilePosition } from './Terminal';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
+import { WidgetContainer } from './WidgetContainer';
 
 export interface WidgetOptions {
   /** x-position of the widget in terminal tiles */
@@ -11,7 +12,7 @@ export interface WidgetOptions {
   /** widget height in terminal tiles */
   height?: number;
   /** if `true`, the widget can be selectable */
-  selectable?: boolean;
+  focusable?: boolean;
   /** value use for ordering the selection order with the keys */
   tabIndex?: number;
 }
@@ -22,6 +23,8 @@ export interface WidgetOptions {
 export abstract class Widget {
   /** Reference to the parent terminal where it should be rendered */
   protected terminal: Terminal;
+  /** container of the widget, if any */
+  protected parent?: WidgetContainer;
   /** Widget options */
   protected options: WidgetOptions = {};
   /** If the widget is focused or not */
@@ -34,10 +37,21 @@ export abstract class Widget {
    *
    * @param terminal
    * @param options
+   * @param parent
    */
-  constructor(terminal: Terminal, options?: WidgetOptions) {
+  constructor(terminal: Terminal, options?: WidgetOptions, parent?: WidgetContainer) {
     this.terminal = terminal;
+    this.parent = parent;
     this.setOptions(options);
+  }
+
+  /**
+   * Get the reference to the parent of the widget, if any
+   *
+   * @returns parent if any, or `undefined`
+   */
+  getParent(): WidgetContainer {
+    return this.parent;
   }
 
   /**
@@ -54,6 +68,10 @@ export abstract class Widget {
    */
   setOptions(options: WidgetOptions): void {
     const changes = deepAssignAndDiff(this.options, options);
+
+    if (!this.options.focusable && this.focused) {
+      this.blur();
+    }
 
     this.allocated = this.options.col >= 0
       && this.options.line >= 0
@@ -104,11 +122,26 @@ export abstract class Widget {
   }
 
   /**
+   * Check if this widget is focusable (when cycling over widgets)
+   *
+   * @returns `true` if focusable, `false` if not
+   */
+  isFocusable(): boolean {
+    return this.options.focusable;
+  }
+
+  /**
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
    */
   focus(): void {
-    this.focused = true;
+    if (this.options.focusable) {
+      const wasFocused = this.focused;
+      this.focused = true;
+      if (!wasFocused) {
+        this.render();
+      }
+    }
   }
 
   /**
@@ -116,7 +149,11 @@ export abstract class Widget {
    * Usually done by a upper level that controls other widgets.
    */
   blur(): void {
+    const wasFocused = this.focused;
     this.focused = false;
+    if (wasFocused) {
+      this.render();
+    }
   }
 
   /**

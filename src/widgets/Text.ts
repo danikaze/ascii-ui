@@ -5,6 +5,7 @@ import { CharStyle, Terminal } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 
 import { textDefaultOptions } from './defaultOptions';
+import { WidgetContainer } from '@src/WidgetContainer';
 
 export type TokenizerFunction = (text: string) => TextToken[];
 
@@ -63,8 +64,8 @@ export class Text extends Widget {
   /** Line where to start applying the typewritter effect if enabled */
   private typewritterLine = 0;
 
-  constructor(terminal: Terminal, options: TextOptions) {
-    super(terminal, options);
+  constructor(terminal: Terminal, options: TextOptions, parent?: WidgetContainer) {
+    super(terminal, options, parent);
     this.setOptions(deepAssign({}, textDefaultOptions, options));
   }
 

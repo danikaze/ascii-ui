@@ -1,4 +1,7 @@
+/* tslint:disable:no-magic-numbers */
+
 import { Terminal, TerminalOptions } from '@src/Terminal';
+import { isWidgetContainer } from '@src/WidgetContainer';
 import { Box } from '@src/widgets/Box';
 import { Grid, GridOptions } from '@src/widgets/Grid';
 
@@ -14,7 +17,7 @@ function resizeTerminal(terminal: Terminal, w: number, h: number) {
   });
 }
 
-function enableControls(terminal: Terminal) {
+function enableControls(terminal: Terminal, canvas: HTMLCanvasElement) {
   document.getElementById('left')
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, -1, 0));
   document.getElementById('right')
@@ -23,18 +26,36 @@ function enableControls(terminal: Terminal) {
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
   document.getElementById('down')
     .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
+
+  document.getElementById('prev')
+    .addEventListener('click', terminal.cycleFocus.bind(terminal, true));
+  document.getElementById('next')
+    .addEventListener('click', terminal.cycleFocus.bind(terminal, false));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      terminal.cycleFocus(event.shiftKey);
+      event.preventDefault();
+    }
+  });
+
+  canvas.addEventListener('click', (event) => {
+    const cell = terminal.getTilePosition(event.offsetX, event.offsetY);
+    const widget = terminal.getLeafWidgetAt(cell.col, cell.line);
+    if (widget) {
+      widget.focus();
+    }
+  });
 }
 
-function run(terminal: Terminal): void {
-  /* tslint:disable:no-magic-numbers */
+function run({ terminal, canvas }): void {
   const options: GridOptions = {
     columns: 4,
     rows: 4,
   };
 
-  const grid = new Grid(terminal, options);
-  terminal.attachWidget(grid);
-  enableControls(terminal);
+  const grid = terminal.attachWidget(Grid, options);
+  enableControls(terminal, canvas);
 
   // grid.attachWidget(0, 0, 2, 1, Box, { title: 'A' });
   // grid.attachWidget(2, 0, 1, 2, Box, { title: 'B' });
@@ -46,9 +67,9 @@ function run(terminal: Terminal): void {
   grid.attachWidget(3, 0, 1, 3, Box, { title: '(1x3)' });
   grid.attachWidget(0, 1, 3, 1, Box, { title: '(3x1)' });
   grid.attachWidget(0, 2, 2, 2, Box, { title: '(2x2)' });
-  const id = grid.attachWidget(2, 2, 1, 1, Box, { title: '(1x1)' });
+  const widget = grid.attachWidget(2, 2, 1, 1, Box, { title: '(1x1)' });
   grid.attachWidget(2, 3, 2, 1, Box, { title: '(2x1)' });
-  grid.dettachWidget(id);
+  grid.dettachWidget(widget);
 }
 
 const terminalOptions: TerminalOptions = {

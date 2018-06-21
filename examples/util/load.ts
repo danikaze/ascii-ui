@@ -1,7 +1,7 @@
 import * as FontFaceObserver from 'fontfaceobserver';
 
 import { FocusManager } from '@src/FocusManager';
-import { Terminal, TerminalOptions } from '@src/Terminal';
+import { Terminal, TerminalEvent, TerminalOptions } from '@src/Terminal';
 
 interface TestWindow extends Window {
   terminal: Terminal;

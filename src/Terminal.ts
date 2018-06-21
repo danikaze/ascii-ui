@@ -18,6 +18,14 @@ import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './Wid
  */
 export type EscapeCallback = (text: string, index: number) => number;
 
+/** List of events the Terminal can trigger */
+export const enum TerminalEvent {
+  /** Triggered when the Terminal has been resized */
+  RESIZED = 'resized',
+}
+
+export type EventListener = (...args) => void;
+
 export interface TileSize {
   /** number of columns of the terminal, in number of tiles */
   columns: number;
@@ -151,6 +159,8 @@ export class Terminal implements WidgetContainer {
   private lastRenderTime: number = 0;
   /** list of attached widgets */
   private readonly attachedWidgets: Widget[] = [];
+  /** listeners registered to the terminal events */
+  private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -769,6 +779,21 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
+   * Register a listener to a specific event
+   *
+   * @param event event to listen
+   * @param listener callback to register
+   */
+  listen(event: TerminalEvent, listener: EventListener): void {
+    const list = this.eventListeners.get(event);
+    if (list) {
+      list.push(listener);
+    } else {
+      this.eventListeners.set(event, [listener]);
+    }
+  }
+
+  /**
    * Get a bidirectional iterator to move across the attached widgets of the container
    *
    * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
@@ -942,6 +967,21 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
+   * Trigger an event
+   *
+   * @param event event to trigger
+   * @param args arguments to pass to the listeners
+   */
+  private trigger(event: TerminalEvent, ...args): void {
+    const listeners = this.eventListeners.get(event);
+    if (listeners) {
+      listeners.forEach((listener) => {
+        listener.apply(undefined, args);
+      });
+    }
+  }
+
+  /**
    * Resize the terminal and re-calculate the needed internal properties
    * It triggers the RESIZED event.
    *
@@ -986,5 +1026,6 @@ export class Terminal implements WidgetContainer {
 
     this.options.autoRender = autoRender;
     this.info(`resized to: ${width} x ${height}`);
+    this.trigger(TerminalEvent.RESIZED, width, height, oldWidth, oldHeight);
   }
 }

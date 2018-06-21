@@ -1,4 +1,4 @@
-import { Terminal, TileSize } from '../Terminal';
+import { Terminal, TerminalEvent, TileSize } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
@@ -69,6 +69,7 @@ export class Grid extends Widget implements WidgetContainer {
         height: parentSize.rows,
       });
       terminal.listen(TerminalEvent.RESIZED, this.resizedEventHandler.bind(this));
+
     } else {
       this.setOptions({
         col: options.col || 0,

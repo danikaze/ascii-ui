@@ -76,6 +76,11 @@ export class Text extends Widget {
     if (!this.splittedText) {
       return;
     }
+
+    // render is called from outside, so we reset the status of the previous rendering operation,
+    // in case it hasn't finished yet
+    clearTimeout(this.typewritterTimer);
+
     const typewritterEnabled = this.options.typewritterDelay > 0;
 
     const terminalColumn = this.options.col;

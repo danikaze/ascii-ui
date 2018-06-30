@@ -45,6 +45,11 @@ export interface TextOptions extends WidgetOptions {
    * Set to `0` (default) to disable it
    */
   typewritterDelay?: number;
+  /**
+   * Set to `false` to apply the typewritter to the text again when it appears even
+   * if it was shown already before
+   */
+  persistentTypewritter?: boolean;
 }
 
 /**
@@ -145,7 +150,11 @@ export class Text extends Widget {
 
     if (currentOffset !== this.startLine) {
       const oldTypewritterLine = this.typewritterLine;
-      this.typewritterLine = clamp(this.typewritterLine, this.startLine, this.splittedText.length);
+      this.typewritterLine = clamp(
+        this.typewritterLine,
+        this.startLine,
+        this.options.persistentTypewritter ? this.splittedText.length : maxLine,
+      );
       if (oldTypewritterLine !== this.typewritterLine) {
         this.typewritterColumn = 0;
       }

@@ -54,4 +54,5 @@ export const textDefaultOptions: TextOptions = {
   tokenizer: true,
   fitPageEnd: false,
   typewritterDelay: 0,
+  persistentTypewritter: true,
 };

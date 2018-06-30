@@ -5,7 +5,8 @@ import { Widget } from './Widget';
  */
 export interface BidirectionalIterator<T> extends Iterator<T> {
   // tslint:disable-next-line:no-any
-  prev(value?: any): IteratorResult<T>;
+  prev(): IteratorResult<T>;
+  seek(value?: T | number): void;
 }
 
 /**

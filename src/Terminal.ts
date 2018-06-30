@@ -802,20 +802,12 @@ export class Terminal implements WidgetContainer {
     const data = this.attachedWidgets;
     let index;
 
-    if (typeof startWidget === 'number') {
-      index = startWidget < 0 ? this.attachedWidgets.length - startWidget - 1 : startWidget;
-    } else if (startWidget) {
-      index = this.attachedWidgets.indexOf(startWidget);
-        } else {
-      index = -1;
-        }
-
-    return {
+    const it = {
       next: () => {
         index++;
         if (index > this.attachedWidgets.length) {
           index = this.attachedWidgets.length;
-      }
+        }
 
         return {
           value: data[index],
@@ -827,14 +819,28 @@ export class Terminal implements WidgetContainer {
         index--;
         if (index < -1) {
           index = -1;
-  }
+        }
 
         return {
           value: data[index],
           done: !(index in data),
         };
       },
+
+      seek: (value: Widget | number) => {
+        index = typeof value === 'number'
+          ? (value < 0 ? this.attachedWidgets.length - value - 1 : value)
+          : this.attachedWidgets.indexOf(value);
+      },
     };
+
+    if (startWidget) {
+      it.seek(startWidget);
+    } else {
+      index = -1;
+    }
+
+    return it;
   }
 
   /**

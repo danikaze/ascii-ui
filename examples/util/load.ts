@@ -3,8 +3,9 @@ import * as FontFaceObserver from 'fontfaceobserver';
 import { FocusManager } from '@src/FocusManager';
 import { Terminal, TerminalEvent, TerminalOptions } from '@src/Terminal';
 
-interface TestWindow extends Window {
+export interface TestWindow extends Window {
   terminal: Terminal;
+  focusManager: FocusManager;
 }
 
 interface LoadData {
@@ -34,10 +35,10 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     const buttonNext = document.getElementById('next');
 
     if (buttonPrev) {
-      buttonPrev.addEventListener('click', focusManager.prev.bind(this));
+      buttonPrev.addEventListener('click', focusManager.prev.bind(focusManager));
     }
     if (buttonNext) {
-      buttonNext.addEventListener('click', focusManager.next.bind(this));
+      buttonNext.addEventListener('click', focusManager.next.bind(focusManager));
     }
 
     /*
@@ -57,6 +58,7 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     canvas.addEventListener('click', (event) => {
       const cell = terminal.getTilePosition(event.offsetX, event.offsetY);
       const widget = terminal.getLeafWidgetAt(cell.col, cell.line);
+      (window as TestWindow).focusManager.focus(widget);
     });
   }
 
@@ -72,6 +74,7 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
       terminal.listen(TerminalEvent.RESIZED, terminalResizedHandler.bind(0, canvas));
 
       (window as TestWindow).terminal = terminal;
+      (window as TestWindow).focusManager = focusManager;
 
       resolve({ canvas, focusManager, terminal });
     }));

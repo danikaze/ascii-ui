@@ -178,20 +178,12 @@ export class Grid extends Widget implements WidgetContainer {
     const data = this.attachedWidgets;
     let index;
 
-    if (typeof startWidget === 'number') {
-      index = startWidget < 0 ? this.attachedWidgets.length - startWidget - 1 : startWidget;
-    } else if (startWidget) {
-      index = data.findIndex((attachedWidget) => attachedWidget.widget === startWidget);
-        } else {
-      index = -1;
-        }
-
-    return {
+    const it = {
       next: () => {
         const attachedWidget = data[++index];
         if (index > this.attachedWidgets.length) {
           index = this.attachedWidgets.length;
-    }
+        }
 
         return {
           value: attachedWidget && attachedWidget.widget,
@@ -203,14 +195,28 @@ export class Grid extends Widget implements WidgetContainer {
         const attachedWidget = data[--index];
         if (index < -1) {
           index = -1;
-    }
+        }
 
         return {
           value: attachedWidget && attachedWidget.widget,
           done: !(index in data),
         };
       },
+
+      seek: (value: Widget | number) => {
+        index = typeof value === 'number'
+          ? (value < 0 ? this.attachedWidgets.length - value - 1 : value)
+          : data.findIndex((attachedWidget) => attachedWidget.widget === value);
+      },
     };
+
+    if (startWidget) {
+      it.seek(startWidget);
+    } else {
+      index = -1;
+    }
+
+    return it;
   }
 
   /**

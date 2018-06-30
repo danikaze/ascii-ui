@@ -207,19 +207,11 @@ export class Box extends Widget implements WidgetContainer {
    *
    * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
    */
-  [Symbol.iterator](startWidget?: Widget | number, reverse?: boolean): BidirectionalIterator<Widget> {
+  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
     const widget = this.attachedWidget;
     let index;
 
-    if (typeof startWidget === 'number') {
-      index = startWidget < 0 ? 0 - startWidget : startWidget - 1;
-    } else if (startWidget) {
-      index = this.attachedWidget === startWidget ? 0 : -1;
-    } else {
-      index = -1;
-    }
-
-    return {
+    const it = {
       next: () => {
         index++;
         if (index > 1) {
@@ -243,7 +235,21 @@ export class Box extends Widget implements WidgetContainer {
           done: index !== 0,
         };
       },
+
+      seek: (value: Widget | number) => {
+        index = typeof value === 'number'
+          ? (value < 0 ? 0 - value : value - 1)
+          : this.attachedWidget === value ? 0 : -1;
+      },
     };
+
+    if (startWidget) {
+      it.seek(startWidget);
+    } else {
+      index = -1;
+    }
+
+    return it;
   }
 
   /**

@@ -1,17 +1,16 @@
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { FocusManager } from '@src/FocusManager';
-import { Terminal, TerminalEvent, TerminalOptions } from '@src/Terminal';
+import { Terminal, TerminalOptions } from '@src/Terminal';
+import { TerminalEvent } from '@src/TerminalEvent';
 
 export interface TestWindow extends Window {
   terminal: Terminal;
-  focusManager: FocusManager;
+  TerminalEvent: typeof TerminalEvent;
 }
 
 interface LoadData {
   canvas: HTMLCanvasElement;
   terminal: Terminal;
-  focusManager: FocusManager;
 }
 
 function hideLoad() {
@@ -27,7 +26,7 @@ function terminalResizedHandler(canvas) {
 export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
   const font = new FontFaceObserver('Terminal_VT220');
 
-  function enableFocusInteraction(terminal: Terminal, focusManager: FocusManager, canvas: HTMLCanvasElement): void {
+  function enableFocusInteraction(terminal: Terminal, canvas: HTMLCanvasElement): void {
     /*
      * PREV/NEXT buttons
      */
@@ -35,10 +34,10 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     const buttonNext = document.getElementById('next');
 
     if (buttonPrev) {
-      buttonPrev.addEventListener('click', focusManager.prev.bind(focusManager));
+      buttonPrev.addEventListener('click', terminal.focusManager.prev.bind(terminal.focusManager));
     }
     if (buttonNext) {
-      buttonNext.addEventListener('click', focusManager.next.bind(focusManager));
+      buttonNext.addEventListener('click', terminal.focusManager.next.bind(terminal.focusManager));
     }
 
     /*
@@ -48,7 +47,7 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
       if (event.key === 'Tab') {
         event.preventDefault();
         const method = event.shiftKey ? 'prev' : 'next';
-        focusManager[method]();
+        terminal.focusManager[method]();
       }
     });
 
@@ -58,7 +57,7 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     canvas.addEventListener('click', (event) => {
       const cell = terminal.getTilePosition(event.offsetX, event.offsetY);
       const widget = terminal.getLeafWidgetAt(cell.col, cell.line);
-      (window as TestWindow).focusManager.focus(widget);
+      terminal.focusManager.focus(widget);
     });
   }
 
@@ -67,15 +66,14 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     .then(() => new Promise<LoadData>((resolve, reject) => {
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
       const terminal = new Terminal(canvas, terminalOptions);
-      const focusManager = new FocusManager(terminal, canvas);
-      enableFocusInteraction(terminal, focusManager, canvas);
+      enableFocusInteraction(terminal, canvas);
 
       terminalResizedHandler(canvas);
-      terminal.listen(TerminalEvent.RESIZED, terminalResizedHandler.bind(0, canvas));
+      terminal.eventManager.listen('resized', terminalResizedHandler.bind(0, canvas));
 
       (window as TestWindow).terminal = terminal;
-      (window as TestWindow).focusManager = focusManager;
+      (window as TestWindow).TerminalEvent = TerminalEvent;
 
-      resolve({ canvas, focusManager, terminal });
+      resolve({ canvas, terminal });
     }));
 }

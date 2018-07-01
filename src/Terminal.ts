@@ -2,6 +2,9 @@
 import { isArray } from 'vanilla-type-check';
 
 import { defaultDebugOptions, defaultOptions } from './defaultOptions';
+import { EventManager } from './EventManager';
+import { FocusManager } from './FocusManager';
+import { TerminalEvent } from './TerminalEvent';
 import { assignCharStyle } from './util/assignCharStyle';
 import { deepAssign } from './util/deepAssign';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
@@ -17,14 +20,6 @@ import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './Wid
  * @return index where the text processing should be continued
  */
 export type EscapeCallback = (text: string, index: number) => number;
-
-/** List of events the Terminal can trigger */
-export const enum TerminalEvent {
-  /** Triggered when the Terminal has been resized */
-  RESIZED = 'resized',
-}
-
-export type EventListener = (...args) => void;
 
 export interface TileSize {
   /** number of columns of the terminal, in number of tiles */
@@ -131,6 +126,10 @@ type IterateTileCallback = (InternalTile, i) => void;
  * Basic terminal features rendered into a Canvas object
  */
 export class Terminal implements WidgetContainer {
+  /** focus manager for the Terminal widgets */
+  readonly focusManager: FocusManager;
+  /** event manager for this terminal */
+  readonly eventManager: EventManager;
   /** terminal options */
   protected readonly options: TerminalOptions = {};
   /** canvas object associated with the terminal */
@@ -159,8 +158,6 @@ export class Terminal implements WidgetContainer {
   private lastRenderTime: number = 0;
   /** list of attached widgets */
   private readonly attachedWidgets: Widget[] = [];
-  /** listeners registered to the terminal events */
-  private readonly eventListeners: Map<TerminalEvent, EventListener[]> = new Map();
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -169,6 +166,8 @@ export class Terminal implements WidgetContainer {
    * @param options
    */
   constructor(canvas: HTMLCanvasElement, options?: TerminalOptions) {
+    this.focusManager = new FocusManager(this, canvas);
+    this.eventManager = new EventManager(this);
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.setOptions(deepAssign({}, defaultOptions, options));
@@ -779,21 +778,6 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Register a listener to a specific event
-   *
-   * @param event event to listen
-   * @param listener callback to register
-   */
-  listen(event: TerminalEvent, listener: EventListener): void {
-    const list = this.eventListeners.get(event);
-    if (list) {
-      list.push(listener);
-    } else {
-      this.eventListeners.set(event, [listener]);
-    }
-  }
-
-  /**
    * Get a bidirectional iterator to move across the attached widgets of the container
    *
    * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
@@ -973,21 +957,6 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Trigger an event
-   *
-   * @param event event to trigger
-   * @param args arguments to pass to the listeners
-   */
-  private trigger(event: TerminalEvent, ...args): void {
-    const listeners = this.eventListeners.get(event);
-    if (listeners) {
-      listeners.forEach((listener) => {
-        listener.apply(undefined, args);
-      });
-    }
-  }
-
-  /**
    * Resize the terminal and re-calculate the needed internal properties
    * It triggers the RESIZED event.
    *
@@ -1024,14 +993,10 @@ export class Terminal implements WidgetContainer {
 
       this.ctx.fillStyle = this.options.bg;
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-      // if (autoRender) {
-      //   this.renderAll(); // is this needed?
-      // }
     }
 
     this.options.autoRender = autoRender;
     this.info(`resized to: ${width} x ${height}`);
-    this.trigger(TerminalEvent.RESIZED, width, height, oldWidth, oldHeight);
+    this.eventManager.trigger(new TerminalEvent('resized', { width, height, oldWidth, oldHeight }));
   }
 }

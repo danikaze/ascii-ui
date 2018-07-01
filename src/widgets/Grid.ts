@@ -1,4 +1,5 @@
-import { Terminal, TerminalEvent, TileSize } from '../Terminal';
+import { Terminal, TileSize } from '../Terminal';
+import { TerminalEvent } from '../TerminalEvent';
 import { Widget, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
@@ -68,7 +69,7 @@ export class Grid extends Widget implements WidgetContainer {
         width: parentSize.columns,
         height: parentSize.rows,
       });
-      terminal.listen(TerminalEvent.RESIZED, this.resizedEventHandler.bind(this));
+      terminal.eventManager.listen('resized', this.resizedEventHandler.bind(this));
 
     } else {
       this.setOptions({
@@ -322,10 +323,9 @@ export class Grid extends Widget implements WidgetContainer {
   /**
    * Handler for the Terminal RESIZED event
    *
-   * @param width new size of the terminal in columns
-   * @param height new size of the terminal in rows
+   * @param event
    */
-  private resizedEventHandler(width: number, height: number): void {
+  private resizedEventHandler(event: TerminalEvent): void {
     if (this.parent instanceof Terminal && this.options.fullSize) {
       const terminalSize = this.parent.getSize();
 

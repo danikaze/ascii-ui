@@ -418,6 +418,15 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
+   * Get the current status of the cursor
+   *
+   * @returns `true` if the cursor is enabled, `false` otherwise
+   */
+  isCursorEnabled(): boolean {
+    return this.options.cursor;
+  }
+
+  /**
    * Get the position of the cursor, in tile coordinates
    *
    * @returns current position of the cursor, in tile coordinates

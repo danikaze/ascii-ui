@@ -4,6 +4,6 @@ There are several projects that allows you to use the JavaScript canvas in the t
 
 No? Really, not even once? Well, I don't care.
 
-And thanks to my lack of empathy this project allows you to have access to a low-level interface to modify directly a buffer to render characters like the a old style terminals.
+And thanks to my lack of empathy this project allows you to have access to a low-level interface to modify directly a buffer to render characters like the old style terminals.
 
 ![Input Widget demo](assets/demo-input.gif)

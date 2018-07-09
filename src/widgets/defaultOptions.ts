@@ -1,5 +1,6 @@
 import { BoxBorderOptions, BoxOptions, BoxPaddingOptions, BoxTitleOptions } from './Box';
 import { GridOptions } from './Grid';
+import { InputOptions } from './Input';
 import { TextOptions } from './Text';
 
 export const gridDefaultOptions: GridOptions = {
@@ -55,4 +56,10 @@ export const textDefaultOptions: TextOptions = {
   fitPageEnd: false,
   typewritterDelay: 0,
   persistentTypewritter: true,
+};
+
+export const inputDefaultOptions: InputOptions = {
+  maxLength: 0,
+  password: false,
+  passwordCharacter: '*',
 };

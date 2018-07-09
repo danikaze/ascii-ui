@@ -6,28 +6,7 @@ import { Text } from '@src/widgets/Text';
 
 import { load } from '../util/load';
 
-import '../styles/examples.less';
-
-function resizeTerminal(terminal: Terminal, w: number, h: number) {
-  const currentSize = terminal.getSize();
-  terminal.setOptions({
-    rows: currentSize.rows + h,
-    columns: currentSize.columns + w,
-  });
-}
-
-function enableControls(terminal: Terminal, canvas: HTMLCanvasElement) {
-  document.getElementById('left')
-    .addEventListener('click', resizeTerminal.bind(undefined, terminal, -1, 0));
-  document.getElementById('right')
-    .addEventListener('click', resizeTerminal.bind(undefined, terminal, +1, 0));
-  document.getElementById('up')
-    .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
-  document.getElementById('down')
-    .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
-}
-
-function run({ terminal, canvas }): void {
+function run({ terminal }): void {
   const options: GridOptions = {
     columns: 4,
     rows: 4,
@@ -40,7 +19,6 @@ function run({ terminal, canvas }): void {
   };
 
   const grid = terminal.attachWidget(Grid, options);
-  enableControls(terminal, canvas);
 
   grid.attachWidget(0, 0, 1, 1, Box, { title: '(1x1)', padding: zeroPadding })
       .attachWidget(Text, { text: 'Text A'});

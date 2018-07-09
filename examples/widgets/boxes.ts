@@ -15,23 +15,27 @@ interface TestWindow extends Window {
   terminal: Terminal;
 }
 
-function scrollText(text: Text) {
+function scrollText(texts: Text[]) {
   document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-      case 'ArrowDown':
-        text.scrollLines(1);
-        break;
-      case 'ArrowUp':
-        text.scrollLines(-1);
-        break;
-      case 'PageUp':
-        text.scrollPages(-1);
-        break;
-      case 'PageDown':
-        text.scrollPages(1);
-        break;
-      default:
-    }
+    texts.forEach((text) => {
+      if (text.isFocused()) {
+        switch (event.key) {
+          case 'ArrowDown':
+            text.scrollLines(1);
+            break;
+          case 'ArrowUp':
+            text.scrollLines(-1);
+            break;
+          case 'PageUp':
+            text.scrollPages(-1);
+            break;
+          case 'PageDown':
+            text.scrollPages(1);
+            break;
+          default:
+        }
+      }
+    });
   });
 }
 
@@ -50,15 +54,14 @@ function run({ terminal, canvas }) {
 
   options.line = 7;
   options.title = 'Title';
-  // const b2 = new Box(terminal, options);
   const box2 = terminal.attachWidget(Box, options) as Box;
-  box2.attachWidget(Text, { text: '1 tile margin', textStyle: { fg: '#ffff00' } });
+  const text1 = box2.attachWidget(Text, { text: '1 tile margin', textStyle: { fg: '#ffff00' } }) as Text;
 
   options.line = 13;
   options.title = 'Very long title for real';
   options.padding = { top: 0, bottom: 0, right: 0, left: 0};
   const box3 = terminal.attachWidget(Box, options) as Box;
-  const textWidget = box3.attachWidget(Text, {
+  const text2 = box3.attachWidget(Text, {
     typewritterDelay: 50,
     text: ''
     //  |--------------------| // box size
@@ -73,7 +76,7 @@ function run({ terminal, canvas }) {
       + 'defined.',
     //  |--------------------| // box size
   }) as Text;
-  scrollText(textWidget);
+  scrollText([text1, text2]);
 
   (window as TestWindow).terminal = terminal;
 }

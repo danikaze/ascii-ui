@@ -3,12 +3,13 @@ import * as FontFaceObserver from 'fontfaceobserver';
 import { Terminal, TerminalOptions } from '@src/Terminal';
 import { TerminalEvent } from '@src/TerminalEvent';
 
+import '../styles/examples.less';
 export interface TestWindow extends Window {
   terminal: Terminal;
   TerminalEvent: typeof TerminalEvent;
 }
 
-interface LoadData {
+export interface LoadData {
   canvas: HTMLCanvasElement;
   terminal: Terminal;
 }
@@ -61,12 +62,32 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     });
   }
 
+  function resizeTerminal(terminal: Terminal, w: number, h: number) {
+    const currentSize = terminal.getSize();
+    terminal.setOptions({
+      rows: currentSize.rows + h,
+      columns: currentSize.columns + w,
+    });
+  }
+
+  function enableResizeButtons(terminal: Terminal, canvas: HTMLCanvasElement) {
+    document.getElementById('left')
+      .addEventListener('click', resizeTerminal.bind(undefined, terminal, -1, 0));
+    document.getElementById('right')
+      .addEventListener('click', resizeTerminal.bind(undefined, terminal, +1, 0));
+    document.getElementById('up')
+      .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
+    document.getElementById('down')
+      .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
+  }
+
   return font.load()
     .then(hideLoad)
     .then(() => new Promise<LoadData>((resolve, reject) => {
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
       const terminal = new Terminal(canvas, terminalOptions);
       enableFocusInteraction(terminal, canvas);
+      enableResizeButtons(terminal, canvas);
 
       terminalResizedHandler(canvas);
       terminal.eventManager.listen('resized', terminalResizedHandler.bind(0, canvas));

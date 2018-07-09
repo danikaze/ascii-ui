@@ -191,7 +191,7 @@ export class Text extends Widget {
    * @param changedOptions Object with only the changed options
    */
   protected updateOptions(options: TextOptions): void {
-    const dirtyText = options.tokenizer !== undefined || options.text !== undefined;
+    const dirtyText = options.tokenizer !== undefined || options.text !== undefined || options.width !== undefined;
 
     if (options.tokenizer !== undefined) {
       if (!options.tokenizer) {

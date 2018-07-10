@@ -36,7 +36,7 @@
 
 **Τ TokenizerFunction**:  *`function`* 
 
-*Defined in [widgets/Text.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L9)*
+*Defined in [widgets/Text.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L10)*
 
 
 #### Type declaration
@@ -73,7 +73,7 @@ ___
 
 
 
-*Defined in [widgets/Text.ts:257](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L257)*
+*Defined in [widgets/Text.ts:300](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L300)*
 
 
 

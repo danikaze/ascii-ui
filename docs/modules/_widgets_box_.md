@@ -13,6 +13,7 @@
 
 ### Interfaces
 
+* [BoxAspectOptions](../interfaces/_widgets_box_.boxaspectoptions.md)
 * [BoxBorderOptions](../interfaces/_widgets_box_.boxborderoptions.md)
 * [BoxOptions](../interfaces/_widgets_box_.boxoptions.md)
 * [BoxPaddingOptions](../interfaces/_widgets_box_.boxpaddingoptions.md)

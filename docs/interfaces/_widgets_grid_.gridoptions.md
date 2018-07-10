@@ -27,7 +27,7 @@
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L6)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
 
 
 
@@ -44,11 +44,30 @@ ___
 
 **●  columns**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L9)*
+*Defined in [widgets/Grid.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L12)*
 
 
 
 Number of columns of the grid
+
+
+
+
+___
+
+<a id="focusable"></a>
+
+### «Optional» focusable
+
+**●  focusable**:  *`boolean`* 
+
+*Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
+
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+
+
+
+if `true`, the widget can be selectable
 
 
 
@@ -61,11 +80,11 @@ ___
 
 **●  fullSize**:  *`boolean`* 
 
-*Defined in [widgets/Grid.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L11)*
+*Defined in [widgets/Grid.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L14)*
 
 
 
-Expand (or not) to the full size of the terminal
+Expand (or not) to the full size of the terminal (only applies when the parent is the terminal)
 
 
 
@@ -80,7 +99,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L12)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
 
 
 
@@ -99,7 +118,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L8)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
 
 
 
@@ -116,30 +135,11 @@ ___
 
 **●  rows**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L7)*
+*Defined in [widgets/Grid.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L10)*
 
 
 
 Number of rows of the grid
-
-
-
-
-___
-
-<a id="selectable"></a>
-
-### «Optional» selectable
-
-**●  selectable**:  *`boolean`* 
-
-*Inherited from [WidgetOptions](_widget_.widgetoptions.md).[selectable](_widget_.widgetoptions.md#selectable)*
-
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L14)*
-
-
-
-if `true`, the widget can be selectable
 
 
 
@@ -154,7 +154,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L16)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
 
 
 
@@ -173,7 +173,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L10)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
 
 
 
@@ -194,7 +194,7 @@ ___
 
 
 
-*Defined in [widgets/Grid.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L18)*
+*Defined in [widgets/Grid.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L21)*
 
 
 

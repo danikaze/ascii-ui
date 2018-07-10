@@ -20,22 +20,28 @@ Basic terminal features rendered into a Canvas object
 
 ### Properties
 
+* [eventManager](_terminal_.terminal.md#eventmanager)
+* [focusManager](_terminal_.terminal.md#focusmanager)
 * [options](_terminal_.terminal.md#options)
 
 
 ### Methods
 
+* [__@iterator](_terminal_.terminal.md#___iterator)
 * [attachWidget](_terminal_.terminal.md#attachwidget)
 * [clear](_terminal_.terminal.md#clear)
 * [dettachWidget](_terminal_.terminal.md#dettachwidget)
 * [getCursor](_terminal_.terminal.md#getcursor)
+* [getLeafWidgetAt](_terminal_.terminal.md#getleafwidgetat)
+* [getParent](_terminal_.terminal.md#getparent)
 * [getSize](_terminal_.terminal.md#getsize)
 * [getText](_terminal_.terminal.md#gettext)
 * [getTextStyle](_terminal_.terminal.md#gettextstyle)
 * [getTilePosition](_terminal_.terminal.md#gettileposition)
 * [getViewport](_terminal_.terminal.md#getviewport)
 * [getWidgetAt](_terminal_.terminal.md#getwidgetat)
-* [listen](_terminal_.terminal.md#listen)
+* [getWidgetPath](_terminal_.terminal.md#getwidgetpath)
+* [isCursorEnabled](_terminal_.terminal.md#iscursorenabled)
 * [moveCursor](_terminal_.terminal.md#movecursor)
 * [render](_terminal_.terminal.md#render)
 * [renderAll](_terminal_.terminal.md#renderall)
@@ -56,7 +62,7 @@ Basic terminal features rendered into a Canvas object
 ### ⊕ **new Terminal**(canvas: *`HTMLCanvasElement`*, options?: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): [Terminal](_terminal_.terminal.md)
 
 
-*Defined in [Terminal.ts:166](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L166)*
+*Defined in [Terminal.ts:160](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L160)*
 
 
 
@@ -80,13 +86,47 @@ Creates a Terminal associated to a canvas element.
 
 
 ## Properties
+<a id="eventmanager"></a>
+
+###  eventManager
+
+**●  eventManager**:  *[EventManager](_eventmanager_.eventmanager.md)* 
+
+*Defined in [Terminal.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L132)*
+
+
+
+event manager for this terminal
+
+
+
+
+___
+
+<a id="focusmanager"></a>
+
+###  focusManager
+
+**●  focusManager**:  *[FocusManager](_focusmanager_.focusmanager.md)* 
+
+*Defined in [Terminal.ts:130](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L130)*
+
+
+
+focus manager for the Terminal widgets
+
+
+
+
+___
+
 <a id="options"></a>
 
 ### «Protected» options
 
 **●  options**:  *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)* 
 
-*Defined in [Terminal.ts:138](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L138)*
+*Defined in [Terminal.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L134)*
 
 
 
@@ -99,40 +139,50 @@ ___
 
 
 ## Methods
-<a id="attachwidget"></a>
+<a id="___iterator"></a>
 
-###  attachWidget
+###  __@iterator
 
-► **attachWidget**(widget: *[Widget](_widget_.widget.md)*): [Widget](_widget_.widget.md)
-
-► **attachWidget**(WidgetClass: *[Widget](_widget_.widget.md)*, ...args: *`any`[]*): [Widget](_widget_.widget.md)
+► **__@iterator**(startWidget?: *[Widget](_widget_.widget.md)⎮`number`*): [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)[Widget](_widget_.widget.md)
 
 
 
-*Defined in [Terminal.ts:682](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L682)*
+*Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[__@iterator](../interfaces/_widgetcontainer_.widgetcontainer.md#___iterator)*
+
+*Defined in [Terminal.ts:794](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L794)*
 
 
 
-Attach a specified widget to this instance of the terminal
+Get a bidirectional iterator to move across the attached widgets of the container
 
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| widget | [Widget](_widget_.widget.md)   |  instance of the widget to attach |
+| startWidget | [Widget](_widget_.widget.md)⎮`number`   |  if specified, the next call will start with this widget (return the next or previous one) |
 
 
 
 
 
-**Returns:** [Widget](_widget_.widget.md)
-widget instance
+**Returns:** [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)[Widget](_widget_.widget.md)
 
 
 
 
-*Defined in [Terminal.ts:691](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L691)*
+
+___
+
+<a id="attachwidget"></a>
+
+###  attachWidget
+
+► **attachWidget**(WidgetClass: *[Widget](_widget_.widget.md)*, options?: *`any`*): [Widget](_widget_.widget.md)
+
+
+
+*Defined in [Terminal.ts:697](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L697)*
 
 
 
@@ -144,7 +194,7 @@ Create and attach a widget to this instance of the terminal
 | Param | Type | Description |
 | ------ | ------ | ------ |
 | WidgetClass | [Widget](_widget_.widget.md)   |  Class of the widget |
-| args | `any`[]   |  Options for the widget constructor |
+| options | `any`   |  Options for the widget constructor |
 
 
 
@@ -170,7 +220,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:257](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L257)*
+*Defined in [Terminal.ts:253](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L253)*
 
 
 
@@ -183,7 +233,7 @@ Clear the whole terminal
 
 
 
-*Defined in [Terminal.ts:267](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L267)*
+*Defined in [Terminal.ts:263](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L263)*
 
 
 
@@ -221,7 +271,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[dettachWidget](../interfaces/_widgetcontainer_.widgetcontainer.md#dettachwidget)*
 
-*Defined in [Terminal.ts:710](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L710)*
+*Defined in [Terminal.ts:716](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L716)*
 
 
 
@@ -256,7 +306,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:430](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L430)*
+*Defined in [Terminal.ts:434](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L434)*
 
 
 
@@ -275,15 +325,80 @@ current position of the cursor, in tile coordinates
 
 ___
 
+<a id="getleafwidgetat"></a>
+
+###  getLeafWidgetAt
+
+► **getLeafWidgetAt**(column: *`number`*, line: *`number`*): [Widget](_widget_.widget.md)
+
+
+
+*Defined in [Terminal.ts:753](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L753)*
+
+
+
+Traverse the containers to get the last possible widget at the specified position
+
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| column | `number`   |  column of the terminal |
+| line | `number`   |  line of the terminal |
+
+
+
+
+
+**Returns:** [Widget](_widget_.widget.md)
+widget or `undefined` if not found
+
+
+
+
+
+
+___
+
+<a id="getparent"></a>
+
+###  getParent
+
+► **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
+
+
+
+*Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getParent](../interfaces/_widgetcontainer_.widgetcontainer.md#getparent)*
+
+*Defined in [Terminal.ts:686](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L686)*
+
+
+
+Get the reference to the parent of the widget, if any
+
+
+
+
+**Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
+parent if any, or `undefined`
+
+
+
+
+
+
+___
+
 <a id="getsize"></a>
 
 ###  getSize
 
-► **getSize**(): [TerminalSize](../interfaces/_terminal_.terminalsize.md)
+► **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
 
 
-*Defined in [Terminal.ts:418](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L418)*
+*Defined in [Terminal.ts:413](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L413)*
 
 
 
@@ -292,7 +407,7 @@ Get the terminal size, measured in tiles
 
 
 
-**Returns:** [TerminalSize](../interfaces/_terminal_.terminalsize.md)
+**Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the terminal, measured in tiles
 
 
@@ -310,7 +425,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:627](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L627)*
+*Defined in [Terminal.ts:631](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L631)*
 
 
 
@@ -345,7 +460,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:514](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L514)*
+*Defined in [Terminal.ts:518](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L518)*
 
 
 
@@ -370,7 +485,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:493](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L493)*
+*Defined in [Terminal.ts:497](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L497)*
 
 
 
@@ -404,7 +519,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:409](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L409)*
+*Defined in [Terminal.ts:404](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L404)*
 
 
 
@@ -433,7 +548,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getWidgetAt](../interfaces/_widgetcontainer_.widgetcontainer.md#getwidgetat)*
 
-*Defined in [Terminal.ts:730](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L730)*
+*Defined in [Terminal.ts:736](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L736)*
 
 
 
@@ -461,33 +576,61 @@ widget or `undefined` if not found (wrong id or previously dettached)
 
 ___
 
-<a id="listen"></a>
+<a id="getwidgetpath"></a>
 
-###  listen
+###  getWidgetPath
 
-► **listen**(event: *[TerminalEvent](../enums/_terminal_.terminalevent.md)*, listener: *[EventListener](../modules/_terminal_.md#eventlistener)*): `void`
-
-
-
-*Defined in [Terminal.ts:746](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L746)*
+► **getWidgetPath**(widget: *[Widget](_widget_.widget.md)*): `Array`.<[Widget](_widget_.widget.md)⎮[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
 
 
 
-Register a listener to a specific event
+*Defined in [Terminal.ts:777](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L777)*
+
+
+
+Get the list of widgets from the widget until the terminal itself (not included) The result will be `undefined` if the widget is not found as a descendant of this terminal
 
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| event | [TerminalEvent](../enums/_terminal_.terminalevent.md)   |  event to listen |
-| listener | [EventListener](../modules/_terminal_.md#eventlistener)   |  callback to register |
+| widget | [Widget](_widget_.widget.md)   |  Widget to start the list with |
 
 
 
 
 
-**Returns:** `void`
+**Returns:** `Array`.<[Widget](_widget_.widget.md)⎮[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
+list of widgets from the `widget` itself (included) to the terminal (not included)
+
+
+
+
+
+
+___
+
+<a id="iscursorenabled"></a>
+
+###  isCursorEnabled
+
+► **isCursorEnabled**(): `boolean`
+
+
+
+*Defined in [Terminal.ts:425](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L425)*
+
+
+
+Get the current status of the cursor
+
+
+
+
+**Returns:** `boolean`
+`true` if the cursor is enabled, `false` otherwise
+
 
 
 
@@ -503,7 +646,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:482](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L482)*
+*Defined in [Terminal.ts:486](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L486)*
 
 
 
@@ -537,7 +680,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:314](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L314)*
+*Defined in [Terminal.ts:310](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L310)*
 
 
 
@@ -564,7 +707,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:394](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L394)*
+*Defined in [Terminal.ts:389](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L389)*
 
 
 
@@ -589,7 +732,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:443](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L443)*
+*Defined in [Terminal.ts:447](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L447)*
 
 
 
@@ -623,7 +766,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:238](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L238)*
+*Defined in [Terminal.ts:234](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L234)*
 
 
 
@@ -656,7 +799,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:196](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L196)*
+*Defined in [Terminal.ts:192](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L192)*
 
 
 
@@ -689,7 +832,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:537](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L537)*
+*Defined in [Terminal.ts:541](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L541)*
 
 
 
@@ -724,7 +867,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:507](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L507)*
+*Defined in [Terminal.ts:511](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L511)*
 
 
 
@@ -757,7 +900,7 @@ ___
 
 
 
-*Defined in [Terminal.ts:654](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Terminal.ts#L654)*
+*Defined in [Terminal.ts:658](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L658)*
 
 
 

@@ -36,19 +36,23 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 * [allocated](_widgets_box_.box.md#allocated)
 * [focused](_widgets_box_.box.md#focused)
 * [options](_widgets_box_.box.md#options)
+* [parent](_widgets_box_.box.md#parent)
 * [terminal](_widgets_box_.box.md#terminal)
 
 
 ### Methods
 
+* [__@iterator](_widgets_box_.box.md#___iterator)
 * [attachWidget](_widgets_box_.box.md#attachwidget)
 * [blur](_widgets_box_.box.md#blur)
 * [dettachWidget](_widgets_box_.box.md#dettachwidget)
 * [focus](_widgets_box_.box.md#focus)
+* [getParent](_widgets_box_.box.md#getparent)
 * [getPosition](_widgets_box_.box.md#getposition)
 * [getSize](_widgets_box_.box.md#getsize)
 * [getWidgetAt](_widgets_box_.box.md#getwidgetat)
 * [isAt](_widgets_box_.box.md#isat)
+* [isFocusable](_widgets_box_.box.md#isfocusable)
 * [isFocused](_widgets_box_.box.md#isfocused)
 * [render](_widgets_box_.box.md#render)
 * [setOptions](_widgets_box_.box.md#setoptions)
@@ -61,12 +65,12 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 <a id="constructor"></a>
 
 
-### ⊕ **new Box**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[BoxOptions](../interfaces/_widgets_box_.boxoptions.md)*): [Box](_widgets_box_.box.md)
+### ⊕ **new Box**(terminal: *[Terminal](_terminal_.terminal.md)*, options?: *[BoxOptions](../interfaces/_widgets_box_.boxoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Box](_widgets_box_.box.md)
 
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Box.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L90)*
+*Defined in [widgets/Box.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L104)*
 
 
 
@@ -76,6 +80,7 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 | ------ | ------ | ------ |
 | terminal | [Terminal](_terminal_.terminal.md)   |  - |
 | options | [BoxOptions](../interfaces/_widgets_box_.boxoptions.md)   |  - |
+| parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
 
 
 
@@ -95,7 +100,7 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L30)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
 
 
 
@@ -114,7 +119,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L28)*
+*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L31)*
 
 
 
@@ -133,11 +138,30 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Box.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L87)*
+*Defined in [widgets/Box.ts:96](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L96)*
 
 
 
 Extended options
+
+
+
+
+___
+
+<a id="parent"></a>
+
+### «Protected»«Optional» parent
+
+**●  parent**:  *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)* 
+
+*Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
+
+*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L27)*
+
+
+
+container of the widget, if any
 
 
 
@@ -152,7 +176,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L24)*
+*Defined in [Widget.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L25)*
 
 
 
@@ -165,40 +189,50 @@ ___
 
 
 ## Methods
-<a id="attachwidget"></a>
+<a id="___iterator"></a>
 
-###  attachWidget
+###  __@iterator
 
-► **attachWidget**(widget: *[Widget](_widget_.widget.md)*): [Widget](_widget_.widget.md)
-
-► **attachWidget**(WidgetClass: *[Widget](_widget_.widget.md)*, options: *`any`*, ...args: *`any`[]*): [Widget](_widget_.widget.md)
+► **__@iterator**(startWidget?: *[Widget](_widget_.widget.md)⎮`number`*): [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)[Widget](_widget_.widget.md)
 
 
 
-*Defined in [widgets/Box.ts:130](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L130)*
+*Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[__@iterator](../interfaces/_widgetcontainer_.widgetcontainer.md#___iterator)*
+
+*Defined in [widgets/Box.ts:210](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L210)*
 
 
 
-Attach a specified widget to this box
+Get a bidirectional iterator to move across the attached widgets of the container
 
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| widget | [Widget](_widget_.widget.md)   |  instance of the widget to attach |
+| startWidget | [Widget](_widget_.widget.md)⎮`number`   |  if specified, the next call will start with this widget (return the next or previous one) |
 
 
 
 
 
-**Returns:** [Widget](_widget_.widget.md)
-provided widget instance itself
+**Returns:** [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)[Widget](_widget_.widget.md)
 
 
 
 
-*Defined in [widgets/Box.ts:139](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L139)*
+
+___
+
+<a id="attachwidget"></a>
+
+###  attachWidget
+
+► **attachWidget**(WidgetClass: *[Widget](_widget_.widget.md)*, options: *`any`*): [Widget](_widget_.widget.md)
+
+
+
+*Defined in [widgets/Box.ts:146](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L146)*
 
 
 
@@ -211,7 +245,6 @@ Create and attach a widget to this instance of the terminal
 | ------ | ------ | ------ |
 | WidgetClass | [Widget](_widget_.widget.md)   |  Class of the widget |
 | options | `any`   |  Options for the widget constructor |
-| args | `any`[]   |  - |
 
 
 
@@ -237,7 +270,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L118)*
+*Defined in [Widget.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L154)*
 
 
 
@@ -264,7 +297,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[dettachWidget](../interfaces/_widgetcontainer_.widgetcontainer.md#dettachwidget)*
 
-*Defined in [widgets/Box.ts:175](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L175)*
+*Defined in [widgets/Box.ts:170](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L170)*
 
 
 
@@ -301,7 +334,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:110](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L110)*
+*Defined in [Widget.ts:140](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L140)*
 
 
 
@@ -311,6 +344,37 @@ Set this Widget as focused. Usually done by a upper level that controls other wi
 
 
 **Returns:** `void`
+
+
+
+
+
+___
+
+<a id="getparent"></a>
+
+###  getParent
+
+► **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
+
+
+
+*Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getParent](../interfaces/_widgetcontainer_.widgetcontainer.md#getparent)*
+
+*Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
+
+*Defined in [Widget.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L56)*
+
+
+
+Get the reference to the parent of the widget, if any
+
+
+
+
+**Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
+parent if any, or `undefined`
+
 
 
 
@@ -328,7 +392,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L83)*
+*Defined in [Widget.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L104)*
 
 
 
@@ -351,13 +415,13 @@ ___
 
 ###  getSize
 
-► **getSize**(): [TerminalSize](../interfaces/_terminal_.terminalsize.md)
+► **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
 
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L71)*
+*Defined in [Widget.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L92)*
 
 
 
@@ -366,7 +430,7 @@ Get the widget size, measured in tiles
 
 
 
-**Returns:** [TerminalSize](../interfaces/_terminal_.terminalsize.md)
+**Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the widget, measured in tiles
 
 
@@ -386,7 +450,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getWidgetAt](../interfaces/_widgetcontainer_.widgetcontainer.md#getwidgetat)*
 
-*Defined in [widgets/Box.ts:204](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L204)*
+*Defined in [widgets/Box.ts:199](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L199)*
 
 
 
@@ -424,7 +488,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:97](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L97)*
+*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L118)*
 
 
 
@@ -452,6 +516,35 @@ Check if the widget is (overlaps) the specified position
 
 ___
 
+<a id="isfocusable"></a>
+
+###  isFocusable
+
+► **isFocusable**(): `boolean`
+
+
+
+*Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
+
+*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L132)*
+
+
+
+Check if this widget is focusable (when cycling over widgets)
+
+
+
+
+**Returns:** `boolean`
+`true` if focusable, `false` if not
+
+
+
+
+
+
+___
+
 <a id="isfocused"></a>
 
 ###  isFocused
@@ -462,7 +555,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:127](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L127)*
+*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L167)*
 
 
 
@@ -491,7 +584,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Box.ts:99](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L99)*
+*Defined in [widgets/Box.ts:113](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L113)*
 
 
 
@@ -518,7 +611,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L55)*
+*Defined in [Widget.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L72)*
 
 
 
@@ -559,7 +652,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Box.ts:216](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L216)*
+*Defined in [widgets/Box.ts:261](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L261)*
 
 
 

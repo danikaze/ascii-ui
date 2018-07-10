@@ -11,17 +11,22 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 
 **Widget**
 
+↳  [Grid](_widgets_grid_.grid.md)
+
+
+
+
+↳  [Input](_widgets_input_.input.md)
+
+
+
+
 ↳  [Text](_widgets_text_.text.md)
 
 
 
 
 ↳  [Box](_widgets_box_.box.md)
-
-
-
-
-↳  [Grid](_widgets_grid_.grid.md)
 
 
 
@@ -42,6 +47,7 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 * [allocated](_widget_.widget.md#allocated)
 * [focused](_widget_.widget.md#focused)
 * [options](_widget_.widget.md#options)
+* [parent](_widget_.widget.md#parent)
 * [terminal](_widget_.widget.md#terminal)
 
 
@@ -49,9 +55,11 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 
 * [blur](_widget_.widget.md#blur)
 * [focus](_widget_.widget.md#focus)
+* [getParent](_widget_.widget.md#getparent)
 * [getPosition](_widget_.widget.md#getposition)
 * [getSize](_widget_.widget.md#getsize)
 * [isAt](_widget_.widget.md#isat)
+* [isFocusable](_widget_.widget.md#isfocusable)
 * [isFocused](_widget_.widget.md#isfocused)
 * [render](_widget_.widget.md#render)
 * [setOptions](_widget_.widget.md#setoptions)
@@ -64,10 +72,10 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 <a id="constructor"></a>
 
 
-### ⊕ **new Widget**(terminal: *[Terminal](_terminal_.terminal.md)*, options?: *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)*): [Widget](_widget_.widget.md)
+### ⊕ **new Widget**(terminal: *[Terminal](_terminal_.terminal.md)*, options?: *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Widget](_widget_.widget.md)
 
 
-*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L30)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
 
 
 
@@ -80,6 +88,7 @@ A Widget is created in the context of a specific terminal, in a position and wit
 | ------ | ------ | ------ |
 | terminal | [Terminal](_terminal_.terminal.md)   |  - |
 | options | [WidgetOptions](../interfaces/_widget_.widgetoptions.md)   |  - |
+| parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
 
 
 
@@ -97,7 +106,7 @@ A Widget is created in the context of a specific terminal, in a position and wit
 
 **●  allocated**:  *`boolean`* 
 
-*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L30)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
 
 
 
@@ -114,7 +123,7 @@ ___
 
 **●  focused**:  *`boolean`* 
 
-*Defined in [Widget.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L28)*
+*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L31)*
 
 
 
@@ -131,11 +140,28 @@ ___
 
 **●  options**:  *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)* 
 
-*Defined in [Widget.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L26)*
+*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L29)*
 
 
 
 Widget options
+
+
+
+
+___
+
+<a id="parent"></a>
+
+### «Protected»«Optional» parent
+
+**●  parent**:  *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)* 
+
+*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L27)*
+
+
+
+container of the widget, if any
 
 
 
@@ -148,7 +174,7 @@ ___
 
 **●  terminal**:  *[Terminal](_terminal_.terminal.md)* 
 
-*Defined in [Widget.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L24)*
+*Defined in [Widget.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L25)*
 
 
 
@@ -169,7 +195,7 @@ ___
 
 
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L118)*
+*Defined in [Widget.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L154)*
 
 
 
@@ -194,7 +220,7 @@ ___
 
 
 
-*Defined in [Widget.ts:110](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L110)*
+*Defined in [Widget.ts:140](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L140)*
 
 
 
@@ -211,6 +237,33 @@ Set this Widget as focused. Usually done by a upper level that controls other wi
 
 ___
 
+<a id="getparent"></a>
+
+###  getParent
+
+► **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
+
+
+
+*Defined in [Widget.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L56)*
+
+
+
+Get the reference to the parent of the widget, if any
+
+
+
+
+**Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
+parent if any, or `undefined`
+
+
+
+
+
+
+___
+
 <a id="getposition"></a>
 
 ###  getPosition
@@ -219,7 +272,7 @@ ___
 
 
 
-*Defined in [Widget.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L83)*
+*Defined in [Widget.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L104)*
 
 
 
@@ -242,11 +295,11 @@ ___
 
 ###  getSize
 
-► **getSize**(): [TerminalSize](../interfaces/_terminal_.terminalsize.md)
+► **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
 
 
-*Defined in [Widget.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L71)*
+*Defined in [Widget.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L92)*
 
 
 
@@ -255,7 +308,7 @@ Get the widget size, measured in tiles
 
 
 
-**Returns:** [TerminalSize](../interfaces/_terminal_.terminalsize.md)
+**Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the widget, measured in tiles
 
 
@@ -273,7 +326,7 @@ ___
 
 
 
-*Defined in [Widget.ts:97](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L97)*
+*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L118)*
 
 
 
@@ -301,6 +354,33 @@ Check if the widget is (overlaps) the specified position
 
 ___
 
+<a id="isfocusable"></a>
+
+###  isFocusable
+
+► **isFocusable**(): `boolean`
+
+
+
+*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L132)*
+
+
+
+Check if this widget is focusable (when cycling over widgets)
+
+
+
+
+**Returns:** `boolean`
+`true` if focusable, `false` if not
+
+
+
+
+
+
+___
+
 <a id="isfocused"></a>
 
 ###  isFocused
@@ -309,7 +389,7 @@ ___
 
 
 
-*Defined in [Widget.ts:127](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L127)*
+*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L167)*
 
 
 
@@ -336,7 +416,7 @@ ___
 
 
 
-*Defined in [Widget.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L134)*
+*Defined in [Widget.ts:174](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L174)*
 
 
 
@@ -361,7 +441,7 @@ ___
 
 
 
-*Defined in [Widget.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L55)*
+*Defined in [Widget.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L72)*
 
 
 
@@ -400,7 +480,7 @@ ___
 
 
 
-*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L142)*
+*Defined in [Widget.ts:182](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L182)*
 
 
 

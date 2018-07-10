@@ -19,34 +19,17 @@
 
 
 ## Properties
-<a id="boxborders"></a>
+<a id="base"></a>
 
-### «Optional» boxBorders
+### «Optional» base
 
-**●  boxBorders**:  *[BoxBorderOptions](_widgets_box_.boxborderoptions.md)* 
+**●  base**:  *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)* 
 
-*Defined in [widgets/Box.ts:49](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L49)*
-
-
-
-Options related to the border of the box
+*Defined in [widgets/Box.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L56)*
 
 
 
-
-___
-
-<a id="boxtitle"></a>
-
-### «Optional» boxTitle
-
-**●  boxTitle**:  *[BoxTitleOptions](_widgets_box_.boxtitleoptions.md)* 
-
-*Defined in [widgets/Box.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L47)*
-
-
-
-Options related to the title, if used
+Options used when the widget is focuseable but not focused
 
 
 
@@ -61,11 +44,64 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L6)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
 
 
 
 x-position of the widget in terminal tiles
+
+
+
+
+___
+
+<a id="disabled"></a>
+
+### «Optional» disabled
+
+**●  disabled**:  *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)* 
+
+*Defined in [widgets/Box.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L60)*
+
+
+
+Options used when the widget is not focuseable
+
+
+
+
+___
+
+<a id="focus"></a>
+
+### «Optional» focus
+
+**●  focus**:  *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)* 
+
+*Defined in [widgets/Box.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L58)*
+
+
+
+Options used when the widget is focused
+
+
+
+
+___
+
+<a id="focusable"></a>
+
+### «Optional» focusable
+
+**●  focusable**:  *`boolean`* 
+
+*Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
+
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+
+
+
+if `true`, the widget can be selectable
 
 
 
@@ -80,7 +116,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L12)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
 
 
 
@@ -99,7 +135,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L8)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
 
 
 
@@ -116,30 +152,11 @@ ___
 
 **●  padding**:  *[BoxPaddingOptions](_widgets_box_.boxpaddingoptions.md)* 
 
-*Defined in [widgets/Box.ts:51](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L51)*
+*Defined in [widgets/Box.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L54)*
 
 
 
 Number of blank tiles to leave between the border and the attached widget
-
-
-
-
-___
-
-<a id="selectable"></a>
-
-### «Optional» selectable
-
-**●  selectable**:  *`boolean`* 
-
-*Inherited from [WidgetOptions](_widget_.widgetoptions.md).[selectable](_widget_.widgetoptions.md#selectable)*
-
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L14)*
-
-
-
-if `true`, the widget can be selectable
 
 
 
@@ -154,7 +171,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L16)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
 
 
 
@@ -171,7 +188,7 @@ ___
 
 **●  title**:  *`string`* 
 
-*Defined in [widgets/Box.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L45)*
+*Defined in [widgets/Box.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L52)*
 
 
 
@@ -190,7 +207,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L10)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
 
 
 

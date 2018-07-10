@@ -1,18 +1,18 @@
-[terminal-in-canvas](../README.md) > ["widgets/Text"](../modules/_widgets_text_.md) > [Text](../classes/_widgets_text_.text.md)
+[terminal-in-canvas](../README.md) > ["widgets/Input"](../modules/_widgets_input_.md) > [Input](../classes/_widgets_input_.input.md)
 
 
 
-# Class: Text
+# Class: Input
 
 
-Display formatted text in the terminal, allowing vertical scroll
+One line text input widget
 
 ## Hierarchy
 
 
  [Widget](_widget_.widget.md)
 
-**↳ Text**
+**↳ Input**
 
 
 
@@ -24,34 +24,33 @@ Display formatted text in the terminal, allowing vertical scroll
 
 ### Constructors
 
-* [constructor](_widgets_text_.text.md#constructor)
+* [constructor](_widgets_input_.input.md#constructor)
 
 
 ### Properties
 
-* [allocated](_widgets_text_.text.md#allocated)
-* [focused](_widgets_text_.text.md#focused)
-* [options](_widgets_text_.text.md#options)
-* [parent](_widgets_text_.text.md#parent)
-* [terminal](_widgets_text_.text.md#terminal)
+* [allocated](_widgets_input_.input.md#allocated)
+* [focused](_widgets_input_.input.md#focused)
+* [options](_widgets_input_.input.md#options)
+* [parent](_widgets_input_.input.md#parent)
+* [terminal](_widgets_input_.input.md#terminal)
 
 
 ### Methods
 
-* [blur](_widgets_text_.text.md#blur)
-* [focus](_widgets_text_.text.md#focus)
-* [getParent](_widgets_text_.text.md#getparent)
-* [getPosition](_widgets_text_.text.md#getposition)
-* [getSize](_widgets_text_.text.md#getsize)
-* [isAt](_widgets_text_.text.md#isat)
-* [isFocusable](_widgets_text_.text.md#isfocusable)
-* [isFocused](_widgets_text_.text.md#isfocused)
-* [render](_widgets_text_.text.md#render)
-* [scrollLines](_widgets_text_.text.md#scrolllines)
-* [scrollPages](_widgets_text_.text.md#scrollpages)
-* [setOptions](_widgets_text_.text.md#setoptions)
-* [setScroll](_widgets_text_.text.md#setscroll)
-* [updateOptions](_widgets_text_.text.md#updateoptions)
+* [blur](_widgets_input_.input.md#blur)
+* [focus](_widgets_input_.input.md#focus)
+* [getParent](_widgets_input_.input.md#getparent)
+* [getPosition](_widgets_input_.input.md#getposition)
+* [getSize](_widgets_input_.input.md#getsize)
+* [getValue](_widgets_input_.input.md#getvalue)
+* [isAt](_widgets_input_.input.md#isat)
+* [isFocusable](_widgets_input_.input.md#isfocusable)
+* [isFocused](_widgets_input_.input.md#isfocused)
+* [render](_widgets_input_.input.md#render)
+* [setOptions](_widgets_input_.input.md#setoptions)
+* [setValue](_widgets_input_.input.md#setvalue)
+* [updateOptions](_widgets_input_.input.md#updateoptions)
 
 
 
@@ -60,12 +59,12 @@ Display formatted text in the terminal, allowing vertical scroll
 <a id="constructor"></a>
 
 
-### ⊕ **new Text**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Text](_widgets_text_.text.md)
+### ⊕ **new Input**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Input](_widgets_input_.input.md)
 
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Text.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L72)*
+*Defined in [widgets/Input.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L29)*
 
 
 
@@ -74,14 +73,14 @@ Display formatted text in the terminal, allowing vertical scroll
 | Param | Type | Description |
 | ------ | ------ | ------ |
 | terminal | [Terminal](_terminal_.terminal.md)   |  - |
-| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md)   |  - |
+| options | [InputOptions](../interfaces/_widgets_input_.inputoptions.md)   |  - |
 | parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
 
 
 
 
 
-**Returns:** [Text](_widgets_text_.text.md)
+**Returns:** [Input](_widgets_input_.input.md)
 
 ---
 
@@ -129,15 +128,15 @@ ___
 
 ### «Protected» options
 
-**●  options**:  *[TextOptions](../interfaces/_widgets_text_.textoptions.md)* 
+**●  options**:  *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)* 
 
 *Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Text.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L60)*
+*Defined in [widgets/Input.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L23)*
 
 
 
-Options of the Text widget
+Options of the Input Widget
 
 
 
@@ -192,9 +191,9 @@ ___
 
 
 
-*Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
+*Overrides [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L154)*
+*Defined in [widgets/Input.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L91)*
 
 
 
@@ -219,9 +218,9 @@ ___
 
 
 
-*Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
+*Overrides [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:140](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L140)*
+*Defined in [widgets/Input.ts:81](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L81)*
 
 
 
@@ -317,6 +316,41 @@ Get the widget size, measured in tiles
 
 **Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the widget, measured in tiles
+
+
+
+
+
+
+___
+
+<a id="getvalue"></a>
+
+###  getValue
+
+► **getValue**(showPassword?: *`boolean`*): `string`
+
+
+
+*Defined in [widgets/Input.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L60)*
+
+
+
+Get the current value of the input text
+
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| showPassword | `boolean`   |  if this is not `true` when the input is set as password, the returned value will be hidden |
+
+
+
+
+
+**Returns:** `string`
+current value
 
 
 
@@ -431,7 +465,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Text.ts:82](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L82)*
+*Defined in [widgets/Input.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L39)*
 
 
 
@@ -441,76 +475,6 @@ Render the widget in the associated terminal
 
 
 **Returns:** `void`
-
-
-
-
-
-___
-
-<a id="scrolllines"></a>
-
-###  scrollLines
-
-► **scrollLines**(lines: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:173](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L173)*
-
-
-
-Move the starting line of the text
-
-
-**Parameters:**
-
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| lines | `number`   |  Number of lines to scroll the text |
-
-
-
-
-
-**Returns:** `boolean`
-`true` if there is more content after `line`, or `false` if it was the last line
-
-
-
-
-
-
-___
-
-<a id="scrollpages"></a>
-
-###  scrollPages
-
-► **scrollPages**(pages: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:183](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L183)*
-
-
-
-Move the starting line of the text by pages
-
-
-**Parameters:**
-
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| pages | `number`   |  Number of pages to scroll |
-
-
-
-
-
-**Returns:** `boolean`
-`true` if there is more pages or `false` if it was the last one
-
 
 
 
@@ -559,34 +523,32 @@ Do not reimplement this setter in any subclass, but implement `updateOptions`
 
 ___
 
-<a id="setscroll"></a>
+<a id="setvalue"></a>
 
-###  setScroll
+###  setValue
 
-► **setScroll**(line: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L142)*
+► **setValue**(value: *`string`*): `void`
 
 
 
-Set the starting line of the text
+*Defined in [widgets/Input.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L71)*
+
+
+
+Set the new value of the input text
 
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| line | `number`   |  First line to draw |
+| value | `string`   |  new value to be set |
 
 
 
 
 
-**Returns:** `boolean`
-`true` if there is more content after `line`, or `false` if it was the end
-
+**Returns:** `void`
 
 
 
@@ -598,13 +560,13 @@ ___
 
 ### «Protected» updateOptions
 
-► **updateOptions**(options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*): `void`
+► **updateOptions**(changedOptions: *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)*): `void`
 
 
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Text.ts:193](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L193)*
+*Defined in [widgets/Input.ts:102](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Input.ts#L102)*
 
 
 
@@ -615,7 +577,7 @@ ___
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md)   |  - |
+| changedOptions | [InputOptions](../interfaces/_widgets_input_.inputoptions.md)   |  Object with only the changed options |
 
 
 

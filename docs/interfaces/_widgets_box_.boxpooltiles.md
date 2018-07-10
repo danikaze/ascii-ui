@@ -12,7 +12,7 @@
 
 **●  bottom**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L63)*
+*Defined in [widgets/Box.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L72)*
 
 
 
@@ -26,7 +26,7 @@ ___
 
 **●  bottomLeft**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L62)*
+*Defined in [widgets/Box.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L71)*
 
 
 
@@ -40,7 +40,7 @@ ___
 
 **●  bottomRight**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:64](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L64)*
+*Defined in [widgets/Box.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L73)*
 
 
 
@@ -54,7 +54,7 @@ ___
 
 **●  center**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L60)*
+*Defined in [widgets/Box.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L69)*
 
 
 
@@ -68,7 +68,7 @@ ___
 
 **●  left**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:59](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L59)*
+*Defined in [widgets/Box.ts:68](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L68)*
 
 
 
@@ -82,7 +82,7 @@ ___
 
 **●  right**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L61)*
+*Defined in [widgets/Box.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L70)*
 
 
 
@@ -96,7 +96,7 @@ ___
 
 **●  title**:  *[Tile](_terminal_.tile.md)[]* 
 
-*Defined in [widgets/Box.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L55)*
+*Defined in [widgets/Box.ts:64](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L64)*
 
 
 
@@ -110,7 +110,7 @@ ___
 
 **●  top**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:57](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L57)*
+*Defined in [widgets/Box.ts:66](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L66)*
 
 
 
@@ -124,7 +124,7 @@ ___
 
 **●  topLeft**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L56)*
+*Defined in [widgets/Box.ts:65](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L65)*
 
 
 
@@ -138,7 +138,7 @@ ___
 
 **●  topRight**:  *[Tile](_terminal_.tile.md)* 
 
-*Defined in [widgets/Box.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L58)*
+*Defined in [widgets/Box.ts:67](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L67)*
 
 
 

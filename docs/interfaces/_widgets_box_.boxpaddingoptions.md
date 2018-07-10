@@ -12,7 +12,7 @@
 
 **●  bottom**:  *`number`* 
 
-*Defined in [widgets/Box.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L38)*
+*Defined in [widgets/Box.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L38)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  left**:  *`number`* 
 
-*Defined in [widgets/Box.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L40)*
+*Defined in [widgets/Box.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L40)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 **●  right**:  *`number`* 
 
-*Defined in [widgets/Box.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L36)*
+*Defined in [widgets/Box.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L36)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 **●  top**:  *`number`* 
 
-*Defined in [widgets/Box.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Box.ts#L34)*
+*Defined in [widgets/Box.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L34)*
 
 
 

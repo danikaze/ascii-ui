@@ -27,7 +27,7 @@
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L6)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
 
 
 
@@ -44,11 +44,30 @@ ___
 
 **●  fitPageEnd**:  *`boolean`* 
 
-*Defined in [widgets/Text.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L41)*
+*Defined in [widgets/Text.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L42)*
 
 
 
 If `true`, it won't allow empty lines at the end of a page and the text will end at the last line of the widget. Set to `false` to allow empty lines (so the first line is the right next one to the last of the previous page)
+
+
+
+
+___
+
+<a id="focusable"></a>
+
+### «Optional» focusable
+
+**●  focusable**:  *`boolean`* 
+
+*Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
+
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+
+
+
+if `true`, the widget can be selectable
 
 
 
@@ -63,7 +82,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L12)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
 
 
 
@@ -82,7 +101,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L8)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
 
 
 
@@ -93,19 +112,17 @@ y-position of the widget in terminal tiles
 
 ___
 
-<a id="selectable"></a>
+<a id="persistenttypewritter"></a>
 
-### «Optional» selectable
+### «Optional» persistentTypewritter
 
-**●  selectable**:  *`boolean`* 
+**●  persistentTypewritter**:  *`boolean`* 
 
-*Inherited from [WidgetOptions](_widget_.widgetoptions.md).[selectable](_widget_.widgetoptions.md#selectable)*
-
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L14)*
+*Defined in [widgets/Text.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L52)*
 
 
 
-if `true`, the widget can be selectable
+Set to `false` to apply the typewritter to the text again when it appears even if it was shown already before
 
 
 
@@ -120,7 +137,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L16)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
 
 
 
@@ -137,7 +154,7 @@ ___
 
 **●  text**:  *`string`* 
 
-*Defined in [widgets/Text.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L22)*
+*Defined in [widgets/Text.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L23)*
 
 
 
@@ -154,7 +171,7 @@ ___
 
 **●  textStyle**:  *[CharStyle](_terminal_.charstyle.md)* 
 
-*Defined in [widgets/Text.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L27)*
+*Defined in [widgets/Text.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L28)*
 
 
 
@@ -171,7 +188,7 @@ ___
 
 **●  tokenizer**:  *`boolean`⎮[TokenizerFunction](../modules/_widgets_text_.md#tokenizerfunction)* 
 
-*Defined in [widgets/Text.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L34)*
+*Defined in [widgets/Text.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L35)*
 
 
 
@@ -188,7 +205,7 @@ ___
 
 **●  typewritterDelay**:  *`number`* 
 
-*Defined in [widgets/Text.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L46)*
+*Defined in [widgets/Text.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L47)*
 
 
 
@@ -207,7 +224,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L10)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
 
 
 

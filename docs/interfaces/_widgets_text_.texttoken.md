@@ -12,7 +12,7 @@
 
 **●  index**:  *`number`* 
 
-*Defined in [widgets/Text.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L17)*
+*Defined in [widgets/Text.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L18)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  isSeparator**:  *`boolean`* 
 
-*Defined in [widgets/Text.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L15)*
+*Defined in [widgets/Text.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L16)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 **●  text**:  *`string`* 
 
-*Defined in [widgets/Text.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Text.ts#L13)*
+*Defined in [widgets/Text.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L14)*
 
 
 

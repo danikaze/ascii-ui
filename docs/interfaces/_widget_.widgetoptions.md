@@ -8,17 +8,22 @@
 
 **WidgetOptions**
 
+↳  [GridOptions](_widgets_grid_.gridoptions.md)
+
+
+
+
+↳  [InputOptions](_widgets_input_.inputoptions.md)
+
+
+
+
 ↳  [TextOptions](_widgets_text_.textoptions.md)
 
 
 
 
 ↳  [BoxOptions](_widgets_box_.boxoptions.md)
-
-
-
-
-↳  [GridOptions](_widgets_grid_.gridoptions.md)
 
 
 
@@ -35,11 +40,28 @@
 
 **●  col**:  *`number`* 
 
-*Defined in [Widget.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L6)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
 
 
 
 x-position of the widget in terminal tiles
+
+
+
+
+___
+
+<a id="focusable"></a>
+
+### «Optional» focusable
+
+**●  focusable**:  *`boolean`* 
+
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+
+
+
+if `true`, the widget can be selectable
 
 
 
@@ -52,7 +74,7 @@ ___
 
 **●  height**:  *`number`* 
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L12)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
 
 
 
@@ -69,28 +91,11 @@ ___
 
 **●  line**:  *`number`* 
 
-*Defined in [Widget.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L8)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
 
 
 
 y-position of the widget in terminal tiles
-
-
-
-
-___
-
-<a id="selectable"></a>
-
-### «Optional» selectable
-
-**●  selectable**:  *`boolean`* 
-
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L14)*
-
-
-
-if `true`, the widget can be selectable
 
 
 
@@ -103,7 +108,7 @@ ___
 
 **●  tabIndex**:  *`number`* 
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L16)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
 
 
 
@@ -120,7 +125,7 @@ ___
 
 **●  width**:  *`number`* 
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/Widget.ts#L10)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
 
 
 

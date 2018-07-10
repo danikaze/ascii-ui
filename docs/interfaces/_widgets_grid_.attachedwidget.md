@@ -12,7 +12,7 @@
 
 **●  col**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L27)*
+*Defined in [widgets/Grid.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L30)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  height**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L33)*
+*Defined in [widgets/Grid.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L36)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 **●  id**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L23)*
+*Defined in [widgets/Grid.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L26)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 **●  line**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L29)*
+*Defined in [widgets/Grid.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L32)*
 
 
 
@@ -80,7 +80,7 @@ ___
 
 **●  widget**:  *[Widget](../classes/_widget_.widget.md)* 
 
-*Defined in [widgets/Grid.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L25)*
+*Defined in [widgets/Grid.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L28)*
 
 
 
@@ -97,7 +97,7 @@ ___
 
 **●  width**:  *`number`* 
 
-*Defined in [widgets/Grid.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L31)*
+*Defined in [widgets/Grid.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L34)*
 
 
 

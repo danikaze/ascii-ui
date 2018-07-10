@@ -22,7 +22,7 @@
 
 
 
-*Defined in [util/deepAssignAndDiff.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/util/deepAssignAndDiff.ts#L8)*
+*Defined in [util/deepAssignAndDiff.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/deepAssignAndDiff.ts#L8)*
 
 
 

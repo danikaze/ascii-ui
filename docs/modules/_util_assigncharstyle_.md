@@ -22,7 +22,7 @@
 
 
 
-*Defined in [util/assignCharStyle.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/util/assignCharStyle.ts#L11)*
+*Defined in [util/assignCharStyle.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/assignCharStyle.ts#L11)*
 
 
 

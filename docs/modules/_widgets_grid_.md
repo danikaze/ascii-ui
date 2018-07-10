@@ -33,7 +33,7 @@
 
 
 
-*Defined in [widgets/Grid.ts:287](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/widgets/Grid.ts#L287)*
+*Defined in [widgets/Grid.ts:352](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L352)*
 
 
 

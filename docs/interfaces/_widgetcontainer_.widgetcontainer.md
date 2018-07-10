@@ -15,6 +15,53 @@ A Widget that can contain other Widgets should implement several common methods 
 
 
 ## Methods
+<a id="___iterator"></a>
+
+###  __@iterator
+
+► **__@iterator**(startWidget?: *[Widget](../classes/_widget_.widget.md)⎮`number`*): [BidirectionalIterator](_widgetcontainer_.bidirectionaliterator.md)[Widget](../classes/_widget_.widget.md)
+
+
+
+*Defined in [WidgetContainer.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L83)*
+
+
+
+Get a bidirectional iterator to move across the attached widgets of the container
+*__example__*: // Given the items [A, B, C, D] of the WidgetContainer w it = w<a href="">Symbol.iterator</a>; it.next(); // A it.next(); // B it.next(); // C it.prev(); // B it.next(); // C it.next(); // D it.next(); // null
+
+it = w[Symbol.iterator](C); it.next(); // D
+
+it = w[Symbol.iterator](C); it.prev(); // B
+
+it = w[Symbol.iterator](0); it.next(); // B
+
+it = w[Symbol.iterator](2); it.prev(); // B
+
+it = w[Symbol.iterator](-1); it.prev(); // D
+
+it = w[Symbol.iterator](-2); it.prev(); // C
+
+
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| startWidget | [Widget](../classes/_widget_.widget.md)⎮`number`   |  if specified, the next call will start with this widget (return the next or previous one) |
+
+
+
+
+
+**Returns:** [BidirectionalIterator](_widgetcontainer_.bidirectionaliterator.md)[Widget](../classes/_widget_.widget.md)
+
+
+
+
+
+___
+
 <a id="attachwidget"></a>
 
 ###  attachWidget
@@ -23,7 +70,7 @@ A Widget that can contain other Widgets should implement several common methods 
 
 
 
-*Defined in [WidgetContainer.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/WidgetContainer.ts#L14)*
+*Defined in [WidgetContainer.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L30)*
 
 
 
@@ -58,7 +105,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/WidgetContainer.ts#L22)*
+*Defined in [WidgetContainer.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L38)*
 
 
 
@@ -85,6 +132,33 @@ Dettach a widget from the container
 
 ___
 
+<a id="getparent"></a>
+
+###  getParent
+
+► **getParent**(): [WidgetContainer](_widgetcontainer_.widgetcontainer.md)
+
+
+
+*Defined in [WidgetContainer.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L22)*
+
+
+
+Get the reference to the parent of the widget, if any
+
+
+
+
+**Returns:** [WidgetContainer](_widgetcontainer_.widgetcontainer.md)
+parent if any, or `undefined`
+
+
+
+
+
+
+___
+
 <a id="getwidgetat"></a>
 
 ###  getWidgetAt
@@ -93,7 +167,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/6c46a1f/src/WidgetContainer.ts#L31)*
+*Defined in [WidgetContainer.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L47)*
 
 
 

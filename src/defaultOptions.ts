@@ -7,7 +7,7 @@ export const defaultOptions: TerminalOptions = {
   autoSize: true,
   cursor: true,
   cursorFrequency: 700,
-  decayTime: 200,
+  decayTime: 0,
   decayInitialAlpha: 0.7,
   debug: false,
   font: '20pt Terminal_VT220',

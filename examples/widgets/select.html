@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Terminal Widget: Select</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1>widget/Select</h1>
+
+    <%= htmlWebpackPlugin.options.breadcrumbs %>
+
+    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+      <button id="left" type="button" class="btn btn-secondary">width--</button>
+      <button id="right" type="button" class="btn btn-secondary">width++</button>
+      <button id="up" type="button" class="btn btn-secondary">height--</button>
+      <button id="down" type="button" class="btn btn-secondary">height++</button>
+    </div>
+    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+      <button id="prev" type="button" class="btn btn-secondary">Prev</button>
+      <button id="next" type="button" class="btn btn-secondary">Next</button>
+    </div>
+
+    <div id="loading">Wait while loading fonts...</div>
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div>
+  </body>
+</html>

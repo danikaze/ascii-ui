@@ -68,6 +68,7 @@ export const inputDefaultOptions: InputOptions = {
 // tslint:disable-next-line:no-any
 export const selectDefaultOptions: Partial<SelectOptions<any>> = {
   loop: true,
+  allowUnselect: true,
   base: { fg: '#00ff00', bg: '#000000' },
   selected: { fg: '#00ff00', bg: '#009900' },
   disabled: { fg: '#009900', bg: '#000000' },

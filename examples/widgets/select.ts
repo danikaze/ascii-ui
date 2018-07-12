@@ -26,7 +26,8 @@ function enableInteraction(selects: Array<Select<number>>, terminal: Terminal, c
     const cell = terminal.getTilePosition(event.offsetX, event.offsetY);
     const widget = terminal.getLeafWidgetAt(cell.col, cell.line);
     if (widget instanceof Select) {
-      // widget.
+      const option = widget.getOptionAt(cell.col, cell.line);
+      widget.selectOption(option);
     }
   });
 }

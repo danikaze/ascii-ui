@@ -23,6 +23,8 @@ export interface SelectOptions<T> extends WidgetOptions {
   loop?: boolean;
   /** Selected option index by default */
   selectedIndex?: number;
+  /** If `true`, will unselect any selected option if try to select a non-existing one */
+  allowUnselect?: boolean;
   /**
    * How to split the text (for new lines, etc.)
    * A custom TokenizerFunction can be provided. Leave undefined to use the default one
@@ -108,6 +110,38 @@ export class Select<T> extends Widget {
   }
 
   /**
+   * Get the option at the specified terminal position (absolute)
+   *
+   * @param column column of the terminal
+   * @param line line of the terminal
+   * @return option or `undefined` if not found
+   */
+  getOptionAt(column: number, line: number): SelectOption<T> {
+    if (column < this.options.col || column >= this.options.col + this.options.width) {
+      return undefined;
+    }
+
+    let terminalLine = this.options.line;
+    let optionLine = 0;
+    let option = 0;
+
+    while (option < this.optionsText.length) {
+      if (terminalLine === line) {
+        return this.options.options[option];
+      }
+
+      terminalLine++;
+      optionLine++;
+      if (optionLine >= this.optionsText[option].length) {
+        option++;
+        optionLine = 0;
+      }
+    }
+
+    return undefined;
+  }
+
+  /**
    * Select the option with the specified index.
    * This will do nothing if the option is disabled or the index not found.
    *
@@ -115,25 +149,31 @@ export class Select<T> extends Widget {
    * @return `true` if the selected option has changed, `false` otherwise
    */
   selectIndex(index: number): boolean {
-    if (this.optionsText[index] && !this.options.options[index].disabled
-      && this.selectedIndex !== index) {
-      this.selectedIndex = index;
+    const oldIndex = this.selectedIndex;
 
-      // manage the scroll to make the selected option appear in the screen
-      let startLine = 0;
-      for (let i = 0; i < index; i++) {
-        startLine += this.optionsText[i].length;
-      }
-      const endLine = startLine + this.optionsText[index].length;
+    if (this.optionsText[index]) {
+      if (!this.options.options[index].disabled && this.selectedIndex !== index) {
+        this.selectedIndex = index;
 
-      if (endLine >= this.firstLine + this.options.height) {
-        this.firstLine += endLine - this.firstLine - this.options.height;
-      }
-      if (startLine < this.firstLine) {
-        this.firstLine = startLine;
-      }
+        // manage the scroll to make the selected option appear in the screen
+        let startLine = 0;
+        for (let i = 0; i < index; i++) {
+          startLine += this.optionsText[i].length;
+        }
+        const endLine = startLine + this.optionsText[index].length;
 
-      // re-render the change
+        if (endLine >= this.firstLine + this.options.height) {
+          this.firstLine += endLine - this.firstLine - this.options.height;
+        }
+        if (startLine < this.firstLine) {
+          this.firstLine = startLine;
+        }
+      }
+    } else if (this.options.allowUnselect && this.selectedIndex !== -1) {
+      this.selectedIndex = -1;
+    }
+
+    if (oldIndex !== this.selectedIndex) {
       this.render();
 
       return true;
@@ -151,9 +191,11 @@ export class Select<T> extends Widget {
    * @return `true` if the selected option has changed, `false` otherwise
    */
   selectValue(value: T): boolean {
+    let found = false;
     const options = this.options.options;
     for (let i = 0; i < options.length; i++) {
       if (options[i].value === value) {
+        found = true;
         const enabled = this.selectIndex(i);
         if (enabled) {
           return true;
@@ -161,7 +203,7 @@ export class Select<T> extends Widget {
       }
     }
 
-    return false;
+    return found ? false : this.selectIndex(-1);
   }
 
   /**
@@ -172,9 +214,11 @@ export class Select<T> extends Widget {
    * @return `true` if the selected option has changed, `false` otherwise
    */
   selectOption(option: SelectOption<T>): boolean {
+    let found = false;
     const options = this.options.options;
     for (let i = 0; i < options.length; i++) {
       if (options[i] === option) {
+        found = true;
         const enabled = this.selectIndex(i);
         if (enabled) {
           return true;
@@ -182,7 +226,7 @@ export class Select<T> extends Widget {
       }
     }
 
-    return false;
+    return found ? false : this.selectIndex(-1);
   }
 
   /**

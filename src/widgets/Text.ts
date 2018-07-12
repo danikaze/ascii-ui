@@ -4,19 +4,9 @@ import { WidgetContainer } from '../WidgetContainer';
 
 import { clamp } from '../util/clamp';
 import { deepAssign } from '../util/deepAssign';
+import { TokenizerFunction, splitText, tokenizer } from '../util/tokenizer';
 
 import { textDefaultOptions } from './defaultOptions';
-
-export type TokenizerFunction = (text: string) => TextToken[];
-
-export interface TextToken {
-  /** Matched text. It shouldn't contain non-renderizable characters */
-  text: string;
-  /** If the matched text is a separator or not. It should alternate between true/false */
-  isSeparator: boolean;
-  /** Index of the string where it starts */
-  index: number;
-}
 
 export interface TextOptions extends WidgetOptions {
   /** Text to display */
@@ -261,55 +251,10 @@ export class Text extends Widget {
    * @return Splitted text for each line
    */
   private splitText(text: string): string[] {
-    if (!this.allocated || !this.tokenizer) {
+    if (!this.allocated) {
       return undefined;
     }
 
-    const res = [];
-    const tokenizedText = this.tokenizer(text);
-    const lineWidth = this.options.width;
-    let line = '';
-
-    tokenizedText.forEach((token) => {
-      if (!token || (line.length === 0 && token.isSeparator)) {
-        return;
-      }
-
-      if (line.length + token.text.length <= lineWidth) {
-        line += token.text;
-      } else {
-        res.push(line + ' '.repeat(lineWidth - line.length));
-        line = token.isSeparator ? '' : token.text;
-      }
-    });
-
-    if (line.length > 0) {
-      res.push(line + ' '.repeat(lineWidth - line.length));
-    }
-
-    return res;
+    return splitText(text, this.options.width, this.tokenizer);
   }
-}
-
-/**
- * Given a text, it will split it into words
- *
- * @param text Text to split
- * @return text splitted into tokens
- */
-function tokenizer(text: string): TextToken[] {
-  const re = /(\s+)|(\S+)/g;
-  const res: TextToken[] = [];
-  let match = re.exec(text);
-
-  while (match) {
-    res.push({
-      isSeparator: match[1] !== undefined,
-      text: match[0],
-      index: match.index,
-    });
-    match = re.exec(text);
-  }
-
-  return res;
 }

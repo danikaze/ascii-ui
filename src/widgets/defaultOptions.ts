@@ -1,6 +1,7 @@
 import { BoxBorderOptions, BoxOptions, BoxPaddingOptions, BoxTitleOptions } from './Box';
 import { GridOptions } from './Grid';
 import { InputOptions } from './Input';
+import { ProgressBarDirection, ProgressBarOptions } from './ProgressBar';
 import { SelectOptions } from './Select';
 import { TextOptions } from './Text';
 
@@ -72,4 +73,15 @@ export const selectDefaultOptions: Partial<SelectOptions<any>> = {
   base: { fg: '#00ff00', bg: '#000000' },
   selected: { fg: '#00ff00', bg: '#009900' },
   disabled: { fg: '#009900', bg: '#000000' },
+};
+
+export const progressBarDefaultOptions: ProgressBarOptions = {
+  focusable: false,
+  direction: ProgressBarDirection.HORIZONTAL,
+  progress: 0,
+  completedStyle: { char: '', bg: '#00ff00' },
+  pendingStyle: { char: '', bg: '#009900' },
+  currentStyle: { char: '', bg: '#99ff99' },
+  startStyle: undefined,
+  endStyle: undefined,
 };

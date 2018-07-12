@@ -1,6 +1,7 @@
 import { BoxBorderOptions, BoxOptions, BoxPaddingOptions, BoxTitleOptions } from './Box';
 import { GridOptions } from './Grid';
 import { InputOptions } from './Input';
+import { SelectOptions } from './Select';
 import { TextOptions } from './Text';
 
 export const gridDefaultOptions: GridOptions = {
@@ -62,4 +63,12 @@ export const inputDefaultOptions: InputOptions = {
   maxLength: 0,
   password: false,
   passwordCharacter: '*',
+};
+
+// tslint:disable-next-line:no-any
+export const selectDefaultOptions: Partial<SelectOptions<any>> = {
+  loop: true,
+  base: { fg: '#00ff00', bg: '#000000' },
+  selected: { fg: '#00ff00', bg: '#009900' },
+  disabled: { fg: '#009900', bg: '#000000' },
 };

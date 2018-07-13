@@ -6,8 +6,6 @@ import { clamp } from '../util/clamp';
 import { deepAssign } from '../util/deepAssign';
 import { TokenizerFunction, splitText, tokenizer } from '../util/tokenizer';
 
-import { textDefaultOptions } from './defaultOptions';
-
 export interface TextOptions extends WidgetOptions {
   /** Text to display */
   text?: string;
@@ -46,6 +44,8 @@ export interface TextOptions extends WidgetOptions {
  * Display formatted text in the terminal, allowing vertical scroll
  */
 export class Text extends Widget {
+  /** Default options for widget instances */
+  static defaultOptions: TextOptions;
   /** Options of the Text widget */
   protected readonly options: TextOptions;
   /** Function to use to tokenize the text */
@@ -62,8 +62,11 @@ export class Text extends Widget {
   private typewritterColumn = 0;
 
   constructor(terminal: Terminal, options: TextOptions, parent?: WidgetContainer) {
-    super(terminal, options, parent);
-    this.setOptions(deepAssign({}, textDefaultOptions, options));
+    super(
+      terminal,
+      deepAssign({}, Text.defaultOptions, options),
+      parent,
+    );
   }
 
   /**
@@ -258,3 +261,13 @@ export class Text extends Widget {
     return splitText(text, this.options.width, this.tokenizer);
   }
 }
+
+/*
+ * Default options for new instances
+ */
+Text.defaultOptions = {
+  tokenizer: true,
+  fitPageEnd: false,
+  typewritterDelay: 0,
+  persistentTypewritter: true,
+};

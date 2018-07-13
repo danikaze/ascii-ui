@@ -4,8 +4,6 @@ import { WidgetContainer } from '../WidgetContainer';
 
 import { deepAssign } from '../util/deepAssign';
 
-import { inputDefaultOptions } from './defaultOptions';
-
 export interface InputOptions extends WidgetOptions {
   /** If `true`, it won't display the real value but `passwordCharacter` */
   password?: boolean;
@@ -19,6 +17,8 @@ export interface InputOptions extends WidgetOptions {
  * One line text input widget
  */
 export class Input extends Widget {
+  /** Default options for widget instances */
+  static defaultOptions: InputOptions;
   /** Options of the Input Widget */
   protected readonly options: InputOptions;
   /** Current value of the widget */
@@ -29,8 +29,11 @@ export class Input extends Widget {
   private terminalCursor: boolean;
 
   constructor(terminal: Terminal, options: InputOptions, parent?: WidgetContainer) {
-    super(terminal, options, parent);
-    this.setOptions(deepAssign({}, inputDefaultOptions, options));
+    super(
+      terminal,
+      deepAssign({}, Input.defaultOptions, options),
+      parent,
+    );
   }
 
   /**
@@ -108,10 +111,21 @@ export class Input extends Widget {
       this.options.passwordCharacter = changedOptions.passwordCharacter.charAt(0);
     }
 
-    ['password', 'passwordCharacter', 'maxLength'].forEach((key) => {
+    for (const key of ['password', 'passwordCharacter', 'maxLength']) {
       if (typeof changedOptions[key] !== 'undefined') {
         this.render();
+
+        return undefined;
       }
-    });
+    }
   }
 }
+
+/*
+ * Default options for new instances
+ */
+Input.defaultOptions = {
+  maxLength: 0,
+  password: false,
+  passwordCharacter: '*',
+};

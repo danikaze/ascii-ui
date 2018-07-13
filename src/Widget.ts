@@ -21,6 +21,8 @@ export interface WidgetOptions {
  * A widget is just a self-contained graphic part of the terminal, which manages its own state.
  */
 export abstract class Widget {
+  /** Default options for widget instances */
+  static defaultOptions: WidgetOptions;
   /** Reference to the parent terminal where it should be rendered */
   protected terminal: Terminal;
   /** container of the widget, if any */
@@ -43,7 +45,7 @@ export abstract class Widget {
     this.terminal = terminal;
     this.parent = parent;
     this.setOptions({
-      focusable: true,
+      ...Widget.defaultOptions,
       ...options,
     });
   }
@@ -181,3 +183,10 @@ export abstract class Widget {
    */
   protected abstract updateOptions(changedOptions: WidgetOptions): void;
 }
+
+/*
+ * Default options for new instances
+ */
+Widget.defaultOptions = {
+  focusable: true,
+};

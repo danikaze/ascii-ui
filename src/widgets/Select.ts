@@ -5,8 +5,6 @@ import { WidgetContainer } from '../WidgetContainer';
 import { deepAssign } from '../util/deepAssign';
 import { TokenizerFunction, splitText } from '../util/tokenizer';
 
-import { selectDefaultOptions } from './defaultOptions';
-
 export interface SelectOption<T> {
   /** Displayed text of the option */
   text: string;
@@ -42,6 +40,8 @@ export interface SelectOptions<T> extends WidgetOptions {
  * Display a list of selectable options
  */
 export class Select<T> extends Widget {
+  /** Default options for widget instances */
+  static defaultOptions: SelectOptions<any>;  // tslint:disable-line:no-any
   /** Options of the Text widget */
   protected readonly options: SelectOptions<T>;
   /** Currently selected option index */
@@ -52,8 +52,11 @@ export class Select<T> extends Widget {
   private optionsText: string[][];
 
   constructor(terminal: Terminal, options: SelectOptions<T>, parent?: WidgetContainer) {
-    super(terminal, options, parent);
-    this.setOptions(deepAssign({}, selectDefaultOptions, options));
+    super(
+      terminal,
+      deepAssign({}, Select.defaultOptions, options),
+      parent,
+    );
 
     let rendered = false;
     if (this.options.selectedIndex >= 0) {
@@ -320,3 +323,15 @@ export class Select<T> extends Widget {
     return this.options.base;
   }
 }
+
+/*
+ * Default options for new instances
+ */
+Select.defaultOptions = {
+  options: undefined,
+  loop: true,
+  allowUnselect: true,
+  base: { fg: '#00ff00', bg: '#000000' },
+  selected: { fg: '#00ff00', bg: '#009900' },
+  disabled: { fg: '#009900', bg: '#000000' },
+};

@@ -1,7 +1,6 @@
 /* tslint:disable:typedef */
 import { isArray } from 'vanilla-type-check';
 
-import { defaultOptions } from './defaultOptions';
 import { EventManager } from './EventManager';
 import { FocusManager } from './FocusManager';
 import { TerminalEvent } from './TerminalEvent';
@@ -117,6 +116,8 @@ type IterateTileCallback = (InternalTile, i) => void;
  * Basic terminal features rendered into a Canvas object
  */
 export class Terminal implements WidgetContainer {
+  /** Default options for widget instances */
+  static defaultOptions: TerminalOptions;
   /** focus manager for the Terminal widgets */
   readonly focusManager: FocusManager;
   /** event manager for this terminal */
@@ -161,7 +162,7 @@ export class Terminal implements WidgetContainer {
     this.eventManager = new EventManager(this);
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.setOptions(deepAssign({}, defaultOptions, options));
+    this.setOptions(deepAssign({}, Terminal.defaultOptions, options));
 
     if (this.options.autoSize) {
       this.canvas.width = this.options.columns * this.options.tileWidth;
@@ -945,3 +946,30 @@ export class Terminal implements WidgetContainer {
     this.eventManager.trigger(new TerminalEvent('resized', { width, height, oldWidth, oldHeight }));
   }
 }
+
+/*
+ * Default options for new instances
+ */
+Terminal.defaultOptions = {
+  tileWidth: 18,
+  tileHeight: 28,
+  autoRender: true,
+  autoSize: true,
+  cursor: true,
+  cursorFrequency: 700,
+  decayTime: 0,
+  decayInitialAlpha: 0.7,
+  font: '20pt Terminal_VT220',
+  fontOffsetX: 1,
+  fontOffsetY: -1,
+  fg: '#00ff00',
+  bg: '#000000',
+  viewport: {
+    top: undefined,
+    right: undefined,
+    bottom: undefined,
+    left: undefined,
+  },
+  avoidDoubleRendering: true,
+  verbose: false,
+};

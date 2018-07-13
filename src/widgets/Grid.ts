@@ -3,8 +3,6 @@ import { TerminalEvent } from '../TerminalEvent';
 import { Widget, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
-import { gridDefaultOptions } from './defaultOptions';
-
 export interface GridOptions extends WidgetOptions {
   /** Number of rows of the grid */
   rows: number;
@@ -40,6 +38,8 @@ interface AttachedWidget {
  * Provides a dynamic grid system for Terminal Widgets
  */
 export class Grid extends Widget implements WidgetContainer {
+  /** Default options for widget instances */
+  static defaultOptions: GridOptions;
   /** Incremental widget ids counter */
   private static widgetIds: number = 0;
 
@@ -55,7 +55,7 @@ export class Grid extends Widget implements WidgetContainer {
 
   constructor(terminal: Terminal, options: GridOptions, parent?: WidgetContainer) {
     super(terminal, options, parent);
-    this.options = { ...gridDefaultOptions, ...this.options, ...options };
+    this.options = { ...Grid.defaultOptions, ...this.options, ...options };
 
     if (typeof options.fullSize === 'undefined') {
       this.options.fullSize = true;
@@ -359,3 +359,12 @@ function calculateStarts(available: number, cells: number): number[] {
 
   return res;
 }
+
+/*
+ * Default options for new instances
+ */
+Grid.defaultOptions = {
+  rows: undefined,
+  columns: undefined,
+  calculateStarts,
+};

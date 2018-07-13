@@ -1,18 +1,20 @@
-[terminal-in-canvas](../README.md) > ["widgets/Text"](../modules/_widgets_text_.md) > [Text](../classes/_widgets_text_.text.md)
+[terminal-in-canvas](../README.md) > ["widgets/Select"](../modules/_widgets_select_.md) > [Select](../classes/_widgets_select_.select.md)
 
 
 
-# Class: Text
+# Class: Select
 
 
-Display formatted text in the terminal, allowing vertical scroll
+Display a list of selectable options
 
+## Type parameters
+#### T 
 ## Hierarchy
 
 
  [Widget](_widget_.widget.md)
 
-**↳ Text**
+**↳ Select**
 
 
 
@@ -24,35 +26,39 @@ Display formatted text in the terminal, allowing vertical scroll
 
 ### Constructors
 
-* [constructor](_widgets_text_.text.md#constructor)
+* [constructor](_widgets_select_.select.md#constructor)
 
 
 ### Properties
 
-* [allocated](_widgets_text_.text.md#allocated)
-* [focused](_widgets_text_.text.md#focused)
-* [options](_widgets_text_.text.md#options)
-* [parent](_widgets_text_.text.md#parent)
-* [terminal](_widgets_text_.text.md#terminal)
-* [defaultOptions](_widgets_text_.text.md#defaultoptions)
+* [allocated](_widgets_select_.select.md#allocated)
+* [focused](_widgets_select_.select.md#focused)
+* [options](_widgets_select_.select.md#options)
+* [parent](_widgets_select_.select.md#parent)
+* [terminal](_widgets_select_.select.md#terminal)
+* [defaultOptions](_widgets_select_.select.md#defaultoptions)
 
 
 ### Methods
 
-* [blur](_widgets_text_.text.md#blur)
-* [focus](_widgets_text_.text.md#focus)
-* [getParent](_widgets_text_.text.md#getparent)
-* [getPosition](_widgets_text_.text.md#getposition)
-* [getSize](_widgets_text_.text.md#getsize)
-* [isAt](_widgets_text_.text.md#isat)
-* [isFocusable](_widgets_text_.text.md#isfocusable)
-* [isFocused](_widgets_text_.text.md#isfocused)
-* [render](_widgets_text_.text.md#render)
-* [scrollLines](_widgets_text_.text.md#scrolllines)
-* [scrollPages](_widgets_text_.text.md#scrollpages)
-* [setOptions](_widgets_text_.text.md#setoptions)
-* [setScroll](_widgets_text_.text.md#setscroll)
-* [updateOptions](_widgets_text_.text.md#updateoptions)
+* [blur](_widgets_select_.select.md#blur)
+* [focus](_widgets_select_.select.md#focus)
+* [getOptionAt](_widgets_select_.select.md#getoptionat)
+* [getParent](_widgets_select_.select.md#getparent)
+* [getPosition](_widgets_select_.select.md#getposition)
+* [getSelected](_widgets_select_.select.md#getselected)
+* [getSize](_widgets_select_.select.md#getsize)
+* [isAt](_widgets_select_.select.md#isat)
+* [isFocusable](_widgets_select_.select.md#isfocusable)
+* [isFocused](_widgets_select_.select.md#isfocused)
+* [next](_widgets_select_.select.md#next)
+* [prev](_widgets_select_.select.md#prev)
+* [render](_widgets_select_.select.md#render)
+* [selectIndex](_widgets_select_.select.md#selectindex)
+* [selectOption](_widgets_select_.select.md#selectoption)
+* [selectValue](_widgets_select_.select.md#selectvalue)
+* [setOptions](_widgets_select_.select.md#setoptions)
+* [updateOptions](_widgets_select_.select.md#updateoptions)
 
 
 
@@ -61,12 +67,12 @@ Display formatted text in the terminal, allowing vertical scroll
 <a id="constructor"></a>
 
 
-### ⊕ **new Text**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Text](_widgets_text_.text.md)
+### ⊕ **new Select**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[SelectOptions](../interfaces/_widgets_select_.selectoptions.md)`T`*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Select](_widgets_select_.select.md)
 
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Text.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L62)*
+*Defined in [widgets/Select.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L52)*
 
 
 
@@ -75,14 +81,14 @@ Display formatted text in the terminal, allowing vertical scroll
 | Param | Type | Description |
 | ------ | ------ | ------ |
 | terminal | [Terminal](_terminal_.terminal.md)   |  - |
-| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md)   |  - |
+| options | [SelectOptions](../interfaces/_widgets_select_.selectoptions.md)`T`   |  - |
 | parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
 
 
 
 
 
-**Returns:** [Text](_widgets_text_.text.md)
+**Returns:** [Select](_widgets_select_.select.md)
 
 ---
 
@@ -130,11 +136,11 @@ ___
 
 ### «Protected» options
 
-**●  options**:  *[TextOptions](../interfaces/_widgets_text_.textoptions.md)* 
+**●  options**:  *[SelectOptions](../interfaces/_widgets_select_.selectoptions.md)`T`* 
 
 *Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Text.ts:50](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L50)*
+*Defined in [widgets/Select.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L46)*
 
 
 
@@ -187,11 +193,11 @@ ___
 
 ### «Static» defaultOptions
 
-**●  defaultOptions**:  *[TextOptions](../interfaces/_widgets_text_.textoptions.md)* 
+**●  defaultOptions**:  *[SelectOptions](../interfaces/_widgets_select_.selectoptions.md)`any`* 
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/Text.ts:48](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L48)*
+*Defined in [widgets/Select.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L44)*
 
 
 
@@ -258,6 +264,42 @@ Set this Widget as focused. Usually done by a upper level that controls other wi
 
 ___
 
+<a id="getoptionat"></a>
+
+###  getOptionAt
+
+► **getOptionAt**(column: *`number`*, line: *`number`*): [SelectOption](../interfaces/_widgets_select_.selectoption.md)`T`
+
+
+
+*Defined in [widgets/Select.ts:122](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L122)*
+
+
+
+Get the option at the specified terminal position (absolute)
+
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| column | `number`   |  column of the terminal |
+| line | `number`   |  line of the terminal |
+
+
+
+
+
+**Returns:** [SelectOption](../interfaces/_widgets_select_.selectoption.md)`T`
+option or `undefined` if not found
+
+
+
+
+
+
+___
+
 <a id="getparent"></a>
 
 ###  getParent
@@ -309,6 +351,31 @@ Get the position of the widget, in tile coordinates
 **Returns:** [TilePosition](../interfaces/_terminal_.tileposition.md)
 current position of the widget, in tile coordinates
 
+
+
+
+
+
+___
+
+<a id="getselected"></a>
+
+###  getSelected
+
+► **getSelected**(): [SelectOption](../interfaces/_widgets_select_.selectoption.md)`T`
+
+
+
+*Defined in [widgets/Select.ts:111](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L111)*
+
+
+
+Retrieve a reference to the currently selected option
+
+
+
+
+**Returns:** [SelectOption](../interfaces/_widgets_select_.selectoption.md)`T`
 
 
 
@@ -441,6 +508,60 @@ if the widget is focused or not.
 
 ___
 
+<a id="next"></a>
+
+###  next
+
+► **next**(): `boolean`
+
+
+
+*Defined in [widgets/Select.ts:249](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L249)*
+
+
+
+Select the next option to the current one
+
+
+
+
+**Returns:** `boolean`
+`true` if the selected option has changed, `false` otherwise
+
+
+
+
+
+
+___
+
+<a id="prev"></a>
+
+###  prev
+
+► **prev**(): `boolean`
+
+
+
+*Defined in [widgets/Select.ts:240](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L240)*
+
+
+
+Select the previous option to the current one
+
+
+
+
+**Returns:** `boolean`
+`true` if the selected option has changed, `false` otherwise
+
+
+
+
+
+
+___
+
 <a id="render"></a>
 
 ###  render
@@ -451,7 +572,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Text.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L75)*
+*Defined in [widgets/Select.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L73)*
 
 
 
@@ -468,33 +589,33 @@ Render the widget in the associated terminal
 
 ___
 
-<a id="scrolllines"></a>
+<a id="selectindex"></a>
 
-###  scrollLines
+###  selectIndex
 
-► **scrollLines**(lines: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:166](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L166)*
+► **selectIndex**(index: *`number`*): `boolean`
 
 
 
-Move the starting line of the text
+*Defined in [widgets/Select.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L154)*
+
+
+
+Select the option with the specified index. This will do nothing if the option is disabled or the index not found.
 
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| lines | `number`   |  Number of lines to scroll the text |
+| index | `number`   |  - |
 
 
 
 
 
 **Returns:** `boolean`
-`true` if there is more content after `line`, or `false` if it was the last line
+`true` if the selected option has changed, `false` otherwise
 
 
 
@@ -503,33 +624,68 @@ Move the starting line of the text
 
 ___
 
-<a id="scrollpages"></a>
+<a id="selectoption"></a>
 
-###  scrollPages
+###  selectOption
 
-► **scrollPages**(pages: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:176](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L176)*
+► **selectOption**(option: *[SelectOption](../interfaces/_widgets_select_.selectoption.md)`T`*): `boolean`
 
 
 
-Move the starting line of the text by pages
+*Defined in [widgets/Select.ts:219](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L219)*
+
+
+
+Select the specified option. This will do nothing the option is disabled or not found
 
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| pages | `number`   |  Number of pages to scroll |
+| option | [SelectOption](../interfaces/_widgets_select_.selectoption.md)`T`   |  - |
 
 
 
 
 
 **Returns:** `boolean`
-`true` if there is more pages or `false` if it was the last one
+`true` if the selected option has changed, `false` otherwise
+
+
+
+
+
+
+___
+
+<a id="selectvalue"></a>
+
+###  selectValue
+
+► **selectValue**(value: *`T`*): `boolean`
+
+
+
+*Defined in [widgets/Select.ts:196](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L196)*
+
+
+
+Select the first option with the specified value. This will do nothing if all the options with that value are disabled there's no one with the specified value.
+
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| value | `T`   |  - |
+
+
+
+
+
+**Returns:** `boolean`
+`true` if the selected option has changed, `false` otherwise
 
 
 
@@ -579,52 +735,17 @@ Do not reimplement this setter in any subclass, but implement `updateOptions`
 
 ___
 
-<a id="setscroll"></a>
-
-###  setScroll
-
-► **setScroll**(line: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:135](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L135)*
-
-
-
-Set the starting line of the text
-
-
-**Parameters:**
-
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| line | `number`   |  First line to draw |
-
-
-
-
-
-**Returns:** `boolean`
-`true` if there is more content after `line`, or `false` if it was the end
-
-
-
-
-
-
-___
-
 <a id="updateoptions"></a>
 
 ### «Protected» updateOptions
 
-► **updateOptions**(options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*): `void`
+► **updateOptions**(options: *[SelectOptions](../interfaces/_widgets_select_.selectoptions.md)`T`*): `void`
 
 
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Text.ts:186](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L186)*
+*Defined in [widgets/Select.ts:259](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Select.ts#L259)*
 
 
 
@@ -635,7 +756,7 @@ ___
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md)   |  - |
+| options | [SelectOptions](../interfaces/_widgets_select_.selectoptions.md)`T`   |  - |
 
 
 

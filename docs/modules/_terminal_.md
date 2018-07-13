@@ -14,7 +14,6 @@
 ### Interfaces
 
 * [CharStyle](../interfaces/_terminal_.charstyle.md)
-* [DebugOptions](../interfaces/_terminal_.debugoptions.md)
 * [DecayTile](../interfaces/_terminal_.decaytile.md)
 * [InternalTile](../interfaces/_terminal_.internaltile.md)
 * [TerminalOptions](../interfaces/_terminal_.terminaloptions.md)
@@ -39,7 +38,7 @@
 
 **Τ EscapeCallback**:  *`function`* 
 
-*Defined in [Terminal.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L22)*
+*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L21)*
 
 
 
@@ -82,7 +81,7 @@ ___
 
 **Τ IterateTileCallback**:  *`function`* 
 
-*Defined in [Terminal.ts:123](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L123)*
+*Defined in [Terminal.ts:113](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L113)*
 
 
 #### Type declaration

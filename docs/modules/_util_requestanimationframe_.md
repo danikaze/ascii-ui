@@ -35,7 +35,7 @@
 
 **Τ requestAnimationFrameFn**:  *`function`* 
 
-*Defined in [util/requestAnimationFrame.ts:1](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/requestAnimationFrame.ts#L1)*
+*Defined in [util/requestAnimationFrame.ts:1](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/requestAnimationFrame.ts#L1)*
 
 
 #### Type declaration
@@ -75,7 +75,7 @@ ___
   (window as VendorWindow).msRequestAnimationFrame.bind(window) ||
   customRequestAnimationFrame
 
-*Defined in [util/requestAnimationFrame.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/requestAnimationFrame.ts#L23)*
+*Defined in [util/requestAnimationFrame.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/requestAnimationFrame.ts#L23)*
 
 
 
@@ -93,7 +93,7 @@ ___
 
 
 
-*Defined in [util/requestAnimationFrame.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/requestAnimationFrame.ts#L13)*
+*Defined in [util/requestAnimationFrame.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/requestAnimationFrame.ts#L13)*
 
 
 

@@ -35,7 +35,7 @@ Type of Events that can be triggered on Terminal's widgets, and bubble through i
 ### ⊕ **new TerminalEvent**(options: *[EventOptions](../interfaces/_terminalevent_.eventoptions.md)⎮`string`*, data?: *`any`*): [TerminalEvent](_terminalevent_.terminalevent.md)
 
 
-*Defined in [TerminalEvent.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/TerminalEvent.ts#L18)*
+*Defined in [TerminalEvent.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/TerminalEvent.ts#L18)*
 
 
 
@@ -62,7 +62,7 @@ Type of Events that can be triggered on Terminal's widgets, and bubble through i
 
 **●  data**:  *`any`* 
 
-*Defined in [TerminalEvent.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/TerminalEvent.ts#L13)*
+*Defined in [TerminalEvent.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/TerminalEvent.ts#L13)*
 
 
 
@@ -79,7 +79,7 @@ ___
 
 **●  type**:  *`string`* 
 
-*Defined in [TerminalEvent.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/TerminalEvent.ts#L11)*
+*Defined in [TerminalEvent.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/TerminalEvent.ts#L11)*
 
 
 
@@ -100,7 +100,7 @@ ___
 
 
 
-*Defined in [TerminalEvent.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/TerminalEvent.ts#L46)*
+*Defined in [TerminalEvent.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/TerminalEvent.ts#L46)*
 
 
 
@@ -127,7 +127,7 @@ ___
 
 
 
-*Defined in [TerminalEvent.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/TerminalEvent.ts#L35)*
+*Defined in [TerminalEvent.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/TerminalEvent.ts#L35)*
 
 
 

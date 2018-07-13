@@ -29,7 +29,7 @@ Manage triggering, listening and bubbling events across the Terminal Widgets
 ### ⊕ **new EventManager**(terminal: *[Terminal](_terminal_.terminal.md)*): [EventManager](_eventmanager_.eventmanager.md)
 
 
-*Defined in [EventManager.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/EventManager.ts#L14)*
+*Defined in [EventManager.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/EventManager.ts#L14)*
 
 
 
@@ -57,7 +57,7 @@ Manage triggering, listening and bubbling events across the Terminal Widgets
 
 
 
-*Defined in [EventManager.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/EventManager.ts#L27)*
+*Defined in [EventManager.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/EventManager.ts#L27)*
 
 
 
@@ -92,7 +92,7 @@ ___
 
 
 
-*Defined in [EventManager.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/EventManager.ts#L52)*
+*Defined in [EventManager.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/EventManager.ts#L52)*
 
 
 

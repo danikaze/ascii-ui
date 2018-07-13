@@ -28,7 +28,7 @@
 
 
 
-*Defined in [WidgetContainer.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L93)*
+*Defined in [WidgetContainer.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L93)*
 
 
 

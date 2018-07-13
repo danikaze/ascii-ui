@@ -27,7 +27,7 @@
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L7)*
 
 
 
@@ -44,7 +44,7 @@ ___
 
 **●  fitPageEnd**:  *`boolean`* 
 
-*Defined in [widgets/Text.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L42)*
+*Defined in [widgets/Text.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L30)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L15)*
 
 
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L13)*
 
 
 
@@ -101,7 +101,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L9)*
 
 
 
@@ -118,7 +118,7 @@ ___
 
 **●  persistentTypewritter**:  *`boolean`* 
 
-*Defined in [widgets/Text.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L52)*
+*Defined in [widgets/Text.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L40)*
 
 
 
@@ -137,7 +137,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L17)*
 
 
 
@@ -154,7 +154,7 @@ ___
 
 **●  text**:  *`string`* 
 
-*Defined in [widgets/Text.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L23)*
+*Defined in [widgets/Text.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L11)*
 
 
 
@@ -171,7 +171,7 @@ ___
 
 **●  textStyle**:  *[CharStyle](_terminal_.charstyle.md)* 
 
-*Defined in [widgets/Text.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L28)*
+*Defined in [widgets/Text.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L16)*
 
 
 
@@ -186,9 +186,9 @@ ___
 
 ### «Optional» tokenizer
 
-**●  tokenizer**:  *`boolean`⎮[TokenizerFunction](../modules/_widgets_text_.md#tokenizerfunction)* 
+**●  tokenizer**:  *`boolean`⎮[TokenizerFunction](../modules/_util_tokenizer_.md#tokenizerfunction)* 
 
-*Defined in [widgets/Text.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L35)*
+*Defined in [widgets/Text.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L23)*
 
 
 
@@ -205,7 +205,7 @@ ___
 
 **●  typewritterDelay**:  *`number`* 
 
-*Defined in [widgets/Text.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Text.ts#L47)*
+*Defined in [widgets/Text.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L35)*
 
 
 
@@ -224,7 +224,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L11)*
 
 
 

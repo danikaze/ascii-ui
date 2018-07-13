@@ -27,7 +27,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L45)*
+*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
 
 
 
@@ -44,7 +44,7 @@ ___
 
 **●  ellipsis**:  *`string`* 
 
-*Defined in [widgets/Box.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L29)*
+*Defined in [widgets/Box.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L27)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
 
 
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L37)*
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
 
 
 
@@ -101,7 +101,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
 
-*Defined in [Terminal.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L39)*
+*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
 
 
 
@@ -120,7 +120,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
 
-*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L41)*
+*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
 
 
 
@@ -137,7 +137,7 @@ ___
 
 **●  marginLeft**:  *`number`* 
 
-*Defined in [widgets/Box.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L25)*
+*Defined in [widgets/Box.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L23)*
 
 
 
@@ -154,7 +154,7 @@ ___
 
 **●  marginRight**:  *`number`* 
 
-*Defined in [widgets/Box.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L27)*
+*Defined in [widgets/Box.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L25)*
 
 
 

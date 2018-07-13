@@ -38,6 +38,7 @@ Provides a dynamic grid system for Terminal Widgets
 * [options](_widgets_grid_.grid.md#options)
 * [parent](_widgets_grid_.grid.md#parent)
 * [terminal](_widgets_grid_.grid.md#terminal)
+* [defaultOptions](_widgets_grid_.grid.md#defaultoptions)
 
 
 ### Methods
@@ -73,7 +74,7 @@ Provides a dynamic grid system for Terminal Widgets
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Grid.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L54)*
+*Defined in [widgets/Grid.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L54)*
 
 
 
@@ -103,7 +104,7 @@ Provides a dynamic grid system for Terminal Widgets
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L35)*
 
 
 
@@ -122,7 +123,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L31)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L33)*
 
 
 
@@ -141,7 +142,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Grid.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L47)*
+*Defined in [widgets/Grid.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L47)*
 
 
 
@@ -160,7 +161,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L27)*
+*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L29)*
 
 
 
@@ -179,11 +180,30 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L25)*
+*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L27)*
 
 
 
 Reference to the parent terminal where it should be rendered
+
+
+
+
+___
+
+<a id="defaultoptions"></a>
+
+### «Static» defaultOptions
+
+**●  defaultOptions**:  *[GridOptions](../interfaces/_widgets_grid_.gridoptions.md)* 
+
+*Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
+
+*Defined in [widgets/Grid.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L42)*
+
+
+
+Default options for widget instances
 
 
 
@@ -202,7 +222,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[__@iterator](../interfaces/_widgetcontainer_.widgetcontainer.md#___iterator)*
 
-*Defined in [widgets/Grid.ts:178](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L178)*
+*Defined in [widgets/Grid.ts:178](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L178)*
 
 
 
@@ -235,7 +255,7 @@ ___
 
 
 
-*Defined in [widgets/Grid.ts:100](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L100)*
+*Defined in [widgets/Grid.ts:100](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L100)*
 
 
 
@@ -260,7 +280,7 @@ ___
 
 
 
-*Defined in [widgets/Grid.ts:115](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L115)*
+*Defined in [widgets/Grid.ts:115](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L115)*
 
 
 
@@ -302,7 +322,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L154)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L156)*
 
 
 
@@ -329,7 +349,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[dettachWidget](../interfaces/_widgetcontainer_.widgetcontainer.md#dettachwidget)*
 
-*Defined in [widgets/Grid.ts:143](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L143)*
+*Defined in [widgets/Grid.ts:143](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L143)*
 
 
 
@@ -366,7 +386,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:140](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L140)*
+*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L142)*
 
 
 
@@ -391,7 +411,7 @@ ___
 
 
 
-*Defined in [widgets/Grid.ts:246](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L246)*
+*Defined in [widgets/Grid.ts:246](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L246)*
 
 
 
@@ -431,7 +451,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L56)*
+*Defined in [Widget.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L58)*
 
 
 
@@ -460,7 +480,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L104)*
+*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L106)*
 
 
 
@@ -489,7 +509,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L92)*
+*Defined in [Widget.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L94)*
 
 
 
@@ -518,7 +538,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getWidgetAt](../interfaces/_widgetcontainer_.widgetcontainer.md#getwidgetat)*
 
-*Defined in [widgets/Grid.ts:163](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L163)*
+*Defined in [widgets/Grid.ts:163](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L163)*
 
 
 
@@ -554,7 +574,7 @@ ___
 
 
 
-*Defined in [widgets/Grid.ts:230](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L230)*
+*Defined in [widgets/Grid.ts:230](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L230)*
 
 
 
@@ -592,7 +612,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L118)*
+*Defined in [Widget.ts:120](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L120)*
 
 
 
@@ -630,7 +650,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L132)*
+*Defined in [Widget.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L134)*
 
 
 
@@ -659,7 +679,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L167)*
+*Defined in [Widget.ts:169](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L169)*
 
 
 
@@ -688,7 +708,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Grid.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L89)*
+*Defined in [widgets/Grid.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L89)*
 
 
 
@@ -715,7 +735,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L72)*
+*Defined in [Widget.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L74)*
 
 
 
@@ -756,7 +776,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Grid.ts:260](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Grid.ts#L260)*
+*Defined in [widgets/Grid.ts:260](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Grid.ts#L260)*
 
 
 

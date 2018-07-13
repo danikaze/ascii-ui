@@ -25,7 +25,7 @@
 
 **Τ EventListener**:  *`function`* 
 
-*Defined in [EventManager.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/EventManager.ts#L5)*
+*Defined in [EventManager.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/EventManager.ts#L5)*
 
 
 #### Type declaration

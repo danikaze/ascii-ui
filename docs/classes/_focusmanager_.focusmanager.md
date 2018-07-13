@@ -32,7 +32,7 @@ Manage the focus behavior around the widgets of a Terminal
 ### ⊕ **new FocusManager**(terminal: *[Terminal](_terminal_.terminal.md)*, canvas: *`HTMLCanvasElement`*): [FocusManager](_focusmanager_.focusmanager.md)
 
 
-*Defined in [FocusManager.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/FocusManager.ts#L17)*
+*Defined in [FocusManager.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/FocusManager.ts#L17)*
 
 
 
@@ -61,7 +61,7 @@ Manage the focus behavior around the widgets of a Terminal
 
 
 
-*Defined in [FocusManager.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/FocusManager.ts#L87)*
+*Defined in [FocusManager.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/FocusManager.ts#L87)*
 
 
 
@@ -86,7 +86,7 @@ ___
 
 
 
-*Defined in [FocusManager.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/FocusManager.ts#L46)*
+*Defined in [FocusManager.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/FocusManager.ts#L46)*
 
 
 
@@ -119,7 +119,7 @@ ___
 
 
 
-*Defined in [FocusManager.ts:96](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/FocusManager.ts#L96)*
+*Defined in [FocusManager.ts:96](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/FocusManager.ts#L96)*
 
 
 
@@ -146,7 +146,7 @@ ___
 
 
 
-*Defined in [FocusManager.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/FocusManager.ts#L28)*
+*Defined in [FocusManager.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/FocusManager.ts#L28)*
 
 
 
@@ -171,7 +171,7 @@ ___
 
 
 
-*Defined in [FocusManager.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/FocusManager.ts#L35)*
+*Defined in [FocusManager.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/FocusManager.ts#L35)*
 
 
 

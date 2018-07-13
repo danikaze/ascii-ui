@@ -694,7 +694,7 @@ ___
 
 **●  mozRequestAnimationFrame**:  *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)* 
 
-*Defined in [util/requestAnimationFrame.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/requestAnimationFrame.ts#L4)*
+*Defined in [util/requestAnimationFrame.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/requestAnimationFrame.ts#L4)*
 
 
 
@@ -740,7 +740,7 @@ ___
 
 **●  msRequestAnimationFrame**:  *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)* 
 
-*Defined in [util/requestAnimationFrame.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/requestAnimationFrame.ts#L6)*
+*Defined in [util/requestAnimationFrame.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/requestAnimationFrame.ts#L6)*
 
 
 
@@ -786,7 +786,7 @@ ___
 
 **●  oRequestAnimationFrame**:  *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)* 
 
-*Defined in [util/requestAnimationFrame.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/requestAnimationFrame.ts#L5)*
+*Defined in [util/requestAnimationFrame.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/requestAnimationFrame.ts#L5)*
 
 
 

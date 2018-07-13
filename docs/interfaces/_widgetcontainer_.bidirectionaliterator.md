@@ -66,7 +66,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L8)*
+*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L8)*
 
 
 
@@ -120,7 +120,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L9)*
+*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L9)*
 
 
 

@@ -40,7 +40,7 @@
 
 **●  bg**:  *`string`* 
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L45)*
+*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
 
 
 
@@ -57,7 +57,7 @@ ___
 
 **●  fg**:  *`string`* 
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
 
 
 
@@ -74,7 +74,7 @@ ___
 
 **●  font**:  *`string`* 
 
-*Defined in [Terminal.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L37)*
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
 
 
 
@@ -91,7 +91,7 @@ ___
 
 **●  fontOffsetX**:  *`number`* 
 
-*Defined in [Terminal.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L39)*
+*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
 
 
 
@@ -108,7 +108,7 @@ ___
 
 **●  fontOffsetY**:  *`number`* 
 
-*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L41)*
+*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
 
 
 

@@ -27,7 +27,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L45)*
+*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
 
 
 
@@ -44,7 +44,7 @@ ___
 
 **●  bottom**:  *`string`* 
 
-*Defined in [widgets/Box.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L19)*
+*Defined in [widgets/Box.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L17)*
 
 
 
@@ -58,7 +58,7 @@ ___
 
 **●  bottomLeft**:  *`string`* 
 
-*Defined in [widgets/Box.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L18)*
+*Defined in [widgets/Box.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L16)*
 
 
 
@@ -72,7 +72,7 @@ ___
 
 **●  bottomRight**:  *`string`* 
 
-*Defined in [widgets/Box.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L20)*
+*Defined in [widgets/Box.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L18)*
 
 
 
@@ -86,7 +86,7 @@ ___
 
 **●  center**:  *`string`* 
 
-*Defined in [widgets/Box.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L16)*
+*Defined in [widgets/Box.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L14)*
 
 
 
@@ -102,7 +102,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
 
 
 
@@ -121,7 +121,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L37)*
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
 
 
 
@@ -140,7 +140,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
 
-*Defined in [Terminal.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L39)*
+*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
 
 
 
@@ -159,7 +159,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
 
-*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L41)*
+*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
 
 
 
@@ -176,7 +176,7 @@ ___
 
 **●  left**:  *`string`* 
 
-*Defined in [widgets/Box.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L15)*
+*Defined in [widgets/Box.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L13)*
 
 
 
@@ -190,7 +190,7 @@ ___
 
 **●  right**:  *`string`* 
 
-*Defined in [widgets/Box.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L17)*
+*Defined in [widgets/Box.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L15)*
 
 
 
@@ -204,7 +204,7 @@ ___
 
 **●  top**:  *`string`* 
 
-*Defined in [widgets/Box.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L13)*
+*Defined in [widgets/Box.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L11)*
 
 
 
@@ -218,7 +218,7 @@ ___
 
 **●  topLeft**:  *`string`* 
 
-*Defined in [widgets/Box.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L12)*
+*Defined in [widgets/Box.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L10)*
 
 
 
@@ -232,7 +232,7 @@ ___
 
 **●  topRight**:  *`string`* 
 
-*Defined in [widgets/Box.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L14)*
+*Defined in [widgets/Box.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L12)*
 
 
 

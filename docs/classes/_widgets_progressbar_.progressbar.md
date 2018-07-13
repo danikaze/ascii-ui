@@ -1,18 +1,18 @@
-[terminal-in-canvas](../README.md) > ["widgets/Input"](../modules/_widgets_input_.md) > [Input](../classes/_widgets_input_.input.md)
+[terminal-in-canvas](../README.md) > ["widgets/ProgressBar"](../modules/_widgets_progressbar_.md) > [ProgressBar](../classes/_widgets_progressbar_.progressbar.md)
 
 
 
-# Class: Input
+# Class: ProgressBar
 
 
-One line text input widget
+Display a progress bar
 
 ## Hierarchy
 
 
  [Widget](_widget_.widget.md)
 
-**↳ Input**
+**↳ ProgressBar**
 
 
 
@@ -24,34 +24,33 @@ One line text input widget
 
 ### Constructors
 
-* [constructor](_widgets_input_.input.md#constructor)
+* [constructor](_widgets_progressbar_.progressbar.md#constructor)
 
 
 ### Properties
 
-* [allocated](_widgets_input_.input.md#allocated)
-* [focused](_widgets_input_.input.md#focused)
-* [options](_widgets_input_.input.md#options)
-* [parent](_widgets_input_.input.md#parent)
-* [terminal](_widgets_input_.input.md#terminal)
-* [defaultOptions](_widgets_input_.input.md#defaultoptions)
+* [allocated](_widgets_progressbar_.progressbar.md#allocated)
+* [focused](_widgets_progressbar_.progressbar.md#focused)
+* [options](_widgets_progressbar_.progressbar.md#options)
+* [parent](_widgets_progressbar_.progressbar.md#parent)
+* [terminal](_widgets_progressbar_.progressbar.md#terminal)
+* [defaultOptions](_widgets_progressbar_.progressbar.md#defaultoptions)
 
 
 ### Methods
 
-* [blur](_widgets_input_.input.md#blur)
-* [focus](_widgets_input_.input.md#focus)
-* [getParent](_widgets_input_.input.md#getparent)
-* [getPosition](_widgets_input_.input.md#getposition)
-* [getSize](_widgets_input_.input.md#getsize)
-* [getValue](_widgets_input_.input.md#getvalue)
-* [isAt](_widgets_input_.input.md#isat)
-* [isFocusable](_widgets_input_.input.md#isfocusable)
-* [isFocused](_widgets_input_.input.md#isfocused)
-* [render](_widgets_input_.input.md#render)
-* [setOptions](_widgets_input_.input.md#setoptions)
-* [setValue](_widgets_input_.input.md#setvalue)
-* [updateOptions](_widgets_input_.input.md#updateoptions)
+* [blur](_widgets_progressbar_.progressbar.md#blur)
+* [focus](_widgets_progressbar_.progressbar.md#focus)
+* [getParent](_widgets_progressbar_.progressbar.md#getparent)
+* [getPosition](_widgets_progressbar_.progressbar.md#getposition)
+* [getProgress](_widgets_progressbar_.progressbar.md#getprogress)
+* [getSize](_widgets_progressbar_.progressbar.md#getsize)
+* [isAt](_widgets_progressbar_.progressbar.md#isat)
+* [isFocusable](_widgets_progressbar_.progressbar.md#isfocusable)
+* [isFocused](_widgets_progressbar_.progressbar.md#isfocused)
+* [render](_widgets_progressbar_.progressbar.md#render)
+* [setOptions](_widgets_progressbar_.progressbar.md#setoptions)
+* [updateOptions](_widgets_progressbar_.progressbar.md#updateoptions)
 
 
 
@@ -60,12 +59,12 @@ One line text input widget
 <a id="constructor"></a>
 
 
-### ⊕ **new Input**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Input](_widgets_input_.input.md)
+### ⊕ **new ProgressBar**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [ProgressBar](_widgets_progressbar_.progressbar.md)
 
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Input.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L29)*
+*Defined in [widgets/ProgressBar.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L39)*
 
 
 
@@ -74,14 +73,14 @@ One line text input widget
 | Param | Type | Description |
 | ------ | ------ | ------ |
 | terminal | [Terminal](_terminal_.terminal.md)   |  - |
-| options | [InputOptions](../interfaces/_widgets_input_.inputoptions.md)   |  - |
+| options | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)   |  - |
 | parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
 
 
 
 
 
-**Returns:** [Input](_widgets_input_.input.md)
+**Returns:** [ProgressBar](_widgets_progressbar_.progressbar.md)
 
 ---
 
@@ -129,15 +128,15 @@ ___
 
 ### «Protected» options
 
-**●  options**:  *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)* 
+**●  options**:  *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)* 
 
 *Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Input.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L23)*
+*Defined in [widgets/ProgressBar.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L39)*
 
 
 
-Options of the Input Widget
+Options of the Text widget
 
 
 
@@ -186,11 +185,11 @@ ___
 
 ### «Static» defaultOptions
 
-**●  defaultOptions**:  *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)* 
+**●  defaultOptions**:  *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)* 
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/Input.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L21)*
+*Defined in [widgets/ProgressBar.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L37)*
 
 
 
@@ -211,9 +210,9 @@ ___
 
 
 
-*Overrides [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
+*Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [widgets/Input.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L94)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L156)*
 
 
 
@@ -238,9 +237,9 @@ ___
 
 
 
-*Overrides [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
+*Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [widgets/Input.ts:84](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L84)*
+*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L142)*
 
 
 
@@ -315,6 +314,31 @@ current position of the widget, in tile coordinates
 
 ___
 
+<a id="getprogress"></a>
+
+###  getProgress
+
+► **getProgress**(): `number`
+
+
+
+*Defined in [widgets/ProgressBar.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L63)*
+
+
+
+Retrieve a reference to the currently selected option
+
+
+
+
+**Returns:** `number`
+
+
+
+
+
+___
+
 <a id="getsize"></a>
 
 ###  getSize
@@ -336,41 +360,6 @@ Get the widget size, measured in tiles
 
 **Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the widget, measured in tiles
-
-
-
-
-
-
-___
-
-<a id="getvalue"></a>
-
-###  getValue
-
-► **getValue**(showPassword?: *`boolean`*): `string`
-
-
-
-*Defined in [widgets/Input.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L63)*
-
-
-
-Get the current value of the input text
-
-
-**Parameters:**
-
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| showPassword | `boolean`   |  if this is not `true` when the input is set as password, the returned value will be hidden |
-
-
-
-
-
-**Returns:** `string`
-current value
 
 
 
@@ -485,7 +474,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Input.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L42)*
+*Defined in [widgets/ProgressBar.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L52)*
 
 
 
@@ -543,50 +532,17 @@ Do not reimplement this setter in any subclass, but implement `updateOptions`
 
 ___
 
-<a id="setvalue"></a>
-
-###  setValue
-
-► **setValue**(value: *`string`*): `void`
-
-
-
-*Defined in [widgets/Input.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L74)*
-
-
-
-Set the new value of the input text
-
-
-**Parameters:**
-
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| value | `string`   |  new value to be set |
-
-
-
-
-
-**Returns:** `void`
-
-
-
-
-
-___
-
 <a id="updateoptions"></a>
 
 ### «Protected» updateOptions
 
-► **updateOptions**(changedOptions: *[InputOptions](../interfaces/_widgets_input_.inputoptions.md)*): `void`
+► **updateOptions**(options: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*): `void`
 
 
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Input.ts:105](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Input.ts#L105)*
+*Defined in [widgets/ProgressBar.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L73)*
 
 
 
@@ -597,7 +553,7 @@ ___
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| changedOptions | [InputOptions](../interfaces/_widgets_input_.inputoptions.md)   |  Object with only the changed options |
+| options | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)   |  - |
 
 
 

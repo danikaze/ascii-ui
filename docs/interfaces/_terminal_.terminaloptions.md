@@ -25,7 +25,7 @@
 
 **●  autoRender**:  *`boolean`* 
 
-*Defined in [Terminal.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L69)*
+*Defined in [Terminal.ts:68](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L68)*
 
 
 
@@ -42,7 +42,7 @@ ___
 
 **●  autoSize**:  *`boolean`* 
 
-*Defined in [Terminal.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L71)*
+*Defined in [Terminal.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L70)*
 
 
 
@@ -59,7 +59,7 @@ ___
 
 **●  avoidDoubleRendering**:  *`boolean`* 
 
-*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L87)*
+*Defined in [Terminal.ts:84](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L84)*
 
 
 
@@ -78,7 +78,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L45)*
+*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
 
 
 
@@ -95,7 +95,7 @@ ___
 
 **●  columns**:  *`number`* 
 
-*Defined in [Terminal.ts:65](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L65)*
+*Defined in [Terminal.ts:64](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L64)*
 
 
 
@@ -112,7 +112,7 @@ ___
 
 **●  commands**:  *`object`* 
 
-*Defined in [Terminal.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L83)*
+*Defined in [Terminal.ts:80](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L80)*
 
 
 
@@ -136,7 +136,7 @@ ___
 
 **●  cursor**:  *`boolean`* 
 
-*Defined in [Terminal.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L73)*
+*Defined in [Terminal.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L72)*
 
 
 
@@ -153,28 +153,11 @@ ___
 
 **●  cursorFrequency**:  *`number`* 
 
-*Defined in [Terminal.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L75)*
+*Defined in [Terminal.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L74)*
 
 
 
 blinking frequency of the cursor. If set to `0` the blink will be disabled
-
-
-
-
-___
-
-<a id="debug"></a>
-
-### «Optional» debug
-
-**●  debug**:  *`boolean`⎮[DebugOptions](_terminal_.debugoptions.md)* 
-
-*Defined in [Terminal.ts:81](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L81)*
-
-
-
-`true` to enable default debug options, `false` to disable it, an object to specify each option
 
 
 
@@ -187,7 +170,7 @@ ___
 
 **●  decayInitialAlpha**:  *`number`* 
 
-*Defined in [Terminal.ts:79](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L79)*
+*Defined in [Terminal.ts:78](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L78)*
 
 
 
@@ -204,7 +187,7 @@ ___
 
 **●  decayTime**:  *`number`* 
 
-*Defined in [Terminal.ts:77](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L77)*
+*Defined in [Terminal.ts:76](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L76)*
 
 
 
@@ -223,7 +206,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
 
 
 
@@ -242,7 +225,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L37)*
+*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
 
 
 
@@ -261,7 +244,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
 
-*Defined in [Terminal.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L39)*
+*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
 
 
 
@@ -280,7 +263,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
 
-*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L41)*
+*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
 
 
 
@@ -297,7 +280,7 @@ ___
 
 **●  rows**:  *`number`* 
 
-*Defined in [Terminal.ts:67](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L67)*
+*Defined in [Terminal.ts:66](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L66)*
 
 
 
@@ -314,7 +297,7 @@ ___
 
 **●  tileHeight**:  *`number`* 
 
-*Defined in [Terminal.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L63)*
+*Defined in [Terminal.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L62)*
 
 
 
@@ -331,11 +314,28 @@ ___
 
 **●  tileWidth**:  *`number`* 
 
-*Defined in [Terminal.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L61)*
+*Defined in [Terminal.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L60)*
 
 
 
 width of a tile in px
+
+
+
+
+___
+
+<a id="verbose"></a>
+
+### «Optional» verbose
+
+**●  verbose**:  *`boolean`* 
+
+*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L86)*
+
+
+
+`true` to enable debug console messages options, `false` to disable them
 
 
 
@@ -348,7 +348,7 @@ ___
 
 **●  viewport**:  *[ViewPortOptions](_terminal_.viewportoptions.md)* 
 
-*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L85)*
+*Defined in [Terminal.ts:82](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L82)*
 
 
 

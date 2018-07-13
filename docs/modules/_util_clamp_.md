@@ -22,7 +22,7 @@
 
 
 
-*Defined in [util/clamp.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/clamp.ts#L8)*
+*Defined in [util/clamp.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/clamp.ts#L8)*
 
 
 

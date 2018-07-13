@@ -11,6 +11,11 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 
 **Widget**
 
+↳  [Box](_widgets_box_.box.md)
+
+
+
+
 ↳  [Grid](_widgets_grid_.grid.md)
 
 
@@ -21,12 +26,17 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 
 
 
+↳  [ProgressBar](_widgets_progressbar_.progressbar.md)
+
+
+
+
+↳  [Select](_widgets_select_.select.md)
+
+
+
+
 ↳  [Text](_widgets_text_.text.md)
-
-
-
-
-↳  [Box](_widgets_box_.box.md)
 
 
 
@@ -49,6 +59,7 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 * [options](_widget_.widget.md#options)
 * [parent](_widget_.widget.md#parent)
 * [terminal](_widget_.widget.md#terminal)
+* [defaultOptions](_widget_.widget.md#defaultoptions)
 
 
 ### Methods
@@ -75,7 +86,7 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 ### ⊕ **new Widget**(terminal: *[Terminal](_terminal_.terminal.md)*, options?: *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Widget](_widget_.widget.md)
 
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L35)*
 
 
 
@@ -106,7 +117,7 @@ A Widget is created in the context of a specific terminal, in a position and wit
 
 **●  allocated**:  *`boolean`* 
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L35)*
 
 
 
@@ -123,7 +134,7 @@ ___
 
 **●  focused**:  *`boolean`* 
 
-*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L31)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L33)*
 
 
 
@@ -140,7 +151,7 @@ ___
 
 **●  options**:  *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)* 
 
-*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L29)*
+*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L31)*
 
 
 
@@ -157,7 +168,7 @@ ___
 
 **●  parent**:  *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)* 
 
-*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L27)*
+*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L29)*
 
 
 
@@ -174,11 +185,28 @@ ___
 
 **●  terminal**:  *[Terminal](_terminal_.terminal.md)* 
 
-*Defined in [Widget.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L25)*
+*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L27)*
 
 
 
 Reference to the parent terminal where it should be rendered
+
+
+
+
+___
+
+<a id="defaultoptions"></a>
+
+### «Static» defaultOptions
+
+**●  defaultOptions**:  *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)* 
+
+*Defined in [Widget.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L25)*
+
+
+
+Default options for widget instances
 
 
 
@@ -195,7 +223,7 @@ ___
 
 
 
-*Defined in [Widget.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L154)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L156)*
 
 
 
@@ -220,7 +248,7 @@ ___
 
 
 
-*Defined in [Widget.ts:140](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L140)*
+*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L142)*
 
 
 
@@ -245,7 +273,7 @@ ___
 
 
 
-*Defined in [Widget.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L56)*
+*Defined in [Widget.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L58)*
 
 
 
@@ -272,7 +300,7 @@ ___
 
 
 
-*Defined in [Widget.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L104)*
+*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L106)*
 
 
 
@@ -299,7 +327,7 @@ ___
 
 
 
-*Defined in [Widget.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L92)*
+*Defined in [Widget.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L94)*
 
 
 
@@ -326,7 +354,7 @@ ___
 
 
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L118)*
+*Defined in [Widget.ts:120](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L120)*
 
 
 
@@ -362,7 +390,7 @@ ___
 
 
 
-*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L132)*
+*Defined in [Widget.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L134)*
 
 
 
@@ -389,7 +417,7 @@ ___
 
 
 
-*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L167)*
+*Defined in [Widget.ts:169](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L169)*
 
 
 
@@ -416,7 +444,7 @@ ___
 
 
 
-*Defined in [Widget.ts:174](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L174)*
+*Defined in [Widget.ts:176](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L176)*
 
 
 
@@ -441,7 +469,7 @@ ___
 
 
 
-*Defined in [Widget.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L72)*
+*Defined in [Widget.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L74)*
 
 
 
@@ -480,7 +508,7 @@ ___
 
 
 
-*Defined in [Widget.ts:182](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L182)*
+*Defined in [Widget.ts:184](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L184)*
 
 
 

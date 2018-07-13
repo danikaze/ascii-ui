@@ -12,7 +12,7 @@
 
 **●  columns**:  *`number`* 
 
-*Defined in [Terminal.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L26)*
+*Defined in [Terminal.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L25)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  rows**:  *`number`* 
 
-*Defined in [Terminal.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L28)*
+*Defined in [Terminal.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L27)*
 
 
 

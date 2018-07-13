@@ -23,7 +23,7 @@ A Widget that can contain other Widgets should implement several common methods 
 
 
 
-*Defined in [WidgetContainer.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L83)*
+*Defined in [WidgetContainer.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L83)*
 
 
 
@@ -70,7 +70,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L30)*
+*Defined in [WidgetContainer.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L30)*
 
 
 
@@ -105,7 +105,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L38)*
+*Defined in [WidgetContainer.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L38)*
 
 
 
@@ -140,7 +140,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L22)*
+*Defined in [WidgetContainer.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L22)*
 
 
 
@@ -167,7 +167,7 @@ ___
 
 
 
-*Defined in [WidgetContainer.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/WidgetContainer.ts#L47)*
+*Defined in [WidgetContainer.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L47)*
 
 
 

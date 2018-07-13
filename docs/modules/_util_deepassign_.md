@@ -22,7 +22,7 @@
 
 
 
-*Defined in [util/deepAssign.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/util/deepAssign.ts#L8)*
+*Defined in [util/deepAssign.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/util/deepAssign.ts#L8)*
 
 
 

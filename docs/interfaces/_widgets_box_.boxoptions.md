@@ -25,7 +25,7 @@
 
 **●  base**:  *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)* 
 
-*Defined in [widgets/Box.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L56)*
+*Defined in [widgets/Box.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L54)*
 
 
 
@@ -44,7 +44,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L7)*
 
 
 
@@ -61,7 +61,7 @@ ___
 
 **●  disabled**:  *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)* 
 
-*Defined in [widgets/Box.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L60)*
+*Defined in [widgets/Box.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L58)*
 
 
 
@@ -78,7 +78,7 @@ ___
 
 **●  focus**:  *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)* 
 
-*Defined in [widgets/Box.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L58)*
+*Defined in [widgets/Box.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L56)*
 
 
 
@@ -97,7 +97,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L15)*
 
 
 
@@ -116,7 +116,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L13)*
 
 
 
@@ -135,7 +135,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L9)*
 
 
 
@@ -152,7 +152,7 @@ ___
 
 **●  padding**:  *[BoxPaddingOptions](_widgets_box_.boxpaddingoptions.md)* 
 
-*Defined in [widgets/Box.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L54)*
+*Defined in [widgets/Box.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L52)*
 
 
 
@@ -171,7 +171,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L17)*
 
 
 
@@ -188,7 +188,7 @@ ___
 
 **●  title**:  *`string`* 
 
-*Defined in [widgets/Box.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L52)*
+*Defined in [widgets/Box.ts:50](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L50)*
 
 
 
@@ -207,7 +207,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L11)*
 
 
 

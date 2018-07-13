@@ -8,6 +8,11 @@
 
 **WidgetOptions**
 
+↳  [BoxOptions](_widgets_box_.boxoptions.md)
+
+
+
+
 ↳  [GridOptions](_widgets_grid_.gridoptions.md)
 
 
@@ -18,12 +23,17 @@
 
 
 
+↳  [ProgressBarOptions](_widgets_progressbar_.progressbaroptions.md)
+
+
+
+
+↳  [SelectOptions](_widgets_select_.selectoptions.md)
+
+
+
+
 ↳  [TextOptions](_widgets_text_.textoptions.md)
-
-
-
-
-↳  [BoxOptions](_widgets_box_.boxoptions.md)
 
 
 
@@ -40,7 +50,7 @@
 
 **●  col**:  *`number`* 
 
-*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L7)*
+*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L7)*
 
 
 
@@ -57,7 +67,7 @@ ___
 
 **●  focusable**:  *`boolean`* 
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L15)*
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L15)*
 
 
 
@@ -74,7 +84,7 @@ ___
 
 **●  height**:  *`number`* 
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L13)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L13)*
 
 
 
@@ -91,7 +101,7 @@ ___
 
 **●  line**:  *`number`* 
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L9)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L9)*
 
 
 
@@ -108,7 +118,7 @@ ___
 
 **●  tabIndex**:  *`number`* 
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L17)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L17)*
 
 
 
@@ -125,7 +135,7 @@ ___
 
 **●  width**:  *`number`* 
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L11)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L11)*
 
 
 

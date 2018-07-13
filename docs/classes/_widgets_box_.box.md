@@ -38,6 +38,7 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 * [options](_widgets_box_.box.md#options)
 * [parent](_widgets_box_.box.md#parent)
 * [terminal](_widgets_box_.box.md#terminal)
+* [defaultOptions](_widgets_box_.box.md#defaultoptions)
 
 
 ### Methods
@@ -70,7 +71,7 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Box.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L104)*
+*Defined in [widgets/Box.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L104)*
 
 
 
@@ -100,7 +101,7 @@ Very basic `WidgetContainer` which draws a box around the attached content. It a
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L33)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L35)*
 
 
 
@@ -119,7 +120,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L31)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L33)*
 
 
 
@@ -138,7 +139,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Box.ts:96](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L96)*
+*Defined in [widgets/Box.ts:96](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L96)*
 
 
 
@@ -157,7 +158,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L27)*
+*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L29)*
 
 
 
@@ -176,11 +177,30 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L25)*
+*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L27)*
 
 
 
 Reference to the parent terminal where it should be rendered
+
+
+
+
+___
+
+<a id="defaultoptions"></a>
+
+### «Static» defaultOptions
+
+**●  defaultOptions**:  *[BoxOptions](../interfaces/_widgets_box_.boxoptions.md)* 
+
+*Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
+
+*Defined in [widgets/Box.ts:80](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L80)*
+
+
+
+Default options for widget instances
 
 
 
@@ -199,7 +219,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[__@iterator](../interfaces/_widgetcontainer_.widgetcontainer.md#___iterator)*
 
-*Defined in [widgets/Box.ts:210](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L210)*
+*Defined in [widgets/Box.ts:214](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L214)*
 
 
 
@@ -232,7 +252,7 @@ ___
 
 
 
-*Defined in [widgets/Box.ts:146](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L146)*
+*Defined in [widgets/Box.ts:150](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L150)*
 
 
 
@@ -270,7 +290,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:154](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L154)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L156)*
 
 
 
@@ -297,7 +317,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[dettachWidget](../interfaces/_widgetcontainer_.widgetcontainer.md#dettachwidget)*
 
-*Defined in [widgets/Box.ts:170](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L170)*
+*Defined in [widgets/Box.ts:174](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L174)*
 
 
 
@@ -334,7 +354,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:140](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L140)*
+*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L142)*
 
 
 
@@ -363,7 +383,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L56)*
+*Defined in [Widget.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L58)*
 
 
 
@@ -392,7 +412,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L104)*
+*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L106)*
 
 
 
@@ -421,7 +441,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L92)*
+*Defined in [Widget.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L94)*
 
 
 
@@ -450,7 +470,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getWidgetAt](../interfaces/_widgetcontainer_.widgetcontainer.md#getwidgetat)*
 
-*Defined in [widgets/Box.ts:199](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L199)*
+*Defined in [widgets/Box.ts:203](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L203)*
 
 
 
@@ -488,7 +508,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L118)*
+*Defined in [Widget.ts:120](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L120)*
 
 
 
@@ -526,7 +546,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L132)*
+*Defined in [Widget.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L134)*
 
 
 
@@ -555,7 +575,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L167)*
+*Defined in [Widget.ts:169](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L169)*
 
 
 
@@ -584,7 +604,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Box.ts:113](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L113)*
+*Defined in [widgets/Box.ts:117](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L117)*
 
 
 
@@ -611,7 +631,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Widget.ts#L72)*
+*Defined in [Widget.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L74)*
 
 
 
@@ -652,7 +672,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Box.ts:261](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L261)*
+*Defined in [widgets/Box.ts:265](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L265)*
 
 
 

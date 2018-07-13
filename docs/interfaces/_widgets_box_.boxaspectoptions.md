@@ -12,7 +12,7 @@
 
 **●  boxBorders**:  *[BoxBorderOptions](_widgets_box_.boxborderoptions.md)* 
 
-*Defined in [widgets/Box.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L47)*
+*Defined in [widgets/Box.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L45)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  boxTitle**:  *[BoxTitleOptions](_widgets_box_.boxtitleoptions.md)* 
 
-*Defined in [widgets/Box.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/widgets/Box.ts#L45)*
+*Defined in [widgets/Box.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L43)*
 
 
 

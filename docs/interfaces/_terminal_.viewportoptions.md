@@ -12,7 +12,7 @@
 
 **●  bottom**:  *`number`* 
 
-*Defined in [Terminal.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L54)*
+*Defined in [Terminal.ts:53](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L53)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  left**:  *`number`* 
 
-*Defined in [Terminal.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L56)*
+*Defined in [Terminal.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L55)*
 
 
 
@@ -46,7 +46,7 @@ ___
 
 **●  right**:  *`number`* 
 
-*Defined in [Terminal.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L52)*
+*Defined in [Terminal.ts:51](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L51)*
 
 
 
@@ -63,7 +63,7 @@ ___
 
 **●  top**:  *`number`* 
 
-*Defined in [Terminal.ts:50](https://github.com/danikaze/terminal-in-canvas/blob/04a5bae/src/Terminal.ts#L50)*
+*Defined in [Terminal.ts:49](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L49)*
 
 
 

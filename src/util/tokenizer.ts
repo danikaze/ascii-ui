@@ -64,3 +64,19 @@ export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunct
 
  return res;
 }
+
+/**
+ * Limit a text to a length, and add a ellipsis character if needed (and specified)
+ *
+ * @param text string to limit
+ * @param lineWidth maximum length of the text
+ * @param ellipsis string to add in the end if the text is too long
+ */
+export function noWrap(text: string, lineWidth: number, ellipsis: string = ''): string {
+  if (text && text.length > lineWidth) {
+    text = (`${text.substr(0, lineWidth - ellipsis.length)}`
+      + `${ellipsis}`).substr(0, lineWidth);
+  }
+
+  return text;
+}

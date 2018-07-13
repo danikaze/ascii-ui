@@ -78,6 +78,19 @@ function run({ terminal, canvas }) {
   }) as Text;
   scrollText([text1, text2]);
 
+  options.line = 1;
+  options.col = 23;
+  options.width = 15;
+  options.height = 3;
+  options.title = 'no-wrap';
+  const box4 = terminal.attachWidget(Box, options) as Box;
+  box4.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: false });
+
+  options.line = 5;
+  options.title = 'no-ellipsis';
+  const box5 = terminal.attachWidget(Box, options) as Box;
+  box5.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: false, ellipsis: '' });
+
   (window as TestWindow).terminal = terminal;
 }
 

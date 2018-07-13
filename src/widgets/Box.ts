@@ -3,6 +3,7 @@ import * as isEmptyObject from 'is-empty-object';
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
 import { deepAssign } from '../util/deepAssign';
+import { noWrap } from '../util/tokenizer';
 import { Widget, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
@@ -120,15 +121,13 @@ export class Box extends Widget implements WidgetContainer {
     }
 
     const baseOptions = this.getAspectOptions();
-    let title = this.options.title;
     const boxTitle = baseOptions.boxTitle;
-    // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
-    const titleMaxLength = this.options.width - boxTitle.marginLeft - boxTitle.marginRight - 2;
-
-    if (title && title.length > titleMaxLength) {
-      title = (`${title.substr(0, titleMaxLength - boxTitle.ellipsis.length)}`
-        + `${baseOptions.boxTitle.ellipsis}`).substr(0, titleMaxLength);
-    }
+    const title = noWrap(
+      this.options.title,
+      // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
+      this.options.width - boxTitle.marginLeft - boxTitle.marginRight - 2,
+      baseOptions.boxTitle.ellipsis,
+    );
 
     const tiles = this.getBoxTiles(title);
     for (let j = 0; j < tiles.length; j++) {

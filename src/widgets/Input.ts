@@ -115,7 +115,7 @@ export class Input extends Widget {
       if (typeof changedOptions[key] !== 'undefined') {
         this.render();
 
-        return undefined;
+        return;
       }
     }
   }

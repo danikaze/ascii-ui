@@ -4,7 +4,7 @@ import { WidgetContainer } from '../WidgetContainer';
 
 import { clamp } from '../util/clamp';
 import { deepAssign } from '../util/deepAssign';
-import { TokenizerFunction, splitText, tokenizer } from '../util/tokenizer';
+import { TokenizerFunction, noWrap, splitText, tokenizer } from '../util/tokenizer';
 
 export interface TextOptions extends WidgetOptions {
   /** Text to display */
@@ -18,9 +18,13 @@ export interface TextOptions extends WidgetOptions {
    * How to split the text (for new lines, etc.)
    * If `true`, the default function will be used
    * A custom TokenizerFunction can be provided
-   * If `false` text will be splitted even in the middle of the words
+   * If `false` text will not be splitted (no-wrap)
    */
   tokenizer?: boolean | TokenizerFunction;
+  /**
+   * If `tokenizer` is `false`, the `ellipsis` text will be appended when the text is too long
+   */
+  ellipsis?: string;
   /**
    * If `true`, it won't allow empty lines at the end of a page and the text will
    * end at the last line of the widget.
@@ -67,6 +71,7 @@ export class Text extends Widget {
       deepAssign({}, Text.defaultOptions, options),
       parent,
     );
+    this.render();
   }
 
   /**
@@ -189,7 +194,6 @@ export class Text extends Widget {
     if (options.tokenizer !== undefined) {
       if (!options.tokenizer) {
         this.tokenizer = undefined;
-        this.splittedText = [this.options.text];
       } else {
         this.tokenizer = options.tokenizer === true
           ? tokenizer
@@ -258,6 +262,10 @@ export class Text extends Widget {
       return undefined;
     }
 
+    if (!this.tokenizer) {
+      return [noWrap(text, this.options.width, this.options.ellipsis)];
+    }
+
     return splitText(text, this.options.width, this.tokenizer);
   }
 }
@@ -267,6 +275,7 @@ export class Text extends Widget {
  */
 Text.defaultOptions = {
   tokenizer: true,
+  ellipsis: '...',
   fitPageEnd: false,
   typewritterDelay: 0,
   persistentTypewritter: true,

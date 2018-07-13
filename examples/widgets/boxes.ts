@@ -39,6 +39,32 @@ function scrollText(texts: Text[]) {
   });
 }
 
+function autoSkipText(texts: Text[], size: number) {
+  const DELAY = 200;
+  const PAUSE = 1000;
+
+  texts.forEach((text) => {
+    const maxSkip = text.getTextSize().columns - size;
+    let skip = 0;
+    let direction = 1;
+
+    function updateSkip() {
+      skip += direction;
+      const end = skip === maxSkip || skip === 0;
+      const options: TextOptions = { skip };
+      text.setOptions(options);
+
+      if (end) {
+        direction *= -1;
+      }
+
+      setTimeout(updateSkip, end ? PAUSE : DELAY);
+    }
+
+    setTimeout(updateSkip, PAUSE);
+  });
+}
+
 function run({ terminal, canvas }) {
   /* tslint:disable:no-magic-numbers */
   canvas.parentElement.style.width = `${canvas.width}px`;
@@ -84,13 +110,23 @@ function run({ terminal, canvas }) {
   options.height = 3;
   options.title = 'no-wrap';
   const box4 = terminal.attachWidget(Box, options) as Box;
-  box4.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: false });
+  box4.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: undefined });
 
   options.line = 5;
   options.title = 'no-ellipsis';
   const box5 = terminal.attachWidget(Box, options) as Box;
-  box5.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: false, ellipsis: '' });
+  box5.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: undefined, ellipsis: '' });
 
+  options.line = 9;
+  options.title = 'h-scroll';
+  const box6 = terminal.attachWidget(Box, options) as Box;
+  const text6 = box6.attachWidget(Text, {
+    text: 'this text should be scrolling horizontally',
+    tokenizer: undefined,
+    ellipsis: '',
+  }) as Text;
+
+  autoSkipText([text6], options.width - 2);
   (window as TestWindow).terminal = terminal;
 }
 

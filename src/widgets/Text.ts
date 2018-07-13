@@ -1,4 +1,4 @@
-import { CharStyle, Terminal } from '../Terminal';
+import { CharStyle, Terminal, TileSize } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
@@ -16,15 +16,18 @@ export interface TextOptions extends WidgetOptions {
   textStyle?: CharStyle;
   /**
    * How to split the text (for new lines, etc.)
-   * If `true`, the default function will be used
-   * A custom TokenizerFunction can be provided
-   * If `false` text will not be splitted (no-wrap)
+   * If `undefined` or `null`, the text will not be splitted (no-wrap)
    */
-  tokenizer?: boolean | TokenizerFunction;
+  tokenizer?: TokenizerFunction;
   /**
    * If `tokenizer` is `false`, the `ellipsis` text will be appended when the text is too long
    */
   ellipsis?: string;
+  /**
+   * Number of characters to skip.
+   * Useful to create a horizontal text scrolling effect
+   */
+  skip?: number;
   /**
    * If `true`, it won't allow empty lines at the end of a page and the text will
    * end at the last line of the widget.
@@ -52,8 +55,6 @@ export class Text extends Widget {
   static defaultOptions: TextOptions;
   /** Options of the Text widget */
   protected readonly options: TextOptions;
-  /** Function to use to tokenize the text */
-  private tokenizer: TokenizerFunction = tokenizer;
   /** Text splitted into lines to fit this size */
   private splittedText: string[];
   /** Offset of what line to display first (for the scroll, relative to `splittedText`) */
@@ -78,7 +79,7 @@ export class Text extends Widget {
    * Render the widget in the associated terminal
    */
   render(): void {
-    if (!this.splittedText) {
+    if (!this.splittedText || this.startLine === undefined) {
       return;
     }
 
@@ -132,12 +133,24 @@ export class Text extends Widget {
   }
 
   /**
+   * Get the size of the box if the text would be fully displayed
+   *
+   * @return Size of the full text
+   */
+  getTextSize(): TileSize {
+    return {
+      columns: this.options.tokenizer ? this.splittedText[0].length : this.options.text.length,
+      rows: this.splittedText.length,
+    };
+  }
+
+  /**
    * Set the starting line of the text
    *
    * @param line First line to draw
    * @return `true` if there is more content after `line`, or `false` if it was the end
    */
-  setScroll(line: number): boolean {
+  setScrollLine(line: number): boolean {
     clearTimeout(this.typewritterTimer);
     const currentOffset = this.startLine;
     const maxLine = this.options.fitPageEnd
@@ -169,7 +182,7 @@ export class Text extends Widget {
    * @return `true` if there is more content after `line`, or `false` if it was the last line
    */
   scrollLines(lines: number): boolean {
-    return this.setScroll(this.startLine + lines);
+    return this.setScrollLine(this.startLine + lines);
   }
 
   /**
@@ -179,7 +192,7 @@ export class Text extends Widget {
    * @return `true` if there is more pages or `false` if it was the last one
    */
   scrollPages(pages: number): boolean {
-    return this.setScroll(this.startLine + pages * this.options.height);
+    return this.setScrollLine(this.startLine + pages * this.options.height);
   }
 
   /**
@@ -189,16 +202,11 @@ export class Text extends Widget {
    * @param changedOptions Object with only the changed options
    */
   protected updateOptions(options: TextOptions): void {
-    const dirtyText = options.tokenizer !== undefined || options.text !== undefined || options.width !== undefined;
+    const dirtyText = options.tokenizer !== undefined || options.text !== undefined
+      || options.width !== undefined || options.skip !== undefined;
 
-    if (options.tokenizer !== undefined) {
-      if (!options.tokenizer) {
-        this.tokenizer = undefined;
-      } else {
-        this.tokenizer = options.tokenizer === true
-          ? tokenizer
-          : this.options.tokenizer as TokenizerFunction;
-      }
+    if (options.skip !== undefined) {
+      this.options.skip = clamp(options.skip, 0, this.options.text.length);
     }
 
     if (!this.splittedText || dirtyText) {
@@ -262,11 +270,17 @@ export class Text extends Widget {
       return undefined;
     }
 
-    if (!this.tokenizer) {
-      return [noWrap(text, this.options.width, this.options.ellipsis)];
+    if (this.options.skip) {
+      text = text.substr(this.options.skip);
     }
 
-    return splitText(text, this.options.width, this.tokenizer);
+    if (!this.options.tokenizer) {
+      const noWrappedText = noWrap(text, this.options.width, this.options.ellipsis);
+
+      return [noWrappedText + ' '.repeat(this.options.width - noWrappedText.length)];
+    }
+
+    return splitText(text, this.options.width, this.options.tokenizer);
   }
 }
 
@@ -274,8 +288,9 @@ export class Text extends Widget {
  * Default options for new instances
  */
 Text.defaultOptions = {
-  tokenizer: true,
+  tokenizer,
   ellipsis: '...',
+  skip: 0,
   fitPageEnd: false,
   typewritterDelay: 0,
   persistentTypewritter: true,

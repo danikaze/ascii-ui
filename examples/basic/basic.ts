@@ -90,7 +90,7 @@ function run() {
   const terminal = new Terminal(canvas, {
     columns,
     rows,
-    debug: { verbose: true },
+    verbose: true,
   });
 
   const commands = {
@@ -111,8 +111,6 @@ function run() {
   terminal.setText('[\\c#ff00ffmagenta \\c#00ffffcyan \\c#ffff00yellow\\c#00ff00]');
   terminal.setText('[\\c#ffffffwhite \\c#ff0000red\\c#00ff00]', 3, 8);
   terminal.setText('>:x:<', 2, 10);
-
-  terminal.setDebug(false);
 
   bindKeys(terminal);
   bindMouse(terminal, canvas);

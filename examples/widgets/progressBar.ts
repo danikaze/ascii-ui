@@ -144,7 +144,7 @@ const terminalOptions: TerminalOptions = {
   columns: 40,
   rows: 20,
   cursor: false,
-  debug: { verbose: true },
+  verbose: true,
 };
 
 load(terminalOptions)

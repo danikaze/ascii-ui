@@ -1,7 +1,7 @@
 /* tslint:disable:typedef */
 import { isArray } from 'vanilla-type-check';
 
-import { defaultDebugOptions, defaultOptions } from './defaultOptions';
+import { defaultOptions } from './defaultOptions';
 import { EventManager } from './EventManager';
 import { FocusManager } from './FocusManager';
 import { TerminalEvent } from './TerminalEvent';
@@ -77,23 +77,14 @@ export interface TerminalOptions extends CharStyle {
   decayTime?: number;
   /** initial opacity for the decay tile, from 0 to 1 */
   decayInitialAlpha?: number;
-  /** `true` to enable default debug options, `false` to disable it, an object to specify each option */
-  debug?: boolean | DebugOptions;
   /** escape secuences to parse and their callback functions */
   commands?: { [key: string]: EscapeCallback };
   /** Limit within the Terminal will draw */
   viewport?: ViewPortOptions;
   /** Optimization? If `true` it will check if the tile to render is already in the queue to avoid rendering it twice */
   avoidDoubleRendering?: boolean;
-}
-
-export interface DebugOptions {
-  /** `true` to print debug information in the console */
+  /** `true` to enable debug console messages options, `false` to disable them */
   verbose?: boolean;
-  /** `true` to render the grid of tiles */
-  renderGrid?: boolean;
-  /** style to use for the grid (i.e. `#777777`) */
-  gridStyle?: string;
 }
 
 export interface Tile extends CharStyle {
@@ -178,10 +169,6 @@ export class Terminal implements WidgetContainer {
     }
 
     this.clear();
-
-    if (this.options.debug) {
-      this.setDebug(this.options.debug);
-    }
   }
 
   /**
@@ -224,27 +211,6 @@ export class Terminal implements WidgetContainer {
     if (changed.columns !== undefined || changed.rows !== undefined) {
       this.resize(this.options.columns, this.options.rows, oldColumns || 0, oldRows || 0);
     }
-  }
-
-  /**
-   * Set the debug options
-   *
-   * @param options `true` to enable default debug options, `false` to disable it, an object to specify each option
-   */
-  setDebug(options: boolean | DebugOptions): void {
-    if (options === true) {
-      this.options.debug = { ...defaultDebugOptions };
-    } else if (options === false) {
-      this.options.debug = false;
-    } else {
-      if (this.options.debug === false) {
-        this.options.debug = { ...defaultDebugOptions, ...options };
-      } else {
-        Object.assign(this.options.debug, options);
-      }
-    }
-
-    this.renderAll();
   }
 
   /**
@@ -372,10 +338,6 @@ export class Terminal implements WidgetContainer {
 
     this.info(`render: ${nTiles} tiles: ${this.lastRenderTime - start} ms.`);
     this.lastRenderTime = start;
-
-    if (this.options.debug) {
-      this.renderDebug();
-    }
 
     this.dirtyTiles = tilesToRedraw;
     if (tilesToRedraw.length > 0 && this.options.autoRender) {
@@ -890,33 +852,6 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Render debug information
-   */
-  private renderDebug() {
-    if (!(this.options.debug as DebugOptions).renderGrid) {
-      return;
-    }
-
-    const start = window.performance.now();
-    const ALIASING_FIX_PRE = 0.5;
-    const ALIASING_FIX_POST = - 1.5;
-    const ctx = this.ctx;
-    const options = this.options.debug as DebugOptions;
-    const w = this.options.tileWidth + ALIASING_FIX_POST;
-    const h = this.options.tileHeight + ALIASING_FIX_POST;
-    const nTiles = this.dirtyTiles.length;
-
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = options.gridStyle;
-
-    for (const tile of this.dirtyTiles) {
-      ctx.strokeRect(tile.x + ALIASING_FIX_PRE, tile.y + ALIASING_FIX_PRE, w, h);
-    }
-
-    this.info(`debugRender: ${nTiles} tiles: ${window.performance.now() - start} ms.`);
-  }
-
-  /**
    * Sets the interval managing the cursor blinking feature
    *
    * @param frequency milliseconds to wait before changing the cursor visibility status
@@ -937,11 +872,12 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Output the given text as info, if `debug` and `verbose` options are enabled
+   * Output the given text as info, only when `verbose` option is enabled
+   *
    * @param text text to output
    */
   private info(text: string): void {
-    if (this.options.debug && (this.options.debug as DebugOptions).verbose) {
+    if (this.options.verbose) {
       // tslint:disable-next-line:no-console
       console.log(`[Terminal] ${text}`);
     }

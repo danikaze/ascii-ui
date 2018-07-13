@@ -5,6 +5,8 @@ import { WidgetContainer } from '../WidgetContainer';
 import { deepAssign } from '../util/deepAssign';
 import { TokenizerFunction, splitText } from '../util/tokenizer';
 
+export const UNSELECTED_INDEX = -1;
+
 export interface SelectOption<T> {
   /** Displayed text of the option */
   text: string;
@@ -45,7 +47,7 @@ export class Select<T> extends Widget {
   /** Options of the Text widget */
   protected readonly options: SelectOptions<T>;
   /** Currently selected option index */
-  private selectedIndex: number = -1;
+  private selectedIndex: number = UNSELECTED_INDEX;
   /** First line to draw (for scrolling) - note: one option can have more than one line */
   private firstLine: number = 0;
   /** Processed options text */
@@ -106,10 +108,22 @@ export class Select<T> extends Widget {
   }
 
   /**
-   * Retrieve a reference to the currently selected option
+   * Retrieve a reference to the currently selected option.
+   * Even if it's a reference, don't update it directly, but use `setOptions` to allow the widget to apply the changes
+   *
+   * @return Object specified in `options.options`.
    */
   getSelected(): SelectOption<T> {
     return this.options.options[this.selectedIndex];
+  }
+
+  /**
+   * Retrieve the index of the currently selected option
+   *
+   * @return index of the selected option or `UNSELECTED_INDEX` if no one is selected
+   */
+  getSelectedIndex(): number {
+    return this.selectedIndex;
   }
 
   /**
@@ -172,8 +186,8 @@ export class Select<T> extends Widget {
           this.firstLine = startLine;
         }
       }
-    } else if (this.options.allowUnselect && this.selectedIndex !== -1) {
-      this.selectedIndex = -1;
+    } else if (this.options.allowUnselect && this.selectedIndex !== UNSELECTED_INDEX) {
+      this.selectedIndex = UNSELECTED_INDEX;
     }
 
     if (oldIndex !== this.selectedIndex) {
@@ -206,7 +220,7 @@ export class Select<T> extends Widget {
       }
     }
 
-    return found ? false : this.selectIndex(-1);
+    return found ? false : this.selectIndex(UNSELECTED_INDEX);
   }
 
   /**
@@ -229,7 +243,7 @@ export class Select<T> extends Widget {
       }
     }
 
-    return found ? false : this.selectIndex(-1);
+    return found ? false : this.selectIndex(UNSELECTED_INDEX);
   }
 
   /**

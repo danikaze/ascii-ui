@@ -6,8 +6,6 @@ import { deepAssign } from '../util/deepAssign';
 import { Widget, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
-import { boxBorderDefaultOptions, boxDefaultOptions } from './defaultOptions';
-
 export interface BoxBorderOptions extends CharStyle {
   topLeft?: string;
   top?: string;
@@ -78,18 +76,20 @@ interface BoxPoolTiles {
  * It allows only one children inside the box (which can be a Grid or any other container)
  */
 export class Box extends Widget implements WidgetContainer {
+  /** Default options for widget instances */
+  static defaultOptions: BoxOptions;
   /** Pool of Tiles to avoid creating always new objects */
   private static readonly boxTilesPool: BoxPoolTiles = {
     title: [],
-    topLeft: { char: boxBorderDefaultOptions.topLeft },
-    top: { char: boxBorderDefaultOptions.top },
-    topRight: { char: boxBorderDefaultOptions.topRight },
-    left: { char: boxBorderDefaultOptions.left },
-    center: { char: boxBorderDefaultOptions.center },
-    right: { char: boxBorderDefaultOptions.right },
-    bottomLeft: { char: boxBorderDefaultOptions.bottomLeft },
-    bottom: { char: boxBorderDefaultOptions.bottom },
-    bottomRight: { char: boxBorderDefaultOptions.bottomRight },
+    topLeft: { char: '' },
+    top: { char: '' },
+    topRight: { char: '' },
+    left: { char: '' },
+    center: { char: '' },
+    right: { char: '' },
+    bottomLeft: { char: '' },
+    bottom: { char: '' },
+    bottomRight: { char: '' },
   };
 
   /** Extended options */
@@ -104,7 +104,11 @@ export class Box extends Widget implements WidgetContainer {
   private attachedWidget: Widget;
 
   constructor(terminal: Terminal, options?: BoxOptions, parent?: WidgetContainer) {
-    super(terminal, deepAssign({}, boxDefaultOptions, options), parent);
+    super(
+      terminal,
+      deepAssign({}, Box.defaultOptions, options),
+      parent,
+    );
   }
 
   /**
@@ -396,3 +400,43 @@ export class Box extends Widget implements WidgetContainer {
     return positionOptions;
   }
 }
+
+/*
+ * Default options for new instances
+ */
+Box.defaultOptions = {
+  padding: {
+    top: 1,
+    right: 1,
+    bottom: 1,
+    left: 1,
+  },
+  base: {
+    boxBorders: {
+      fg: '#00ff00',
+      topLeft: '┌',
+      top: '─',
+      topRight: '┐',
+      left: '│',
+      center: ' ',
+      right: '│',
+      bottomLeft: '└',
+      bottom: '─',
+      bottomRight: '┘',
+    },
+    boxTitle: {
+      fg: '#00ff00',
+      marginLeft: 1,
+      marginRight: 1,
+      ellipsis: '...',
+    },
+  },
+  focus: {
+    boxBorders: { fg: '#ffff00' },
+    boxTitle: { fg: '#ffff00' },
+  },
+  disabled: {
+    boxBorders: { fg: '#009900' },
+    boxTitle: { fg: '#009900' },
+  },
+};

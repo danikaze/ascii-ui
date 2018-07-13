@@ -5,8 +5,6 @@ import { WidgetContainer } from '../WidgetContainer';
 import { deepAssign } from '../util/deepAssign';
 import { isEmptyObject } from '../util/isEmptyObject';
 
-import { progressBarDefaultOptions } from './defaultOptions';
-
 export const enum ProgressBarDirection {
   /** The bar has 1 tile height and it's drawn from left to right */
   HORIZONTAL = 1,
@@ -35,12 +33,17 @@ export interface ProgressBarOptions extends WidgetOptions {
  * Display a progress bar
  */
 export class ProgressBar extends Widget {
+  /** Default options for widget instances */
+  static defaultOptions: ProgressBarOptions;
   /** Options of the Text widget */
   protected readonly options: ProgressBarOptions;
 
   constructor(terminal: Terminal, options: ProgressBarOptions, parent?: WidgetContainer) {
-    const opt = deepAssign({}, progressBarDefaultOptions, options);
-    super(terminal, opt, parent);
+    super(
+      terminal,
+      deepAssign({}, ProgressBar.defaultOptions, options),
+      parent,
+    );
   }
 
   /**
@@ -152,6 +155,19 @@ export class ProgressBar extends Widget {
       line--;
       terminal.setTiles(options.pendingStyle, col, line);
     }
-
   }
 }
+
+/*
+ * Default options for new instances
+ */
+ProgressBar.defaultOptions = {
+  focusable: false,
+  direction: ProgressBarDirection.HORIZONTAL,
+  progress: 0,
+  completedStyle: { char: '', bg: '#00ff00' },
+  pendingStyle: { char: '', bg: '#009900' },
+  currentStyle: { char: '', bg: '#99ff99' },
+  startStyle: undefined,
+  endStyle: undefined,
+};

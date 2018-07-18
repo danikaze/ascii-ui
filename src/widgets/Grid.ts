@@ -323,7 +323,7 @@ export class Grid extends Widget implements WidgetContainer {
   /**
    * Handler for the Terminal RESIZED event
    *
-   * @param event
+   * @param event Triggered event
    */
   private resizedEventHandler(event: TerminalEvent): void {
     if (this.parent instanceof Terminal && this.options.fullSize) {

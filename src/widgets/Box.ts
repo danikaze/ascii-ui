@@ -309,9 +309,7 @@ export class Box extends Widget implements WidgetContainer {
    * Get the matrix of Tiles composing a complete box.
    * The matrix is created each time, but the Tiles object are reused by a pool
    *
-   * @param width
-   * @param height
-   * @param title
+   * @param title Optional title for the box
    */
   private getBoxTiles(title: string): Tile[][] {
     const tiles = [];

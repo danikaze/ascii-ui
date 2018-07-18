@@ -2,8 +2,6 @@ import { isObject } from 'vanilla-type-check';
 
 /**
  * Deep assign an object and return just the difference (`{}` if nothing changed)
- *
- * @param args
  */
 export function deepAssignAndDiff(...args): object {
   const target = args[0];

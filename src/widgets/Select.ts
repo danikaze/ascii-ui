@@ -162,7 +162,7 @@ export class Select<T> extends Widget {
    * Select the option with the specified index.
    * This will do nothing if the option is disabled or the index not found.
    *
-   * @param index
+   * @param index New index to set as selected (starting on 0)
    * @return `true` if the selected option has changed, `false` otherwise
    */
   selectIndex(index: number): boolean {
@@ -204,7 +204,7 @@ export class Select<T> extends Widget {
    * This will do nothing if all the options with that value are disabled
    * there's no one with the specified value.
    *
-   * @param value
+   * @param value Value to search the option by
    * @return `true` if the selected option has changed, `false` otherwise
    */
   selectValue(value: T): boolean {
@@ -227,7 +227,7 @@ export class Select<T> extends Widget {
    * Select the specified option.
    * This will do nothing the option is disabled or not found
    *
-   * @param option
+   * @param option Explicit option to select
    * @return `true` if the selected option has changed, `false` otherwise
    */
   selectOption(option: SelectOption<T>): boolean {

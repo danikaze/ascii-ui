@@ -2,8 +2,6 @@ import { isObject } from 'vanilla-type-check';
 
 /**
  * Deep assign an object
- *
- * @param args
  */
 export function deepAssign(...args) {
   const target = args[0] || {};

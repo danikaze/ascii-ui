@@ -8,7 +8,6 @@ interface VendorWindow extends Window {
 
 /**
  * Polyfill for `window.requestAnimationFrame`
- * @param callback
  */
 function customRequestAnimationFrame(callback: FrameRequestCallback): number {
   return window.setTimeout(

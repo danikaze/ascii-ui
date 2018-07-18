@@ -5,6 +5,7 @@
   ],
   "rules": {
     "comment-format": false,
+    "file-name-casing": [true, "camel-case", "pascal-case"],
     "interface-name": false,
     "member-access": [true, "no-public"],
     "member-ordering": [

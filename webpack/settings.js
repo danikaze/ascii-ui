@@ -1,4 +1,3 @@
-const packageJson = require('../package.json');
 const absPath = require('./util/absPath');
 
 module.exports = {

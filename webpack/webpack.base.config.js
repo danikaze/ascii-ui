@@ -1,19 +1,17 @@
 const autoprefixer = require('autoprefixer');
 const fs = require('fs');
 const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const mkdirp = require('mkdirp').sync;
-const stripExtension = require('./util/stripExtension');
 const settings = require('./settings');
 const absPath = require('./util/absPath');
 
 module.exports = (env) => {
   const baseConfig = {
+    mode: 'development',
+
     output: {
       filename: settings.options.fileName,
       path: settings.paths.build,

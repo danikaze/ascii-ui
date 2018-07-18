@@ -9,8 +9,6 @@ import { Text, TextOptions } from '@src/widgets/Text';
 
 import { load } from '../util/load';
 
-import '../styles/examples.less';
-
 interface TestWindow extends Window {
   terminal: Terminal;
 }

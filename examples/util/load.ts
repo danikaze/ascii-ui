@@ -3,7 +3,6 @@ import * as FontFaceObserver from 'fontfaceobserver';
 import { Terminal, TerminalOptions } from '@src/Terminal';
 import { TerminalEvent } from '@src/TerminalEvent';
 
-import '../styles/examples.less';
 export interface TestWindow extends Window {
   terminal: Terminal;
   TerminalEvent: typeof TerminalEvent;

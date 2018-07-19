@@ -5,6 +5,7 @@
   ],
   "rules": {
     "comment-format": false,
+    "file-name-casing": [true, "camel-case", "pascal-case"],
     "interface-name": false,
     "member-access": [true, "no-public"],
     "member-ordering": [
@@ -42,6 +43,7 @@
     "no-submodule-imports": false,
     "no-trailing-whitespace": [true, "ignore-jsdoc"],
     "no-unsafe-any": false,
+    "no-unused-variable": false,
     "object-literal-sort-keys": false,
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "only-arrow-functions": [true, "allow-named-functions"],

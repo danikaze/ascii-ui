@@ -155,7 +155,7 @@ export class Terminal implements WidgetContainer {
    * Creates a Terminal associated to a canvas element.
    *
    * @param canvas `<canvas>` element associated to the Terminal
-   * @param options
+   * @param options Terminal options
    */
   constructor(canvas: HTMLCanvasElement, options?: TerminalOptions) {
     this.focusManager = new FocusManager(this, canvas);
@@ -222,10 +222,10 @@ export class Terminal implements WidgetContainer {
   /**
    * Clear only the specified part of the terminal
    *
-   * @param col
-   * @param line
-   * @param width
-   * @param height
+   * @param col Starting column
+   * @param line Starting line
+   * @param width Width of the block to clear
+   * @param height Height of the vlock to clear
    */
   clear(col: number, line: number, width: number, height: number);
 

@@ -37,9 +37,9 @@ export abstract class Widget {
   /**
    * A Widget is created in the context of a specific terminal, in a position and with a provided height
    *
-   * @param terminal
-   * @param options
-   * @param parent
+   * @param terminal Terminal where to render the widget
+   * @param options Widget options
+   * @param parent Parent container, if any
    */
   constructor(terminal: Terminal, options?: WidgetOptions, parent?: WidgetContainer) {
     this.terminal = terminal;

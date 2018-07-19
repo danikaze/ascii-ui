@@ -8,10 +8,10 @@
     "paths": {
       "@src/*": ["src/*"]
     },
-    "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "target": "ES6"
+    "target": "ES6",
+    "noUnusedLocals": true,
   },
   "include": [
    "global.d.ts",

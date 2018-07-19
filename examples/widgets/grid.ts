@@ -1,5 +1,5 @@
 /* tslint:disable:no-magic-numbers */
-import { Terminal, TerminalOptions } from '@src/Terminal';
+import { TerminalOptions } from '@src/Terminal';
 import { Box } from '@src/widgets/Box';
 import { Grid, GridOptions } from '@src/widgets/Grid';
 import { Text } from '@src/widgets/Text';

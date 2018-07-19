@@ -1,8 +1,5 @@
 /* tslint:disable:no-magic-numbers */
 /* tslint:disable:typedef */
-
-import * as FontFaceObserver from 'fontfaceobserver';
-
 import { Terminal } from '@src/Terminal';
 import { Box, BoxOptions } from '@src/widgets/Box';
 import { Text, TextOptions } from '@src/widgets/Text';
@@ -74,7 +71,7 @@ function run({ terminal, canvas }) {
     width: 20,
     height: 5,
   };
-  const box1 = terminal.attachWidget(Box, options);
+  terminal.attachWidget(Box, options);
 
   options.line = 7;
   options.title = 'Title';
@@ -128,7 +125,6 @@ function run({ terminal, canvas }) {
   (window as TestWindow).terminal = terminal;
 }
 
-const font = new FontFaceObserver('Terminal_VT220');
 const terminalOptions = {
   columns: 40,
   rows: 20,

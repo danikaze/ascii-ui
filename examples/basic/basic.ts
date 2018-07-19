@@ -15,14 +15,6 @@ const KEY_RIGHT = 39;
 const KEY_BACKSPACE = 8;
 const KEY_DELETE = 46;
 const KEY_ENTER = 13;
-const KEY_SHIFT = 16;
-const KEY_COMMAND_WIN_LEFT = 91;
-const KEY_COMMAND_WIN_RIGHT = 93;
-const KEY_ALT = 18;
-const KEY_CTRL = 17;
-const KEY_CAPS = 20;
-const KEY_TAB = 9;
-const KEY_ESC = 27;
 
 function hideLoad() {
   const elem = document.getElementById('loading');

@@ -1,7 +1,7 @@
 /* tslint:disable:no-magic-numbers */
 import { Terminal, TerminalOptions } from '@src/Terminal';
 import { Box } from '@src/widgets/Box';
-import { Select, SelectOptions } from '@src/widgets/Select';
+import { Select } from '@src/widgets/Select';
 
 import { load } from '../util/load';
 

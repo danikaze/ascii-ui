@@ -1,7 +1,7 @@
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { Terminal, TerminalOptions } from '@src/Terminal';
-import { TerminalEvent } from '@src/TerminalEvent';
+import { Terminal, TerminalOptions } from '../../src/Terminal';
+import { TerminalEvent } from '../../src/TerminalEvent';
 
 export interface TestWindow extends Window {
   terminal: Terminal;

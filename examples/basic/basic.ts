@@ -2,7 +2,7 @@
 
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { Terminal } from '@src/Terminal';
+import { Terminal } from '../../src/Terminal';
 
 interface TestWindow extends Window {
   terminal: Terminal;

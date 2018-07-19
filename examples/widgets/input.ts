@@ -1,7 +1,7 @@
 /* tslint:disable:no-magic-numbers */
-import { TerminalOptions } from '@src/Terminal';
-import { Box } from '@src/widgets/Box';
-import { Input } from '@src/widgets/Input';
+import { TerminalOptions } from '../../src/Terminal';
+import { Box } from '../../src/widgets/Box';
+import { Input } from '../../src/widgets/Input';
 
 import { load } from '../util/load';
 

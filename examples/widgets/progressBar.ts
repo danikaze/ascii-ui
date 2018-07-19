@@ -1,6 +1,6 @@
 /* tslint:disable:no-magic-numbers */
-import { TerminalOptions } from '@src/Terminal';
-import { ProgressBar, ProgressBarDirection } from '@src/widgets/ProgressBar';
+import { TerminalOptions } from '../../src/Terminal';
+import { ProgressBar, ProgressBarDirection } from '../../src/widgets/ProgressBar';
 
 import { load } from '../util/load';
 

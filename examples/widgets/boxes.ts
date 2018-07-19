@@ -1,8 +1,8 @@
 /* tslint:disable:no-magic-numbers */
 /* tslint:disable:typedef */
-import { Terminal } from '@src/Terminal';
-import { Box, BoxOptions } from '@src/widgets/Box';
-import { Text, TextOptions } from '@src/widgets/Text';
+import { Terminal } from '../../src/Terminal';
+import { Box, BoxOptions } from '../../src/widgets/Box';
+import { Text, TextOptions } from '../../src/widgets/Text';
 
 import { load } from '../util/load';
 

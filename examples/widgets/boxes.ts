@@ -97,7 +97,6 @@ function run({ terminal, canvas }) {
       + 'defined.',
     //  |--------------------| // box size
   }) as Text;
-  scrollText([text1, text2]);
 
   options.line = 1;
   options.col = 23;
@@ -121,6 +120,15 @@ function run({ terminal, canvas }) {
     ellipsis: '',
   }) as Text;
 
+  options.line = 13;
+  options.height = 5;
+  options.title = 'long-word';
+  const box7 = terminal.attachWidget(Box, options) as Box;
+  const text7 = box7.attachWidget(Text, {
+    text: 'veeeerylongword whichdoesn\'tfitonelineatall :)',
+  }) as Text;
+
+  scrollText([text1, text2, text7]);
   autoSkipText([text6], options.width - 2);
   (window as TestWindow).terminal = terminal;
 }

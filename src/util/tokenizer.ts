@@ -51,10 +51,21 @@ export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunct
    }
 
    if (line.length + token.text.length <= lineWidth) {
-     line += token.text;
+      line += token.text;
    } else {
-     res.push(line + ' '.repeat(lineWidth - line.length));
-     line = token.isSeparator ? '' : token.text;
+      if (line.length > 0) {
+        res.push(line + ' '.repeat(lineWidth - line.length));
+      }
+      if (token.isSeparator) {
+        line = '';
+      } else {
+        while (token.text.length > lineWidth) {
+          res.push(token.text.substr(0, lineWidth));
+          token.text = token.text.substr(lineWidth);
+          token.index += lineWidth;
+        }
+        line = token.text;
+      }
    }
  });
 

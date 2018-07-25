@@ -1,5 +1,4 @@
 /* tslint:disable:no-magic-numbers */
-import { TerminalOptions } from '../../src/Terminal';
 import { ProgressBar, ProgressBarDirection } from '../../src/widgets/ProgressBar';
 
 import { load } from '../util/load';
@@ -140,12 +139,5 @@ function run({ terminal }): void {
   enableTimeProgress([horizontalBar, verticalBar]);
 }
 
-const terminalOptions: TerminalOptions = {
-  columns: 40,
-  rows: 20,
-  cursor: false,
-  verbose: true,
-};
-
-load(terminalOptions)
+load()
   .then(run);

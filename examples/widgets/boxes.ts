@@ -133,11 +133,5 @@ function run({ terminal, canvas }) {
   (window as TestWindow).terminal = terminal;
 }
 
-const terminalOptions = {
-  columns: 40,
-  rows: 20,
-  cursor: false,
-};
-
-load(terminalOptions)
+load()
   .then(run);

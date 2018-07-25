@@ -23,7 +23,7 @@ function terminalResizedHandler(canvas) {
   canvas.parentElement.style.height = `${canvas.height}px`;
 }
 
-export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
+export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
   const font = new FontFaceObserver('Terminal_VT220');
 
   function enableFocusInteraction(terminal: Terminal, canvas: HTMLCanvasElement): void {
@@ -43,13 +43,22 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     /*
      * TAB key
      */
-    document.addEventListener('keydown', (event) => {
+    function tabWidget(event) {
       if (event.key === 'Tab') {
         event.preventDefault();
+        event.stopPropagation();
         const method = event.shiftKey ? 'prev' : 'next';
         terminal.focusManager[method]();
       }
+    }
+    document.addEventListener('click', () => {
+      document.removeEventListener('keydown', tabWidget);
     });
+    document.getElementById('canvasContainer')
+    .addEventListener('click', (event) => {
+        event.stopPropagation();
+        document.addEventListener('keydown', tabWidget);
+      });
 
     /*
      * Mouse CLICK
@@ -84,7 +93,12 @@ export function load(terminalOptions: TerminalOptions): Promise<LoadData> {
     .then(hideLoad)
     .then(() => new Promise<LoadData>((resolve, reject) => {
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-      const terminal = new Terminal(canvas, terminalOptions);
+      const defaultTerminalOptions: TerminalOptions = {
+        columns: 40,
+        rows: 20,
+        cursor: false,
+      };
+      const terminal = new Terminal(canvas, { ...defaultTerminalOptions, ...terminalOptions });
       enableFocusInteraction(terminal, canvas);
       enableResizeButtons(terminal, canvas);
 

@@ -1,5 +1,5 @@
 /* tslint:disable:no-magic-numbers */
-import { Terminal, TerminalOptions } from '../../src/Terminal';
+import { Terminal } from '../../src/Terminal';
 import { Box } from '../../src/widgets/Box';
 import { Select } from '../../src/widgets/Select';
 
@@ -94,12 +94,5 @@ function run({ terminal, canvas }): void {
   enableInteraction([s1, s2, s3], terminal, canvas);
 }
 
-const terminalOptions: TerminalOptions = {
-  columns: 40,
-  rows: 20,
-  cursor: false,
-  verbose: true,
-};
-
-load(terminalOptions)
+load()
   .then(run);

@@ -2,6 +2,7 @@ import { Terminal } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 
 export interface InputOptions extends WidgetOptions {
@@ -100,23 +101,20 @@ export class Input extends Widget {
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
-   * @param changedOptions Object with only the changed options
+   * @param changes Object with only the changed options
    */
-  protected updateOptions(changedOptions: InputOptions): void {
+  protected updateOptions(changes: InputOptions): void {
     if (this.options.height !== 1) {
       this.options.height = 1;
     }
 
-    if (changedOptions.passwordCharacter) {
-      this.options.passwordCharacter = changedOptions.passwordCharacter.charAt(0);
+    if (changes.passwordCharacter) {
+      this.options.passwordCharacter = changes.passwordCharacter.charAt(0);
     }
 
-    for (const key of ['password', 'passwordCharacter', 'maxLength']) {
-      if (typeof changedOptions[key] !== 'undefined') {
-        this.render();
-
-        return;
-      }
+    if (coalesce(changes.line, changes.col, changes.password,
+                 changes.passwordCharacter, changes.maxLength) !== undefined) {
+      this.render();
     }
   }
 }

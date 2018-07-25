@@ -2,6 +2,7 @@ import { CharStyle, Terminal } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 import { TokenizerFunction, splitText } from '../util/tokenizer';
 
@@ -268,11 +269,11 @@ export class Select<T> extends Widget {
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
-   * @param changedOptions Object with only the changed options
+   * @param changes Object with only the changed options
    */
-  protected updateOptions(options: SelectOptions<T>): void {
-    const dirtyText = options.options !== undefined || options.width !== undefined;
-    const reDraw = options.col !== undefined || options.line !== undefined || options.height !== undefined;
+  protected updateOptions(changes: SelectOptions<T>): void {
+    const dirtyText = coalesce(changes.options, changes.width) !== undefined;
+    const reDraw = coalesce(changes.col, changes.line, changes.height) !== undefined;
     let drawn = false;
 
     if (dirtyText && this.options.options) {

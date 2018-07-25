@@ -1,5 +1,6 @@
 import { Terminal, TileSize } from '../Terminal';
 import { TerminalEvent } from '../TerminalEvent';
+import { coalesce } from '../util/coalesce';
 import { Widget, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
@@ -262,7 +263,7 @@ export class Grid extends Widget implements WidgetContainer {
       this.options.calculateStarts = calculateStarts;
     }
 
-    if (changes.width || changes.height || changes.col || changes.line) {
+    if (coalesce(changes.width, changes.height, changes.col, changes.line) !== undefined) {
       this.recalculateCellSizes();
       this.align();
     }

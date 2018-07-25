@@ -2,6 +2,7 @@ import * as isEmptyObject from 'is-empty-object';
 
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 import { noWrap } from '../util/tokenizer';
 import { Widget, WidgetOptions } from '../Widget';
@@ -266,7 +267,7 @@ export class Box extends Widget implements WidgetContainer {
       this.optionsFocus = deepAssign(this.optionsFocus, this.options.base, this.options.focus);
       this.optionsDisabled = deepAssign(this.optionsDisabled, this.options.base, this.options.disabled);
 
-      if (changes.width || changes.height || changes.col || changes.line) {
+      if (coalesce(changes.width, changes.height, changes.col, changes.line, changes.padding) !== undefined) {
         if (this.attachedWidget) {
           this.attachedWidget.setOptions(this.getAvailableSpace());
         }

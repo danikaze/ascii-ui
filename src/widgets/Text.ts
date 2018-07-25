@@ -3,6 +3,7 @@ import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
 import { clamp } from '../util/clamp';
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 import { TokenizerFunction, noWrap, splitText, tokenizer } from '../util/tokenizer';
 
@@ -199,18 +200,20 @@ export class Text extends Widget {
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
-   * @param changedOptions Object with only the changed options
+   * @param changes Object with only the changed options
    */
-  protected updateOptions(options: TextOptions): void {
-    const dirtyText = options.tokenizer !== undefined || options.text !== undefined
-      || options.width !== undefined || options.skip !== undefined;
+  protected updateOptions(changes: TextOptions): void {
+    const dirtyText = coalesce(changes.tokenizer, changes.text, changes.width, changes.skip) !== undefined;
+    const redraw = dirtyText || coalesce(changes.col, changes.line) !== undefined;
 
-    if (options.skip !== undefined) {
-      this.options.skip = clamp(options.skip, 0, this.options.text.length);
+    if (changes.skip !== undefined) {
+      this.options.skip = clamp(changes.skip, 0, this.options.text.length);
     }
 
-    if (!this.splittedText || dirtyText) {
+    if (dirtyText) {
       this.splittedText = this.splitText(this.options.text);
+    }
+    if (redraw) {
       this.render();
     }
   }
@@ -288,6 +291,7 @@ export class Text extends Widget {
  * Default options for new instances
  */
 Text.defaultOptions = {
+  text: '',
   tokenizer,
   ellipsis: '...',
   skip: 0,

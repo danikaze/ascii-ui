@@ -34,6 +34,7 @@
     "autoprefixer": "^9.0.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "deep-object-diff": "^1.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fontfaceobserver": "^2.0.13",
     "generate-examples-index-webpack-plugin": "^1.0.1",

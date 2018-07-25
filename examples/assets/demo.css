@@ -1,0 +1,71 @@
+.demo-controls,
+.settings-code {
+  margin-bottom: 2em;
+}
+
+.demo-controls .card-header .card-header-button {
+  position: absolute;
+  right: 0.5em;
+  font-size: 80%;
+}
+
+.demo-controls .settings-section {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.125);
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+.demo-controls .settings-section:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.demo-controls .settings-section-title {
+  cursor: pointer;
+  user-select: none;
+}
+
+.demo-controls .settings-section-arrow {
+  font-size: 80%;
+  margin-right: 0.5em;
+}
+
+.demo-controls h5 {
+  display: block !important;
+  width: 100%;
+}
+
+.demo-controls .row > h5 {
+  padding-top: 0.6em;
+  padding-left: 15px;
+}
+
+.demo-controls h6 {
+  margin-top: 0.5em;
+}
+
+.demo-controls .option-input {
+  margin-bottom: 0.8em;
+}
+
+.demo-controls .settings-coords *,
+.demo-controls .settings-size * {
+  display: inline-block;
+}
+.demo-controls .setting-component-number {
+  margin-bottom: 0.5em;
+  width: 5em;
+}
+
+.demo-controls textarea {
+  width: 100%;;
+}
+
+.settings-code .card-header label {
+  position: absolute;
+  right: 1.5em;
+  font-size: 50%;
+  line-height: 200%;
+  font-weight: 100;
+  cursor: pointer;
+}

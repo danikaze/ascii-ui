@@ -42,11 +42,10 @@ export interface SelectOptions<T> extends WidgetOptions {
 /**
  * Display a list of selectable options
  */
-export class Select<T> extends Widget {
+export class Select<T> extends Widget<SelectOptions<T>> {
   /** Default options for widget instances */
-  static defaultOptions: SelectOptions<any>;  // tslint:disable-line:no-any
-  /** Options of the Text widget */
-  protected readonly options: SelectOptions<T>;
+  static defaultOptions: SelectOptions<any>; // tslint:disable-line:no-any
+
   /** Currently selected option index */
   private selectedIndex: number = UNSELECTED_INDEX;
   /** First line to draw (for scrolling) - note: one option can have more than one line */

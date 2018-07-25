@@ -51,11 +51,10 @@ export interface TextOptions extends WidgetOptions {
 /**
  * Display formatted text in the terminal, allowing vertical scroll
  */
-export class Text extends Widget {
+export class Text extends Widget<TextOptions> {
   /** Default options for widget instances */
   static defaultOptions: TextOptions;
-  /** Options of the Text widget */
-  protected readonly options: TextOptions;
+
   /** Text splitted into lines to fit this size */
   private splittedText: string[];
   /** Offset of what line to display first (for the scroll, relative to `splittedText`) */

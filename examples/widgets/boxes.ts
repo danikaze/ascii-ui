@@ -76,7 +76,7 @@ function run({ terminal, canvas }) {
   options.line = 7;
   options.title = 'Title';
   const box2 = terminal.attachWidget(Box, options) as Box;
-  const text1 = box2.attachWidget(Text, { text: '1 tile margin', textStyle: { fg: '#ffff00' } }) as Text;
+  const text1 = box2.attachWidget(Text, { text: '1 tile margin', textStyle: { fg: '#ffff00' } });
 
   options.line = 13;
   options.title = 'Very long title for real';
@@ -96,7 +96,7 @@ function run({ terminal, canvas }) {
       + 'this variable is '
       + 'defined.',
     //  |--------------------| // box size
-  }) as Text;
+  });
 
   options.line = 1;
   options.col = 23;
@@ -109,7 +109,11 @@ function run({ terminal, canvas }) {
   options.line = 5;
   options.title = 'no-ellipsis';
   const box5 = terminal.attachWidget(Box, options) as Box;
-  box5.attachWidget(Text, { text: 'this text should be not shown entirely', tokenizer: undefined, ellipsis: '' });
+  box5.attachWidget(Text, {
+    text: 'this text should be not shown entirely',
+    tokenizer: undefined,
+    ellipsis: '',
+  });
 
   options.line = 9;
   options.title = 'h-scroll';
@@ -118,7 +122,7 @@ function run({ terminal, canvas }) {
     text: 'this text should be scrolling horizontally',
     tokenizer: undefined,
     ellipsis: '',
-  }) as Text;
+  });
 
   options.line = 13;
   options.height = 5;
@@ -126,7 +130,7 @@ function run({ terminal, canvas }) {
   const box7 = terminal.attachWidget(Box, options) as Box;
   const text7 = box7.attachWidget(Text, {
     text: 'veeeerylongword whichdoesn\'tfitonelineatall :)',
-  }) as Text;
+  });
 
   scrollText([text1, text2, text7]);
   autoSkipText([text6], options.width - 2);

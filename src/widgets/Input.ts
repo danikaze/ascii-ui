@@ -17,11 +17,10 @@ export interface InputOptions extends WidgetOptions {
 /**
  * One line text input widget
  */
-export class Input extends Widget {
+export class Input extends Widget<InputOptions> {
   /** Default options for widget instances */
   static defaultOptions: InputOptions;
-  /** Options of the Input Widget */
-  protected readonly options: InputOptions;
+
   /** Current value of the widget */
   private value: string = '';
   /** First character to show, for the scroll */

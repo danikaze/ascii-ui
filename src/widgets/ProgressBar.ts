@@ -32,11 +32,9 @@ export interface ProgressBarOptions extends WidgetOptions {
 /**
  * Display a progress bar
  */
-export class ProgressBar extends Widget {
+export class ProgressBar extends Widget<ProgressBarOptions> {
   /** Default options for widget instances */
   static defaultOptions: ProgressBarOptions;
-  /** Options of the Text widget */
-  protected readonly options: ProgressBarOptions;
 
   constructor(terminal: Terminal, options: ProgressBarOptions, parent?: WidgetContainer) {
     super(

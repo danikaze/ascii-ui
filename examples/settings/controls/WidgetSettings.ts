@@ -29,13 +29,14 @@ export interface WidgetSettingsOptions {
     text: string;
     callback(settings: WidgetSettings, event): void;
   };
-  onChange?(setting: SettingComponent, settings: WidgetSettings): void;
 }
 
 /**
  *
  */
 export class WidgetSettings {
+  onChange?: (settings: WidgetSettings, setting: SettingComponent) => void;
+
   private readonly components: { [key: string]: SettingComponent } = {};
   private readonly card: HTMLDivElement;
   private readonly options: WidgetSettingsOptions;
@@ -186,9 +187,11 @@ export class WidgetSettings {
       } else {
         elem = cell.getElem();
         this.components[cell.getName()] = cell;
-        if (this.options.onChange) {
-          cell.onChange(() => this.options.onChange(cell, this));
-        }
+        cell.onChange(() => {
+          if (this.onChange) {
+            this.onChange(this, cell);
+          }
+        });
       }
 
       colElem.appendChild(elem);

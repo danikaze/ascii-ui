@@ -69,3 +69,7 @@
   font-weight: 100;
   cursor: pointer;
 }
+
+#presets {
+  margin-bottom: 1em;
+}

@@ -1,19 +1,19 @@
-import { diff } from 'deep-object-diff';
-
 import { Terminal } from '../../src/Terminal';
 import { deepAssign } from '../../src/util/deepAssign';
-import { Box } from '../../src/widgets/Box';
+import { Widget, WidgetOptions } from '../../src/Widget';
+import { Box, BoxOptions } from '../../src/widgets/Box';
 import { Text } from '../../src/widgets/Text';
 import { LoadData, load } from '../util/load';
-import { traverseObject } from '../util/traverseObject';
 
 import { SettingBoolean } from './controls/SettingBoolean';
-import { SettingComponent } from './controls/SettingComponent';
 import { SettingNumber } from './controls/SettingNumber';
 import { SettingText } from './controls/SettingText';
 import { SettingTextArea } from './controls/SettingTextArea';
 import { basicSection } from './controls/widgetBasicSection';
 import { SettingsLayout, SettingsSection, WidgetSettings } from './controls/WidgetSettings';
+import { Preset, createSettingsPage } from './util/createSettingsPage';
+
+let textWidget: Text;
 
 const pageSettingsSection: SettingsSection = {
   rows: [
@@ -235,28 +235,37 @@ function getBoxAspectLayoutSection(name: string, title: string): SettingsSection
 }
 
 /**
- * Listen to changes on the WidgetSetting and apply it to the widget
+ *
  */
-function updateBoxSettings(terminal: Terminal, widget: Box, setting: SettingComponent, widgetSettings: WidgetSettings) {
-  const value = setting.getValue();
+function createWidget(terminal: Terminal, options: WidgetOptions): Widget {
+  const boxWidget = terminal.attachWidget(Box, options);
+  textWidget = boxWidget.attachWidget(Text, {});
 
-  if (value === '' || value === undefined) {
-    return;
-  }
+  return boxWidget;
+}
 
-  const options = {};
-  const ref = traverseObject(options, setting.getName(), { reference: true, create: true });
-  ref.parent[ref.name] = setting.getValue();
+/**
+ *
+ */
+function createWidgetSettings() {
+  const boxSettingsLayout: SettingsLayout = {
+    title: 'Box options',
+    sections: [
+      basicSection,
+      boxPaddingSection,
+      getBoxAspectLayoutSection('base', 'Base Aspect'),
+      getBoxAspectLayoutSection('focus', 'Focused Aspect'),
+      getBoxAspectLayoutSection('disabled', 'Disabled Aspect'),
+    ],
+  };
 
-  terminal.clear();
-  widget.setOptions(options);
-  updateCode(widgetSettings);
+  return new WidgetSettings(boxSettingsLayout);
 }
 
 /**
  * Listen to changes on the Demo settings and apply it to the widgets
  */
-function updateDemoSettings(box: Box, text: Text, setting: SettingComponent, settings: WidgetSettings) {
+function updateDemoSettings(settings: WidgetSettings) {
   interface DemoConfig {
     show: boolean;
     text: string;
@@ -265,56 +274,21 @@ function updateDemoSettings(box: Box, text: Text, setting: SettingComponent, set
   const config: DemoConfig = settings.getConfig() as DemoConfig;
 
   if (config.show) {
-    text.setOptions({ text: config.text });
+    textWidget.setOptions({ text: config.text });
   } else {
-    text.setOptions({ text: '' });
+    textWidget.setOptions({ text: '' });
   }
 }
 
 /**
- * Update the HTML card with the code for the options of the widget
+ *
  */
-function updateCode(settings: WidgetSettings) {
-  const elem = document.getElementById('settings-code');
-  const fullChecked = (document.getElementById('settings-code-full') as HTMLInputElement).checked;
-  const fullConfig = settings.getConfig(['']);
-  const config = fullChecked ? fullConfig : diff(Box.defaultOptions, fullConfig);
-  // tslint:disable-next-line:no-magic-numbers
-  elem.innerHTML = JSON.stringify(config, undefined, 2);
-}
-
-/**
- * Execute this example when the terminal is ready
- */
-function run({ terminal }: LoadData) {
-  const boxOptions = deepAssign(
-    {
-      col: 1,
-      line: 1,
-      width: 25,
-      height: 5,
-      focusable: true,
-    },
-    Box.defaultOptions,
-    { title: 'Title' },
-  );
-
-  // tslint:disable-next-line:no-any
-  const box = terminal.attachWidget(Box as any, boxOptions) as Box;
-  // tslint:disable-next-line:no-magic-numbers
-  // tslint:disable-next-line:no-any
-  const text = box.attachWidget(Text as any, {}) as Text;
-
-  /*
-   * Demo settings card
-   */
+function createPageSettings(): WidgetSettings {
   const demoSettingsLayout: SettingsLayout = {
     title: 'Demo options',
     sections: [ pageSettingsSection ],
   };
-  const demoSettings = new WidgetSettings(demoSettingsLayout, {
-    onChange: updateDemoSettings.bind(undefined, box, text),
-  });
+  const demoSettings = new WidgetSettings(demoSettingsLayout);
   demoSettings.setConfig({
     show: true,
     text: 'Lorem ipsum dolor sit amet, '
@@ -332,38 +306,54 @@ function run({ terminal }: LoadData) {
         + 'officia deserunt mollit anim '
         + 'id est laborum.',
   });
-  document.getElementById('widgetSettings')
-          .appendChild(demoSettings.getCard());
-  updateDemoSettings(box, text, undefined, demoSettings);
 
-  /*
-   * Box settings card
-   */
-  const boxSettingsLayout: SettingsLayout = {
-    title: 'Box options',
-    sections: [
-      basicSection,
-      boxPaddingSection,
-      getBoxAspectLayoutSection('base', 'Base Aspect'),
-      getBoxAspectLayoutSection('focus', 'Focused Aspect'),
-      getBoxAspectLayoutSection('disabled', 'Disabled Aspect'),
-    ],
-  };
-  const boxSettings = new WidgetSettings(boxSettingsLayout, {
-    onChange: updateBoxSettings.bind(undefined, terminal, box),
-  });
-  boxSettings.setConfig(boxOptions);
+  demoSettings.onChange = updateDemoSettings;
+  updateDemoSettings(demoSettings);
 
-  document.getElementById('widgetSettings')
-          .appendChild(boxSettings.getCard());
-
-  /**
-   * Settings code card
-   */
-  document.getElementById('settings-code-full')
-    .addEventListener('change', () => updateCode(boxSettings));
-  updateCode(boxSettings);
+  return demoSettings;
 }
 
+const presets: Array<Preset<BoxOptions>> = (() => {
+  const basicConfig = deepAssign(
+    {
+      col: 1,
+      line: 1,
+      width: 25,
+      height: 5,
+      focusable: true,
+    },
+    Box.defaultOptions,
+    { title: 'Title' },
+  );
+
+  const res: Array<Preset<BoxOptions>> = [
+    {
+      text: 'Basic options with 1 tile padding',
+      options: basicConfig,
+    },
+    {
+      text: 'Basic options with no padding',
+      options: deepAssign(
+        {},
+        basicConfig,
+        {
+          padding: { top: 0, right: 0, bottom: 0, left: 0 },
+        },
+      ),
+    },
+  ];
+
+  return res;
+})();
+
 load()
-  .then(run);
+  .then(({ terminal }: LoadData) => {
+    createSettingsPage<BoxOptions>({
+      terminal,
+      presets,
+      widgetDefaultSettings: Box.defaultOptions,
+      createPageSettings,
+      createWidget,
+      createWidgetSettings,
+    });
+  });

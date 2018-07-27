@@ -7,11 +7,11 @@ import { LoadData, load } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingNumber } from './controls/SettingNumber';
+import { Preset, SettingsPage } from './controls/SettingsPage';
 import { SettingText } from './controls/SettingText';
 import { SettingTextArea } from './controls/SettingTextArea';
 import { basicSection } from './controls/widgetBasicSection';
 import { SettingsLayout, SettingsSection, WidgetSettings } from './controls/WidgetSettings';
-import { Preset, createSettingsPage } from './util/createSettingsPage';
 
 let textWidget: Text;
 
@@ -348,7 +348,8 @@ const presets: Array<Preset<BoxOptions>> = (() => {
 
 load()
   .then(({ terminal }: LoadData) => {
-    createSettingsPage<BoxOptions>({
+    // tslint:disable-next-line:no-unused-expression
+    new SettingsPage<BoxOptions>({
       terminal,
       presets,
       widgetDefaultSettings: Box.defaultOptions,

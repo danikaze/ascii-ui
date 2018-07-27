@@ -89,7 +89,6 @@ export class WidgetSettings {
 
   /**
    *
-   * @param layout
    */
   private createCard(layout: SettingsLayout): HTMLDivElement {
     const cardElem = createElement<HTMLDivElement>('div', {
@@ -125,7 +124,6 @@ export class WidgetSettings {
 
   /**
    *
-   * @param section
    */
   private createSection(section: SettingsSection): HTMLDivElement {
     let sectionTitle;
@@ -172,7 +170,6 @@ export class WidgetSettings {
 
   /**
    *
-   * @param col
    */
   private createColumn(col: SettingsCol): HTMLDivElement {
     const colElem = createElement<HTMLDivElement>('div', {

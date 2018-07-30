@@ -251,7 +251,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    */
   // tslint:disable-next-line:prefer-function-over-method
   protected updateOptions(changes: GridOptions): void {
-    if (!this.options.calculateStarts &&  !changes.calculateStarts) {
+    if (!this.options.calculateStarts && !changes.calculateStarts) {
       this.options.calculateStarts = calculateStarts;
     }
 

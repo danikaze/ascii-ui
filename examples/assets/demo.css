@@ -6,7 +6,8 @@
 .demo-controls .card-header .card-header-button {
   position: absolute;
   right: 0.5em;
-  font-size: 80%;
+  font-size: 50%;
+  line-height: 200%;
 }
 
 .demo-controls .settings-section {

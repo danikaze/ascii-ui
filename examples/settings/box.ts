@@ -235,7 +235,7 @@ function getBoxAspectLayoutSection(name: string, title: string): SettingsSection
 }
 
 /**
- *
+ * Create the widget to test
  */
 function createWidget(terminal: Terminal, options: WidgetOptions): Widget {
   const boxWidget = terminal.attachWidget(Box, options);
@@ -245,7 +245,7 @@ function createWidget(terminal: Terminal, options: WidgetOptions): Widget {
 }
 
 /**
- *
+ * Create the WidgetSettings object for the widget settings card
  */
 function createWidgetSettings() {
   const boxSettingsLayout: SettingsLayout = {
@@ -313,14 +313,18 @@ function createPageSettings(): WidgetSettings {
   return demoSettings;
 }
 
+/**
+ * List of settings presets to display
+ */
 const presets: Array<Preset<BoxOptions>> = (() => {
   const basicConfig = deepAssign(
+    {},
+    Widget.defaultOptions,
     {
       col: 1,
       line: 1,
       width: 25,
       height: 5,
-      focusable: true,
     },
     Box.defaultOptions,
     { title: 'Title' },
@@ -346,13 +350,17 @@ const presets: Array<Preset<BoxOptions>> = (() => {
   return res;
 })();
 
+/*
+ * Execution
+ */
 load()
   .then(({ terminal }: LoadData) => {
     // tslint:disable-next-line:no-unused-expression
     new SettingsPage<BoxOptions>({
       terminal,
       presets,
-      widgetDefaultSettings: Box.defaultOptions,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...Box.defaultOptions },
+      widgetInitialSettings: presets[0].options,
       createPageSettings,
       createWidget,
       createWidgetSettings,

@@ -1,5 +1,5 @@
 export interface SettingComponentOptions {
-  name: string;
+  name?: string;
 }
 
 export abstract class SettingComponent<T extends HTMLElement = HTMLElement> {

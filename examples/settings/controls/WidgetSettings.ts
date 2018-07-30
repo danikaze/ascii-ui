@@ -4,16 +4,19 @@ import { ReferencedObject, traverseObject } from '../../util/traverseObject';
 import { SettingComponent } from './SettingComponent';
 
 export interface SettingsCol {
+  id?: string;
   title?: string;
   contents: Array<SettingComponent | string>;
 }
 
 export interface SettingsRow {
+  id?: string;
   title?: string;
   cols: SettingsCol[];
 }
 
 export interface SettingsSection {
+  id?: string;
   title?: string;
   rows: SettingsRow[];
   closed?: boolean;
@@ -37,7 +40,7 @@ export interface WidgetSettingsOptions {
 export class WidgetSettings {
   onChange?: (settings: WidgetSettings, setting: SettingComponent) => void;
 
-  private readonly components: { [key: string]: SettingComponent } = {};
+  private components: { [key: string]: SettingComponent } = {};
   private readonly card: HTMLDivElement;
   private readonly options: WidgetSettingsOptions;
 
@@ -61,10 +64,12 @@ export class WidgetSettings {
 
     Object.keys(this.components)
       .forEach((name) => {
-        const value = this.components[name].getValue();
-        if (ignoredValues.indexOf(value) === -1) {
-          const ref = traverseObject(config, name, { reference: true, create: true }) as ReferencedObject;
-          ref.parent[ref.name] = value;
+        if (name && name[0] !== '_') {
+          const value = this.components[name].getValue();
+          if (ignoredValues.indexOf(value) === -1) {
+            const ref = traverseObject(config, name, { reference: true, create: true }) as ReferencedObject;
+            ref.parent[ref.name] = value;
+          }
         }
       });
 
@@ -90,6 +95,17 @@ export class WidgetSettings {
   /**
    *
    */
+  setSections(sections: SettingsSection[]): void {
+    const config = this.getConfig();
+    this.card.querySelector('.card-body').innerHTML = '';
+    this.components = {};
+    this.createSections(sections, this.card);
+    this.setConfig(config);
+  }
+
+  /**
+   *
+   */
   private createCard(layout: SettingsLayout): HTMLDivElement {
     const cardElem = createElement<HTMLDivElement>('div', {
       html: `
@@ -101,11 +117,7 @@ export class WidgetSettings {
       `,
     });
 
-    const cardBody = cardElem.querySelector('.card-body');
-    layout.sections.forEach((section) => {
-      const sectionElem = this.createSection(section);
-      cardBody.appendChild(sectionElem);
-    });
+    this.createSections(layout.sections, cardElem);
 
     if (this.options.button) {
       const buttonElem = createElement<HTMLButtonElement>('button', {
@@ -120,6 +132,17 @@ export class WidgetSettings {
     }
 
     return cardElem;
+  }
+
+  /**
+   *
+   */
+  private createSections(sections: SettingsSection[], cardElem: HTMLDivElement): void {
+    const cardBody = cardElem.querySelector('.card-body');
+    sections.forEach((section) => {
+      const sectionElem = this.createSection(section);
+      cardBody.appendChild(sectionElem);
+    });
   }
 
   /**
@@ -140,6 +163,9 @@ export class WidgetSettings {
       sectionTitle = createElement('h4', {
         class: 'settings-section-title',
         html: `<span class="settings-section-arrow">▶︎</span> ${section.title}`,
+        attrs: {
+          id: section.id,
+        },
       });
 
       sectionTitle.addEventListener('click', () => {
@@ -151,6 +177,9 @@ export class WidgetSettings {
       const rowElem = createElement<HTMLDivElement>('div', {
         class: 'row',
         html: row.title ? `<h5>${row.title}</h5>` : '',
+        attrs: {
+          id: row.id,
+        },
       });
       sectionContents.appendChild(rowElem);
 
@@ -175,6 +204,9 @@ export class WidgetSettings {
     const colElem = createElement<HTMLDivElement>('div', {
       class: 'col',
       html: col.title ? `<h6>${col.title}</h6>` : '',
+      attrs: {
+        id: col.id,
+      },
     });
 
     col.contents.forEach((cell) => {
@@ -183,12 +215,15 @@ export class WidgetSettings {
         elem = createElement<HTMLSpanElement>('span', { html: cell });
       } else {
         elem = cell.getElem();
-        this.components[cell.getName()] = cell;
-        cell.onChange(() => {
-          if (this.onChange) {
-            this.onChange(this, cell);
-          }
-        });
+        const name = cell.getName();
+        if (name) {
+          this.components[name] = cell;
+          cell.onChange(() => {
+            if (this.onChange) {
+              this.onChange(this, cell);
+            }
+          });
+        }
       }
 
       colElem.appendChild(elem);

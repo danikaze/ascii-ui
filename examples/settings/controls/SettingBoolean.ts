@@ -6,8 +6,8 @@ export class SettingBoolean extends SettingComponent<HTMLInputElement> {
   constructor(options: SettingComponentOptions) {
     super(options);
     this.elem = createElement<HTMLInputElement>('input', {
+      class: 'setting-component-checkbox',
       attrs: {
-        class: 'setting-component-checkbox',
         type: 'checkbox',
       },
     });

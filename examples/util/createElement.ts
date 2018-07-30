@@ -35,7 +35,9 @@ export function createElement<T extends HTMLElement = HTMLElement>(type: string,
   if (options.attrs) {
     Object.keys(options.attrs)
       .forEach((key) => {
-        elem.setAttribute(key, options.attrs[key]);
+        if (options.attrs[key] !== undefined) {
+          elem.setAttribute(key, options.attrs[key]);
+        }
       });
   }
 

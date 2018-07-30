@@ -11,11 +11,13 @@ export class JsonCard {
   private readonly defaultSettings: object;
   private readonly cardElem: HTMLDivElement;
   private readonly codeContainer: HTMLPreElement;
+  private readonly filter: (code: object) => object;
   private showFullCode: boolean = false;
   private settings: object;
 
-  constructor(defaultSettings: object) {
+  constructor(defaultSettings: object, filter?: (code: object) => object) {
     this.defaultSettings = defaultSettings;
+    this.filter = filter;
     this.cardElem = this.createCard();
     this.codeContainer = this.cardElem.getElementsByTagName('pre')[0];
   }
@@ -71,7 +73,11 @@ export class JsonCard {
    *
    */
   private updateCode(): void {
-    const config = this.showFullCode ? this.settings : diff(this.defaultSettings, this.settings);
+    let config = this.showFullCode ? this.settings : diff(this.defaultSettings, this.settings);
+    if (this.filter) {
+      const filteredConfig = this.filter(config);
+      config = filteredConfig === undefined ? config : filteredConfig;
+    }
     this.codeContainer.innerHTML = JSON.stringify(config, undefined, JSON_INDENT_SPACES);
   }
 }

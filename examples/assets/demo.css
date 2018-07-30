@@ -71,6 +71,7 @@
   cursor: pointer;
 }
 
-#presets {
+#widgetSettingsPresetsContainer {
+  display: inline-block;
   margin-bottom: 1em;
 }

@@ -141,27 +141,37 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
   /**
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
+   *
+   * @return `true` if it wasn't focused and focused properly
    */
-  focus(): void {
+  focus(): boolean {
     if (this.options.focusable) {
       const wasFocused = this.focused;
       this.focused = true;
       if (!wasFocused) {
         this.render();
+
+        return true;
       }
     }
+
+    return false;
   }
 
   /**
    * Remove the focus from this widget.
    * Usually done by a upper level that controls other widgets.
+   *
+   * @return `true` if it was focused and blurred properly
    */
-  blur(): void {
+  blur(): boolean {
     const wasFocused = this.focused;
     this.focused = false;
     if (wasFocused) {
       this.render();
     }
+
+    return wasFocused;
   }
 
   /**

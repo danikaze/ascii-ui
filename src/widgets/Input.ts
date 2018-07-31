@@ -81,19 +81,29 @@ export class Input extends Widget<InputOptions> {
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
    */
-  focus(): void {
-    super.focus();
+  focus(): boolean {
+    const changed = super.focus();
+
+    if (changed) {
     this.terminalCursor = this.terminal.isCursorEnabled();
     this.terminal.setOptions({ cursor: true });
+  }
+
+    return changed;
   }
 
   /**
    * Remove the focus from this widget.
    * Usually done by a upper level that controls other widgets.
    */
-  blur(): void {
-    super.blur();
+  blur(): boolean {
+    const changed = super.blur();
+
+    if (changed) {
     this.terminal.setOptions({ cursor: this.terminalCursor });
+  }
+
+    return changed;
   }
 
   /**

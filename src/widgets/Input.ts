@@ -72,9 +72,11 @@ export class Input extends Widget<InputOptions> {
    * @param value new value to be set
    */
   setValue(value: string): void {
-    this.value = this.options.maxLength > 0 ? value.substr(0, this.options.maxLength) : value;
-    this.offset = Math.max(0, this.value.length - this.options.width + 1);
-    this.render();
+    if (value !== undefined) {
+      this.value = this.options.maxLength > 0 ? value.substr(0, this.options.maxLength) : value;
+      this.offset = Math.max(0, this.value.length - this.options.width + 1);
+      this.render();
+    }
   }
 
   /**
@@ -85,9 +87,9 @@ export class Input extends Widget<InputOptions> {
     const changed = super.focus();
 
     if (changed) {
-    this.terminalCursor = this.terminal.isCursorEnabled();
-    this.terminal.setOptions({ cursor: true });
-  }
+      this.terminalCursor = this.terminal.isCursorEnabled();
+      this.terminal.setOptions({ cursor: true });
+    }
 
     return changed;
   }
@@ -100,8 +102,8 @@ export class Input extends Widget<InputOptions> {
     const changed = super.blur();
 
     if (changed) {
-    this.terminal.setOptions({ cursor: this.terminalCursor });
-  }
+      this.terminal.setOptions({ cursor: this.terminalCursor });
+    }
 
     return changed;
   }
@@ -123,6 +125,9 @@ export class Input extends Widget<InputOptions> {
 
     if (coalesce(changes.line, changes.col, changes.password,
                  changes.passwordCharacter, changes.maxLength) !== undefined) {
+      if (changes.maxLength !== undefined) {
+        this.setValue(this.value);
+      }
       this.render();
     }
   }

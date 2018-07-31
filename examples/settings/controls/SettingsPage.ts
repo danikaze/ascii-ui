@@ -31,6 +31,8 @@ export interface SettingsPageOptions<OptionsType> {
   filterCode?(code: object): object;
   /** Function called before updating the widget options */
   preUpdateWidgeSettings?(options: object): boolean;
+  /** Function called after updating the widget options */
+  postUpdateWidgeSettings?(options: object): void;
 }
 
 export class SettingsPage<OptionsType extends WidgetOptions> {
@@ -94,6 +96,10 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
     } else {
       options = this.widgetSettings.getConfig(['']);
       this.codeCard.setConfig(options);
+    }
+
+    if (this.options.postUpdateWidgeSettings) {
+      this.options.postUpdateWidgeSettings(options);
     }
   }
 

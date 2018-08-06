@@ -28,7 +28,7 @@ export class SettingNumber extends SettingComponent<HTMLInputElement> {
   }
 
   getValue() {
-    const n = parseInt(this.elem.value, 10);
+    const n = parseFloat(this.elem.value);
 
     return isNaN(n) ? '' : n;
   }

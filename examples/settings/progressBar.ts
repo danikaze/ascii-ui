@@ -1,6 +1,5 @@
 import { Terminal } from '../../src/Terminal';
 import { Widget, WidgetOptions } from '../../src/Widget';
-import { Input, InputOptions } from '../../src/widgets/Input';
 import { ProgressBar, ProgressBarDirection, ProgressBarOptions } from '../../src/widgets/ProgressBar';
 import { LoadData, load } from '../util/load';
 
@@ -41,6 +40,7 @@ const widgetSettingsSection: SettingsSection = {
 function getTileSection(name: string, title: string): SettingsSection {
   return {
     title,
+    closed: true,
     rows: [
       {
         cols: [
@@ -184,10 +184,10 @@ const presets: Array<Preset<ProgressBarOptions>> = (() => {
 load()
   .then(({ terminal }: LoadData) => {
     // tslint:disable-next-line:no-unused-expression
-    new SettingsPage<InputOptions>({
+    new SettingsPage<ProgressBarOptions>({
       terminal,
       presets,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...Input.defaultOptions },
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...ProgressBar.defaultOptions },
       widgetInitialSettings: presets[0].options,
       createWidget,
       createWidgetSettings,

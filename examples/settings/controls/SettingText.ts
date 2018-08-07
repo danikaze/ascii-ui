@@ -10,7 +10,7 @@ export class SettingText extends SettingComponent<HTMLInputElement> {
   constructor(options: SettingTextOptions) {
     super(options);
     const attrs = {
-      maxlength: String(options.maxLength) || '',
+      maxlength: options.maxLength ? String(options.maxLength) : undefined,
     };
     this.elem = createElement<HTMLInputElement>('input', {
       class: 'setting-component-text',

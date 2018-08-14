@@ -32,7 +32,7 @@ export interface SettingsPageOptions<OptionsType> {
   /** Function called before updating the widget options */
   preUpdateWidgeSettings?(options: object): boolean;
   /** Function called after updating the widget options */
-  postUpdateWidgeSettings?(options: object): void;
+  postUpdateWidgetSettings?(options: object): void;
 }
 
 export class SettingsPage<OptionsType extends WidgetOptions> {
@@ -98,8 +98,8 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
       this.codeCard.setConfig(options);
     }
 
-    if (this.options.postUpdateWidgeSettings) {
-      this.options.postUpdateWidgeSettings(options);
+    if (this.options.postUpdateWidgetSettings) {
+      this.options.postUpdateWidgetSettings(options);
     }
   }
 

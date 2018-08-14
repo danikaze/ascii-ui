@@ -168,7 +168,7 @@ function createPageSettings(): WidgetSettings {
   return demoSettings;
 }
 
-function postUpdateWidgeSettings() {
+function postUpdateWidgetSettings() {
   boxWidget.render();
 }
 
@@ -228,6 +228,6 @@ load()
       createPageSettings,
       createWidget,
       createWidgetSettings,
-      postUpdateWidgeSettings,
+      postUpdateWidgetSettings,
     });
   });

@@ -6,7 +6,7 @@ import { LoadData, load } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingNumber } from './controls/SettingNumber';
-import { SettingButton } from './controls/SettingsButton';
+import { SettingButton } from './controls/SettingButton';
 import { SettingsPage } from './controls/SettingsPage';
 import { basicSection } from './controls/widgetBasicSection';
 import { SettingsLayout, SettingsRow, SettingsSection, WidgetSettings } from './controls/WidgetSettings';

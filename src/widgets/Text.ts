@@ -83,6 +83,10 @@ export class Text extends Widget<TextOptions> {
       return;
     }
 
+    if (this.options.textStyle) {
+      this.terminal.setTextStyle(this.options.textStyle);
+    }
+
     // render is called from outside, so we reset the status of the previous rendering operation,
     // in case it hasn't finished yet
     clearTimeout(this.typewritterTimer);

@@ -84,6 +84,8 @@ export interface TerminalOptions extends CharStyle {
   avoidDoubleRendering?: boolean;
   /** `true` to enable debug console messages options, `false` to disable them */
   verbose?: boolean;
+  /** Style used when calling `clear` */
+  clearStyle?: Tile;
 }
 
 export interface Tile extends CharStyle {
@@ -243,6 +245,8 @@ export class Terminal implements WidgetContainer {
       height = options.rows;
       dirtyTiles.splice(0, dirtyTiles.length);
     }
+
+    this.setTextStyle(options.clearStyle);
 
     for (let y = line, yy = y + height; y < yy; y++) {
       for (let x = col, xx = x + width; x < xx; x++) {
@@ -973,4 +977,9 @@ Terminal.defaultOptions = {
   },
   avoidDoubleRendering: true,
   verbose: false,
+  clearStyle: {
+    char: '',
+    bg: '#000000',
+    fg: '#00ff00',
+  },
 };

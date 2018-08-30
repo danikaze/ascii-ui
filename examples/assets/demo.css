@@ -36,6 +36,13 @@
   width: 100%;
 }
 
+.demo-controls .row {
+  margin-bottom: 10px;
+}
+.demo-controls .row:last-child {
+  margin-bottom: 0;
+}
+
 .demo-controls .row > h5 {
   padding-top: 0.6em;
   padding-left: 15px;
@@ -59,7 +66,7 @@
 }
 
 .demo-controls textarea {
-  width: 100%;;
+  width: 100%;
 }
 
 .settings-code .card-header label {

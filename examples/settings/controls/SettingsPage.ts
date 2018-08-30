@@ -29,6 +29,8 @@ export interface SettingsPageOptions<OptionsType> {
   createWidgetSettings(): WidgetSettings;
   /** Function called before displaying the code, in case any modification is needed */
   filterCode?(code: object): object;
+  /** Function called before update the widget options */
+  transformOptions?(options: object): object,
   /** Function called before updating the widget options */
   preUpdateWidgeSettings?(options: object): boolean;
   /** Function called after updating the widget options */
@@ -84,6 +86,10 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
   private updateWidgetSettings(): void {
     let options = this.widgetSettings.getConfig(['']);
     let cancel;
+
+    if (this.options.transformOptions) {
+      options = this.options.transformOptions(options);
+    }
 
     if (this.options.preUpdateWidgeSettings) {
       cancel = this.options.preUpdateWidgeSettings(options) === false;

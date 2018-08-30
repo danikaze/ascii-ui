@@ -113,7 +113,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    *
    * @return Object specified in `options.options`.
    */
-  getSelected(): SelectOption<T> {
+  getSelectedOption(): SelectOption<T> {
     return this.options.options[this.selectedIndex];
   }
 
@@ -278,7 +278,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
     if (dirtyText && this.options.options) {
       this.optionsText = this.options.options.map((option) =>
       splitText(option.text, this.options.width, this.options.tokenizer));
-      drawn = this.selectIndex(0);
+      drawn = this.selectIndex(this.options.selectedIndex);
     }
     if (!drawn && (dirtyText || reDraw)) {
       this.render();
@@ -294,6 +294,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
   private moveSelection(delta: number): boolean {
     const options = this.options.options;
     let newIndex = this.selectedIndex;
+    let tries = options.length; // to prevent infinite loop in case there's no available option
 
     do {
       newIndex = newIndex + delta;
@@ -317,9 +318,10 @@ export class Select<T> extends Widget<SelectOptions<T>> {
       if (!options[newIndex].disabled) {
         break;
       }
-    } while (newIndex !== this.selectedIndex);
+      tries--;
+    } while (newIndex !== this.selectedIndex && tries > 0);
 
-    return this.selectIndex(newIndex);
+    return tries > 0 ? this.selectIndex(newIndex) : false;
   }
 
   /**
@@ -330,7 +332,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
   private getAspectOptions(optionIndex: number): CharStyle {
     if (optionIndex === this.selectedIndex) {
       return this.options.selected;
-    } else if (this.options.options[optionIndex].disabled) {
+    } else if (this.options.options[optionIndex] && this.options.options[optionIndex].disabled) {
       return this.options.disabled;
     }
 

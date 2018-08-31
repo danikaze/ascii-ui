@@ -2,9 +2,10 @@ import * as isEmptyObject from 'is-empty-object';
 
 import { CharStyle, Terminal, Tile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 import { noWrap } from '../util/tokenizer';
-import { Widget, WidgetOptions } from '../Widget';
+import { Widget, WidgetConstructor, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
 export interface BoxBorderOptions extends CharStyle {
@@ -76,7 +77,7 @@ interface BoxPoolTiles {
  * Very basic `WidgetContainer` which draws a box around the attached content.
  * It allows only one children inside the box (which can be a Grid or any other container)
  */
-export class Box extends Widget implements WidgetContainer {
+export class Box extends Widget<BoxOptions> implements WidgetContainer {
   /** Default options for widget instances */
   static defaultOptions: BoxOptions;
   /** Pool of Tiles to avoid creating always new objects */
@@ -93,14 +94,10 @@ export class Box extends Widget implements WidgetContainer {
     bottomRight: { char: '' },
   };
 
-  /** Extended options */
-  protected readonly options: BoxOptions;
-
   /** Cached options used when rendering the widget focused */
   private optionsFocus: BoxAspectOptions;
   /** Cached options used when rendering the widget diabled */
   private optionsDisabled: BoxAspectOptions;
-
   /** Attached widget if any */
   private attachedWidget: Widget;
 
@@ -146,7 +143,7 @@ export class Box extends Widget implements WidgetContainer {
    * @param options Options for the widget constructor
    * @return Created widget instance attached to the box
    */
-  attachWidget(WidgetClass: typeof Widget, options): Widget {
+  attachWidget<WidgetType extends Widget>(WidgetClass: WidgetConstructor<WidgetType>, options): WidgetType {
     const positionOptions = this.getAvailableSpace();
 
     const newWidgetOptions = {
@@ -161,7 +158,7 @@ export class Box extends Widget implements WidgetContainer {
 
     // this.attachedWidget.render();
 
-    return this.attachedWidget;
+    return this.attachedWidget as WidgetType;
   }
 
   /**
@@ -266,7 +263,7 @@ export class Box extends Widget implements WidgetContainer {
       this.optionsFocus = deepAssign(this.optionsFocus, this.options.base, this.options.focus);
       this.optionsDisabled = deepAssign(this.optionsDisabled, this.options.base, this.options.disabled);
 
-      if (changes.width || changes.height || changes.col || changes.line) {
+      if (coalesce(changes.width, changes.height, changes.col, changes.line, changes.padding) !== undefined) {
         if (this.attachedWidget) {
           this.attachedWidget.setOptions(this.getAvailableSpace());
         }

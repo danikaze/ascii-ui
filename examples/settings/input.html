@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Terminal Widget settings: Input</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="../assets/examples.css" rel="stylesheet"></head>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1>settings/Input</h1>
+
+    <%= htmlWebpackPlugin.options.breadcrumbs %>
+
+    <div class="row">
+      <div class="col">
+        <div class="btn-group mb-3" role="group">
+          <button id="left" type="button" class="btn btn-secondary">width--</button>
+          <button id="right" type="button" class="btn btn-secondary">width++</button>
+          <button id="up" type="button" class="btn btn-secondary">height--</button>
+          <button id="down" type="button" class="btn btn-secondary">height++</button>
+        </div>
+        <div class="btn-group mb-3" role="group">
+          <button id="prev" type="button" class="btn btn-secondary">Prev</button>
+          <button id="next" type="button" class="btn btn-secondary">Next</button>
+        </div>
+
+        <div id="loading">Wait while loading fonts...</div>
+        <div id="canvasContainer">
+          <canvas id="canvas"></canvas>
+        </div>
+
+        <strong>Settings presets:</strong>
+        <span id="widgetSettingsPresetsContainer"></span>
+      </div> <!-- .col -->
+
+      <div class="col" id="widgetSettingsContainer"></div>
+    </div>
+
+    <div class="row">
+      <div class="col" id="settingsCodeContainer"></div>
+    </div>
+  </body>
+</html>

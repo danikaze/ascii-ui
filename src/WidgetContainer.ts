@@ -27,7 +27,7 @@ export interface WidgetContainer {
    *
    * @returns Attached Widget instance
    */
-  attachWidget(...args): Widget;
+  attachWidget<WidgetClass extends Widget>(...args): WidgetClass;
 
   /**
    * Dettach a widget from the container

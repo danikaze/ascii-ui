@@ -1,5 +1,4 @@
 /* tslint:disable:no-magic-numbers */
-import { TerminalOptions } from '../../src/Terminal';
 import { Box } from '../../src/widgets/Box';
 import { Input } from '../../src/widgets/Input';
 
@@ -45,12 +44,5 @@ function run({ terminal }): void {
   enableInteraction([i1, i2, i3]);
 }
 
-const terminalOptions: TerminalOptions = {
-  columns: 40,
-  rows: 20,
-  cursor: false,
-  verbose: true,
-};
-
-load(terminalOptions)
+load()
   .then(run);

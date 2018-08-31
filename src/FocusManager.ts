@@ -41,11 +41,12 @@ export class FocusManager {
    * Instead of setting all the previous path unfocused and then focus the new path, it just unfocus and focus
    * the differences to avoid possible flickering
    *
-   * @param newWidget New focused widget
+   * @param newWidget New widget to focus
+   * @return `true` if the focus changed
    */
-  focus(newWidget?: Widget): void {
+  focus(newWidget?: Widget): boolean {
     if (newWidget === this.focusedWidget) {
-      return;
+      return false;
     }
 
     const oldPath = this.focusedWidget ? this.terminal.getWidgetPath(this.focusedWidget) : [];
@@ -77,15 +78,20 @@ export class FocusManager {
       }
     }
 
+    const changed = this.focusedWidget !== newWidget;
     this.currentIterator = this.iterators[this.iterators.length - 1];
     this.focusedWidget = newWidget;
+
+    return changed;
   }
 
   /**
    * Remove the focus from the current focused widget
+   *
+   * @return `true` if the focus changed
    */
-  blur(): void {
-    this.focus();
+  blur(): boolean {
+    return this.focus();
   }
 
   /**

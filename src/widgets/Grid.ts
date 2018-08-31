@@ -1,6 +1,7 @@
 import { Terminal, TileSize } from '../Terminal';
 import { TerminalEvent } from '../TerminalEvent';
-import { Widget, WidgetOptions } from '../Widget';
+import { coalesce } from '../util/coalesce';
+import { Widget, WidgetConstructor, WidgetOptions } from '../Widget';
 import { BidirectionalIterator, WidgetContainer } from '../WidgetContainer';
 
 export interface GridOptions extends WidgetOptions {
@@ -20,8 +21,6 @@ export interface GridOptions extends WidgetOptions {
 }
 
 interface AttachedWidget {
-  /** interal id used for deattachWidget */
-  id: number;
   /** widget instance */
   widget: Widget;
   /** x-position in grid columns */
@@ -37,14 +36,9 @@ interface AttachedWidget {
 /**
  * Provides a dynamic grid system for Terminal Widgets
  */
-export class Grid extends Widget implements WidgetContainer {
+export class Grid extends Widget<GridOptions> implements WidgetContainer {
   /** Default options for widget instances */
   static defaultOptions: GridOptions;
-  /** Incremental widget ids counter */
-  private static widgetIds: number = 0;
-
-  /** Grid options */
-  protected options: GridOptions;
 
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
@@ -68,7 +62,7 @@ export class Grid extends Widget implements WidgetContainer {
         line: 0,
         width: parentSize.columns,
         height: parentSize.rows,
-      });
+      } as any); // tslint:disable-line:no-any
       terminal.eventManager.listen('resized', this.resizedEventHandler.bind(this));
 
     } else {
@@ -77,7 +71,7 @@ export class Grid extends Widget implements WidgetContainer {
         line: options.line || 0,
         width: options.width,
         height: options.height,
-      });
+      } as any); // tslint:disable-line:no-any
     }
 
     this.recalculateCellSizes();
@@ -112,15 +106,14 @@ export class Grid extends Widget implements WidgetContainer {
    * @param options Options to pass to the Widget when creating it
    * @return widget instance
    */
-  attachWidget(col: number, line: number, width: number, height: number,
-               WidgetClass: typeof Widget, options): Widget {
-    const widget: Widget = Reflect.construct(WidgetClass, [
+  attachWidget<WidgetType>(col: number, line: number, width: number, height: number,
+                           WidgetClass: WidgetConstructor<WidgetType>, options): WidgetType {
+    const widget = Reflect.construct(WidgetClass, [
       this.terminal,
       options,
       this,
     ]);
     const attachedWidget: AttachedWidget = {
-      id: ++Grid.widgetIds,
       widget,
       col,
       line,
@@ -131,7 +124,7 @@ export class Grid extends Widget implements WidgetContainer {
     this.attachedWidgets.push(attachedWidget);
     this.alignWidgets(attachedWidget);
 
-    return widget;
+    return widget as WidgetType;
   }
 
   /**
@@ -258,11 +251,11 @@ export class Grid extends Widget implements WidgetContainer {
    */
   // tslint:disable-next-line:prefer-function-over-method
   protected updateOptions(changes: GridOptions): void {
-    if (!this.options.calculateStarts &&  !changes.calculateStarts) {
+    if (!this.options.calculateStarts && !changes.calculateStarts) {
       this.options.calculateStarts = calculateStarts;
     }
 
-    if (changes.width || changes.height || changes.col || changes.line) {
+    if (coalesce(changes.width, changes.height, changes.col, changes.line) !== undefined) {
       this.recalculateCellSizes();
       this.align();
     }
@@ -334,7 +327,7 @@ export class Grid extends Widget implements WidgetContainer {
         line: 0,
         width: terminalSize.columns,
         height: terminalSize.rows,
-      });
+      } as any); // tslint:disable-line:no-any
     }
 
     this.recalculateCellSizes();

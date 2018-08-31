@@ -1,13 +1,15 @@
 @import "bootstrap.css";
+@import "demo.css";
 
 @font-face {
   font-family: 'Terminal_VT220';
   src: url(Glass_TTY_VT220.ttf);
 }
 
-.canvas-container {
+#canvasContainer {
   border: 10px solid #333;
   box-sizing: content-box;
+  margin-bottom: 1em;
 }
 
 .preloader,

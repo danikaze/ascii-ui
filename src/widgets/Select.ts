@@ -2,6 +2,7 @@ import { CharStyle, Terminal } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 import { TokenizerFunction, splitText } from '../util/tokenizer';
 
@@ -41,11 +42,10 @@ export interface SelectOptions<T> extends WidgetOptions {
 /**
  * Display a list of selectable options
  */
-export class Select<T> extends Widget {
+export class Select<T> extends Widget<SelectOptions<T>> {
   /** Default options for widget instances */
-  static defaultOptions: SelectOptions<any>;  // tslint:disable-line:no-any
-  /** Options of the Text widget */
-  protected readonly options: SelectOptions<T>;
+  static defaultOptions: SelectOptions<any>; // tslint:disable-line:no-any
+
   /** Currently selected option index */
   private selectedIndex: number = UNSELECTED_INDEX;
   /** First line to draw (for scrolling) - note: one option can have more than one line */
@@ -113,7 +113,7 @@ export class Select<T> extends Widget {
    *
    * @return Object specified in `options.options`.
    */
-  getSelected(): SelectOption<T> {
+  getSelectedOption(): SelectOption<T> {
     return this.options.options[this.selectedIndex];
   }
 
@@ -268,17 +268,17 @@ export class Select<T> extends Widget {
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
-   * @param changedOptions Object with only the changed options
+   * @param changes Object with only the changed options
    */
-  protected updateOptions(options: SelectOptions<T>): void {
-    const dirtyText = options.options !== undefined || options.width !== undefined;
-    const reDraw = options.col !== undefined || options.line !== undefined || options.height !== undefined;
+  protected updateOptions(changes: SelectOptions<T>): void {
+    const dirtyText = coalesce(changes.options, changes.width) !== undefined;
+    const reDraw = coalesce(changes.col, changes.line, changes.height) !== undefined;
     let drawn = false;
 
     if (dirtyText && this.options.options) {
       this.optionsText = this.options.options.map((option) =>
       splitText(option.text, this.options.width, this.options.tokenizer));
-      drawn = this.selectIndex(0);
+      drawn = this.selectIndex(this.options.selectedIndex);
     }
     if (!drawn && (dirtyText || reDraw)) {
       this.render();
@@ -294,6 +294,7 @@ export class Select<T> extends Widget {
   private moveSelection(delta: number): boolean {
     const options = this.options.options;
     let newIndex = this.selectedIndex;
+    let tries = options.length; // to prevent infinite loop in case there's no available option
 
     do {
       newIndex = newIndex + delta;
@@ -317,9 +318,10 @@ export class Select<T> extends Widget {
       if (!options[newIndex].disabled) {
         break;
       }
-    } while (newIndex !== this.selectedIndex);
+      tries--;
+    } while (newIndex !== this.selectedIndex && tries > 0);
 
-    return this.selectIndex(newIndex);
+    return tries > 0 ? this.selectIndex(newIndex) : false;
   }
 
   /**
@@ -330,7 +332,7 @@ export class Select<T> extends Widget {
   private getAspectOptions(optionIndex: number): CharStyle {
     if (optionIndex === this.selectedIndex) {
       return this.options.selected;
-    } else if (this.options.options[optionIndex].disabled) {
+    } else if (this.options.options[optionIndex] && this.options.options[optionIndex].disabled) {
       return this.options.disabled;
     }
 

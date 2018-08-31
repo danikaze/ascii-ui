@@ -9,7 +9,7 @@ import { deepAssign } from './util/deepAssign';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
-import { Widget } from './Widget';
+import { Widget, WidgetConstructor } from './Widget';
 import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './WidgetContainer';
 
 /**
@@ -84,6 +84,8 @@ export interface TerminalOptions extends CharStyle {
   avoidDoubleRendering?: boolean;
   /** `true` to enable debug console messages options, `false` to disable them */
   verbose?: boolean;
+  /** Style used when calling `clear` */
+  clearStyle?: Tile;
 }
 
 export interface Tile extends CharStyle {
@@ -118,6 +120,7 @@ type IterateTileCallback = (InternalTile, i) => void;
 export class Terminal implements WidgetContainer {
   /** Default options for widget instances */
   static defaultOptions: TerminalOptions;
+
   /** focus manager for the Terminal widgets */
   readonly focusManager: FocusManager;
   /** event manager for this terminal */
@@ -242,6 +245,8 @@ export class Terminal implements WidgetContainer {
       height = options.rows;
       dirtyTiles.splice(0, dirtyTiles.length);
     }
+
+    this.setTextStyle(options.clearStyle);
 
     for (let y = line, yy = y + height; y < yy; y++) {
       for (let x = col, xx = x + width; x < xx; x++) {
@@ -657,8 +662,8 @@ export class Terminal implements WidgetContainer {
    * @param options Options for the widget constructor
    * @return handler of the attached widget. Required to deattach it.
    */
-  attachWidget(WidgetClass: typeof Widget, options?): Widget {
-    const widget: Widget = Reflect.construct(WidgetClass, [
+  attachWidget<WidgetType extends Widget>(WidgetClass: WidgetConstructor<WidgetType>, options?): WidgetType {
+    const widget: WidgetType = Reflect.construct(WidgetClass, [
       this,
       options,
       this,
@@ -972,4 +977,9 @@ Terminal.defaultOptions = {
   },
   avoidDoubleRendering: true,
   verbose: false,
+  clearStyle: {
+    char: '',
+    bg: '#000000',
+    fg: '#00ff00',
+  },
 };

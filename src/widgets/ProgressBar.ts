@@ -32,11 +32,9 @@ export interface ProgressBarOptions extends WidgetOptions {
 /**
  * Display a progress bar
  */
-export class ProgressBar extends Widget {
+export class ProgressBar extends Widget<ProgressBarOptions> {
   /** Default options for widget instances */
   static defaultOptions: ProgressBarOptions;
-  /** Options of the Text widget */
-  protected readonly options: ProgressBarOptions;
 
   constructor(terminal: Terminal, options: ProgressBarOptions, parent?: WidgetContainer) {
     super(
@@ -68,16 +66,16 @@ export class ProgressBar extends Widget {
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
-   * @param changedOptions Object with only the changed options
+   * @param changes Object with only the changed options
    */
-  protected updateOptions(options: ProgressBarOptions): void {
+  protected updateOptions(changes: ProgressBarOptions): void {
     if (this.options.direction === ProgressBarDirection.HORIZONTAL) {
       this.options.height = 1;
     } else {
       this.options.width = 1;
     }
 
-    if (!isEmptyObject(options)) {
+    if (!isEmptyObject(changes)) {
       this.render();
     }
   }

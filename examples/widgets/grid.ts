@@ -1,5 +1,4 @@
 /* tslint:disable:no-magic-numbers */
-import { TerminalOptions } from '../../src/Terminal';
 import { Box } from '../../src/widgets/Box';
 import { Grid, GridOptions } from '../../src/widgets/Grid';
 import { Text } from '../../src/widgets/Text';
@@ -41,12 +40,5 @@ function run({ terminal }): void {
     .attachWidget(Text, { text: 'Text Z' });
 }
 
-const terminalOptions: TerminalOptions = {
-  columns: 40,
-  rows: 20,
-  cursor: false,
-  verbose: true,
-};
-
-load(terminalOptions)
+load()
   .then(run);

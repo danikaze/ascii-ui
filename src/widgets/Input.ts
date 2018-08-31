@@ -2,6 +2,7 @@ import { Terminal } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
+import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
 
 export interface InputOptions extends WidgetOptions {
@@ -16,11 +17,10 @@ export interface InputOptions extends WidgetOptions {
 /**
  * One line text input widget
  */
-export class Input extends Widget {
+export class Input extends Widget<InputOptions> {
   /** Default options for widget instances */
   static defaultOptions: InputOptions;
-  /** Options of the Input Widget */
-  protected readonly options: InputOptions;
+
   /** Current value of the widget */
   private value: string = '';
   /** First character to show, for the scroll */
@@ -72,51 +72,63 @@ export class Input extends Widget {
    * @param value new value to be set
    */
   setValue(value: string): void {
-    this.value = this.options.maxLength > 0 ? value.substr(0, this.options.maxLength) : value;
-    this.offset = Math.max(0, this.value.length - this.options.width + 1);
-    this.render();
+    if (value !== undefined) {
+      this.value = this.options.maxLength > 0 ? value.substr(0, this.options.maxLength) : value;
+      this.offset = Math.max(0, this.value.length - this.options.width + 1);
+      this.render();
+    }
   }
 
   /**
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
    */
-  focus(): void {
-    super.focus();
-    this.terminalCursor = this.terminal.isCursorEnabled();
-    this.terminal.setOptions({ cursor: true });
+  focus(): boolean {
+    const changed = super.focus();
+
+    if (changed) {
+      this.terminalCursor = this.terminal.isCursorEnabled();
+      this.terminal.setOptions({ cursor: true });
+    }
+
+    return changed;
   }
 
   /**
    * Remove the focus from this widget.
    * Usually done by a upper level that controls other widgets.
    */
-  blur(): void {
-    super.blur();
-    this.terminal.setOptions({ cursor: this.terminalCursor });
+  blur(): boolean {
+    const changed = super.blur();
+
+    if (changed) {
+      this.terminal.setOptions({ cursor: this.terminalCursor });
+    }
+
+    return changed;
   }
 
   /**
    * `setOptions` will assign the options to `this.options`,
    * but any derivated calculation should be done here.
    *
-   * @param changedOptions Object with only the changed options
+   * @param changes Object with only the changed options
    */
-  protected updateOptions(changedOptions: InputOptions): void {
+  protected updateOptions(changes: InputOptions): void {
     if (this.options.height !== 1) {
       this.options.height = 1;
     }
 
-    if (changedOptions.passwordCharacter) {
-      this.options.passwordCharacter = changedOptions.passwordCharacter.charAt(0);
+    if (changes.passwordCharacter) {
+      this.options.passwordCharacter = changes.passwordCharacter.charAt(0);
     }
 
-    for (const key of ['password', 'passwordCharacter', 'maxLength']) {
-      if (typeof changedOptions[key] !== 'undefined') {
-        this.render();
-
-        return;
+    if (coalesce(changes.line, changes.col, changes.password,
+                 changes.passwordCharacter, changes.maxLength) !== undefined) {
+      if (changes.maxLength !== undefined) {
+        this.setValue(this.value);
       }
+      this.render();
     }
   }
 }

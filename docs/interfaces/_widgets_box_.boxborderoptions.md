@@ -1,243 +1,180 @@
 [terminal-in-canvas](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxBorderOptions](../interfaces/_widgets_box_.boxborderoptions.md)
 
-
-
 # Interface: BoxBorderOptions
 
 ## Hierarchy
-
 
  [CharStyle](_terminal_.charstyle.md)
 
 **↳ BoxBorderOptions**
 
+## Index
 
+### Properties
 
+* [bg](_widgets_box_.boxborderoptions.md#bg)
+* [bottom](_widgets_box_.boxborderoptions.md#bottom)
+* [bottomLeft](_widgets_box_.boxborderoptions.md#bottomleft)
+* [bottomRight](_widgets_box_.boxborderoptions.md#bottomright)
+* [center](_widgets_box_.boxborderoptions.md#center)
+* [fg](_widgets_box_.boxborderoptions.md#fg)
+* [font](_widgets_box_.boxborderoptions.md#font)
+* [left](_widgets_box_.boxborderoptions.md#left)
+* [offsetX](_widgets_box_.boxborderoptions.md#offsetx)
+* [offsetY](_widgets_box_.boxborderoptions.md#offsety)
+* [right](_widgets_box_.boxborderoptions.md#right)
+* [top](_widgets_box_.boxborderoptions.md#top)
+* [topLeft](_widgets_box_.boxborderoptions.md#topleft)
+* [topRight](_widgets_box_.boxborderoptions.md#topright)
 
-
-
-
+---
 
 ## Properties
+
 <a id="bg"></a>
 
-### «Optional» bg
+### `<Optional>` bg
 
-**●  bg**:  *`string`* 
+**● bg**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
-
-
+*Defined in [Terminal.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L93)*
 
 background color (i.e. `#000000`)
 
-
-
-
 ___
-
 <a id="bottom"></a>
 
-### «Optional» bottom
+### `<Optional>` bottom
 
-**●  bottom**:  *`string`* 
+**● bottom**: *`string`*
 
-*Defined in [widgets/Box.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L17)*
-
-
-
-
+*Defined in [widgets/Box.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L19)*
 
 ___
-
 <a id="bottomleft"></a>
 
-### «Optional» bottomLeft
+### `<Optional>` bottomLeft
 
-**●  bottomLeft**:  *`string`* 
+**● bottomLeft**: *`string`*
 
-*Defined in [widgets/Box.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L16)*
-
-
-
-
+*Defined in [widgets/Box.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L18)*
 
 ___
-
 <a id="bottomright"></a>
 
-### «Optional» bottomRight
+### `<Optional>` bottomRight
 
-**●  bottomRight**:  *`string`* 
+**● bottomRight**: *`string`*
 
-*Defined in [widgets/Box.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L18)*
-
-
-
-
+*Defined in [widgets/Box.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L20)*
 
 ___
-
 <a id="center"></a>
 
-### «Optional» center
+### `<Optional>` center
 
-**●  center**:  *`string`* 
+**● center**: *`string`*
 
-*Defined in [widgets/Box.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L14)*
-
-
-
-
+*Defined in [widgets/Box.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L16)*
 
 ___
-
 <a id="fg"></a>
 
-### «Optional» fg
+### `<Optional>` fg
 
-**●  fg**:  *`string`* 
+**● fg**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
-
-
+*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L91)*
 
 foreground color (i.e. `#00ff00`)
 
-
-
-
 ___
-
 <a id="font"></a>
 
-### «Optional» font
+### `<Optional>` font
 
-**●  font**:  *`string`* 
+**● font**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
+*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L85)*
 
-
-
-font or font-family to use in the terminal The format is in this order: [style] [variant] [weight] [family]
-
-
-
+font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
 ___
+<a id="left"></a>
 
-<a id="fontoffsetx"></a>
+### `<Optional>` left
 
-### «Optional» fontOffsetX
+**● left**: *`string`*
 
-**●  fontOffsetX**:  *`number`* 
+*Defined in [widgets/Box.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L15)*
 
-*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
+___
+<a id="offsetx"></a>
 
-*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
+### `<Optional>` offsetX
 
+**● offsetX**: *`number`*
 
+*Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
+
+*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L87)*
 
 x-offset to apply to each character inside the tile
 
-
-
-
 ___
+<a id="offsety"></a>
 
-<a id="fontoffsety"></a>
+### `<Optional>` offsetY
 
-### «Optional» fontOffsetY
+**● offsetY**: *`number`*
 
-**●  fontOffsetY**:  *`number`* 
+*Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
-
-*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
-
-
+*Defined in [Terminal.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L89)*
 
 y-offset to apply to each character inside the tile
 
-
-
-
 ___
-
-<a id="left"></a>
-
-### «Optional» left
-
-**●  left**:  *`string`* 
-
-*Defined in [widgets/Box.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L13)*
-
-
-
-
-
-___
-
 <a id="right"></a>
 
-### «Optional» right
+### `<Optional>` right
 
-**●  right**:  *`string`* 
+**● right**: *`string`*
 
-*Defined in [widgets/Box.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L15)*
-
-
-
-
+*Defined in [widgets/Box.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L17)*
 
 ___
-
 <a id="top"></a>
 
-### «Optional» top
+### `<Optional>` top
 
-**●  top**:  *`string`* 
+**● top**: *`string`*
 
-*Defined in [widgets/Box.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L11)*
-
-
-
-
+*Defined in [widgets/Box.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L13)*
 
 ___
-
 <a id="topleft"></a>
 
-### «Optional» topLeft
+### `<Optional>` topLeft
 
-**●  topLeft**:  *`string`* 
+**● topLeft**: *`string`*
 
-*Defined in [widgets/Box.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L10)*
-
-
-
-
+*Defined in [widgets/Box.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L12)*
 
 ___
-
 <a id="topright"></a>
 
-### «Optional» topRight
+### `<Optional>` topRight
 
-**●  topRight**:  *`string`* 
+**● topRight**: *`string`*
 
-*Defined in [widgets/Box.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Box.ts#L12)*
-
-
-
-
+*Defined in [widgets/Box.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Box.ts#L14)*
 
 ___
-
 

@@ -13,11 +13,11 @@ export function assignCharStyle(target: CharStyle, source: CharStyle): CharStyle
     if (source.font) {
       target.font = source.font;
     }
-    if (source.fontOffsetX) {
-      target.fontOffsetX = source.fontOffsetX;
+    if (source.offsetX) {
+      target.offsetX = source.offsetX;
     }
-    if (source.fontOffsetY) {
-      target.fontOffsetY = source.fontOffsetY;
+    if (source.offsetY) {
+      target.offsetY = source.offsetY;
     }
     if (source.fg) {
       target.fg = source.fg;

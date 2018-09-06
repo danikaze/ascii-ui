@@ -1,7 +1,5 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md)
 
-
-
 # External module: "Terminal"
 
 ## Index
@@ -10,37 +8,49 @@
 
 * [Terminal](../classes/_terminal_.terminal.md)
 
-
 ### Interfaces
 
 * [CharStyle](../interfaces/_terminal_.charstyle.md)
 * [DecayTile](../interfaces/_terminal_.decaytile.md)
+* [EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md)
+* [ImageCropParams](../interfaces/_terminal_.imagecropparams.md)
+* [ImageOffset](../interfaces/_terminal_.imageoffset.md)
+* [ImageSize](../interfaces/_terminal_.imagesize.md)
+* [ImageTile](../interfaces/_terminal_.imagetile.md)
 * [InternalTile](../interfaces/_terminal_.internaltile.md)
 * [TerminalOptions](../interfaces/_terminal_.terminaloptions.md)
-* [Tile](../interfaces/_terminal_.tile.md)
+* [TextTile](../interfaces/_terminal_.texttile.md)
 * [TilePosition](../interfaces/_terminal_.tileposition.md)
 * [TileSize](../interfaces/_terminal_.tilesize.md)
 * [ViewPortOptions](../interfaces/_terminal_.viewportoptions.md)
 
-
 ### Type aliases
 
+* [AcceptedImage](_terminal_.md#acceptedimage)
 * [EscapeCallback](_terminal_.md#escapecallback)
 * [IterateTileCallback](_terminal_.md#iteratetilecallback)
 
-
-
 ---
+
 ## Type aliases
+
+<a id="acceptedimage"></a>
+
+###  AcceptedImage
+
+**ΤAcceptedImage**: * `HTMLImageElement` &#124; `HTMLCanvasElement`
+*
+
+*Defined in [Terminal.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L15)*
+
+___
 <a id="escapecallback"></a>
 
 ###  EscapeCallback
 
-**Τ EscapeCallback**:  *`function`* 
+**ΤEscapeCallback**: *`function`*
 
-*Defined in [Terminal.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L21)*
-
-
+*Defined in [Terminal.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L23)*
 
 Function called when the matching command is found
 *__param__*: The whole text
@@ -49,64 +59,37 @@ Function called when the matching command is found
 
 *__returns__*: index where the text processing should be continued
 
-
 #### Type declaration
-►(text: *`string`*, index: *`number`*): `number`
-
-
+▸(params: *[EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md)*): `number`
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| text | `string`   |  - |
-| index | `number`   |  - |
-
-
-
-
+| Param | Type |
+| ------ | ------ |
+| params | [EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md) |
 
 **Returns:** `number`
 
-
-
-
-
-
 ___
-
 <a id="iteratetilecallback"></a>
 
 ###  IterateTileCallback
 
-**Τ IterateTileCallback**:  *`function`* 
+**ΤIterateTileCallback**: *`function`*
 
-*Defined in [Terminal.ts:113](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L113)*
-
+*Defined in [Terminal.ts:170](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L170)*
 
 #### Type declaration
-►(InternalTile: *`any`*, i: *`any`*): `void`
-
-
+▸(InternalTile: *`any`*, i: *`any`*): `void`
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| InternalTile | `any`   |  - |
-| i | `any`   |  - |
-
-
-
-
+| Param | Type |
+| ------ | ------ |
+| InternalTile | `any` |
+| i | `any` |
 
 **Returns:** `void`
 
-
-
-
-
-
 ___
-
 

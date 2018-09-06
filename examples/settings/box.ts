@@ -106,15 +106,15 @@ function getBoxAspectLayoutSection(name: string, title: string): SettingsSection
             ],
           },
           {
-            title: 'Font Offset X',
+            title: 'Offset X',
             contents: [
-              new SettingNumber({ name: `${name}.boxTitle.fontOffsetX` }),
+              new SettingNumber({ name: `${name}.boxTitle.offsetX` }),
             ],
           },
           {
-            title: 'Font Offset Y',
+            title: 'Offset Y',
             contents: [
-              new SettingNumber({ name: `${name}.boxTitle.fontOffsetY` }),
+              new SettingNumber({ name: `${name}.boxTitle.offsetY` }),
             ],
           },
         ],
@@ -167,15 +167,15 @@ function getBoxAspectLayoutSection(name: string, title: string): SettingsSection
             ],
           },
           {
-            title: 'Font Offset X',
+            title: 'Offset X',
             contents: [
-              new SettingNumber({ name: `${name}.boxBorders.fontOffsetX` }),
+              new SettingNumber({ name: `${name}.boxBorders.offsetX` }),
             ],
           },
           {
-            title: 'Font Offset Y',
+            title: 'Offset Y',
             contents: [
-              new SettingNumber({ name: `${name}.boxBorders.fontOffsetY` }),
+              new SettingNumber({ name: `${name}.boxBorders.offsetY` }),
             ],
           },
         ],

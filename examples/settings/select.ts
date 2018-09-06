@@ -134,15 +134,15 @@ function getCharStyleSection(name: string, title: string): SettingsSection {
             ],
           },
           {
-            title: 'Font Offset X',
+            title: 'Offset X',
             contents: [
-              new SettingNumber({ name: `${name}.fontOffsetX` }),
+              new SettingNumber({ name: `${name}.offsetX` }),
             ],
           },
           {
-            title: 'Font Offset Y',
+            title: 'Offset Y',
             contents: [
-              new SettingNumber({ name: `${name}.fontOffsetY` }),
+              new SettingNumber({ name: `${name}.offsetY` }),
             ],
           },
         ],

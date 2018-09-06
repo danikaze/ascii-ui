@@ -1,11 +1,12 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [Terminal](../classes/_terminal_.terminal.md)
 
-
-
 # Class: Terminal
 
-
 Basic terminal features rendered into a Canvas object
+
+## Hierarchy
+
+**Terminal**
 
 ## Implements
 
@@ -17,14 +18,12 @@ Basic terminal features rendered into a Canvas object
 
 * [constructor](_terminal_.terminal.md#constructor)
 
-
 ### Properties
 
 * [eventManager](_terminal_.terminal.md#eventmanager)
 * [focusManager](_terminal_.terminal.md#focusmanager)
 * [options](_terminal_.terminal.md#options)
 * [defaultOptions](_terminal_.terminal.md#defaultoptions)
-
 
 ### Methods
 
@@ -47,868 +46,543 @@ Basic terminal features rendered into a Canvas object
 * [render](_terminal_.terminal.md#render)
 * [renderAll](_terminal_.terminal.md#renderall)
 * [setCursor](_terminal_.terminal.md#setcursor)
+* [setImage](_terminal_.terminal.md#setimage)
 * [setOptions](_terminal_.terminal.md#setoptions)
 * [setText](_terminal_.terminal.md#settext)
 * [setTextStyle](_terminal_.terminal.md#settextstyle)
 * [setTiles](_terminal_.terminal.md#settiles)
 
-
-
 ---
+
 ## Constructors
+
 <a id="constructor"></a>
 
+###  constructor
 
-### ⊕ **new Terminal**(canvas: *`HTMLCanvasElement`*, options?: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): [Terminal](_terminal_.terminal.md)
+⊕ **new Terminal**(canvas: *`HTMLCanvasElement`*, options?: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): [Terminal](_terminal_.terminal.md)
 
-
-*Defined in [Terminal.ts:152](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L152)*
-
-
+*Defined in [Terminal.ts:210](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L210)*
 
 Creates a Terminal associated to a canvas element.
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| canvas | `HTMLCanvasElement`   |  `<canvas>` element associated to the Terminal |
-| options | [TerminalOptions](../interfaces/_terminal_.terminaloptions.md)   |  - |
-
-
-
-
+| canvas | `HTMLCanvasElement` |  `<canvas>` element associated to the Terminal |
+| `Optional` options | [TerminalOptions](../interfaces/_terminal_.terminaloptions.md) |  Terminal options |
 
 **Returns:** [Terminal](_terminal_.terminal.md)
 
----
-
+___
 
 ## Properties
+
 <a id="eventmanager"></a>
 
 ###  eventManager
 
-**●  eventManager**:  *[EventManager](_eventmanager_.eventmanager.md)* 
+**● eventManager**: *[EventManager](_eventmanager_.eventmanager.md)*
 
-*Defined in [Terminal.ts:124](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L124)*
-
-
+*Defined in [Terminal.ts:182](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L182)*
 
 event manager for this terminal
 
-
-
-
 ___
-
 <a id="focusmanager"></a>
 
 ###  focusManager
 
-**●  focusManager**:  *[FocusManager](_focusmanager_.focusmanager.md)* 
+**● focusManager**: *[FocusManager](_focusmanager_.focusmanager.md)*
 
-*Defined in [Terminal.ts:122](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L122)*
-
-
+*Defined in [Terminal.ts:180](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L180)*
 
 focus manager for the Terminal widgets
 
-
-
-
 ___
-
 <a id="options"></a>
 
-### «Protected» options
+### `<Protected>` options
 
-**●  options**:  *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)* 
+**● options**: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*
 
-*Defined in [Terminal.ts:126](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L126)*
-
-
+*Defined in [Terminal.ts:184](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L184)*
 
 terminal options
 
-
-
-
 ___
-
 <a id="defaultoptions"></a>
 
-### «Static» defaultOptions
+### `<Static>` defaultOptions
 
-**●  defaultOptions**:  *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)* 
+**● defaultOptions**: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*
 
-*Defined in [Terminal.ts:120](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L120)*
-
-
+*Defined in [Terminal.ts:177](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L177)*
 
 Default options for widget instances
 
-
-
-
 ___
 
-
 ## Methods
+
 <a id="___iterator"></a>
 
 ###  __@iterator
 
-► **__@iterator**(startWidget?: *[Widget](_widget_.widget.md)⎮`number`*): [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)[Widget](_widget_.widget.md)
-
-
+▸ **__@iterator**(startWidget?: * [Widget](_widget_.widget.md) &#124; `number`*): [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)<[Widget](_widget_.widget.md)>
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[__@iterator](../interfaces/_widgetcontainer_.widgetcontainer.md#___iterator)*
 
-*Defined in [Terminal.ts:757](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L757)*
-
-
+*Defined in [Terminal.ts:873](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L873)*
 
 Get a bidirectional iterator to move across the attached widgets of the container
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| startWidget | [Widget](_widget_.widget.md)⎮`number`   |  if specified, the next call will start with this widget (return the next or previous one) |
+| `Optional` startWidget |  [Widget](_widget_.widget.md) &#124; `number`|  if specified, the next call will start with this widget (return the next or previous one) |
 
-
-
-
-
-**Returns:** [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)[Widget](_widget_.widget.md)
-
-
-
-
+**Returns:** [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)<[Widget](_widget_.widget.md)>
 
 ___
-
 <a id="attachwidget"></a>
 
 ###  attachWidget
 
-► **attachWidget**(WidgetClass: *[Widget](_widget_.widget.md)*, options?: *`any`*): [Widget](_widget_.widget.md)
+▸ **attachWidget**WidgetType(WidgetClass: *[WidgetConstructor](../modules/_widget_.md#widgetconstructor)<`WidgetType`>*, options?: *`any`*): `WidgetType`
 
-
-
-*Defined in [Terminal.ts:660](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L660)*
-
-
+*Defined in [Terminal.ts:776](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L776)*
 
 Create and attach a widget to this instance of the terminal
 
+**Type parameters:**
 
+#### WidgetType :  [Widget](_widget_.widget.md)
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| WidgetClass | [Widget](_widget_.widget.md)   |  Class of the widget |
-| options | `any`   |  Options for the widget constructor |
+| WidgetClass | [WidgetConstructor](../modules/_widget_.md#widgetconstructor)<`WidgetType`> |  Class of the widget |
+| `Optional` options | `any` |  Options for the widget constructor |
 
-
-
-
-
-**Returns:** [Widget](_widget_.widget.md)
+**Returns:** `WidgetType`
 handler of the attached widget. Required to deattach it.
 
-
-
-
-
-
 ___
-
 <a id="clear"></a>
 
 ###  clear
 
-► **clear**(): `void`
+▸ **clear**(): `void`
 
-► **clear**(col: *`number`*, line: *`number`*, width: *`number`*, height: *`number`*): `any`
+▸ **clear**(col: *`number`*, line: *`number`*, width: *`number`*, height: *`number`*): `any`
 
-
-
-*Defined in [Terminal.ts:220](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L220)*
-
-
+*Defined in [Terminal.ts:278](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L278)*
 
 Clear the whole terminal
 
-
-
-
 **Returns:** `void`
 
-
-
-*Defined in [Terminal.ts:230](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L230)*
-
-
+*Defined in [Terminal.ts:288](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L288)*
 
 Clear only the specified part of the terminal
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| col | `number`   |  - |
-| line | `number`   |  - |
-| width | `number`   |  - |
-| height | `number`   |  - |
-
-
-
-
+| col | `number` |  Starting column |
+| line | `number` |  Starting line |
+| width | `number` |  Width of the block to clear |
+| height | `number` |  Height of the vlock to clear |
 
 **Returns:** `any`
 
-
-
-
-
 ___
-
 <a id="dettachwidget"></a>
 
 ###  dettachWidget
 
-► **dettachWidget**(widget: *[Widget](_widget_.widget.md)*): `boolean`
-
-
+▸ **dettachWidget**(widget: *[Widget](_widget_.widget.md)*): `boolean`
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[dettachWidget](../interfaces/_widgetcontainer_.widgetcontainer.md#dettachwidget)*
 
-*Defined in [Terminal.ts:679](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L679)*
-
-
+*Defined in [Terminal.ts:795](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L795)*
 
 Dettach a widget from the terminal
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| widget | [Widget](_widget_.widget.md)   |  Widget to dettach |
-
-
-
-
+| widget | [Widget](_widget_.widget.md) |  Widget to dettach |
 
 **Returns:** `boolean`
 `true` if the widget was found (and removed). `false` if not found
 
-
-
-
-
-
 ___
-
 <a id="getcursor"></a>
 
 ###  getCursor
 
-► **getCursor**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
+▸ **getCursor**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-
-
-*Defined in [Terminal.ts:397](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L397)*
-
-
+*Defined in [Terminal.ts:477](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L477)*
 
 Get the position of the cursor, in tile coordinates
-
-
-
 
 **Returns:** [TilePosition](../interfaces/_terminal_.tileposition.md)
 current position of the cursor, in tile coordinates
 
-
-
-
-
-
 ___
-
 <a id="getleafwidgetat"></a>
 
 ###  getLeafWidgetAt
 
-► **getLeafWidgetAt**(column: *`number`*, line: *`number`*): [Widget](_widget_.widget.md)
+▸ **getLeafWidgetAt**(column: *`number`*, line: *`number`*): [Widget](_widget_.widget.md)
 
-
-
-*Defined in [Terminal.ts:716](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L716)*
-
-
+*Defined in [Terminal.ts:832](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L832)*
 
 Traverse the containers to get the last possible widget at the specified position
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| column | `number`   |  column of the terminal |
-| line | `number`   |  line of the terminal |
-
-
-
-
+| column | `number` |  column of the terminal |
+| line | `number` |  line of the terminal |
 
 **Returns:** [Widget](_widget_.widget.md)
 widget or `undefined` if not found
 
-
-
-
-
-
 ___
-
 <a id="getparent"></a>
 
 ###  getParent
 
-► **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
-
-
+▸ **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getParent](../interfaces/_widgetcontainer_.widgetcontainer.md#getparent)*
 
-*Defined in [Terminal.ts:649](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L649)*
-
-
+*Defined in [Terminal.ts:765](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L765)*
 
 Get the reference to the parent of the widget, if any
-
-
-
 
 **Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 parent if any, or `undefined`
 
-
-
-
-
-
 ___
-
 <a id="getsize"></a>
 
 ###  getSize
 
-► **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
+▸ **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
-
-
-*Defined in [Terminal.ts:376](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L376)*
-
-
+*Defined in [Terminal.ts:456](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L456)*
 
 Get the terminal size, measured in tiles
-
-
-
 
 **Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the terminal, measured in tiles
 
-
-
-
-
-
 ___
-
 <a id="gettext"></a>
 
 ###  getText
 
-► **getText**(size?: *`number`*, col?: *`number`*, line?: *`number`*): `string`
+▸ **getText**(size?: *`number`*, col?: *`number`*, line?: *`number`*): `string`
 
-
-
-*Defined in [Terminal.ts:594](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L594)*
-
-
+*Defined in [Terminal.ts:710](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L710)*
 
 Get the text of the terminal. By default gets the text from the current position of the cursor. If the `size` is reaches the end of the line, it will continue in the next one.
-
 
 **Parameters:**
 
 | Param | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| size | `number`  | 1 |   Number of tiles to get |
-| col | `number`  | - |   x-position of the starting tile. Current position of the cursor if not specified |
-| line | `number`  | - |   y-position of the starting tile. Current position of the cursor if not specified |
-
-
-
-
+| `Default value` size | `number` | 1 |  Number of tiles to get |
+| `Optional` col | `number` | - |  x-position of the starting tile. Current position of the cursor if not specified |
+| `Optional` line | `number` | - |  y-position of the starting tile. Current position of the cursor if not specified |
 
 **Returns:** `string`
 
-
-
-
-
 ___
-
 <a id="gettextstyle"></a>
 
 ###  getTextStyle
 
-► **getTextStyle**(): [CharStyle](../interfaces/_terminal_.charstyle.md)
+▸ **getTextStyle**(): [CharStyle](../interfaces/_terminal_.charstyle.md)
 
-
-
-*Defined in [Terminal.ts:481](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L481)*
-
-
+*Defined in [Terminal.ts:564](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L564)*
 
 Get the current style being applied to the `setText` calls
 
-
-
-
 **Returns:** [CharStyle](../interfaces/_terminal_.charstyle.md)
 
-
-
-
-
 ___
-
 <a id="gettileposition"></a>
 
 ###  getTilePosition
 
-► **getTilePosition**(x: *`number`*, y: *`number`*): [TilePosition](../interfaces/_terminal_.tileposition.md)
+▸ **getTilePosition**(x: *`number`*, y: *`number`*): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-
-
-*Defined in [Terminal.ts:460](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L460)*
-
-
+*Defined in [Terminal.ts:543](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L543)*
 
 Given a position in pixels relative to the top-left corner of the terminal, get the corresponding tile
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| x | `number`   |  pixels from the left corner in the grid |
-| y | `number`   |  pixels from the top corner in the grid |
-
-
-
-
+| x | `number` |  pixels from the left corner in the grid |
+| y | `number` |  pixels from the top corner in the grid |
 
 **Returns:** [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-
-
-
-
 ___
-
 <a id="getviewport"></a>
 
 ###  getViewport
 
-► **getViewport**(): [ViewPortOptions](../interfaces/_terminal_.viewportoptions.md)
+▸ **getViewport**(): [ViewPortOptions](../interfaces/_terminal_.viewportoptions.md)
 
-
-
-*Defined in [Terminal.ts:367](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L367)*
-
-
+*Defined in [Terminal.ts:447](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L447)*
 
 Get the drawing limits (viewport) of the terminal
-
-
-
 
 **Returns:** [ViewPortOptions](../interfaces/_terminal_.viewportoptions.md)
 Current viewport of the terminal
 
-
-
-
-
-
 ___
-
 <a id="getwidgetat"></a>
 
 ###  getWidgetAt
 
-► **getWidgetAt**(column: *`number`*, line: *`number`*): [Widget](_widget_.widget.md)
-
-
+▸ **getWidgetAt**(column: *`number`*, line: *`number`*): [Widget](_widget_.widget.md)
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getWidgetAt](../interfaces/_widgetcontainer_.widgetcontainer.md#getwidgetat)*
 
-*Defined in [Terminal.ts:699](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L699)*
-
-
+*Defined in [Terminal.ts:815](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L815)*
 
 Get a previously attached widget by its position
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| column | `number`   |  column of the terminal |
-| line | `number`   |  line of the terminal |
-
-
-
-
+| column | `number` |  column of the terminal |
+| line | `number` |  line of the terminal |
 
 **Returns:** [Widget](_widget_.widget.md)
 widget or `undefined` if not found (wrong id or previously dettached)
 
-
-
-
-
-
 ___
-
 <a id="getwidgetpath"></a>
 
 ###  getWidgetPath
 
-► **getWidgetPath**(widget: *[Widget](_widget_.widget.md)*): `Array`.<[Widget](_widget_.widget.md)⎮[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
+▸ **getWidgetPath**(widget: *[Widget](_widget_.widget.md)*): `Array`< [Widget](_widget_.widget.md) &#124; [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
 
-
-
-*Defined in [Terminal.ts:740](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L740)*
-
-
+*Defined in [Terminal.ts:856](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L856)*
 
 Get the list of widgets from the widget until the terminal itself (not included) The result will be `undefined` if the widget is not found as a descendant of this terminal
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| widget | [Widget](_widget_.widget.md)   |  Widget to start the list with |
+| widget | [Widget](_widget_.widget.md) |  Widget to start the list with |
 
-
-
-
-
-**Returns:** `Array`.<[Widget](_widget_.widget.md)⎮[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
+**Returns:** `Array`< [Widget](_widget_.widget.md) &#124; [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
 list of widgets from the `widget` itself (included) to the terminal (not included)
 
-
-
-
-
-
 ___
-
 <a id="iscursorenabled"></a>
 
 ###  isCursorEnabled
 
-► **isCursorEnabled**(): `boolean`
+▸ **isCursorEnabled**(): `boolean`
 
-
-
-*Defined in [Terminal.ts:388](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L388)*
-
-
+*Defined in [Terminal.ts:468](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L468)*
 
 Get the current status of the cursor
-
-
-
 
 **Returns:** `boolean`
 `true` if the cursor is enabled, `false` otherwise
 
-
-
-
-
-
 ___
-
 <a id="movecursor"></a>
 
 ###  moveCursor
 
-► **moveCursor**(dx: *`number`*, dy: *`number`*): `void`
+▸ **moveCursor**(dx: *`number`*, dy: *`number`*): `void`
 
-
-
-*Defined in [Terminal.ts:449](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L449)*
-
-
+*Defined in [Terminal.ts:532](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L532)*
 
 Set the new position of the cursor, relative to the current one
 
-
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| dx | `number`   |  - |
-| dy | `number`   |  - |
-
-
-
-
+| Param | Type |
+| ------ | ------ |
+| dx | `number` |
+| dy | `number` |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="render"></a>
 
 ###  render
 
-► **render**(): `void`
+▸ **render**(): `void`
 
-
-
-*Defined in [Terminal.ts:277](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L277)*
-
-
+*Defined in [Terminal.ts:343](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L343)*
 
 Render the terminal status into the canvas context. It works with a list of _dirty_ tiles so it only renders what's changed.
 
 It's called automatically if `options.autoRender` is `true` (recommended), but can be set to `false` and call this method manually from outside.
 
-
-
-
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="renderall"></a>
 
 ###  renderAll
 
-► **renderAll**(): `void`
+▸ **renderAll**(): `void`
 
-
-
-*Defined in [Terminal.ts:352](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L352)*
-
-
+*Defined in [Terminal.ts:432](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L432)*
 
 Forces a render of all the tiles, not only the changed ones
 
-
-
-
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="setcursor"></a>
 
 ###  setCursor
 
-► **setCursor**(col: *`number`*, line: *`number`*): `void`
+▸ **setCursor**(col: *`number`*, line: *`number`*): `void`
 
-
-
-*Defined in [Terminal.ts:410](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L410)*
-
-
+*Defined in [Terminal.ts:490](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L490)*
 
 Set the new position of the cursor
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| col | `number`   |  x-coordinate of the tile in the grid |
-| line | `number`   |  y-coordinate of the tile in the grid |
-
-
-
-
+| col | `number` |  x-coordinate of the tile in the grid |
+| line | `number` |  y-coordinate of the tile in the grid |
 
 **Returns:** `void`
 
+___
+<a id="setimage"></a>
 
+###  setImage
 
+▸ **setImage**(img: *[AcceptedImage](../modules/_terminal_.md#acceptedimage)*, col?: *`number`*, line?: *`number`*, offset?: *[ImageOffset](../interfaces/_terminal_.imageoffset.md)*, size?: *[ImageSize](../interfaces/_terminal_.imagesize.md)*, crop?: *[ImageCropParams](../interfaces/_terminal_.imagecropparams.md)*): `void`
 
+*Defined in [Terminal.ts:688](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L688)*
+
+Draws an image to the terminal.
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| img | [AcceptedImage](../modules/_terminal_.md#acceptedimage) |  Image or source image to set |
+| `Optional` col | `number` |  x-position of the starting tile. Current position of the cursor if not specified |
+| `Optional` line | `number` |  y-position of the starting tile. Current position of the cursor if not specified |
+| `Optional` offset | [ImageOffset](../interfaces/_terminal_.imageoffset.md) |
+| `Optional` size | [ImageSize](../interfaces/_terminal_.imagesize.md) |
+| `Optional` crop | [ImageCropParams](../interfaces/_terminal_.imagecropparams.md) |  If only a portion of \`img\` is to be drawn, cropping parameters are specified here |
+
+**Returns:** `void`
 
 ___
-
 <a id="setoptions"></a>
 
 ###  setOptions
 
-► **setOptions**(options: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): `void`
+▸ **setOptions**(options: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): `void`
 
-
-
-*Defined in [Terminal.ts:180](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L180)*
-
-
+*Defined in [Terminal.ts:238](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L238)*
 
 Update the values of the Terminal options
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [TerminalOptions](../interfaces/_terminal_.terminaloptions.md)   |  new options to set |
-
-
-
-
+| options | [TerminalOptions](../interfaces/_terminal_.terminaloptions.md) |  new options to set |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="settext"></a>
 
 ###  setText
 
-► **setText**(text: *`string`*, col?: *`number`*, line?: *`number`*): `void`
+▸ **setText**(text: *`string`*, col?: *`number`*, line?: *`number`*): `void`
 
+*Defined in [Terminal.ts:587](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L587)*
 
-
-*Defined in [Terminal.ts:504](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L504)*
-
-
-
-Input a simple text in the terminal. By default the text will be set in the current position of the cursor. If the text reaches the right side of the terminal, will break into a new line as is (there's no word begin-end control when breaking a word). There's no character escape done (such as \n)
-
+Input a simple text in the terminal. By default the text will be set in the current position of the cursor. If the text reaches the right side of the terminal, will break into a new line as is (there's no word begin-end control when breaking a word). There's no character escape done (such as \\n)
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| text | `string`   |  text to set in the given position |
-| col | `number`   |  x-position of the starting tile. Current position of the cursor if not specified |
-| line | `number`   |  y-position of the starting tile. Current position of the cursor if not specified |
-
-
-
-
+| text | `string` |  text to set in the given position |
+| `Optional` col | `number` |  x-position of the starting tile. Current position of the cursor if not specified |
+| `Optional` line | `number` |  y-position of the starting tile. Current position of the cursor if not specified |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="settextstyle"></a>
 
 ###  setTextStyle
 
-► **setTextStyle**(style: *[CharStyle](../interfaces/_terminal_.charstyle.md)*): `void`
+▸ **setTextStyle**(style: *[CharStyle](../interfaces/_terminal_.charstyle.md)*): `void`
 
-
-
-*Defined in [Terminal.ts:474](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L474)*
-
-
+*Defined in [Terminal.ts:557](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L557)*
 
 Set the style to apply in the `setText` calls. Passed `style` object can have other properties, but only the ones related to the style will be applied.
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| style | [CharStyle](../interfaces/_terminal_.charstyle.md)   |  new style to set for future text |
-
-
-
-
+| style | [CharStyle](../interfaces/_terminal_.charstyle.md) |  new style to set for future text |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="settiles"></a>
 
 ###  setTiles
 
-► **setTiles**(tiles: *[Tile](../interfaces/_terminal_.tile.md)⎮[Tile](../interfaces/_terminal_.tile.md)[]*, col?: *`number`*, line?: *`number`*): `void`
+▸ **setTiles**(tiles: * [TextTile](../interfaces/_terminal_.texttile.md) &#124; [TextTile](../interfaces/_terminal_.texttile.md)[] &#124; [ImageTile](../interfaces/_terminal_.imagetile.md) &#124; [ImageTile](../interfaces/_terminal_.imagetile.md)[]*, col?: *`number`*, line?: *`number`*): `void`
 
-
-
-*Defined in [Terminal.ts:621](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L621)*
-
-
+*Defined in [Terminal.ts:737](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L737)*
 
 Works like `setText` but specifying all the properties of a tile, not only the text.
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| tiles | [Tile](../interfaces/_terminal_.tile.md)⎮[Tile](../interfaces/_terminal_.tile.md)[]   |  Tile or list of tiles to set |
-| col | `number`   |  x-position of the starting tile. Current position of the cursor if not specified |
-| line | `number`   |  y-position of the starting tile. Current position of the cursor if not specified |
-
-
-
-
+| tiles |  [TextTile](../interfaces/_terminal_.texttile.md) &#124; [TextTile](../interfaces/_terminal_.texttile.md)[] &#124; [ImageTile](../interfaces/_terminal_.imagetile.md) &#124; [ImageTile](../interfaces/_terminal_.imagetile.md)[]|  Tile or list of tiles to set |
+| `Optional` col | `number` |  x-position of the starting tile. Current position of the cursor if not specified |
+| `Optional` line | `number` |  y-position of the starting tile. Current position of the cursor if not specified |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 

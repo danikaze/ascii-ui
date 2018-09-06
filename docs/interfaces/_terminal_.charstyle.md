@@ -1,7 +1,5 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [CharStyle](../interfaces/_terminal_.charstyle.md)
 
-
-
 # Interface: CharStyle
 
 ## Hierarchy
@@ -10,113 +8,79 @@
 
 ↳  [TerminalOptions](_terminal_.terminaloptions.md)
 
-
-
-
-↳  [Tile](_terminal_.tile.md)
-
-
-
+↳  [TextTile](_terminal_.texttile.md)
 
 ↳  [BoxBorderOptions](_widgets_box_.boxborderoptions.md)
 
-
-
-
 ↳  [BoxTitleOptions](_widgets_box_.boxtitleoptions.md)
 
+## Index
 
+### Properties
 
+* [bg](_terminal_.charstyle.md#bg)
+* [fg](_terminal_.charstyle.md#fg)
+* [font](_terminal_.charstyle.md#font)
+* [offsetX](_terminal_.charstyle.md#offsetx)
+* [offsetY](_terminal_.charstyle.md#offsety)
 
-
-
-
-
+---
 
 ## Properties
+
 <a id="bg"></a>
 
-### «Optional» bg
+### `<Optional>` bg
 
-**●  bg**:  *`string`* 
+**● bg**: *`string`*
 
-*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
-
-
+*Defined in [Terminal.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L93)*
 
 background color (i.e. `#000000`)
 
-
-
-
 ___
-
 <a id="fg"></a>
 
-### «Optional» fg
+### `<Optional>` fg
 
-**●  fg**:  *`string`* 
+**● fg**: *`string`*
 
-*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
-
-
+*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L91)*
 
 foreground color (i.e. `#00ff00`)
 
-
-
-
 ___
-
 <a id="font"></a>
 
-### «Optional» font
+### `<Optional>` font
 
-**●  font**:  *`string`* 
+**● font**: *`string`*
 
-*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
+*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L85)*
 
-
-
-font or font-family to use in the terminal The format is in this order: [style] [variant] [weight] [family]
-
-
-
+font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
 ___
+<a id="offsetx"></a>
 
-<a id="fontoffsetx"></a>
+### `<Optional>` offsetX
 
-### «Optional» fontOffsetX
+**● offsetX**: *`number`*
 
-**●  fontOffsetX**:  *`number`* 
-
-*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
-
-
+*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L87)*
 
 x-offset to apply to each character inside the tile
 
-
-
-
 ___
+<a id="offsety"></a>
 
-<a id="fontoffsety"></a>
+### `<Optional>` offsetY
 
-### «Optional» fontOffsetY
+**● offsetY**: *`number`*
 
-**●  fontOffsetY**:  *`number`* 
-
-*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
-
-
+*Defined in [Terminal.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L89)*
 
 y-offset to apply to each character inside the tile
 
-
-
-
 ___
-
 

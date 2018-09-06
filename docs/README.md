@@ -1,5 +1,6 @@
 
-# terminal-in-canvas
+terminal-in-canvas
+==================
 
 There are several projects that allows you to use the JavaScript canvas in the terminal but... have you ever needed (or just wanted) to use a terminal in a HTML page (through canvas)?
 
@@ -8,8 +9,6 @@ No? Really, not even once? Well, I don't care.
 And thanks to my lack of empathy this project allows you to have access to a low-level interface to modify directly a buffer to render characters like the old style terminals.
 
 ![Input Widget demo](assets/demo-input.gif)
-
-
 
 ## Index
 
@@ -23,6 +22,7 @@ And thanks to my lack of empathy this project allows you to have access to a low
 * ["WidgetContainer"](modules/_widgetcontainer_.md)
 * ["util/assignCharStyle"](modules/_util_assigncharstyle_.md)
 * ["util/clamp"](modules/_util_clamp_.md)
+* ["util/coalesce"](modules/_util_coalesce_.md)
 * ["util/deepAssign"](modules/_util_deepassign_.md)
 * ["util/deepAssignAndDiff"](modules/_util_deepassignanddiff_.md)
 * ["util/emptyArray"](modules/_util_emptyarray_.md)
@@ -36,6 +36,5 @@ And thanks to my lack of empathy this project allows you to have access to a low
 * ["widgets/Select"](modules/_widgets_select_.md)
 * ["widgets/Text"](modules/_widgets_text_.md)
 
-
-
 ---
+

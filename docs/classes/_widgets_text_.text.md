@@ -1,31 +1,20 @@
 [terminal-in-canvas](../README.md) > ["widgets/Text"](../modules/_widgets_text_.md) > [Text](../classes/_widgets_text_.text.md)
 
-
-
 # Class: Text
-
 
 Display formatted text in the terminal, allowing vertical scroll
 
 ## Hierarchy
 
-
- [Widget](_widget_.widget.md)
+ [Widget](_widget_.widget.md)<[TextOptions](../interfaces/_widgets_text_.textoptions.md)>
 
 **↳ Text**
-
-
-
-
-
-
 
 ## Index
 
 ### Constructors
 
 * [constructor](_widgets_text_.text.md#constructor)
-
 
 ### Properties
 
@@ -36,7 +25,6 @@ Display formatted text in the terminal, allowing vertical scroll
 * [terminal](_widgets_text_.text.md#terminal)
 * [defaultOptions](_widgets_text_.text.md#defaultoptions)
 
-
 ### Methods
 
 * [blur](_widgets_text_.text.md#blur)
@@ -44,6 +32,7 @@ Display formatted text in the terminal, allowing vertical scroll
 * [getParent](_widgets_text_.text.md#getparent)
 * [getPosition](_widgets_text_.text.md#getposition)
 * [getSize](_widgets_text_.text.md#getsize)
+* [getTextSize](_widgets_text_.text.md#gettextsize)
 * [isAt](_widgets_text_.text.md#isat)
 * [isFocusable](_widgets_text_.text.md#isfocusable)
 * [isFocused](_widgets_text_.text.md#isfocused)
@@ -51,506 +40,331 @@ Display formatted text in the terminal, allowing vertical scroll
 * [scrollLines](_widgets_text_.text.md#scrolllines)
 * [scrollPages](_widgets_text_.text.md#scrollpages)
 * [setOptions](_widgets_text_.text.md#setoptions)
-* [setScroll](_widgets_text_.text.md#setscroll)
+* [setScrollLine](_widgets_text_.text.md#setscrollline)
 * [updateOptions](_widgets_text_.text.md#updateoptions)
 
-
-
 ---
+
 ## Constructors
+
 <a id="constructor"></a>
 
+###  constructor
 
-### ⊕ **new Text**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Text](_widgets_text_.text.md)
-
+⊕ **new Text**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Text](_widgets_text_.text.md)
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Text.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L62)*
-
-
+*Defined in [widgets/Text.ts:67](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L67)*
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| terminal | [Terminal](_terminal_.terminal.md)   |  - |
-| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md)   |  - |
-| parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
-
-
-
-
+| Param | Type |
+| ------ | ------ |
+| terminal | [Terminal](_terminal_.terminal.md) |
+| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md) |
+| `Optional` parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md) |
 
 **Returns:** [Text](_widgets_text_.text.md)
 
----
-
+___
 
 ## Properties
+
 <a id="allocated"></a>
 
-### «Protected» allocated
+### `<Protected>` allocated
 
-**●  allocated**:  *`boolean`* 
+**● allocated**: *`boolean`*
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L35)*
-
-
+*Defined in [Widget.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L38)*
 
 If the widget has been allocated or not
 
-
-
-
 ___
-
 <a id="focused"></a>
 
-### «Protected» focused
+### `<Protected>` focused
 
-**●  focused**:  *`boolean`* 
+**● focused**: *`boolean`*
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L33)*
-
-
+*Defined in [Widget.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L36)*
 
 If the widget is focused or not
 
-
-
-
 ___
-
 <a id="options"></a>
 
-### «Protected» options
+### `<Protected>` options
 
-**●  options**:  *[TextOptions](../interfaces/_widgets_text_.textoptions.md)* 
+**● options**: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)* =  {} as any
 
-*Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
+*Inherited from [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/Text.ts:50](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L50)*
+*Defined in [Widget.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L34)*
 
-
-
-Options of the Text widget
-
-
-
+Widget options
 
 ___
-
 <a id="parent"></a>
 
-### «Protected»«Optional» parent
+### `<Protected>``<Optional>` parent
 
-**●  parent**:  *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)* 
+**● parent**: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L29)*
-
-
+*Defined in [Widget.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L32)*
 
 container of the widget, if any
 
-
-
-
 ___
-
 <a id="terminal"></a>
 
-### «Protected» terminal
+### `<Protected>` terminal
 
-**●  terminal**:  *[Terminal](_terminal_.terminal.md)* 
+**● terminal**: *[Terminal](_terminal_.terminal.md)*
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L27)*
-
-
+*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L30)*
 
 Reference to the parent terminal where it should be rendered
 
-
-
-
 ___
-
 <a id="defaultoptions"></a>
 
-### «Static» defaultOptions
+### `<Static>` defaultOptions
 
-**●  defaultOptions**:  *[TextOptions](../interfaces/_widgets_text_.textoptions.md)* 
+**● defaultOptions**: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/Text.ts:48](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L48)*
-
-
+*Defined in [widgets/Text.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L56)*
 
 Default options for widget instances
 
-
-
-
 ___
 
-
 ## Methods
+
 <a id="blur"></a>
 
 ###  blur
 
-► **blur**(): `void`
-
-
+▸ **blur**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L156)*
-
-
+*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L167)*
 
 Remove the focus from this widget. Usually done by a upper level that controls other widgets.
 
-
-
-
-**Returns:** `void`
-
-
-
-
+**Returns:** `boolean`
+`true` if it was focused and blurred properly
 
 ___
-
 <a id="focus"></a>
 
 ###  focus
 
-► **focus**(): `void`
-
-
+▸ **focus**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L142)*
-
-
+*Defined in [Widget.ts:147](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L147)*
 
 Set this Widget as focused. Usually done by a upper level that controls other widgets (so the previously focused widget is blurred)
 
-
-
-
-**Returns:** `void`
-
-
-
-
+**Returns:** `boolean`
+`true` if it wasn't focused and focused properly
 
 ___
-
 <a id="getparent"></a>
 
 ###  getParent
 
-► **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
-
-
+▸ **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L58)*
-
-
+*Defined in [Widget.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L61)*
 
 Get the reference to the parent of the widget, if any
-
-
-
 
 **Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 parent if any, or `undefined`
 
-
-
-
-
-
 ___
-
 <a id="getposition"></a>
 
 ###  getPosition
 
-► **getPosition**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
-
-
+▸ **getPosition**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L106)*
-
-
+*Defined in [Widget.ts:109](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L109)*
 
 Get the position of the widget, in tile coordinates
-
-
-
 
 **Returns:** [TilePosition](../interfaces/_terminal_.tileposition.md)
 current position of the widget, in tile coordinates
 
-
-
-
-
-
 ___
-
 <a id="getsize"></a>
 
 ###  getSize
 
-► **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
-
-
+▸ **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L94)*
-
-
+*Defined in [Widget.ts:97](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L97)*
 
 Get the widget size, measured in tiles
-
-
-
 
 **Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the widget, measured in tiles
 
+___
+<a id="gettextsize"></a>
 
+###  getTextSize
 
+▸ **getTextSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
+*Defined in [widgets/Text.ts:144](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L144)*
 
+Get the size of the box if the text would be fully displayed
+
+**Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
+Size of the full text
 
 ___
-
 <a id="isat"></a>
 
 ###  isAt
 
-► **isAt**(column: *`number`*, line: *`number`*): `boolean`
-
-
+▸ **isAt**(column: *`number`*, line: *`number`*): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:120](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L120)*
-
-
+*Defined in [Widget.ts:123](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L123)*
 
 Check if the widget is (overlaps) the specified position
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| column | `number`   |  x-position of the terminal (in tiles) |
-| line | `number`   |  y-position of the terminal (in tiles) |
-
-
-
-
+| column | `number` |  x-position of the terminal (in tiles) |
+| line | `number` |  y-position of the terminal (in tiles) |
 
 **Returns:** `boolean`
 `true` if the specified tile is _inside_ the widget
 
-
-
-
-
-
 ___
-
 <a id="isfocusable"></a>
 
 ###  isFocusable
 
-► **isFocusable**(): `boolean`
-
-
+▸ **isFocusable**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L134)*
-
-
+*Defined in [Widget.ts:137](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L137)*
 
 Check if this widget is focusable (when cycling over widgets)
-
-
-
 
 **Returns:** `boolean`
 `true` if focusable, `false` if not
 
-
-
-
-
-
 ___
-
 <a id="isfocused"></a>
 
 ###  isFocused
 
-► **isFocused**(): `boolean`
-
-
+▸ **isFocused**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:169](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L169)*
-
-
+*Defined in [Widget.ts:182](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L182)*
 
 Check if the widget is currently focused or not
-
-
-
 
 **Returns:** `boolean`
 if the widget is focused or not.
 
-
-
-
-
-
 ___
-
 <a id="render"></a>
 
 ###  render
 
-► **render**(): `void`
-
-
+▸ **render**(): `void`
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Text.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L75)*
-
-
+*Defined in [widgets/Text.ts:81](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L81)*
 
 Render the widget in the associated terminal
 
-
-
-
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="scrolllines"></a>
 
 ###  scrollLines
 
-► **scrollLines**(lines: *`number`*): `boolean`
+▸ **scrollLines**(lines: *`number`*): `boolean`
 
-
-
-*Defined in [widgets/Text.ts:166](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L166)*
-
-
+*Defined in [widgets/Text.ts:188](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L188)*
 
 Move the starting line of the text
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| lines | `number`   |  Number of lines to scroll the text |
-
-
-
-
+| lines | `number` |  Number of lines to scroll the text |
 
 **Returns:** `boolean`
 `true` if there is more content after `line`, or `false` if it was the last line
 
-
-
-
-
-
 ___
-
 <a id="scrollpages"></a>
 
 ###  scrollPages
 
-► **scrollPages**(pages: *`number`*): `boolean`
+▸ **scrollPages**(pages: *`number`*): `boolean`
 
-
-
-*Defined in [widgets/Text.ts:176](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L176)*
-
-
+*Defined in [widgets/Text.ts:198](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L198)*
 
 Move the starting line of the text by pages
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| pages | `number`   |  Number of pages to scroll |
-
-
-
-
+| pages | `number` |  Number of pages to scroll |
 
 **Returns:** `boolean`
 `true` if there is more pages or `false` if it was the last one
 
-
-
-
-
-
 ___
-
 <a id="setoptions"></a>
 
 ###  setOptions
 
-► **setOptions**(options: *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)*): `void`
-
-
+▸ **setOptions**(options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*): `void`
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L74)*
-
-
+*Defined in [Widget.ts:77](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L77)*
 
 Update the options. Always use this setter so the widget knows about the change instead of changing the (protected) variable directly. The widget might do some internal calcs when this method is called.
 
@@ -559,94 +373,54 @@ Do not reimplement this setter in any subclass, but implement `updateOptions`
 
 *__see__*: updateOptions
 
-
-
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [WidgetOptions](../interfaces/_widget_.widgetoptions.md)   |  Options to change. |
-
-
-
-
+| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md) |  Options to change. |
 
 **Returns:** `void`
 
-
-
-
-
 ___
+<a id="setscrollline"></a>
 
-<a id="setscroll"></a>
+###  setScrollLine
 
-###  setScroll
+▸ **setScrollLine**(line: *`number`*): `boolean`
 
-► **setScroll**(line: *`number`*): `boolean`
-
-
-
-*Defined in [widgets/Text.ts:135](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L135)*
-
-
+*Defined in [widgets/Text.ts:157](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L157)*
 
 Set the starting line of the text
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| line | `number`   |  First line to draw |
-
-
-
-
+| line | `number` |  First line to draw |
 
 **Returns:** `boolean`
 `true` if there is more content after `line`, or `false` if it was the end
 
-
-
-
-
-
 ___
-
 <a id="updateoptions"></a>
 
-### «Protected» updateOptions
+### `<Protected>` updateOptions
 
-► **updateOptions**(options: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*): `void`
-
-
+▸ **updateOptions**(changes: *[TextOptions](../interfaces/_widgets_text_.textoptions.md)*): `void`
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Text.ts:186](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L186)*
-
-
+*Defined in [widgets/Text.ts:208](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L208)*
 
 `setOptions` will assign the options to `this.options`, but any derivated calculation should be done here.
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [TextOptions](../interfaces/_widgets_text_.textoptions.md)   |  - |
-
-
-
-
+| changes | [TextOptions](../interfaces/_widgets_text_.textoptions.md) |  Object with only the changed options |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 

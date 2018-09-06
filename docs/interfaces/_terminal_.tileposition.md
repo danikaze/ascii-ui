@@ -1,43 +1,42 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-
-
 # Interface: TilePosition
 
+## Hierarchy
+
+**TilePosition**
+
+## Index
+
+### Properties
+
+* [col](_terminal_.tileposition.md#col)
+* [line](_terminal_.tileposition.md#line)
+
+---
 
 ## Properties
+
 <a id="col"></a>
 
 ###  col
 
-**●  col**:  *`number`* 
+**● col**: *`number`*
 
-*Defined in [Terminal.ts:108](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L108)*
-
-
+*Defined in [Terminal.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L74)*
 
 x-coordinate of a tile in the grid
 
-
-
-
 ___
-
 <a id="line"></a>
 
 ###  line
 
-**●  line**:  *`number`* 
+**● line**: *`number`*
 
-*Defined in [Terminal.ts:110](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L110)*
-
-
+*Defined in [Terminal.ts:76](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L76)*
 
 y-coordinate of a tile in the grid
 
-
-
-
 ___
-
 

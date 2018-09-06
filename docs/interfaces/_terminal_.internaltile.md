@@ -1,170 +1,200 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [InternalTile](../interfaces/_terminal_.internaltile.md)
 
-
-
 # Interface: InternalTile
 
 ## Hierarchy
 
+↳  [TextTile](_terminal_.texttile.md)
 
-↳  [Tile](_terminal_.tile.md)
+ [ImageTile](_terminal_.imagetile.md)
 
 **↳ InternalTile**
 
+## Index
 
+### Properties
 
+* [bg](_terminal_.internaltile.md#bg)
+* [char](_terminal_.internaltile.md#char)
+* [crop](_terminal_.internaltile.md#crop)
+* [dstH](_terminal_.internaltile.md#dsth)
+* [dstW](_terminal_.internaltile.md#dstw)
+* [fg](_terminal_.internaltile.md#fg)
+* [font](_terminal_.internaltile.md#font)
+* [image](_terminal_.internaltile.md#image)
+* [offset](_terminal_.internaltile.md#offset)
+* [offsetX](_terminal_.internaltile.md#offsetx)
+* [offsetY](_terminal_.internaltile.md#offsety)
+* [x](_terminal_.internaltile.md#x)
+* [y](_terminal_.internaltile.md#y)
 
-
-
-
+---
 
 ## Properties
+
 <a id="bg"></a>
 
-### «Optional» bg
+### `<Optional>` bg
 
-**●  bg**:  *`string`* 
+**● bg**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
-
-
+*Defined in [Terminal.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L93)*
 
 background color (i.e. `#000000`)
 
-
-
-
 ___
-
 <a id="char"></a>
 
 ###  char
 
-**●  char**:  *`string`* 
+**● char**: *`string`*
 
-*Inherited from [Tile](_terminal_.tile.md).[char](_terminal_.tile.md#char)*
+*Inherited from [TextTile](_terminal_.texttile.md).[char](_terminal_.texttile.md#char)*
 
-*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L91)*
-
-
+*Defined in [Terminal.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L142)*
 
 char to display in the tile
 
+___
+<a id="crop"></a>
 
+### `<Optional>` crop
 
+**● crop**: *[ImageCropParams](_terminal_.imagecropparams.md)*
+
+*Inherited from [ImageTile](_terminal_.imagetile.md).[crop](_terminal_.imagetile.md#crop)*
+
+*Defined in [Terminal.ts:155](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L155)*
+
+Crop parameters for `img`
 
 ___
+<a id="dsth"></a>
 
+###  dstH
+
+**● dstH**: *`number`*
+
+*Inherited from [ImageTile](_terminal_.imagetile.md).[dstH](_terminal_.imagetile.md#dsth)*
+
+*Defined in [Terminal.ts:151](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L151)*
+
+destiny height
+
+___
+<a id="dstw"></a>
+
+###  dstW
+
+**● dstW**: *`number`*
+
+*Inherited from [ImageTile](_terminal_.imagetile.md).[dstW](_terminal_.imagetile.md#dstw)*
+
+*Defined in [Terminal.ts:149](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L149)*
+
+destiny width
+
+___
 <a id="fg"></a>
 
-### «Optional» fg
+### `<Optional>` fg
 
-**●  fg**:  *`string`* 
+**● fg**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
-
-
+*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L91)*
 
 foreground color (i.e. `#00ff00`)
 
-
-
-
 ___
-
 <a id="font"></a>
 
-### «Optional» font
+### `<Optional>` font
 
-**●  font**:  *`string`* 
+**● font**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
+*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L85)*
 
-
-
-font or font-family to use in the terminal The format is in this order: [style] [variant] [weight] [family]
-
-
-
+font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
 ___
+<a id="image"></a>
 
-<a id="fontoffsetx"></a>
+###  image
 
-### «Optional» fontOffsetX
+**● image**: *[AcceptedImage](../modules/_terminal_.md#acceptedimage)*
 
-**●  fontOffsetX**:  *`number`* 
+*Inherited from [ImageTile](_terminal_.imagetile.md).[image](_terminal_.imagetile.md#image)*
 
-*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
+*Defined in [Terminal.ts:147](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L147)*
 
-*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
+image to draw
 
+___
+<a id="offset"></a>
 
+### `<Optional>` offset
+
+**● offset**: *[ImageOffset](_terminal_.imageoffset.md)*
+
+*Inherited from [ImageTile](_terminal_.imagetile.md).[offset](_terminal_.imagetile.md#offset)*
+
+*Defined in [Terminal.ts:153](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L153)*
+
+Offset in the destiny coordinates
+
+___
+<a id="offsetx"></a>
+
+### `<Optional>` offsetX
+
+**● offsetX**: *`number`*
+
+*Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
+
+*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L87)*
 
 x-offset to apply to each character inside the tile
 
-
-
-
 ___
+<a id="offsety"></a>
 
-<a id="fontoffsety"></a>
+### `<Optional>` offsetY
 
-### «Optional» fontOffsetY
+**● offsetY**: *`number`*
 
-**●  fontOffsetY**:  *`number`* 
+*Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
-
-*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
-
-
+*Defined in [Terminal.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L89)*
 
 y-offset to apply to each character inside the tile
 
-
-
-
 ___
-
 <a id="x"></a>
 
 ###  x
 
-**●  x**:  *`number`* 
+**● x**: *`number`*
 
-*Defined in [Terminal.ts:96](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L96)*
+*Defined in [Terminal.ts:160](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L160)*
 
-
-
-pre-calculated tile x-position in pixels
-
-
-
+pre-calculated tile (not contents) x-position in pixels
 
 ___
-
 <a id="y"></a>
 
 ###  y
 
-**●  y**:  *`number`* 
+**● y**: *`number`*
 
-*Defined in [Terminal.ts:98](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L98)*
+*Defined in [Terminal.ts:162](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L162)*
 
-
-
-pre-calculated tile y-position in pixels
-
-
-
+pre-calculated tile (not contents) y-position in pixels
 
 ___
-
 

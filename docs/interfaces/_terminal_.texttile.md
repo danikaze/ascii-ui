@@ -1,40 +1,32 @@
-[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [DecayTile](../interfaces/_terminal_.decaytile.md)
+[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [TextTile](../interfaces/_terminal_.texttile.md)
 
-# Interface: DecayTile
+# Interface: TextTile
 
 ## Hierarchy
 
-↳  [TextTile](_terminal_.texttile.md)
+ [CharStyle](_terminal_.charstyle.md)
 
-**↳ DecayTile**
+**↳ TextTile**
+
+↳  [InternalTile](_terminal_.internaltile.md)
+
+↳  [DecayTile](_terminal_.decaytile.md)
 
 ## Index
 
 ### Properties
 
-* [alpha](_terminal_.decaytile.md#alpha)
-* [bg](_terminal_.decaytile.md#bg)
-* [char](_terminal_.decaytile.md#char)
-* [fg](_terminal_.decaytile.md#fg)
-* [font](_terminal_.decaytile.md#font)
-* [offsetX](_terminal_.decaytile.md#offsetx)
-* [offsetY](_terminal_.decaytile.md#offsety)
+* [bg](_terminal_.texttile.md#bg)
+* [char](_terminal_.texttile.md#char)
+* [fg](_terminal_.texttile.md#fg)
+* [font](_terminal_.texttile.md#font)
+* [offsetX](_terminal_.texttile.md#offsetx)
+* [offsetY](_terminal_.texttile.md#offsety)
 
 ---
 
 ## Properties
 
-<a id="alpha"></a>
-
-###  alpha
-
-**● alpha**: *`number`*
-
-*Defined in [Terminal.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L167)*
-
-current opacity
-
-___
 <a id="bg"></a>
 
 ### `<Optional>` bg
@@ -53,8 +45,6 @@ ___
 ###  char
 
 **● char**: *`string`*
-
-*Inherited from [TextTile](_terminal_.texttile.md).[char](_terminal_.texttile.md#char)*
 
 *Defined in [Terminal.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L142)*
 

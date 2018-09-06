@@ -1,362 +1,274 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [TerminalOptions](../interfaces/_terminal_.terminaloptions.md)
 
-
-
 # Interface: TerminalOptions
 
 ## Hierarchy
-
 
  [CharStyle](_terminal_.charstyle.md)
 
 **↳ TerminalOptions**
 
+## Index
 
+### Properties
 
+* [autoRender](_terminal_.terminaloptions.md#autorender)
+* [autoSize](_terminal_.terminaloptions.md#autosize)
+* [avoidDoubleRendering](_terminal_.terminaloptions.md#avoiddoublerendering)
+* [bg](_terminal_.terminaloptions.md#bg)
+* [clearStyle](_terminal_.terminaloptions.md#clearstyle)
+* [columns](_terminal_.terminaloptions.md#columns)
+* [commands](_terminal_.terminaloptions.md#commands)
+* [cursor](_terminal_.terminaloptions.md#cursor)
+* [cursorFrequency](_terminal_.terminaloptions.md#cursorfrequency)
+* [decayInitialAlpha](_terminal_.terminaloptions.md#decayinitialalpha)
+* [decayTime](_terminal_.terminaloptions.md#decaytime)
+* [fg](_terminal_.terminaloptions.md#fg)
+* [font](_terminal_.terminaloptions.md#font)
+* [offsetX](_terminal_.terminaloptions.md#offsetx)
+* [offsetY](_terminal_.terminaloptions.md#offsety)
+* [rows](_terminal_.terminaloptions.md#rows)
+* [tileHeight](_terminal_.terminaloptions.md#tileheight)
+* [tileWidth](_terminal_.terminaloptions.md#tilewidth)
+* [verbose](_terminal_.terminaloptions.md#verbose)
+* [viewport](_terminal_.terminaloptions.md#viewport)
 
-
-
-
+---
 
 ## Properties
+
 <a id="autorender"></a>
 
-### «Optional» autoRender
+### `<Optional>` autoRender
 
-**●  autoRender**:  *`boolean`* 
+**● autoRender**: *`boolean`*
 
-*Defined in [Terminal.ts:68](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L68)*
-
-
+*Defined in [Terminal.ts:117](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L117)*
 
 `true` to let the terminal manage the screen changes
 
-
-
-
 ___
-
 <a id="autosize"></a>
 
-### «Optional» autoSize
+### `<Optional>` autoSize
 
-**●  autoSize**:  *`boolean`* 
+**● autoSize**: *`boolean`*
 
-*Defined in [Terminal.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L70)*
-
-
+*Defined in [Terminal.ts:119](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L119)*
 
 if `true`, the containing canvas will be resized to contain the grid
 
-
-
-
 ___
-
 <a id="avoiddoublerendering"></a>
 
-### «Optional» avoidDoubleRendering
+### `<Optional>` avoidDoubleRendering
 
-**●  avoidDoubleRendering**:  *`boolean`* 
+**● avoidDoubleRendering**: *`boolean`*
 
-*Defined in [Terminal.ts:84](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L84)*
-
-
+*Defined in [Terminal.ts:133](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L133)*
 
 Optimization? If `true` it will check if the tile to render is already in the queue to avoid rendering it twice
 
-
-
-
 ___
-
 <a id="bg"></a>
 
-### «Optional» bg
+### `<Optional>` bg
 
-**●  bg**:  *`string`* 
+**● bg**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L44)*
-
-
+*Defined in [Terminal.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L93)*
 
 background color (i.e. `#000000`)
 
+___
+<a id="clearstyle"></a>
 
+### `<Optional>` clearStyle
 
+**● clearStyle**: *[TextTile](_terminal_.texttile.md)*
+
+*Defined in [Terminal.ts:137](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L137)*
+
+Style used when calling `clear`
 
 ___
-
 <a id="columns"></a>
 
-### «Optional» columns
+### `<Optional>` columns
 
-**●  columns**:  *`number`* 
+**● columns**: *`number`*
 
-*Defined in [Terminal.ts:64](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L64)*
-
-
+*Defined in [Terminal.ts:113](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L113)*
 
 number of columns of the terminal, in number of tiles
 
-
-
-
 ___
-
 <a id="commands"></a>
 
-### «Optional» commands
+### `<Optional>` commands
 
-**●  commands**:  *`object`* 
+**● commands**: *`object`*
 
-*Defined in [Terminal.ts:80](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L80)*
-
-
+*Defined in [Terminal.ts:129](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L129)*
 
 escape secuences to parse and their callback functions
 
 #### Type declaration
 
-
 [key: `string`]: [EscapeCallback](../modules/_terminal_.md#escapecallback)
 
-
-
-
-
-
 ___
-
 <a id="cursor"></a>
 
-### «Optional» cursor
+### `<Optional>` cursor
 
-**●  cursor**:  *`boolean`* 
+**● cursor**: *`boolean`*
 
-*Defined in [Terminal.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L72)*
-
-
+*Defined in [Terminal.ts:121](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L121)*
 
 `true` to show the cursor
 
-
-
-
 ___
-
 <a id="cursorfrequency"></a>
 
-### «Optional» cursorFrequency
+### `<Optional>` cursorFrequency
 
-**●  cursorFrequency**:  *`number`* 
+**● cursorFrequency**: *`number`*
 
-*Defined in [Terminal.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L74)*
-
-
+*Defined in [Terminal.ts:123](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L123)*
 
 blinking frequency of the cursor. If set to `0` the blink will be disabled
 
-
-
-
 ___
-
 <a id="decayinitialalpha"></a>
 
-### «Optional» decayInitialAlpha
+### `<Optional>` decayInitialAlpha
 
-**●  decayInitialAlpha**:  *`number`* 
+**● decayInitialAlpha**: *`number`*
 
-*Defined in [Terminal.ts:78](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L78)*
-
-
+*Defined in [Terminal.ts:127](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L127)*
 
 initial opacity for the decay tile, from 0 to 1
 
-
-
-
 ___
-
 <a id="decaytime"></a>
 
-### «Optional» decayTime
+### `<Optional>` decayTime
 
-**●  decayTime**:  *`number`* 
+**● decayTime**: *`number`*
 
-*Defined in [Terminal.ts:76](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L76)*
-
-
+*Defined in [Terminal.ts:125](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L125)*
 
 if > 0, milliseconds that the characters will take before disapear when changing
 
-
-
-
 ___
-
 <a id="fg"></a>
 
-### «Optional» fg
+### `<Optional>` fg
 
-**●  fg**:  *`string`* 
+**● fg**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L42)*
-
-
+*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L91)*
 
 foreground color (i.e. `#00ff00`)
 
-
-
-
 ___
-
 <a id="font"></a>
 
-### «Optional» font
+### `<Optional>` font
 
-**●  font**:  *`string`* 
+**● font**: *`string`*
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L36)*
+*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L85)*
 
-
-
-font or font-family to use in the terminal The format is in this order: [style] [variant] [weight] [family]
-
-
-
+font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
 ___
+<a id="offsetx"></a>
 
-<a id="fontoffsetx"></a>
+### `<Optional>` offsetX
 
-### «Optional» fontOffsetX
+**● offsetX**: *`number`*
 
-**●  fontOffsetX**:  *`number`* 
+*Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetX](_terminal_.charstyle.md#fontoffsetx)*
-
-*Defined in [Terminal.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L38)*
-
-
+*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L87)*
 
 x-offset to apply to each character inside the tile
 
-
-
-
 ___
+<a id="offsety"></a>
 
-<a id="fontoffsety"></a>
+### `<Optional>` offsetY
 
-### «Optional» fontOffsetY
+**● offsetY**: *`number`*
 
-**●  fontOffsetY**:  *`number`* 
+*Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Inherited from [CharStyle](_terminal_.charstyle.md).[fontOffsetY](_terminal_.charstyle.md#fontoffsety)*
-
-*Defined in [Terminal.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L40)*
-
-
+*Defined in [Terminal.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L89)*
 
 y-offset to apply to each character inside the tile
 
-
-
-
 ___
-
 <a id="rows"></a>
 
-### «Optional» rows
+### `<Optional>` rows
 
-**●  rows**:  *`number`* 
+**● rows**: *`number`*
 
-*Defined in [Terminal.ts:66](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L66)*
-
-
+*Defined in [Terminal.ts:115](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L115)*
 
 number of rows of the terminal, in number of tiles
 
-
-
-
 ___
-
 <a id="tileheight"></a>
 
-### «Optional» tileHeight
+### `<Optional>` tileHeight
 
-**●  tileHeight**:  *`number`* 
+**● tileHeight**: *`number`*
 
-*Defined in [Terminal.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L62)*
-
-
+*Defined in [Terminal.ts:111](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L111)*
 
 height of a tile in px
 
-
-
-
 ___
-
 <a id="tilewidth"></a>
 
-### «Optional» tileWidth
+### `<Optional>` tileWidth
 
-**●  tileWidth**:  *`number`* 
+**● tileWidth**: *`number`*
 
-*Defined in [Terminal.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L60)*
-
-
+*Defined in [Terminal.ts:109](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L109)*
 
 width of a tile in px
 
-
-
-
 ___
-
 <a id="verbose"></a>
 
-### «Optional» verbose
+### `<Optional>` verbose
 
-**●  verbose**:  *`boolean`* 
+**● verbose**: *`boolean`*
 
-*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L86)*
-
-
+*Defined in [Terminal.ts:135](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L135)*
 
 `true` to enable debug console messages options, `false` to disable them
 
-
-
-
 ___
-
 <a id="viewport"></a>
 
-### «Optional» viewport
+### `<Optional>` viewport
 
-**●  viewport**:  *[ViewPortOptions](_terminal_.viewportoptions.md)* 
+**● viewport**: *[ViewPortOptions](_terminal_.viewportoptions.md)*
 
-*Defined in [Terminal.ts:82](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L82)*
-
-
+*Defined in [Terminal.ts:131](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L131)*
 
 Limit within the Terminal will draw
 
-
-
-
 ___
-
 

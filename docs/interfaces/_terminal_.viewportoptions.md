@@ -1,77 +1,66 @@
 [terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [ViewPortOptions](../interfaces/_terminal_.viewportoptions.md)
 
-
-
 # Interface: ViewPortOptions
 
+## Hierarchy
+
+**ViewPortOptions**
+
+## Index
+
+### Properties
+
+* [bottom](_terminal_.viewportoptions.md#bottom)
+* [left](_terminal_.viewportoptions.md#left)
+* [right](_terminal_.viewportoptions.md#right)
+* [top](_terminal_.viewportoptions.md#top)
+
+---
 
 ## Properties
+
 <a id="bottom"></a>
 
-### «Optional» bottom
+### `<Optional>` bottom
 
-**●  bottom**:  *`number`* 
+**● bottom**: *`number`*
 
-*Defined in [Terminal.ts:53](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L53)*
-
-
+*Defined in [Terminal.ts:102](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L102)*
 
 Bottom coordinate (in tiles) of the Terminal viewport (-1 to stick always to `height`)
 
-
-
-
 ___
-
 <a id="left"></a>
 
-### «Optional» left
+### `<Optional>` left
 
-**●  left**:  *`number`* 
+**● left**: *`number`*
 
-*Defined in [Terminal.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L55)*
-
-
+*Defined in [Terminal.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L104)*
 
 Left coordinate (in tiles) of the Terminal viewport (-1 to stick always to `0`)
 
-
-
-
 ___
-
 <a id="right"></a>
 
-### «Optional» right
+### `<Optional>` right
 
-**●  right**:  *`number`* 
+**● right**: *`number`*
 
-*Defined in [Terminal.ts:51](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L51)*
-
-
+*Defined in [Terminal.ts:100](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L100)*
 
 Right coordinate (in tiles) of the Terminal viewport (-1 to stick always to `width`)
 
-
-
-
 ___
-
 <a id="top"></a>
 
-### «Optional» top
+### `<Optional>` top
 
-**●  top**:  *`number`* 
+**● top**: *`number`*
 
-*Defined in [Terminal.ts:49](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Terminal.ts#L49)*
-
-
+*Defined in [Terminal.ts:98](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L98)*
 
 Top coordinate (in tiles) of the Terminal viewport (-1 to stick always to 0)
 
-
-
-
 ___
-
 

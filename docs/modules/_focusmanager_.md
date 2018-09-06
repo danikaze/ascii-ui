@@ -1,7 +1,5 @@
 [terminal-in-canvas](../README.md) > ["FocusManager"](../modules/_focusmanager_.md)
 
-
-
 # External module: "FocusManager"
 
 ## Index
@@ -10,6 +8,5 @@
 
 * [FocusManager](../classes/_focusmanager_.focusmanager.md)
 
-
-
 ---
+

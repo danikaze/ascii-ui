@@ -1,9 +1,6 @@
 [terminal-in-canvas](../README.md) > ["WidgetContainer"](../modules/_widgetcontainer_.md) > [BidirectionalIterator](../interfaces/_widgetcontainer_.bidirectionaliterator.md)
 
-
-
 # Interface: BidirectionalIterator
-
 
 Extended Iterator interface that will return a `next` and a `prev` methods.
 
@@ -11,167 +8,109 @@ Extended Iterator interface that will return a `next` and a `prev` methods.
 #### T 
 ## Hierarchy
 
-
- `Iterator`.<`T`>
+ `Iterator`<`T`>
 
 **↳ BidirectionalIterator**
 
+## Index
 
+### Methods
 
+* [next](_widgetcontainer_.bidirectionaliterator.md#next)
+* [prev](_widgetcontainer_.bidirectionaliterator.md#prev)
+* [return](_widgetcontainer_.bidirectionaliterator.md#return)
+* [seek](_widgetcontainer_.bidirectionaliterator.md#seek)
+* [throw](_widgetcontainer_.bidirectionaliterator.md#throw)
 
-
-
-
+---
 
 ## Methods
+
 <a id="next"></a>
 
 ###  next
 
-► **next**(value?: *`any`*): `IteratorResult`.<`T`>
-
-
+▸ **next**(value?: *`any`*): `IteratorResult`<`T`>
 
 *Inherited from Iterator.next*
 
 *Overrides Iterator.next*
 
-*Defined in /Users/daniel.berlanga/Dev/other/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4791*
-
-
+*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4798*
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| value | `any`   |  - |
+| Param | Type |
+| ------ | ------ |
+| `Optional` value | `any` |
 
-
-
-
-
-**Returns:** `IteratorResult`.<`T`>
-
-
-
-
+**Returns:** `IteratorResult`<`T`>
 
 ___
-
 <a id="prev"></a>
 
 ###  prev
 
-► **prev**(): `IteratorResult`.<`T`>
+▸ **prev**(): `IteratorResult`<`T`>
 
+*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/WidgetContainer.ts#L8)*
 
-
-*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L8)*
-
-
-
-
-
-**Returns:** `IteratorResult`.<`T`>
-
-
-
-
+**Returns:** `IteratorResult`<`T`>
 
 ___
-
 <a id="return"></a>
 
-### «Optional» return
+### `<Optional>` return
 
-► **return**(value?: *`any`*): `IteratorResult`.<`T`>
-
-
+▸ **return**(value?: *`any`*): `IteratorResult`<`T`>
 
 *Inherited from Iterator.return*
 
-*Defined in /Users/daniel.berlanga/Dev/other/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4792*
-
-
+*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4799*
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| value | `any`   |  - |
+| Param | Type |
+| ------ | ------ |
+| `Optional` value | `any` |
 
-
-
-
-
-**Returns:** `IteratorResult`.<`T`>
-
-
-
-
+**Returns:** `IteratorResult`<`T`>
 
 ___
-
 <a id="seek"></a>
 
 ###  seek
 
-► **seek**(value?: *`T`⎮`number`*): `void`
+▸ **seek**(value?: * `T` &#124; `number`*): `void`
 
-
-
-*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/WidgetContainer.ts#L9)*
-
-
+*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/WidgetContainer.ts#L9)*
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| value | `T`⎮`number`   |  - |
-
-
-
-
+| Param | Type |
+| ------ | ------ |
+| `Optional` value |  `T` &#124; `number`|
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="throw"></a>
 
-### «Optional» throw
+### `<Optional>` throw
 
-► **throw**(e?: *`any`*): `IteratorResult`.<`T`>
-
-
+▸ **throw**(e?: *`any`*): `IteratorResult`<`T`>
 
 *Inherited from Iterator.throw*
 
-*Defined in /Users/daniel.berlanga/Dev/other/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4793*
-
-
+*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4800*
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| e | `any`   |  - |
+| Param | Type |
+| ------ | ------ |
+| `Optional` e | `any` |
 
-
-
-
-
-**Returns:** `IteratorResult`.<`T`>
-
-
-
-
+**Returns:** `IteratorResult`<`T`>
 
 ___
-
 

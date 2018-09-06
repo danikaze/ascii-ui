@@ -1,31 +1,20 @@
 [terminal-in-canvas](../README.md) > ["widgets/ProgressBar"](../modules/_widgets_progressbar_.md) > [ProgressBar](../classes/_widgets_progressbar_.progressbar.md)
 
-
-
 # Class: ProgressBar
-
 
 Display a progress bar
 
 ## Hierarchy
 
-
- [Widget](_widget_.widget.md)
+ [Widget](_widget_.widget.md)<[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)>
 
 **↳ ProgressBar**
-
-
-
-
-
-
 
 ## Index
 
 ### Constructors
 
 * [constructor](_widgets_progressbar_.progressbar.md#constructor)
-
 
 ### Properties
 
@@ -35,7 +24,6 @@ Display a progress bar
 * [parent](_widgets_progressbar_.progressbar.md#parent)
 * [terminal](_widgets_progressbar_.progressbar.md#terminal)
 * [defaultOptions](_widgets_progressbar_.progressbar.md#defaultoptions)
-
 
 ### Methods
 
@@ -52,458 +40,287 @@ Display a progress bar
 * [setOptions](_widgets_progressbar_.progressbar.md#setoptions)
 * [updateOptions](_widgets_progressbar_.progressbar.md#updateoptions)
 
-
-
 ---
+
 ## Constructors
+
 <a id="constructor"></a>
 
+###  constructor
 
-### ⊕ **new ProgressBar**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [ProgressBar](_widgets_progressbar_.progressbar.md)
-
+⊕ **new ProgressBar**(terminal: *[Terminal](_terminal_.terminal.md)*, options: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [ProgressBar](_widgets_progressbar_.progressbar.md)
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/ProgressBar.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L39)*
-
-
+*Defined in [widgets/ProgressBar.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L37)*
 
 **Parameters:**
 
-| Param | Type | Description |
-| ------ | ------ | ------ |
-| terminal | [Terminal](_terminal_.terminal.md)   |  - |
-| options | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)   |  - |
-| parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)   |  - |
-
-
-
-
+| Param | Type |
+| ------ | ------ |
+| terminal | [Terminal](_terminal_.terminal.md) |
+| options | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md) |
+| `Optional` parent | [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md) |
 
 **Returns:** [ProgressBar](_widgets_progressbar_.progressbar.md)
 
----
-
+___
 
 ## Properties
+
 <a id="allocated"></a>
 
-### «Protected» allocated
+### `<Protected>` allocated
 
-**●  allocated**:  *`boolean`* 
+**● allocated**: *`boolean`*
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L35)*
-
-
+*Defined in [Widget.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L38)*
 
 If the widget has been allocated or not
 
-
-
-
 ___
-
 <a id="focused"></a>
 
-### «Protected» focused
+### `<Protected>` focused
 
-**●  focused**:  *`boolean`* 
+**● focused**: *`boolean`*
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L33)*
-
-
+*Defined in [Widget.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L36)*
 
 If the widget is focused or not
 
-
-
-
 ___
-
 <a id="options"></a>
 
-### «Protected» options
+### `<Protected>` options
 
-**●  options**:  *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)* 
+**● options**: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)* =  {} as any
 
-*Overrides [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
+*Inherited from [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [widgets/ProgressBar.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L39)*
+*Defined in [Widget.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L34)*
 
-
-
-Options of the Text widget
-
-
-
+Widget options
 
 ___
-
 <a id="parent"></a>
 
-### «Protected»«Optional» parent
+### `<Protected>``<Optional>` parent
 
-**●  parent**:  *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)* 
+**● parent**: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L29)*
-
-
+*Defined in [Widget.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L32)*
 
 container of the widget, if any
 
-
-
-
 ___
-
 <a id="terminal"></a>
 
-### «Protected» terminal
+### `<Protected>` terminal
 
-**●  terminal**:  *[Terminal](_terminal_.terminal.md)* 
+**● terminal**: *[Terminal](_terminal_.terminal.md)*
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L27)*
-
-
+*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L30)*
 
 Reference to the parent terminal where it should be rendered
 
-
-
-
 ___
-
 <a id="defaultoptions"></a>
 
-### «Static» defaultOptions
+### `<Static>` defaultOptions
 
-**●  defaultOptions**:  *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)* 
+**● defaultOptions**: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/ProgressBar.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L37)*
-
-
+*Defined in [widgets/ProgressBar.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L37)*
 
 Default options for widget instances
 
-
-
-
 ___
 
-
 ## Methods
+
 <a id="blur"></a>
 
 ###  blur
 
-► **blur**(): `void`
-
-
+▸ **blur**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L156)*
-
-
+*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L167)*
 
 Remove the focus from this widget. Usually done by a upper level that controls other widgets.
 
-
-
-
-**Returns:** `void`
-
-
-
-
+**Returns:** `boolean`
+`true` if it was focused and blurred properly
 
 ___
-
 <a id="focus"></a>
 
 ###  focus
 
-► **focus**(): `void`
-
-
+▸ **focus**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L142)*
-
-
+*Defined in [Widget.ts:147](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L147)*
 
 Set this Widget as focused. Usually done by a upper level that controls other widgets (so the previously focused widget is blurred)
 
-
-
-
-**Returns:** `void`
-
-
-
-
+**Returns:** `boolean`
+`true` if it wasn't focused and focused properly
 
 ___
-
 <a id="getparent"></a>
 
 ###  getParent
 
-► **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
-
-
+▸ **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L58)*
-
-
+*Defined in [Widget.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L61)*
 
 Get the reference to the parent of the widget, if any
-
-
-
 
 **Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 parent if any, or `undefined`
 
-
-
-
-
-
 ___
-
 <a id="getposition"></a>
 
 ###  getPosition
 
-► **getPosition**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
-
-
+▸ **getPosition**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L106)*
-
-
+*Defined in [Widget.ts:109](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L109)*
 
 Get the position of the widget, in tile coordinates
-
-
-
 
 **Returns:** [TilePosition](../interfaces/_terminal_.tileposition.md)
 current position of the widget, in tile coordinates
 
-
-
-
-
-
 ___
-
 <a id="getprogress"></a>
 
 ###  getProgress
 
-► **getProgress**(): `number`
+▸ **getProgress**(): `number`
 
-
-
-*Defined in [widgets/ProgressBar.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L63)*
-
-
+*Defined in [widgets/ProgressBar.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L61)*
 
 Retrieve a reference to the currently selected option
 
-
-
-
 **Returns:** `number`
 
-
-
-
-
 ___
-
 <a id="getsize"></a>
 
 ###  getSize
 
-► **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
-
-
+▸ **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L94)*
-
-
+*Defined in [Widget.ts:97](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L97)*
 
 Get the widget size, measured in tiles
-
-
-
 
 **Returns:** [TileSize](../interfaces/_terminal_.tilesize.md)
 Size of the widget, measured in tiles
 
-
-
-
-
-
 ___
-
 <a id="isat"></a>
 
 ###  isAt
 
-► **isAt**(column: *`number`*, line: *`number`*): `boolean`
-
-
+▸ **isAt**(column: *`number`*, line: *`number`*): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:120](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L120)*
-
-
+*Defined in [Widget.ts:123](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L123)*
 
 Check if the widget is (overlaps) the specified position
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| column | `number`   |  x-position of the terminal (in tiles) |
-| line | `number`   |  y-position of the terminal (in tiles) |
-
-
-
-
+| column | `number` |  x-position of the terminal (in tiles) |
+| line | `number` |  y-position of the terminal (in tiles) |
 
 **Returns:** `boolean`
 `true` if the specified tile is _inside_ the widget
 
-
-
-
-
-
 ___
-
 <a id="isfocusable"></a>
 
 ###  isFocusable
 
-► **isFocusable**(): `boolean`
-
-
+▸ **isFocusable**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:134](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L134)*
-
-
+*Defined in [Widget.ts:137](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L137)*
 
 Check if this widget is focusable (when cycling over widgets)
-
-
-
 
 **Returns:** `boolean`
 `true` if focusable, `false` if not
 
-
-
-
-
-
 ___
-
 <a id="isfocused"></a>
 
 ###  isFocused
 
-► **isFocused**(): `boolean`
-
-
+▸ **isFocused**(): `boolean`
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:169](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L169)*
-
-
+*Defined in [Widget.ts:182](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L182)*
 
 Check if the widget is currently focused or not
-
-
-
 
 **Returns:** `boolean`
 if the widget is focused or not.
 
-
-
-
-
-
 ___
-
 <a id="render"></a>
 
 ###  render
 
-► **render**(): `void`
-
-
+▸ **render**(): `void`
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/ProgressBar.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L52)*
-
-
+*Defined in [widgets/ProgressBar.ts:50](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L50)*
 
 Render the widget in the associated terminal
 
-
-
-
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="setoptions"></a>
 
 ###  setOptions
 
-► **setOptions**(options: *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)*): `void`
-
-
+▸ **setOptions**(options: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*): `void`
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L74)*
-
-
+*Defined in [Widget.ts:77](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L77)*
 
 Update the options. Always use this setter so the widget knows about the change instead of changing the (protected) variable directly. The widget might do some internal calcs when this method is called.
 
@@ -512,59 +329,34 @@ Do not reimplement this setter in any subclass, but implement `updateOptions`
 
 *__see__*: updateOptions
 
-
-
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [WidgetOptions](../interfaces/_widget_.widgetoptions.md)   |  Options to change. |
-
-
-
-
+| options | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md) |  Options to change. |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 <a id="updateoptions"></a>
 
-### «Protected» updateOptions
+### `<Protected>` updateOptions
 
-► **updateOptions**(options: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*): `void`
-
-
+▸ **updateOptions**(changes: *[ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)*): `void`
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/ProgressBar.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L73)*
-
-
+*Defined in [widgets/ProgressBar.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L71)*
 
 `setOptions` will assign the options to `this.options`, but any derivated calculation should be done here.
-
 
 **Parameters:**
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| options | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)   |  - |
-
-
-
-
+| changes | [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md) |  Object with only the changed options |
 
 **Returns:** `void`
 
-
-
-
-
 ___
-
 

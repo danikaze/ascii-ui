@@ -1,238 +1,200 @@
 [terminal-in-canvas](../README.md) > ["widgets/Text"](../modules/_widgets_text_.md) > [TextOptions](../interfaces/_widgets_text_.textoptions.md)
 
-
-
 # Interface: TextOptions
 
 ## Hierarchy
-
 
  [WidgetOptions](_widget_.widgetoptions.md)
 
 **↳ TextOptions**
 
+## Index
 
+### Properties
 
+* [col](_widgets_text_.textoptions.md#col)
+* [ellipsis](_widgets_text_.textoptions.md#ellipsis)
+* [fitPageEnd](_widgets_text_.textoptions.md#fitpageend)
+* [focusable](_widgets_text_.textoptions.md#focusable)
+* [height](_widgets_text_.textoptions.md#height)
+* [line](_widgets_text_.textoptions.md#line)
+* [persistentTypewritter](_widgets_text_.textoptions.md#persistenttypewritter)
+* [skip](_widgets_text_.textoptions.md#skip)
+* [tabIndex](_widgets_text_.textoptions.md#tabindex)
+* [text](_widgets_text_.textoptions.md#text)
+* [textStyle](_widgets_text_.textoptions.md#textstyle)
+* [tokenizer](_widgets_text_.textoptions.md#tokenizer)
+* [typewritterDelay](_widgets_text_.textoptions.md#typewritterdelay)
+* [width](_widgets_text_.textoptions.md#width)
 
-
-
-
+---
 
 ## Properties
+
 <a id="col"></a>
 
-### «Optional» col
+### `<Optional>` col
 
-**●  col**:  *`number`* 
+**● col**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L7)*
-
-
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L9)*
 
 x-position of the widget in terminal tiles
 
+___
+<a id="ellipsis"></a>
 
+### `<Optional>` ellipsis
 
+**● ellipsis**: *`string`*
+
+*Defined in [widgets/Text.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L26)*
+
+If `tokenizer` is `false`, the `ellipsis` text will be appended when the text is too long
 
 ___
-
 <a id="fitpageend"></a>
 
-### «Optional» fitPageEnd
+### `<Optional>` fitPageEnd
 
-**●  fitPageEnd**:  *`boolean`* 
+**● fitPageEnd**: *`boolean`*
 
-*Defined in [widgets/Text.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L30)*
-
-
+*Defined in [widgets/Text.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L38)*
 
 If `true`, it won't allow empty lines at the end of a page and the text will end at the last line of the widget. Set to `false` to allow empty lines (so the first line is the right next one to the last of the previous page)
 
-
-
-
 ___
-
 <a id="focusable"></a>
 
-### «Optional» focusable
+### `<Optional>` focusable
 
-**●  focusable**:  *`boolean`* 
+**● focusable**: *`boolean`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L15)*
-
-
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L17)*
 
 if `true`, the widget can be selectable
 
-
-
-
 ___
-
 <a id="height"></a>
 
-### «Optional» height
+### `<Optional>` height
 
-**●  height**:  *`number`* 
+**● height**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L13)*
-
-
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L15)*
 
 widget height in terminal tiles
 
-
-
-
 ___
-
 <a id="line"></a>
 
-### «Optional» line
+### `<Optional>` line
 
-**●  line**:  *`number`* 
+**● line**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L9)*
-
-
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L11)*
 
 y-position of the widget in terminal tiles
 
-
-
-
 ___
-
 <a id="persistenttypewritter"></a>
 
-### «Optional» persistentTypewritter
+### `<Optional>` persistentTypewritter
 
-**●  persistentTypewritter**:  *`boolean`* 
+**● persistentTypewritter**: *`boolean`*
 
-*Defined in [widgets/Text.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L40)*
-
-
+*Defined in [widgets/Text.ts:48](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L48)*
 
 Set to `false` to apply the typewritter to the text again when it appears even if it was shown already before
 
+___
+<a id="skip"></a>
 
+### `<Optional>` skip
 
+**● skip**: *`number`*
+
+*Defined in [widgets/Text.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L31)*
+
+Number of characters to skip. Useful to create a horizontal text scrolling effect
 
 ___
-
 <a id="tabindex"></a>
 
-### «Optional» tabIndex
+### `<Optional>` tabIndex
 
-**●  tabIndex**:  *`number`* 
+**● tabIndex**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L17)*
-
-
+*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L19)*
 
 value use for ordering the selection order with the keys
 
-
-
-
 ___
-
 <a id="text"></a>
 
-### «Optional» text
+### `<Optional>` text
 
-**●  text**:  *`string`* 
+**● text**: *`string`*
 
-*Defined in [widgets/Text.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L11)*
-
-
+*Defined in [widgets/Text.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L12)*
 
 Text to display
 
-
-
-
 ___
-
 <a id="textstyle"></a>
 
-### «Optional» textStyle
+### `<Optional>` textStyle
 
-**●  textStyle**:  *[CharStyle](_terminal_.charstyle.md)* 
+**● textStyle**: *[CharStyle](_terminal_.charstyle.md)*
 
-*Defined in [widgets/Text.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L16)*
-
-
+*Defined in [widgets/Text.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L17)*
 
 Basic style of the text Further styles can be applied with the `commands` option of the Terminal
 
-
-
-
 ___
-
 <a id="tokenizer"></a>
 
-### «Optional» tokenizer
+### `<Optional>` tokenizer
 
-**●  tokenizer**:  *`boolean`⎮[TokenizerFunction](../modules/_util_tokenizer_.md#tokenizerfunction)* 
+**● tokenizer**: *[TokenizerFunction](../modules/_util_tokenizer_.md#tokenizerfunction)*
 
-*Defined in [widgets/Text.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L23)*
+*Defined in [widgets/Text.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L22)*
 
-
-
-How to split the text (for new lines, etc.) If `true`, the default function will be used A custom TokenizerFunction can be provided If `false` text will be splitted even in the middle of the words
-
-
-
+How to split the text (for new lines, etc.) If `undefined` or `null`, the text will not be splitted (no-wrap)
 
 ___
-
 <a id="typewritterdelay"></a>
 
-### «Optional» typewritterDelay
+### `<Optional>` typewritterDelay
 
-**●  typewritterDelay**:  *`number`* 
+**● typewritterDelay**: *`number`*
 
-*Defined in [widgets/Text.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/Text.ts#L35)*
-
-
+*Defined in [widgets/Text.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Text.ts#L43)*
 
 Ms. to wait between each character when writting new text Set to `0` (default) to disable it
 
-
-
-
 ___
-
 <a id="width"></a>
 
-### «Optional» width
+### `<Optional>` width
 
-**●  width**:  *`number`* 
+**● width**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L11)*
-
-
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L13)*
 
 widget width in terminal tiles
 
-
-
-
 ___
-
 

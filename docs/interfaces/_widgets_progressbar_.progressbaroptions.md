@@ -1,255 +1,188 @@
 [terminal-in-canvas](../README.md) > ["widgets/ProgressBar"](../modules/_widgets_progressbar_.md) > [ProgressBarOptions](../interfaces/_widgets_progressbar_.progressbaroptions.md)
 
-
-
 # Interface: ProgressBarOptions
 
 ## Hierarchy
-
 
  [WidgetOptions](_widget_.widgetoptions.md)
 
 **↳ ProgressBarOptions**
 
+## Index
 
+### Properties
 
+* [col](_widgets_progressbar_.progressbaroptions.md#col)
+* [completedStyle](_widgets_progressbar_.progressbaroptions.md#completedstyle)
+* [currentStyle](_widgets_progressbar_.progressbaroptions.md#currentstyle)
+* [direction](_widgets_progressbar_.progressbaroptions.md#direction)
+* [endStyle](_widgets_progressbar_.progressbaroptions.md#endstyle)
+* [focusable](_widgets_progressbar_.progressbaroptions.md#focusable)
+* [height](_widgets_progressbar_.progressbaroptions.md#height)
+* [line](_widgets_progressbar_.progressbaroptions.md#line)
+* [pendingStyle](_widgets_progressbar_.progressbaroptions.md#pendingstyle)
+* [progress](_widgets_progressbar_.progressbaroptions.md#progress)
+* [startStyle](_widgets_progressbar_.progressbaroptions.md#startstyle)
+* [tabIndex](_widgets_progressbar_.progressbaroptions.md#tabindex)
+* [width](_widgets_progressbar_.progressbaroptions.md#width)
 
-
-
-
+---
 
 ## Properties
+
 <a id="col"></a>
 
-### «Optional» col
+### `<Optional>` col
 
-**●  col**:  *`number`* 
+**● col**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L7)*
-
-
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L9)*
 
 x-position of the widget in terminal tiles
 
-
-
-
 ___
-
 <a id="completedstyle"></a>
 
-### «Optional» completedStyle
+### `<Optional>` completedStyle
 
-**●  completedStyle**:  *[Tile](_terminal_.tile.md)* 
+**● completedStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L21)*
-
-
+*Defined in [widgets/ProgressBar.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L21)*
 
 Style to use for the completed part of the bar
 
-
-
-
 ___
-
 <a id="currentstyle"></a>
 
-### «Optional» currentStyle
+### `<Optional>` currentStyle
 
-**●  currentStyle**:  *[Tile](_terminal_.tile.md)* 
+**● currentStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L25)*
-
-
+*Defined in [widgets/ProgressBar.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L25)*
 
 Style to use for current point of the bar. If not specified will be replaced by treated as a completed part
 
-
-
-
 ___
-
 <a id="direction"></a>
 
-### «Optional» direction
+### `<Optional>` direction
 
-**●  direction**:  *[ProgressBarDirection](../enums/_widgets_progressbar_.progressbardirection.md)* 
+**● direction**: *[ProgressBarDirection](../enums/_widgets_progressbar_.progressbardirection.md)*
 
-*Defined in [widgets/ProgressBar.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L17)*
-
-
+*Defined in [widgets/ProgressBar.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L17)*
 
 Direction of the progress bar
 
-
-
-
 ___
-
 <a id="endstyle"></a>
 
-### «Optional» endStyle
+### `<Optional>` endStyle
 
-**●  endStyle**:  *[Tile](_terminal_.tile.md)* 
+**● endStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L29)*
-
-
+*Defined in [widgets/ProgressBar.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L29)*
 
 Style to use for the end point of the bar (as a border)
 
-
-
-
 ___
-
 <a id="focusable"></a>
 
-### «Optional» focusable
+### `<Optional>` focusable
 
-**●  focusable**:  *`boolean`* 
+**● focusable**: *`boolean`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L15)*
-
-
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L17)*
 
 if `true`, the widget can be selectable
 
-
-
-
 ___
-
 <a id="height"></a>
 
-### «Optional» height
+### `<Optional>` height
 
-**●  height**:  *`number`* 
+**● height**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L13)*
-
-
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L15)*
 
 widget height in terminal tiles
 
-
-
-
 ___
-
 <a id="line"></a>
 
-### «Optional» line
+### `<Optional>` line
 
-**●  line**:  *`number`* 
+**● line**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L9)*
-
-
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L11)*
 
 y-position of the widget in terminal tiles
 
-
-
-
 ___
-
 <a id="pendingstyle"></a>
 
-### «Optional» pendingStyle
+### `<Optional>` pendingStyle
 
-**●  pendingStyle**:  *[Tile](_terminal_.tile.md)* 
+**● pendingStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L23)*
-
-
+*Defined in [widgets/ProgressBar.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L23)*
 
 Style to use for the pending part of the bar
 
-
-
-
 ___
-
 <a id="progress"></a>
 
-### «Optional» progress
+### `<Optional>` progress
 
-**●  progress**:  *`number`* 
+**● progress**: *`number`*
 
-*Defined in [widgets/ProgressBar.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L19)*
-
-
+*Defined in [widgets/ProgressBar.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L19)*
 
 Progress to display (0-1)
 
-
-
-
 ___
-
 <a id="startstyle"></a>
 
-### «Optional» startStyle
+### `<Optional>` startStyle
 
-**●  startStyle**:  *[Tile](_terminal_.tile.md)* 
+**● startStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/widgets/ProgressBar.ts#L27)*
-
-
+*Defined in [widgets/ProgressBar.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L27)*
 
 Style to use for the start point of the bar (as a border)
 
-
-
-
 ___
-
 <a id="tabindex"></a>
 
-### «Optional» tabIndex
+### `<Optional>` tabIndex
 
-**●  tabIndex**:  *`number`* 
+**● tabIndex**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L17)*
-
-
+*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L19)*
 
 value use for ordering the selection order with the keys
 
-
-
-
 ___
-
 <a id="width"></a>
 
-### «Optional» width
+### `<Optional>` width
 
-**●  width**:  *`number`* 
+**● width**: *`number`*
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a39a508/src/Widget.ts#L11)*
-
-
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L13)*
 
 widget width in terminal tiles
 
-
-
-
 ___
-
 

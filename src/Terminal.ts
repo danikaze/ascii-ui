@@ -12,6 +12,8 @@ import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget, WidgetConstructor } from './Widget';
 import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './WidgetContainer';
 
+export type AcceptedImage = HTMLImageElement | HTMLCanvasElement;
+
 /**
  * Function called when the matching command is found
  * @param text The whole text
@@ -19,6 +21,31 @@ import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './Wid
  * @return index where the text processing should be continued
  */
 export type EscapeCallback = (params: EscapeCommandParams) => number;
+
+export interface ImageOffset {
+  /** Number of pixels inside the terminal tile to offset the image horizontally */
+  x: number;
+  /** Number of pixels inside the terminal tile to offset the image vertically */
+  y: number;
+}
+
+export interface ImageSize {
+  /** Image width */
+  width: number;
+  /** Image height */
+  height: number;
+}
+
+export interface ImageCropParams {
+  /** x-position (pixels) of the section to crop in the source image */
+  srcX: number;
+  /** y-position (pixels) of the section to crop in the source image */
+  srcY: number;
+  /** width (pixels) of the section to crop in the source image */
+  srcW: number;
+  /** height (pixels) of the section to crop in the source image */
+  srcH: number;
+}
 
 export interface EscapeCommandParams {
   /** Full text set */
@@ -115,7 +142,20 @@ export interface TextTile extends CharStyle {
   char: string;
 }
 
-interface InternalTile extends TextTile {
+export interface ImageTile {
+  /** image to draw */
+  image: AcceptedImage;
+  /** destiny width */
+  dstW: number;
+  /** destiny height */
+  dstH: number;
+  /** Offset in the destiny coordinates */
+  offset?: ImageOffset;
+  /** Crop parameters for `img` */
+  crop?: ImageCropParams;
+}
+
+interface InternalTile extends TextTile, ImageTile {
   /** pre-calculated tile (not contents) x-position in pixels */
   x: number;
   /** pre-calculated tile (not contents) y-position in pixels */
@@ -265,15 +305,21 @@ export class Terminal implements WidgetContainer {
 
     for (let y = line, yy = y + height; y < yy; y++) {
       for (let x = col, xx = x + width; x < xx; x++) {
-        const tile = {
-          char: ' ',
+        const tile: InternalTile = {
+          // common
+          x: x * options.tileWidth,
+          y: y * options.tileHeight,
+          offsetX: options.offsetX,
+          offsetY: options.offsetY,
+          // text
+          char: '',
           bg: options.bg,
           fg: options.fg,
           font: options.font,
-          offsetX: options.offsetX,
-          offsetY: options.offsetY,
-          x: x * options.tileWidth,
-          y: y * options.tileHeight,
+          // image
+          image: undefined,
+          dstW: 0,
+          dstH: 0,
         };
         buffer[y][x] = tile;
         this.addDirtyTile(tile, dirtyTiles);
@@ -313,43 +359,61 @@ export class Terminal implements WidgetContainer {
 
     ctx.textBaseline = 'bottom';
     for (const tile of this.dirtyTiles) {
-      const x = tile.x;
-      const y = tile.y;
-      const offsetX = tile.offsetX;
-      const offsetY = tile.offsetY;
+      let x = tile.x;
+      let y = tile.y;
       const isCursor = drawCursor && x === cursorX && y === cursorY;
 
       // bg
       ctx.fillStyle = isCursor ? tile.fg : tile.bg;
       ctx.fillRect(x, y, w, h);
-      const decayKey = `${x},${y}`;
-      const decayTile = this.decayTiles[decayKey];
 
-      ctx.font = tile.font;
-      if (isCursor) {
-        // fg
-        ctx.fillStyle = tile.bg;
-        ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
-      } else {
-        // decay
-        if (decayTile) {
-          if (decayTile.alpha > decayChange) {
-            decayTile.alpha -= decayChange;
-            ctx.fillStyle = decayTile.fg;
-            ctx.font = decayTile.font;
-            ctx.globalAlpha = decayTile.alpha;
-            ctx.fillText(decayTile.char, x + decayTile.offsetX, y + h + decayTile.offsetY);
-            ctx.globalAlpha = originalAlpha;
-            ctx.font = tile.font;
-          } else {
-            this.decayTiles[decayKey] = undefined;
-          }
-          this.addDirtyTile(tile, tilesToRedraw);
+      if (tile.image) {
+        if (tile.offset) {
+          x += tile.offset.x;
+          y += tile.offset.y;
         }
 
-        // fg
-        ctx.fillStyle = tile.fg;
-        ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
+        if (tile.crop) {
+          ctx.drawImage(
+            tile.image,
+            tile.crop.srcX, tile.crop.srcY, tile.crop.srcW, tile.crop.srcH,
+            x, y, tile.dstW, tile.dstH,
+          );
+        } else {
+          ctx.drawImage(tile.image, x, y, tile.dstW, tile.dstH);
+        }
+      } else {
+        const offsetX = tile.offsetX;
+        const offsetY = tile.offsetY;
+        const decayKey = `${x},${y}`;
+        const decayTile = this.decayTiles[decayKey];
+        ctx.font = tile.font;
+
+        if (isCursor) {
+          // fg
+          ctx.fillStyle = tile.bg;
+          ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
+        } else {
+          // decay
+          if (decayTile) {
+            if (decayTile.alpha > decayChange) {
+              decayTile.alpha -= decayChange;
+              ctx.fillStyle = decayTile.fg;
+              ctx.font = decayTile.font;
+              ctx.globalAlpha = decayTile.alpha;
+              ctx.fillText(decayTile.char, x + decayTile.offsetX, y + h + decayTile.offsetY);
+              ctx.globalAlpha = originalAlpha;
+              ctx.font = tile.font;
+            } else {
+              this.decayTiles[decayKey] = undefined;
+            }
+            this.addDirtyTile(tile, tilesToRedraw);
+          }
+
+          // fg
+          ctx.fillStyle = tile.fg;
+          ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
+        }
       }
     }
 
@@ -555,6 +619,7 @@ export class Terminal implements WidgetContainer {
         };
       }
 
+      delete tile.image;
       tile.char = text[i + textOffset];
       tile.font = options.font;
       tile.offsetX = options.offsetX;
@@ -568,7 +633,7 @@ export class Terminal implements WidgetContainer {
     if (!match) {
       this.iterateTiles(text.length, setTile, col, line);
 
-    // with text-parse
+      // with text-parse
     } else {
       let i = 0;
 
@@ -613,6 +678,28 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
+   * Draws an image to the terminal.
+   *
+   * @param img Image or source image to set
+   * @param col x-position of the starting tile. Current position of the cursor if not specified
+   * @param line y-position of the starting tile. Current position of the cursor if not specified
+   * @param crop If only a portion of `img` is to be drawn, cropping parameters are specified here
+   */
+  setImage(img: AcceptedImage, col?: number, line?: number, offset?: ImageOffset,
+           size?: ImageSize, crop?: ImageCropParams): void {
+    const setTile = (tile: InternalTile) => {
+      tile.dstW = size ? size.width : (crop ? crop.srcW : img.width);
+      tile.dstH = size ? size.height : (crop ? crop.srcH : img.height);
+      tile.image = img;
+      tile.crop = crop;
+      tile.offset = offset;
+      this.addDirtyTile(tile);
+    };
+
+    this.iterateTiles(1, setTile, col, line);
+  }
+
+  /**
    * Get the text of the terminal. By default gets the text from the current position of the cursor.
    * If the `size` is reaches the end of the line, it will continue in the next one.
    *
@@ -647,7 +734,7 @@ export class Terminal implements WidgetContainer {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  setTiles(tiles: TextTile | TextTile[], col?: number, line?: number): void {
+  setTiles(tiles: TextTile | TextTile[] | ImageTile | ImageTile[], col?: number, line?: number): void {
     const dirtyTiles = this.dirtyTiles;
 
     if (!isArray(tiles)) {

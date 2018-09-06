@@ -15,10 +15,32 @@ const KEY_RIGHT = 39;
 const KEY_BACKSPACE = 8;
 const KEY_DELETE = 46;
 const KEY_ENTER = 13;
+const imgs = [];
 
 function hideLoad() {
   const elem = document.getElementById('loading');
   elem.parentElement.removeChild(elem);
+}
+
+function loadImages() {
+  return new Promise((resolve, reject) => {
+    const srcs = [
+      '../assets/emoji-happy.png',
+      '../assets/emoji-sad.png',
+    ];
+    let pending = srcs.length;
+    srcs.forEach((src) => {
+      const img = new Image();
+      imgs.push(img);
+      img.onload = () => {
+        pending--;
+        if (pending === 0) {
+          resolve();
+        }
+      };
+      img.src = src;
+    });
+  });
 }
 
 function bindKeys(terminal: Terminal) {
@@ -72,6 +94,13 @@ function injectText({ terminal, index }: EscapeCommandParams) {
   return index + ESCAPED_TEXT_LENGTH;
 }
 
+function drawSprite({ terminal, match, index, col, line }: EscapeCommandParams) {
+  const img = imgs[match === ':happy:' ? 0 : 1];
+  terminal.setImage(img, col, line, { x: 0, y: 4 }, { width: 18, height: 18 });
+
+  return index + match.length;
+}
+
 function run() {
   /* tslint:disable:no-magic-numbers */
   const columns = 40;
@@ -86,6 +115,8 @@ function run() {
   const commands = {
     '\\c': setColor,
     ':x:': injectText,
+    ':happy:': drawSprite,
+    ':sad:': drawSprite,
   };
 
   canvas.parentElement.style.width = `${canvas.width}px`;
@@ -101,6 +132,8 @@ function run() {
   terminal.setText('[\\c#ff00ffmagenta \\c#00ffffcyan \\c#ffff00yellow\\c#00ff00]');
   terminal.setText('[\\c#ffffffwhite \\c#ff0000red\\c#00ff00]', 3, 8);
   terminal.setText('>:x:<', 2, 10);
+  terminal.setText('[:happy:]', 2, 12);
+  terminal.setText('[:sad:]', 2, 13);
 
   bindKeys(terminal);
   bindMouse(terminal, canvas);
@@ -109,5 +142,6 @@ function run() {
 
 const font = new FontFaceObserver('Terminal_VT220');
 font.load()
+  .then(loadImages)
   .then(hideLoad)
   .then(run);

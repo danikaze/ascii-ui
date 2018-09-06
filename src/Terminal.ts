@@ -1,4 +1,4 @@
-/* tslint:disable:typedef */
+/* tslint:disable:typedef max-file-line-count */
 import { isArray } from 'vanilla-type-check';
 
 import { EventManager } from './EventManager';
@@ -18,7 +18,22 @@ import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './Wid
  * @param index Position of the matching commmand in the text
  * @return index where the text processing should be continued
  */
-export type EscapeCallback = (text: string, index: number) => number;
+export type EscapeCallback = (params: EscapeCommandParams) => number;
+
+export interface EscapeCommandParams {
+  /** Full text set */
+  text: string;
+  /** Index of the matched expression in `text` */
+  index: number;
+  /** Matched expression */
+  match: string;
+  /** Column of the terminal where the matching expression starts */
+  col: number;
+  /** Line of the terminal where the matching expression starts */
+  line: number;
+  /** Associated terminal */
+  terminal: Terminal;
+}
 
 export interface TileSize {
   /** number of columns of the terminal, in number of tiles */
@@ -566,10 +581,19 @@ export class Terminal implements WidgetContainer {
         this.cursorY = line;
       }
 
+      const commandParams: Partial<EscapeCommandParams> = {
+        text,
+        terminal: this,
+      };
+
       while (i < text.length && match) {
         textOffset = i;
         this.iterateTiles(match.index - i, setTile);
-        i = this.options.commands[match[0]](text, match.index);
+        commandParams.index = match.index;
+        commandParams.match = match[0];
+        commandParams.col = this.cursorX;
+        commandParams.line = this.cursorY;
+        i = this.options.commands[match[0]](commandParams as EscapeCommandParams);
         match = regExp.exec(text);
       }
 

@@ -2,7 +2,7 @@
 
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { Terminal } from '../../src/Terminal';
+import { Terminal, EscapeCommandParams } from '../../src/Terminal';
 
 interface TestWindow extends Window {
   terminal: Terminal;
@@ -56,7 +56,7 @@ function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
   });
 }
 
-function setColor(terminal: Terminal, text: string, index: number): number {
+function setColor({ terminal, text, index }: EscapeCommandParams): number {
   const ESCAPE_TXT_LENGTH = 2;
   const COLOR_TXT_LENGTH = 7;
   const color = text.substr(index + ESCAPE_TXT_LENGTH, COLOR_TXT_LENGTH);
@@ -65,7 +65,7 @@ function setColor(terminal: Terminal, text: string, index: number): number {
   return index + ESCAPE_TXT_LENGTH + COLOR_TXT_LENGTH;
 }
 
-function injectText(terminal: Terminal, text: string, index: number) {
+function injectText({ terminal, index }: EscapeCommandParams) {
   const ESCAPED_TEXT_LENGTH = 3;
   terminal.setText('injected text');
 
@@ -84,8 +84,8 @@ function run() {
   });
 
   const commands = {
-    '\\c': setColor.bind(undefined, terminal),
-    ':x:': injectText.bind(undefined, terminal),
+    '\\c': setColor,
+    ':x:': injectText,
   };
 
   canvas.parentElement.style.width = `${canvas.width}px`;

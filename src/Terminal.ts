@@ -42,6 +42,13 @@ export interface TileSize {
   rows: number;
 }
 
+export interface TilePosition {
+  /** x-coordinate of a tile in the grid */
+  col: number;
+  /** y-coordinate of a tile in the grid */
+  line: number;
+}
+
 export interface CharStyle {
   /**
    * font or font-family to use in the terminal
@@ -50,9 +57,9 @@ export interface CharStyle {
    */
   font?: string;
   /** x-offset to apply to each character inside the tile */
-  fontOffsetX?: number;
+  offsetX?: number;
   /** y-offset to apply to each character inside the tile */
-  fontOffsetY?: number;
+  offsetY?: number;
   /** foreground color (i.e. `#00ff00`) */
   fg?: string;
   /** background color (i.e. `#000000`) */
@@ -100,31 +107,24 @@ export interface TerminalOptions extends CharStyle {
   /** `true` to enable debug console messages options, `false` to disable them */
   verbose?: boolean;
   /** Style used when calling `clear` */
-  clearStyle?: Tile;
+  clearStyle?: TextTile;
 }
 
-export interface Tile extends CharStyle {
+export interface TextTile extends CharStyle {
   /** char to display in the tile */
   char: string;
 }
 
-interface InternalTile extends Tile {
-  /** pre-calculated tile x-position in pixels */
+interface InternalTile extends TextTile {
+  /** pre-calculated tile (not contents) x-position in pixels */
   x: number;
-  /** pre-calculated tile y-position in pixels */
+  /** pre-calculated tile (not contents) y-position in pixels */
   y: number;
 }
 
-interface DecayTile extends Tile {
+interface DecayTile extends TextTile {
   /** current opacity */
   alpha: number;
-}
-
-export interface TilePosition {
-  /** x-coordinate of a tile in the grid */
-  col: number;
-  /** y-coordinate of a tile in the grid */
-  line: number;
 }
 
 type IterateTileCallback = (InternalTile, i) => void;
@@ -154,9 +154,9 @@ export class Terminal implements WidgetContainer {
   private readonly decayTiles: { [key: string]: DecayTile } = {}; // key being `${x},${y}`
   /** How much to change the opacity of the decayTiles when updating them */
   private decayChange: number;
-  /** x-position of the cursor */
+  /** x-position (tile) of the cursor */
   private cursorX: number = 0;
-  /** y-position of the cursor */
+  /** y-position (tile) of the cursor */
   private cursorY: number = 0;
   /** visibility status of the cursor */
   private cursorVisible: boolean = true;
@@ -270,8 +270,8 @@ export class Terminal implements WidgetContainer {
           bg: options.bg,
           fg: options.fg,
           font: options.font,
-          fontOffsetX: options.fontOffsetX,
-          fontOffsetY: options.fontOffsetY,
+          offsetX: options.offsetX,
+          offsetY: options.offsetY,
           x: x * options.tileWidth,
           y: y * options.tileHeight,
         };
@@ -315,26 +315,22 @@ export class Terminal implements WidgetContainer {
     for (const tile of this.dirtyTiles) {
       const x = tile.x;
       const y = tile.y;
-      const offsetX = tile.fontOffsetX;
-      const offsetY = tile.fontOffsetY;
+      const offsetX = tile.offsetX;
+      const offsetY = tile.offsetY;
+      const isCursor = drawCursor && x === cursorX && y === cursorY;
+
+      // bg
+      ctx.fillStyle = isCursor ? tile.fg : tile.bg;
+      ctx.fillRect(x, y, w, h);
       const decayKey = `${x},${y}`;
       const decayTile = this.decayTiles[decayKey];
 
       ctx.font = tile.font;
-      // cursor
-      if (drawCursor && x === cursorX && y === cursorY) {
-        // bg
-        ctx.fillStyle = tile.fg;
-        ctx.fillRect(x, y, w, h);
-
+      if (isCursor) {
         // fg
         ctx.fillStyle = tile.bg;
         ctx.fillText(tile.char, x + offsetX, y + h + offsetY);
       } else {
-        // bg
-        ctx.fillStyle = tile.bg;
-        ctx.fillRect(x, y, w, h);
-
         // decay
         if (decayTile) {
           if (decayTile.alpha > decayChange) {
@@ -342,7 +338,7 @@ export class Terminal implements WidgetContainer {
             ctx.fillStyle = decayTile.fg;
             ctx.font = decayTile.font;
             ctx.globalAlpha = decayTile.alpha;
-            ctx.fillText(decayTile.char, x + decayTile.fontOffsetX, y + h + decayTile.fontOffsetY);
+            ctx.fillText(decayTile.char, x + decayTile.offsetX, y + h + decayTile.offsetY);
             ctx.globalAlpha = originalAlpha;
             ctx.font = tile.font;
           } else {
@@ -430,6 +426,7 @@ export class Terminal implements WidgetContainer {
   setCursor(col: number, line: number): void {
     const oldTile = this.buffer[this.cursorY][this.cursorX];
 
+    // correct coordinates
     if (col >= this.options.columns && line < this.options.rows - 1) {
       col = 0;
       line++;
@@ -446,9 +443,11 @@ export class Terminal implements WidgetContainer {
       line = 0;
     }
 
+    // assign the new position of the cursor
     this.cursorX = col;
     this.cursorY = line;
 
+    // redraw new and old tiles to update the cursor visibility
     const newTile = this.buffer[line][col];
     if (oldTile !== newTile) {
       this.addDirtyTile(oldTile, this.dirtyTiles);
@@ -503,8 +502,8 @@ export class Terminal implements WidgetContainer {
 
     return {
       font: ctx.font,
-      fontOffsetX: this.options.fontOffsetX,
-      fontOffsetY: this.options.fontOffsetY,
+      offsetX: this.options.offsetX,
+      offsetY: this.options.offsetY,
       fg: this.options.fg,
       bg: this.options.bg,
     };
@@ -532,6 +531,7 @@ export class Terminal implements WidgetContainer {
     let textOffset = 0;
     let regExp;
     let match;
+
     // autorender is disabled in case of nested calls (only the most external one will be autorendered)
     const autoRender = this.options.autoRender;
     this.options.autoRender = false;
@@ -548,8 +548,8 @@ export class Terminal implements WidgetContainer {
         decayTiles[`${tile.x},${tile.y}`] = {
           char: tile.char,
           font: tile.font,
-          fontOffsetX: tile.fontOffsetX,
-          fontOffsetY: tile.fontOffsetY,
+          offsetX: tile.offsetX,
+          offsetY: tile.offsetY,
           fg: tile.fg,
           alpha: options.decayInitialAlpha,
         };
@@ -557,8 +557,8 @@ export class Terminal implements WidgetContainer {
 
       tile.char = text[i + textOffset];
       tile.font = options.font;
-      tile.fontOffsetX = options.fontOffsetX;
-      tile.fontOffsetY = options.fontOffsetY;
+      tile.offsetX = options.offsetX;
+      tile.offsetY = options.offsetY;
       tile.fg = options.fg;
       tile.bg = options.bg;
       addDirtyTile(tile, dirtyTiles);
@@ -647,15 +647,15 @@ export class Terminal implements WidgetContainer {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  setTiles(tiles: Tile | Tile[], col?: number, line?: number): void {
+  setTiles(tiles: TextTile | TextTile[], col?: number, line?: number): void {
     const dirtyTiles = this.dirtyTiles;
 
     if (!isArray(tiles)) {
-      tiles = [tiles as Tile];
+      tiles = [tiles as TextTile];
     }
 
     this.iterateTiles(
-      (tiles as Tile[]).length,
+      (tiles as TextTile[]).length,
       (tile, i) => {
         Object.assign(tile, tiles[i]);
         this.addDirtyTile(tile, dirtyTiles);
@@ -989,8 +989,8 @@ Terminal.defaultOptions = {
   decayTime: 0,
   decayInitialAlpha: 0.7,
   font: '20pt Terminal_VT220',
-  fontOffsetX: 1,
-  fontOffsetY: -1,
+  offsetX: 1,
+  offsetY: -1,
   fg: '#00ff00',
   bg: '#000000',
   viewport: {

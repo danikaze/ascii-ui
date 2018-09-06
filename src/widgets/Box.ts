@@ -1,6 +1,6 @@
 import * as isEmptyObject from 'is-empty-object';
 
-import { CharStyle, Terminal, Tile } from '../Terminal';
+import { CharStyle, Terminal, TextTile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
 import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
@@ -61,16 +61,16 @@ export interface BoxOptions extends WidgetOptions {
 }
 
 interface BoxPoolTiles {
-  title: Tile[];
-  topLeft: Tile;
-  top: Tile;
-  topRight: Tile;
-  left: Tile;
-  center: Tile;
-  right: Tile;
-  bottomLeft: Tile;
-  bottom: Tile;
-  bottomRight: Tile;
+  title: TextTile[];
+  topLeft: TextTile;
+  top: TextTile;
+  topRight: TextTile;
+  left: TextTile;
+  center: TextTile;
+  right: TextTile;
+  bottomLeft: TextTile;
+  bottom: TextTile;
+  bottomRight: TextTile;
 }
 
 /**
@@ -308,7 +308,7 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
    *
    * @param title Optional title for the box
    */
-  private getBoxTiles(title: string): Tile[][] {
+  private getBoxTiles(title: string): TextTile[][] {
     const tiles = [];
     const pool = Box.boxTilesPool;
     const width = this.options.width;

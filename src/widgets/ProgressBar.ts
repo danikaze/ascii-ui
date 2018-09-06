@@ -1,4 +1,4 @@
-import { Terminal, Tile } from '../Terminal';
+import { Terminal, TextTile } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
@@ -18,15 +18,15 @@ export interface ProgressBarOptions extends WidgetOptions {
   /** Progress to display (0-1) */
   progress?: number;
   /** Style to use for the completed part of the bar */
-  completedStyle?: Tile;
+  completedStyle?: TextTile;
   /** Style to use for the pending part of the bar */
-  pendingStyle?: Tile;
+  pendingStyle?: TextTile;
   /** Style to use for current point of the bar. If not specified will be replaced by treated as a completed part */
-  currentStyle?: Tile;
+  currentStyle?: TextTile;
   /** Style to use for the start point of the bar (as a border) */
-  startStyle?: Tile;
+  startStyle?: TextTile;
   /** Style to use for the end point of the bar (as a border) */
-  endStyle?: Tile;
+  endStyle?: TextTile;
 }
 
 /**

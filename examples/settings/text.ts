@@ -191,15 +191,15 @@ const styleSettingsSection: SettingsSection = {
           ],
         },
         {
-          title: 'Font Offset X',
+          title: 'Offset X',
           contents: [
-            new SettingNumber({ name: `textStyle.fontOffsetX` }),
+            new SettingNumber({ name: `textStyle.offsetX` }),
           ],
         },
         {
-          title: 'Font Offset Y',
+          title: 'Offset Y',
           contents: [
-            new SettingNumber({ name: `textStyle.fontOffsetY` }),
+            new SettingNumber({ name: `textStyle.offsetY` }),
           ],
         },
       ],

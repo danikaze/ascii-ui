@@ -2666,7 +2666,7 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
 
-isobject@^2.0.0, isobject@^2.1.0:
+isobject@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"
   dependencies:
@@ -5224,12 +5224,9 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vanilla-type-check@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vanilla-type-check/-/vanilla-type-check-1.0.1.tgz#7ba3cc6eaaf81e1885cdc08391d27c72daee2744"
-  dependencies:
-    is-empty-object "^1.1.1"
-    isobject "^2.1.0"
+vanilla-type-check@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vanilla-type-check/-/vanilla-type-check-2.0.0.tgz#e172662ef16b486f9085f123cb82c080b4b0b22f"
 
 vary@~1.1.2:
   version "1.1.2"

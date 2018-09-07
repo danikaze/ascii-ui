@@ -1,5 +1,5 @@
 /* tslint:disable:typedef max-file-line-count */
-import { isArray } from 'vanilla-type-check';
+import { isArray } from 'vanilla-type-check/isArray';
 
 import { EventManager } from './EventManager';
 import { FocusManager } from './FocusManager';

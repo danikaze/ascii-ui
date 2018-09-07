@@ -26,7 +26,7 @@
   "dependencies": {
     "file-loader": "1.1.11",
     "is-empty-object": "^1.1.1",
-    "vanilla-type-check": "^1.0.1"
+    "vanilla-type-check": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^10.5.2",

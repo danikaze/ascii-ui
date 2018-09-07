@@ -1,4 +1,4 @@
-import { isObject } from 'vanilla-type-check';
+import { isPlainObject } from 'vanilla-type-check/isPlainObject';
 
 /**
  * Deep assign an object and return just the difference (`{}` if nothing changed)
@@ -14,7 +14,7 @@ export function deepAssignAndDiff(...args): object {
     for (const key in obj) {
       const val = obj[key];
 
-      if (isObject(val)) {
+      if (isPlainObject(val)) {
         if (!target[key]) {
           target[key] = { ...val };
           diff[key] = target[key];

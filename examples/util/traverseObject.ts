@@ -1,4 +1,5 @@
-import { isArray, isPlainObject } from 'vanilla-type-check';
+import { isArray } from 'vanilla-type-check/isArray';
+import { isPlainObject } from 'vanilla-type-check/isPlainObject';
 
 export interface GenericObject { [key: string]: any; } // tslint:disable-line:no-any
 export type GenericArray = any[]; // tslint:disable-line:no-any

@@ -1,4 +1,4 @@
-import { isObject } from 'vanilla-type-check';
+import { isPlainObject } from 'vanilla-type-check/isPlainObject';
 
 /**
  * Deep assign an object
@@ -13,7 +13,7 @@ export function deepAssign(...args) {
     for (const key in obj) {
       const val = obj[key];
 
-      if (isObject(val)) {
+      if (isPlainObject(val)) {
         if (!target[key]) {
           target[key] = { ...val };
         } else {

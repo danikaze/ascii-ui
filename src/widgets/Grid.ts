@@ -1,4 +1,4 @@
-import { Terminal, TileSize } from '../Terminal';
+import { CharStyle, Terminal, TileSize } from '../Terminal';
 import { TerminalEvent } from '../TerminalEvent';
 import { coalesce } from '../util/coalesce';
 import { Widget, WidgetConstructor, WidgetOptions } from '../Widget';
@@ -11,6 +11,12 @@ export interface GridOptions extends WidgetOptions {
   columns: number;
   /** Expand (or not) to the full size of the terminal (only applies when the parent is the terminal) */
   fullSize?: boolean;
+  /** Borders enabled (`true`) or disabled (`false`). Disabled by default */
+  borders?: boolean;
+  /** Style of the borders (`undefined`) */
+  borderStyle?: CharStyle;
+  /** Character to draw for each border type with `borderStyle` */
+  borderChars?: GridBorderOptions;
   /**
    * Function used to calculate the space for each grid
    * Leave `undefined` to use the default one
@@ -19,6 +25,25 @@ export interface GridOptions extends WidgetOptions {
    */
   calculateGridSpace?(available: number, cells: number, isRow: boolean, terminal: Terminal): number[];
 }
+
+export interface GridBorderOptions {
+  // 1 line: no joints
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+  // 2 lines: corners
+  topLeft?: string;
+  topRight?: string;
+  bottomRight?: string;
+  bottomLeft?: string;
+  // 3 lines: T style
+  noTop?: string;
+  noRight?: string;
+  noBottom?: string;
+  noLeft?: string;
+  // 4 lines: full
+  cross?: string;
 }
 
 interface AttachedWidget {
@@ -314,8 +339,8 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
       options.calculateGridSpace(
         options.width,
         options.columns,
-      false,
-      this.terminal,
+        false,
+        this.terminal,
       ),
       options.width,
     );
@@ -325,8 +350,8 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
       options.calculateGridSpace(
         options.height,
         options.rows,
-      true,
-      this.terminal,
+        true,
+        this.terminal,
       ),
       options.height,
     );

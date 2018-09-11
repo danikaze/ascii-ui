@@ -12,12 +12,13 @@ export interface GridOptions extends WidgetOptions {
   /** Expand (or not) to the full size of the terminal (only applies when the parent is the terminal) */
   fullSize?: boolean;
   /**
-   * Function used to calculate the starts of the rows/columns
+   * Function used to calculate the space for each grid
    * Leave `undefined` to use the default one
    *
    * It needs to return an array of the tiles where each row/column starts
    */
-  calculateStarts?(available: number, cells: number, isRow: boolean, terminal: Terminal): number[];
+  calculateGridSpace?(available: number, cells: number, isRow: boolean, terminal: Terminal): number[];
+}
 }
 
 interface AttachedWidget {
@@ -251,8 +252,8 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    */
   // tslint:disable-next-line:prefer-function-over-method
   protected updateOptions(changes: GridOptions): void {
-    if (!this.options.calculateStarts && !changes.calculateStarts) {
-      this.options.calculateStarts = calculateStarts;
+    if (!this.options.calculateGridSpace && !changes.calculateGridSpace) {
+      this.options.calculateGridSpace = calculateGridSpace;
     }
 
     if (coalesce(changes.width, changes.height, changes.col, changes.line) !== undefined) {
@@ -292,23 +293,43 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * calculation method
    */
   private recalculateCellSizes(): void {
-    this.columnStarts = this.options.calculateStarts(
-      this.options.width,
-      this.options.columns,
+    /** Get the list of spaces for each grid and returns the start of each one */
+    function spaceToStarts(first: number, spaces: number[], max: number): number[] {
+      const starts = [];
+      let acc = first;
+      spaces.forEach((space) => {
+        starts.push(acc);
+        acc += space;
+      });
+
+      // where starts the end, for calculating widget sizes
+      starts.push(max);
+
+      return starts;
+    }
+
+    const options = this.options;
+    this.columnStarts = spaceToStarts(
+      options.col,
+      options.calculateGridSpace(
+        options.width,
+        options.columns,
       false,
       this.terminal,
+      ),
+      options.width,
     );
-    this.columnStarts.push(this.options.width);
-    this.columnStarts = this.columnStarts.map((value) => value + this.options.col);
 
-    this.rowStarts = this.options.calculateStarts(
-      this.options.height,
-      this.options.rows,
+    this.rowStarts = spaceToStarts(
+      options.line,
+      options.calculateGridSpace(
+        options.height,
+        options.rows,
       true,
       this.terminal,
+      ),
+      options.height,
     );
-    this.rowStarts.push(this.options.height);  // where starts the end, for calculating widget sizes
-    this.rowStarts = this.rowStarts.map((value) => value + this.options.line);
 
     this.alignWidgets();
   }
@@ -335,20 +356,33 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
 }
 
 /**
- * Function that calculates the start tile of each row and column
+ * Function that calculates the space of each grid the most equitative way.
+ * Some cells can be bigger than others in no specific order, but with only 1 unit of difference as most.
  *
  * @param available number of tiles availables
  * @param cells number of rows/columns
  * @param isRow `true` when calculating the rows size, `false` for columns
- * @return list with the start tile of each row/column
+ * @return list (int[]) with the horizontal or vertical size of each grid
  */
-function calculateStarts(available: number, cells: number): number[] {
-  const tilesPerSlot = available / cells;
-  const res = [];
-
-  for (let i = 0; i < cells; i++) {
-    res.push(Math.round(tilesPerSlot * i));
+function calculateGridSpace(available: number, cells: number): number[] {
+  if (cells === 0) {
+    return [];
   }
+  if (cells === 1) {
+    return [available];
+  }
+
+  const tilesPerSlot = available / cells;
+  let acc = Math.round(tilesPerSlot);
+  const res = [acc];
+
+  // tslint:disable-next-line:no-magic-numbers
+  for (let i = 1; i < cells - 1; i++) {
+    const size = Math.round(tilesPerSlot * (i + 1)) - acc;
+    res.push(size);
+    acc += size;
+  }
+  res.push(available - acc);
 
   return res;
 }
@@ -359,5 +393,5 @@ function calculateStarts(available: number, cells: number): number[] {
 Grid.defaultOptions = {
   rows: undefined,
   columns: undefined,
-  calculateStarts,
+  calculateGridSpace,
 };

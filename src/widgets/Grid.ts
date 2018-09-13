@@ -1,4 +1,4 @@
-import { CharStyle, Terminal, TileSize } from '../Terminal';
+import { CharStyle, Terminal, TextTile, TileSize } from '../Terminal';
 import { TerminalEvent } from '../TerminalEvent';
 import { coalesce } from '../util/coalesce';
 import { Widget, WidgetConstructor, WidgetOptions } from '../Widget';
@@ -13,10 +13,8 @@ export interface GridOptions extends WidgetOptions {
   fullSize?: boolean;
   /** Borders enabled (`true`) or disabled (`false`). Disabled by default */
   borders?: boolean;
-  /** Style of the borders (`undefined`) */
-  borderStyle?: CharStyle;
-  /** Character to draw for each border type with `borderStyle` */
-  borderChars?: GridBorderOptions;
+  /** Style to use for the border when enabled */
+  borderStyle?: GridBorderOptions;
   /**
    * Function used to calculate the space for each grid
    * Leave `undefined` to use the default one
@@ -26,7 +24,7 @@ export interface GridOptions extends WidgetOptions {
   calculateGridSpace?(available: number, cells: number, isRow: boolean, terminal: Terminal): number[];
 }
 
-export interface GridBorderOptions {
+export interface GridBorderOptions extends CharStyle {
   // 1 line: no joints
   top?: string;
   right?: string;
@@ -59,6 +57,12 @@ interface AttachedWidget {
   height: number;
 }
 
+interface TileList {
+  tiles: TextTile[];
+  col: number;
+  line: number;
+}
+
 /**
  * Provides a dynamic grid system for Terminal Widgets
  */
@@ -72,6 +76,8 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
   private columnStarts: number[] = [];
   /** list of the first tile of each row */
   private rowStarts: number[] = [];
+  /** List of precalculated tiles to draw the borders */
+  private borderTiles: TileList[];
 
   constructor(terminal: Terminal, options: GridOptions, parent?: WidgetContainer) {
     super(terminal, options, parent);
@@ -81,6 +87,8 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
       this.options.fullSize = true;
     }
 
+    this.resizedEventHandler = this.resizedEventHandler.bind(this);
+
     if (parent instanceof Terminal && this.options.fullSize) {
       const parentSize = parent.getSize();
       this.setOptions({
@@ -89,7 +97,8 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
         width: parentSize.columns,
         height: parentSize.rows,
       } as any); // tslint:disable-line:no-any
-      terminal.eventManager.listen('resized', this.resizedEventHandler.bind(this));
+      // tslint:disable-next-line:no-unbound-method
+      terminal.eventManager.addListener('resized', this.resizedEventHandler);
 
     } else {
       this.setOptions({
@@ -104,9 +113,23 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
   }
 
   /**
+   * Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
+   */
+  destruct() {
+    // tslint:disable-next-line:no-unbound-method
+    this.terminal.eventManager.removeListener('resized', this.resizedEventHandler);
+  }
+
+  /**
    * Render all the attached widgets to the grid
    */
   render(): void {
+    if (this.options.borders) {
+      this.borderTiles.forEach((chunk) => {
+        this.terminal.setTiles(chunk.tiles, chunk.col, chunk.line);
+      });
+    }
+
     this.attachedWidgets.forEach((instance) => {
       instance.widget.render();
     });
@@ -275,16 +298,31 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    *
    * @param changedOptions Object with only the changed options
    */
-  // tslint:disable-next-line:prefer-function-over-method
   protected updateOptions(changes: GridOptions): void {
-    if (!this.options.calculateGridSpace && !changes.calculateGridSpace) {
-      this.options.calculateGridSpace = calculateGridSpace;
+    const options = this.options;
+
+    if (!options.calculateGridSpace && !changes.calculateGridSpace) {
+      options.calculateGridSpace = calculateGridSpace;
     }
 
-    if (coalesce(changes.width, changes.height, changes.col, changes.line) !== undefined) {
+    if (coalesce(changes.width, changes.height, changes.col, changes.line, changes.borders) !== undefined) {
+      if (this.parent instanceof Terminal && options.fullSize) {
+        const terminalSize = this.parent.getSize();
+        options.col = 0;
+        options.line = 0;
+        options.width = terminalSize.columns;
+        options.height = terminalSize.rows;
+      }
+
       this.recalculateCellSizes();
-      this.align();
     }
+  }
+
+  /**
+   * Precalculate the borders based on the options and the attached widgets
+   */
+  private calculateBorders(): void {
+    this.borderTiles = [];
   }
 
   /**
@@ -296,15 +334,16 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
     const rowStarts = this.rowStarts;
 
     /** Update the options of a widget after being aligned */
-    function alignOne(w: AttachedWidget) {
+    const alignOne = (w: AttachedWidget): void => {
       const col = columnStarts[w.col];
       const line = rowStarts[w.line];
-      const width = columnStarts[w.col + w.width] - col;
-      const height = rowStarts[w.line + w.height] - line;
+      const borders = this.options.borders ? 1 : 0;
+      const width = columnStarts[w.col + w.width] - col - borders;
+      const height = rowStarts[w.line + w.height] - line - borders;
 
       w.widget.setOptions({ col, line, width, height });
       w.widget.render();
-    }
+    };
 
     if (attachedWidget) {
       alignOne(attachedWidget);
@@ -318,12 +357,14 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * calculation method
    */
   private recalculateCellSizes(): void {
+    const options = this.options;
+
     /** Get the list of spaces for each grid and returns the start of each one */
     function spaceToStarts(first: number, spaces: number[], max: number): number[] {
       const starts = [];
       let acc = first;
-      spaces.forEach((space) => {
-        starts.push(acc);
+      spaces.forEach((space, i) => {
+        starts.push(acc + (options.borders ? i + 1 : 0));
         acc += space;
       });
 
@@ -333,11 +374,18 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
       return starts;
     }
 
-    const options = this.options;
+    let availableWidth = options.width;
+    let availableHeight = options.height;
+
+    if (options.borders) {
+      availableWidth -= options.columns + 1;
+      availableHeight -= options.rows + 1;
+    }
+
     this.columnStarts = spaceToStarts(
       options.col,
       options.calculateGridSpace(
-        options.width,
+        availableWidth,
         options.columns,
         false,
         this.terminal,
@@ -348,7 +396,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
     this.rowStarts = spaceToStarts(
       options.line,
       options.calculateGridSpace(
-        options.height,
+        availableHeight,
         options.rows,
         true,
         this.terminal,
@@ -357,6 +405,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
     );
 
     this.alignWidgets();
+    this.calculateBorders();
   }
 
   /**
@@ -401,7 +450,6 @@ function calculateGridSpace(available: number, cells: number): number[] {
   let acc = Math.round(tilesPerSlot);
   const res = [acc];
 
-  // tslint:disable-next-line:no-magic-numbers
   for (let i = 1; i < cells - 1; i++) {
     const size = Math.round(tilesPerSlot * (i + 1)) - acc;
     res.push(size);
@@ -418,5 +466,26 @@ function calculateGridSpace(available: number, cells: number): number[] {
 Grid.defaultOptions = {
   rows: undefined,
   columns: undefined,
+  borderStyle: {
+    bg: '#000000',
+    fg: '#00ff00',
+    // 1 line
+    top: '─',
+    bottom: '─',
+    left: '│',
+    right: '│',
+    // 2 lines
+    topLeft: '┌',
+    topRight: '┐',
+    bottomRight: '┘',
+    bottomLeft: '└',
+    // 3 lines
+    noTop: '┬',
+    noRight: '├',
+    noBottom: '┴',
+    noLeft: '┤',
+    // 4 lines
+    cross: '┼',
+  },
   calculateGridSpace,
 };

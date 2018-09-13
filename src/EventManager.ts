@@ -24,7 +24,7 @@ export class EventManager {
    * @param listener function to call when an event is triggered on this target
    * @param widget widget to listen the event on (the terminal itself by default)
    */
-  listen(type: string, listener: EventListener, widget?: Widget): void {
+  addListener(type: string, listener: EventListener, widget?: Widget): void {
     const target = widget || this.terminal;
 
     let targets = this.listeners.get(type);
@@ -39,6 +39,34 @@ export class EventManager {
       targets.set(target, listeners);
     }
     listeners.push(listener);
+  }
+
+  /**
+   * Remove a previous added listener.
+   * Needs to be called with the same parameters as it was added.
+   * Does nothing if not found.
+   *
+   * @param type type of the event to listen to
+   * @param listener function to call when an event is triggered on this target
+   * @param widget widget to listen the event on (the terminal itself by default)
+   */
+  removeListener(type: string, listener: EventListener, widget?: Widget): void {
+    const target = widget || this.terminal;
+
+    const targets = this.listeners.get(type);
+    if (!targets) {
+      return;
+    }
+
+    const listeners = targets.get(target);
+    if (!listeners) {
+      return;
+    }
+
+    const index = listeners.indexOf(listener);
+    if (index !== -1) {
+      listeners.splice(index, 1);
+    }
   }
 
   /**

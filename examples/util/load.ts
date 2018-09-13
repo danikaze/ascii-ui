@@ -103,7 +103,7 @@ export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
       enableResizeButtons(terminal, canvas);
 
       terminalResizedHandler(canvas);
-      terminal.eventManager.listen('resized', terminalResizedHandler.bind(0, canvas));
+      terminal.eventManager.addListener('resized', terminalResizedHandler.bind(0, canvas));
 
       (window as TestWindow).terminal = terminal;
       (window as TestWindow).TerminalEvent = TerminalEvent;

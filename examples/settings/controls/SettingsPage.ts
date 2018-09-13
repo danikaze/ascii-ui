@@ -75,6 +75,7 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
   updateWidget(widget: Widget, settings: OptionsType): void {
     this.options.terminal.dettachWidget(this.widget);
     this.options.terminal.clear();
+    this.widget.destruct();
     this.widget = widget;
     this.options.widgetInitialSettings = settings;
     this.widgetSettings.setConfig(this.options.widgetInitialSettings);

@@ -39,6 +39,7 @@
     "no-implicit-dependencies": false,
     "no-import-side-effect": [true, { "ignore-pattern": "/.(css|less|sass|scss)$/" }],
     "no-inferrable-types": false,
+    "no-irregular-whitespace": false,
     "no-parameter-reassignment": false,
     "no-submodule-imports": false,
     "no-trailing-whitespace": [true, "ignore-jsdoc"],

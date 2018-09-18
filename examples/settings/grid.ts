@@ -8,6 +8,7 @@ import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingButton } from './controls/SettingButton';
 import { SettingNumber } from './controls/SettingNumber';
 import { SettingsPage } from './controls/SettingsPage';
+import { SettingText } from './controls/SettingText';
 import { basicSection } from './controls/widgetBasicSection';
 import { SettingsLayout, SettingsRow, SettingsSection, WidgetSettings } from './controls/WidgetSettings';
 
@@ -45,6 +46,103 @@ const gridSettingsSection: SettingsSection = {
           title: 'Full Size',
           contents: [
             new SettingBoolean({ name: 'fullSize' }),
+          ],
+        },
+        {
+          title: 'Borders',
+          contents: [
+            new SettingBoolean({ name: 'borders' }),
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const borderStyleSettingsSection: SettingsSection = {
+  title: 'Border Style',
+  closed: true,
+  rows: [
+    {
+      cols: [
+        {
+          title: 'Font',
+          contents: [
+            new SettingText({ name: `borderStyle.font` }),
+          ],
+        },
+        {
+          title: 'Offset X',
+          contents: [
+            new SettingNumber({ name: `borderStyle.offsetX` }),
+          ],
+        },
+        {
+          title: 'Offset Y',
+          contents: [
+            new SettingNumber({ name: `borderStyle.offsetY` }),
+          ],
+        },
+      ],
+    },
+    {
+      cols: [
+        {
+          title: 'FG color',
+          contents: [
+            new SettingText({ name: `borderStyle.fg` }),
+          ],
+        },
+        {
+          title: 'BG color',
+          contents: [
+            new SettingText({ name: `borderStyle.bg` }),
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Borders Characters',
+      cols: [
+        {
+          contents: [
+            new SettingText({ name: `borderStyle.topLeft`, maxLength: 1 }),
+            new SettingText({ name: `borderStyle.top`, maxLength: 1 }),
+            new SettingText({ name: `borderStyle.topRight`, maxLength: 1 }),
+            ' 　 ',
+            new SettingText({ disabled: true, maxLength: 1, style: { border: '0' } }),
+            new SettingText({ name: `borderStyle.noTop`, maxLength: 1 }),
+            new SettingText({ disabled: true, maxLength: 1, style: { border: '0' } }),
+          ],
+        },
+      ],
+    },
+    {
+      cols: [
+        {
+          contents: [
+            new SettingText({ name: `borderStyle.left`, maxLength: 1 }),
+            new SettingText({ disabled: true, maxLength: 1, style: { border: '0' } }),
+            new SettingText({ name: `borderStyle.right`, maxLength: 1 }),
+            ' 　 ',
+            new SettingText({ name: `borderStyle.noRight`, maxLength: 1 }),
+            new SettingText({ name: `borderStyle.cross`, maxLength: 1 }),
+            new SettingText({ name: `borderStyle.noLeft`, maxLength: 1 }),
+          ],
+        },
+      ],
+    },
+    {
+      cols: [
+        {
+          contents: [
+            new SettingText({ name: `borderStyle.bottomLeft`, maxLength: 1 }),
+            new SettingText({ name: `borderStyle.bottom`, maxLength: 1 }),
+            new SettingText({ name: `borderStyle.bottomRight`, maxLength: 1 }),
+            ' 　 ',
+            new SettingText({ disabled: true, maxLength: 1, style: { border: '0' } }),
+            new SettingText({ name: `borderStyle.noBottom`, maxLength: 1 }),
+            new SettingText({ disabled: true, maxLength: 1, style: { border: '0' } }),
           ],
         },
       ],
@@ -127,6 +225,7 @@ function createWidgetSettings() {
     sections: [
       basicSection,
       gridSettingsSection,
+      borderStyleSettingsSection,
     ],
   };
 
@@ -231,6 +330,7 @@ function preUpdateWidgeSettings(): boolean {
 
 const widgetInitialSettings = {
   ...Widget.defaultOptions,
+  ...Grid.defaultOptions,
   col: 1,
   line: 1,
   width: 40,

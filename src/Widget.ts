@@ -54,6 +54,14 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
   }
 
   /**
+   * Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
+   */
+  // tslint:disable-next-line:prefer-function-over-method
+  destruct() {
+    // by default, do nothing.
+  }
+
+  /**
    * Get the reference to the parent of the widget, if any
    *
    * @returns parent if any, or `undefined`

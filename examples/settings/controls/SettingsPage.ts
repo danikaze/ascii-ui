@@ -30,7 +30,7 @@ export interface SettingsPageOptions<OptionsType> {
   /** Function called before displaying the code, in case any modification is needed */
   filterCode?(code: object): object;
   /** Function called before update the widget options */
-  transformOptions?(options: object): object,
+  transformOptions?(options: object): object;
   /** Function called before updating the widget options */
   preUpdateWidgeSettings?(options: object): boolean;
   /** Function called after updating the widget options */
@@ -75,6 +75,7 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
   updateWidget(widget: Widget, settings: OptionsType): void {
     this.options.terminal.dettachWidget(this.widget);
     this.options.terminal.clear();
+    this.widget.destruct();
     this.widget = widget;
     this.options.widgetInitialSettings = settings;
     this.widgetSettings.setConfig(this.options.widgetInitialSettings);

@@ -565,8 +565,6 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
         height: terminalSize.rows,
       } as any); // tslint:disable-line:no-any
     }
-
-    this.recalculateCellSizes();
   }
 }
 
@@ -612,6 +610,7 @@ Grid.defaultOptions = {
     offsetY: 0,
     bg: '#000000',
     fg: '#00ff00',
+    font: '20pt Terminal_VT220',
     // 1 line
     top: '─',
     bottom: '─',

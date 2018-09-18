@@ -125,9 +125,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    */
   render(): void {
     if (this.options.borders) {
-      this.borderTiles.forEach((chunk) => {
-        this.terminal.setTiles(chunk.tiles, chunk.col, chunk.line);
-      });
+      this.renderBorders();
     }
 
     this.attachedWidgets.forEach((instance) => {
@@ -322,7 +320,146 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * Precalculate the borders based on the options and the attached widgets
    */
   private calculateBorders(): void {
-    this.borderTiles = [];
+    if (!this.attachedWidgets || this.attachedWidgets.length === 0) {
+      this.borderTiles = [];
+
+      return;
+    }
+
+    const borders: { [key: number]: { [key: number]: string } } = {};
+    const borderStyle = this.options.borderStyle;
+    const newTiles: TileList[] = [];
+
+    /** Check if a tile around the current one is marked to render */
+    function checkTile(col: number, line: number, ...deltas: Array<[number, number]>): boolean {
+      return deltas.every(([dx, dy]) => {
+        const row = borders[line + dy];
+
+        return row !== undefined && row[col + dx] !== undefined;
+      });
+    }
+
+    /** Get the correct tile based on its surroundings */
+    function getBorderTile(col: number, line: number, char: string): TextTile {
+      if (checkTile(col, line, [0, -1], [1, 0], [0, 1], [-1, 0])) {
+        char = borderStyle.cross;
+      } else if (checkTile(col, line, [1, 0], [0, 1], [-1, 0])) {
+        char = borderStyle.noTop;
+      } else if (checkTile(col, line, [0, -1], [0, 1], [-1, 0])) {
+        char = borderStyle.noLeft;
+      } else if (checkTile(col, line, [0, -1], [1, 0], [-1, 0])) {
+        char = borderStyle.noBottom;
+      } else if (checkTile(col, line, [0, -1], [1, 0], [0, 1])) {
+        char = borderStyle.noRight;
+      } else if (checkTile(col, line, [1, 0], [0, 1])) {
+        char = borderStyle.topLeft;
+      } else if (checkTile(col, line, [-1, 0], [0, 1])) {
+        char = borderStyle.topRight;
+      } else if (checkTile(col, line, [-1, 0], [0, -1])) {
+        char = borderStyle.bottomRight;
+      } else if (checkTile(col, line, [1, 0], [0, -1])) {
+        char = borderStyle.bottomLeft;
+      }
+
+      return {
+        char,
+        font: borderStyle.font,
+        offsetX: borderStyle.offsetX,
+        offsetY: borderStyle.offsetY,
+        fg: borderStyle.fg,
+        bg: borderStyle.bg,
+      };
+    }
+
+    /** Add one tile to the list of tiles to calculate */
+    function addTile(col: number, line: number, char: string): void {
+      if (!borders[line]) {
+        borders[line] = {};
+      }
+      borders[line][col] = char;
+    }
+
+    /** Add a box of tiles to calculate */
+    function addBox(x0: number, y0: number, x1: number, y1: number): void {
+      if (x0 === undefined || y0 === undefined || x1 === undefined || y1 === undefined) {
+        return;
+      }
+
+      // horizontal lines
+      for (let i = x0; i < x1; i++) {
+        // top line
+        addTile(i, y0, borderStyle.top);
+        // bottom line
+        addTile(i, y1 - 1, borderStyle.bottom);
+      }
+
+      // vertical lines
+      for (let i = y0 + 1; i < y1 - 1; i++) {
+        // left line
+        addTile(x0, i, borderStyle.left);
+        // right line
+        addTile(x1 - 1, i, borderStyle.right);
+      }
+    }
+
+    // get the list of tiles to calculate based on the attached widgets
+    for (const widget of this.attachedWidgets) {
+      addBox(
+        this.columnStarts[widget.col] - 1,
+        this.rowStarts[widget.line] - 1,
+        this.columnStarts[widget.col + widget.width],
+        this.rowStarts[widget.line + widget.height],
+      );
+    }
+
+    // get the actual tiles to render based on the calculated ones
+    Object.keys(borders)
+    .forEach((keyY) => {
+      const y = Number(keyY);
+      const line = borders[y];
+      let lastCol = -1;
+      let chunkStart = -1;
+      let chunk;
+
+      Object.keys(line)
+      .forEach((keyX) => {
+        const x = Number(keyX);
+        if (lastCol === -1 || x - lastCol !== 1) {
+          if (chunk) {
+            newTiles.push({
+              tiles: chunk,
+              col: chunkStart,
+              line: y,
+            });
+          }
+          chunk = [];
+          chunkStart = x;
+        }
+        lastCol = x;
+        chunk.push(getBorderTile(x, y, borders[keyY][keyX]));
+      });
+
+      newTiles.push({
+        tiles: chunk,
+        col: chunkStart,
+        line: y,
+      });
+    });
+
+    this.borderTiles = newTiles;
+  }
+
+  /**
+   * Render all the borders of the grid
+   */
+  private renderBorders(): void {
+    if (!this.borderTiles) {
+      this.calculateBorders();
+    }
+
+    this.borderTiles.forEach((chunk) => {
+      this.terminal.setTiles(chunk.tiles, chunk.col, chunk.line);
+    });
   }
 
   /**
@@ -332,6 +469,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
   private alignWidgets(attachedWidget?: AttachedWidget): void {
     const columnStarts = this.columnStarts;
     const rowStarts = this.rowStarts;
+    this.borderTiles = undefined;
 
     /** Update the options of a widget after being aligned */
     const alignOne = (w: AttachedWidget): void => {
@@ -344,6 +482,10 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
       w.widget.setOptions({ col, line, width, height });
       w.widget.render();
     };
+
+    if (this.options.borders) {
+      this.renderBorders();
+    }
 
     if (attachedWidget) {
       alignOne(attachedWidget);
@@ -405,7 +547,6 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
     );
 
     this.alignWidgets();
-    this.calculateBorders();
   }
 
   /**
@@ -467,6 +608,8 @@ Grid.defaultOptions = {
   rows: undefined,
   columns: undefined,
   borderStyle: {
+    offsetX: 0,
+    offsetY: 0,
     bg: '#000000',
     fg: '#00ff00',
     // 1 line

@@ -5,6 +5,7 @@ import { EventManager } from './EventManager';
 import { FocusManager } from './FocusManager';
 import { TerminalEvent } from './TerminalEvent';
 import { assignCharStyle } from './util/assignCharStyle';
+import { clamp } from './util/clamp';
 import { deepAssign } from './util/deepAssign';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
@@ -113,6 +114,14 @@ export interface TerminalOptions extends CharStyle {
   columns?: number;
   /** number of rows of the terminal, in number of tiles */
   rows?: number;
+  /** minimum number of columns (tiles) allowed */
+  minColumns?: number;
+  /** minimum number of rows (tiles) allowed */
+  minRows?: number;
+  /** maximum number of columns (tiles) allowed */
+  maxColumns?: number;
+  /** maximum number of rows (tiles) allowed */
+  maxRows?: number;
   /** `true` to let the terminal manage the screen changes */
   autoRender?: boolean;
   /** if `true`, the containing canvas will be resized to contain the grid */
@@ -247,6 +256,10 @@ export class Terminal implements WidgetContainer {
       this.options.rows = oldRows;
     }
 
+    // limit the size of the terminal
+    this.options.columns = clamp(this.options.columns, this.options.minColumns, this.options.maxColumns);
+    this.options.rows = clamp(this.options.rows, this.options.minRows, this.options.maxRows);
+
     // decay
     this.decayChange = this.options.decayInitialAlpha / this.options.decayTime;
 
@@ -267,7 +280,7 @@ export class Terminal implements WidgetContainer {
     }
 
     // resize
-    if (changed.columns !== undefined || changed.rows !== undefined) {
+    if (this.options.columns !== oldColumns || this.options.rows !== oldRows) {
       this.resize(this.options.columns, this.options.rows, oldColumns || 0, oldRows || 0);
     }
   }
@@ -1069,6 +1082,10 @@ export class Terminal implements WidgetContainer {
 Terminal.defaultOptions = {
   tileWidth: 18,
   tileHeight: 28,
+  minColumns: 0,
+  minRows: 0,
+  maxColumns: Infinity,
+  maxRows: Infinity,
   autoRender: true,
   autoSize: true,
   cursor: true,

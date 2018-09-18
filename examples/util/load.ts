@@ -96,6 +96,8 @@ export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
       const defaultTerminalOptions: TerminalOptions = {
         columns: 40,
         rows: 20,
+        minColumns: 8,
+        minRows: 8,
         cursor: false,
       };
       const terminal = new Terminal(canvas, { ...defaultTerminalOptions, ...terminalOptions });

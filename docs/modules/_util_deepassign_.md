@@ -18,7 +18,7 @@
 
 ▸ **deepAssign**(...args: *`any`[]*): `any`
 
-*Defined in [util/deepAssign.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/deepAssign.ts#L6)*
+*Defined in [util/deepAssign.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/deepAssign.ts#L6)*
 
 Deep assign an object
 

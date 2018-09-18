@@ -18,7 +18,7 @@
 
 ▸ **isEmptyObject**(obj: *`object`*): `boolean`
 
-*Defined in [util/isEmptyObject.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/isEmptyObject.ts#L7)*
+*Defined in [util/isEmptyObject.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/isEmptyObject.ts#L7)*
 
 Check if an object has or not properties
 

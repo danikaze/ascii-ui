@@ -30,6 +30,7 @@ Display a list of selectable options
 ### Methods
 
 * [blur](_widgets_select_.select.md#blur)
+* [destruct](_widgets_select_.select.md#destruct)
 * [focus](_widgets_select_.select.md#focus)
 * [getOptionAt](_widgets_select_.select.md#getoptionat)
 * [getParent](_widgets_select_.select.md#getparent)
@@ -61,7 +62,7 @@ Display a list of selectable options
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Select.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L54)*
+*Defined in [widgets/Select.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L54)*
 
 **Parameters:**
 
@@ -85,7 +86,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L38)*
+*Defined in [Widget.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L38)*
 
 If the widget has been allocated or not
 
@@ -98,7 +99,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L36)*
+*Defined in [Widget.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L36)*
 
 If the widget is focused or not
 
@@ -111,7 +112,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [Widget.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L34)*
+*Defined in [Widget.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L34)*
 
 Widget options
 
@@ -124,7 +125,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L32)*
+*Defined in [Widget.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L32)*
 
 container of the widget, if any
 
@@ -137,7 +138,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L30)*
+*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L30)*
 
 Reference to the parent terminal where it should be rendered
 
@@ -150,7 +151,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/Select.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L47)*
+*Defined in [widgets/Select.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L47)*
 
 Default options for widget instances
 
@@ -166,12 +167,27 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:167](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L167)*
+*Defined in [Widget.ts:175](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L175)*
 
 Remove the focus from this widget. Usually done by a upper level that controls other widgets.
 
 **Returns:** `boolean`
 `true` if it was focused and blurred properly
+
+___
+<a id="destruct"></a>
+
+###  destruct
+
+▸ **destruct**(): `void`
+
+*Inherited from [Widget](_widget_.widget.md).[destruct](_widget_.widget.md#destruct)*
+
+*Defined in [Widget.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L60)*
+
+Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
+
+**Returns:** `void`
 
 ___
 <a id="focus"></a>
@@ -182,7 +198,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:147](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L147)*
+*Defined in [Widget.ts:155](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L155)*
 
 Set this Widget as focused. Usually done by a upper level that controls other widgets (so the previously focused widget is blurred)
 
@@ -196,7 +212,7 @@ ___
 
 ▸ **getOptionAt**(column: *`number`*, line: *`number`*): [SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>
 
-*Defined in [widgets/Select.ts:136](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L136)*
+*Defined in [widgets/Select.ts:136](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L136)*
 
 Get the option at the specified terminal position (absolute)
 
@@ -219,7 +235,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L61)*
+*Defined in [Widget.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L69)*
 
 Get the reference to the parent of the widget, if any
 
@@ -235,7 +251,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:109](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L109)*
+*Defined in [Widget.ts:117](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L117)*
 
 Get the position of the widget, in tile coordinates
 
@@ -249,7 +265,7 @@ ___
 
 ▸ **getSelectedIndex**(): `number`
 
-*Defined in [widgets/Select.ts:125](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L125)*
+*Defined in [widgets/Select.ts:125](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L125)*
 
 Retrieve the index of the currently selected option
 
@@ -263,7 +279,7 @@ ___
 
 ▸ **getSelectedOption**(): [SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>
 
-*Defined in [widgets/Select.ts:116](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L116)*
+*Defined in [widgets/Select.ts:116](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L116)*
 
 Retrieve a reference to the currently selected option. Even if it's a reference, don't update it directly, but use `setOptions` to allow the widget to apply the changes
 
@@ -279,7 +295,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:97](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L97)*
+*Defined in [Widget.ts:105](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L105)*
 
 Get the widget size, measured in tiles
 
@@ -295,7 +311,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:123](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L123)*
+*Defined in [Widget.ts:131](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L131)*
 
 Check if the widget is (overlaps) the specified position
 
@@ -318,7 +334,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:137](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L137)*
+*Defined in [Widget.ts:145](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L145)*
 
 Check if this widget is focusable (when cycling over widgets)
 
@@ -334,7 +350,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:182](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L182)*
+*Defined in [Widget.ts:190](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L190)*
 
 Check if the widget is currently focused or not
 
@@ -348,7 +364,7 @@ ___
 
 ▸ **next**(): `boolean`
 
-*Defined in [widgets/Select.ts:263](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L263)*
+*Defined in [widgets/Select.ts:263](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L263)*
 
 Select the next option to the current one
 
@@ -362,7 +378,7 @@ ___
 
 ▸ **prev**(): `boolean`
 
-*Defined in [widgets/Select.ts:254](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L254)*
+*Defined in [widgets/Select.ts:254](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L254)*
 
 Select the previous option to the current one
 
@@ -378,7 +394,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Select.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L75)*
+*Defined in [widgets/Select.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L75)*
 
 Render the widget in the associated terminal
 
@@ -391,7 +407,7 @@ ___
 
 ▸ **selectIndex**(index: *`number`*): `boolean`
 
-*Defined in [widgets/Select.ts:168](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L168)*
+*Defined in [widgets/Select.ts:168](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L168)*
 
 Select the option with the specified index. This will do nothing if the option is disabled or the index not found.
 
@@ -411,7 +427,7 @@ ___
 
 ▸ **selectOption**(option: *[SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>*): `boolean`
 
-*Defined in [widgets/Select.ts:233](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L233)*
+*Defined in [widgets/Select.ts:233](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L233)*
 
 Select the specified option. This will do nothing the option is disabled or not found
 
@@ -431,7 +447,7 @@ ___
 
 ▸ **selectValue**(value: *`T`*): `boolean`
 
-*Defined in [widgets/Select.ts:210](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L210)*
+*Defined in [widgets/Select.ts:210](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L210)*
 
 Select the first option with the specified value. This will do nothing if all the options with that value are disabled there's no one with the specified value.
 
@@ -453,7 +469,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:77](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L77)*
+*Defined in [Widget.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L85)*
 
 Update the options. Always use this setter so the widget knows about the change instead of changing the (protected) variable directly. The widget might do some internal calcs when this method is called.
 
@@ -479,7 +495,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Select.ts:273](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Select.ts#L273)*
+*Defined in [widgets/Select.ts:273](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L273)*
 
 `setOptions` will assign the options to `this.options`, but any derivated calculation should be done here.
 

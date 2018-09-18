@@ -19,7 +19,7 @@
 
 **HORIZONTAL**:  = 1
 
-*Defined in [widgets/ProgressBar.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L10)*
+*Defined in [widgets/ProgressBar.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L10)*
 
 The bar has 1 tile height and it's drawn from left to right
 
@@ -30,7 +30,7 @@ ___
 
 **VERTICAL**: 
 
-*Defined in [widgets/ProgressBar.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/ProgressBar.ts#L12)*
+*Defined in [widgets/ProgressBar.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L12)*
 
 The bar has 1 tile width and it's drawn from bottom to top
 

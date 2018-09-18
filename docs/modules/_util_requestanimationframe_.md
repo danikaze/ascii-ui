@@ -30,7 +30,7 @@
 
 **ΤrequestAnimationFrameFn**: *`function`*
 
-*Defined in [util/requestAnimationFrame.ts:1](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/requestAnimationFrame.ts#L1)*
+*Defined in [util/requestAnimationFrame.ts:1](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/requestAnimationFrame.ts#L1)*
 
 #### Type declaration
 ▸(callback: *`FrameRequestCallback`*): `number`
@@ -58,7 +58,7 @@ ___
   (window as VendorWindow).msRequestAnimationFrame.bind(window) ||
   customRequestAnimationFrame
 
-*Defined in [util/requestAnimationFrame.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/requestAnimationFrame.ts#L22)*
+*Defined in [util/requestAnimationFrame.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/requestAnimationFrame.ts#L22)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 ▸ **customRequestAnimationFrame**(callback: *`FrameRequestCallback`*): `number`
 
-*Defined in [util/requestAnimationFrame.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/requestAnimationFrame.ts#L12)*
+*Defined in [util/requestAnimationFrame.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/requestAnimationFrame.ts#L12)*
 
 Polyfill for `window.requestAnimationFrame`
 

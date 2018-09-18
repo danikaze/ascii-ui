@@ -34,7 +34,7 @@
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L9)*
+*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L9)*
 
 x-position of the widget in terminal tiles
 
@@ -47,7 +47,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L17)*
+*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L17)*
 
 if `true`, the widget can be selectable
 
@@ -60,7 +60,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L15)*
+*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L15)*
 
 widget height in terminal tiles
 
@@ -73,7 +73,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L11)*
+*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L11)*
 
 y-position of the widget in terminal tiles
 
@@ -84,7 +84,7 @@ ___
 
 **● maxLength**: *`number`*
 
-*Defined in [widgets/Input.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Input.ts#L14)*
+*Defined in [widgets/Input.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Input.ts#L14)*
 
 If `> 0`, only will allow the specified number of characters
 
@@ -95,7 +95,7 @@ ___
 
 **● password**: *`boolean`*
 
-*Defined in [widgets/Input.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Input.ts#L10)*
+*Defined in [widgets/Input.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Input.ts#L10)*
 
 If `true`, it won't display the real value but `passwordCharacter`
 
@@ -106,7 +106,7 @@ ___
 
 **● passwordCharacter**: *`string`*
 
-*Defined in [widgets/Input.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Input.ts#L12)*
+*Defined in [widgets/Input.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Input.ts#L12)*
 
 If `password` is `true`, it will display this character instead of the real value
 
@@ -119,7 +119,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L19)*
+*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L19)*
 
 value use for ordering the selection order with the keys
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L13)*
+*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L13)*
 
 widget width in terminal tiles
 

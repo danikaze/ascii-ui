@@ -23,7 +23,7 @@
 
 **● cancellable**: *`boolean`*
 
-*Defined in [TerminalEvent.ts:3](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/TerminalEvent.ts#L3)*
+*Defined in [TerminalEvent.ts:3](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/TerminalEvent.ts#L3)*
 
 ___
 <a id="type"></a>
@@ -32,7 +32,7 @@ ___
 
 **● type**: *`string`*
 
-*Defined in [TerminalEvent.ts:2](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/TerminalEvent.ts#L2)*
+*Defined in [TerminalEvent.ts:2](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/TerminalEvent.ts#L2)*
 
 ___
 

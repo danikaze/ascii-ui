@@ -11,25 +11,27 @@
 ### Interfaces
 
 * [AttachedWidget](../interfaces/_widgets_grid_.attachedwidget.md)
+* [GridBorderOptions](../interfaces/_widgets_grid_.gridborderoptions.md)
 * [GridOptions](../interfaces/_widgets_grid_.gridoptions.md)
+* [TileList](../interfaces/_widgets_grid_.tilelist.md)
 
 ### Functions
 
-* [calculateStarts](_widgets_grid_.md#calculatestarts)
+* [calculateGridSpace](_widgets_grid_.md#calculategridspace)
 
 ---
 
 ## Functions
 
-<a id="calculatestarts"></a>
+<a id="calculategridspace"></a>
 
-###  calculateStarts
+###  calculateGridSpace
 
-▸ **calculateStarts**(available: *`number`*, cells: *`number`*): `number`[]
+▸ **calculateGridSpace**(available: *`number`*, cells: *`number`*): `number`[]
 
-*Defined in [widgets/Grid.ts:345](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Grid.ts#L345)*
+*Defined in [widgets/Grid.ts:580](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L580)*
 
-Function that calculates the start tile of each row and column
+Function that calculates the space of each grid the most equitative way. Some cells can be bigger than others in no specific order, but with only 1 unit of difference as most.
 
 **Parameters:**
 
@@ -39,7 +41,7 @@ Function that calculates the start tile of each row and column
 | cells | `number` |  number of rows/columns |
 
 **Returns:** `number`[]
-list with the start tile of each row/column
+list (int[]) with the horizontal or vertical size of each grid
 
 ___
 

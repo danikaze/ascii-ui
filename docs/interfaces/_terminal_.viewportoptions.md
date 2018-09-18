@@ -25,7 +25,7 @@
 
 **● bottom**: *`number`*
 
-*Defined in [Terminal.ts:102](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L102)*
+*Defined in [Terminal.ts:103](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L103)*
 
 Bottom coordinate (in tiles) of the Terminal viewport (-1 to stick always to `height`)
 
@@ -36,7 +36,7 @@ ___
 
 **● left**: *`number`*
 
-*Defined in [Terminal.ts:104](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L104)*
+*Defined in [Terminal.ts:105](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L105)*
 
 Left coordinate (in tiles) of the Terminal viewport (-1 to stick always to `0`)
 
@@ -47,7 +47,7 @@ ___
 
 **● right**: *`number`*
 
-*Defined in [Terminal.ts:100](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L100)*
+*Defined in [Terminal.ts:101](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L101)*
 
 Right coordinate (in tiles) of the Terminal viewport (-1 to stick always to `width`)
 
@@ -58,7 +58,7 @@ ___
 
 **● top**: *`number`*
 
-*Defined in [Terminal.ts:98](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L98)*
+*Defined in [Terminal.ts:99](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L99)*
 
 Top coordinate (in tiles) of the Terminal viewport (-1 to stick always to 0)
 

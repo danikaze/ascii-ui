@@ -23,7 +23,7 @@
 
 **● height**: *`number`*
 
-*Defined in [Terminal.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L36)*
+*Defined in [Terminal.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L37)*
 
 Image height
 
@@ -34,7 +34,7 @@ ___
 
 **● width**: *`number`*
 
-*Defined in [Terminal.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L34)*
+*Defined in [Terminal.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L35)*
 
 Image width
 

@@ -25,7 +25,7 @@
 
 **● srcH**: *`number`*
 
-*Defined in [Terminal.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L47)*
+*Defined in [Terminal.ts:48](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L48)*
 
 height (pixels) of the section to crop in the source image
 
@@ -36,7 +36,7 @@ ___
 
 **● srcW**: *`number`*
 
-*Defined in [Terminal.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L45)*
+*Defined in [Terminal.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L46)*
 
 width (pixels) of the section to crop in the source image
 
@@ -47,7 +47,7 @@ ___
 
 **● srcX**: *`number`*
 
-*Defined in [Terminal.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L41)*
+*Defined in [Terminal.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L42)*
 
 x-position (pixels) of the section to crop in the source image
 
@@ -58,7 +58,7 @@ ___
 
 **● srcY**: *`number`*
 
-*Defined in [Terminal.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L43)*
+*Defined in [Terminal.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L44)*
 
 y-position (pixels) of the section to crop in the source image
 

@@ -242,14 +242,14 @@
 
 *Inherited from Window.Blob*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19484*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19484*
 
 #### Type declaration
 
  constructor : function
 ⊕ **new __type**(blobParts?: *`any`[]*, options?: *`BlobPropertyBag`*): `Blob`
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:7362*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:7362*
 
 **Parameters:**
 
@@ -271,14 +271,14 @@ ___
 
 *Inherited from Window.URL*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19482*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19482*
 
 #### Type declaration
 
  constructor : function
 ⊕ **new __type**(url: *`string`*, base?: * `string` &#124; `URL`*): `URL`
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:18063*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:18063*
 
 **Parameters:**
 
@@ -294,7 +294,7 @@ ___
  createObjectURL : function
 ▸ **createObjectURL**(object: *`any`*, options?: *`ObjectURLOptions`*): `string`
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:18065*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:18065*
 
 **Parameters:**
 
@@ -308,7 +308,7 @@ ___
  revokeObjectURL : function
 ▸ **revokeObjectURL**(url: *`string`*): `void`
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:18066*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:18066*
 
 **Parameters:**
 
@@ -327,14 +327,14 @@ ___
 
 *Inherited from Window.URLSearchParams*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19483*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19483*
 
 #### Type declaration
 
  constructor : function
 ⊕ **new __type**(init?: * `string` &#124; `URLSearchParams`*): `URLSearchParams`
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20170*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20170*
 
 Constructor returning a URLSearchParams object.
 
@@ -355,14 +355,14 @@ ___
 
 **● Window**: *`object`*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19528*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19528*
 
 #### Type declaration
 
  constructor : function
 ⊕ **new __type**(): `Window`
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19529*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19529*
 
 **Returns:** `Window`
 
@@ -377,7 +377,7 @@ ___
 
 *Inherited from Window.applicationCache*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19340*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19340*
 
 ___
 <a id="caches"></a>
@@ -388,7 +388,7 @@ ___
 
 *Inherited from Window.caches*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19341*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19341*
 
 ___
 <a id="clientinformation"></a>
@@ -399,7 +399,7 @@ ___
 
 *Inherited from Window.clientInformation*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19342*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19342*
 
 ___
 <a id="closed"></a>
@@ -410,7 +410,7 @@ ___
 
 *Inherited from Window.closed*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19343*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19343*
 
 ___
 <a id="console"></a>
@@ -421,7 +421,7 @@ ___
 
 *Inherited from WindowConsole.console*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20032*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20032*
 
 ___
 <a id="constructor-4"></a>
@@ -432,7 +432,7 @@ ___
 
 *Inherited from Object.constructor*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:112*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:112*
 
 The initial value of Object.prototype.constructor is the standard built-in Object constructor.
 
@@ -445,7 +445,7 @@ ___
 
 *Inherited from Window.crypto*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19344*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19344*
 
 ___
 <a id="customelements"></a>
@@ -456,7 +456,7 @@ ___
 
 *Inherited from Window.customElements*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19485*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19485*
 
 ___
 <a id="defaultstatus"></a>
@@ -467,7 +467,7 @@ ___
 
 *Inherited from Window.defaultStatus*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19345*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19345*
 
 ___
 <a id="devicepixelratio"></a>
@@ -478,7 +478,7 @@ ___
 
 *Inherited from Window.devicePixelRatio*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19346*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19346*
 
 ___
 <a id="donottrack"></a>
@@ -489,7 +489,7 @@ ___
 
 *Inherited from Window.doNotTrack*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19348*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19348*
 
 ___
 <a id="document"></a>
@@ -500,7 +500,7 @@ ___
 
 *Inherited from Window.document*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19347*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19347*
 
 ___
 <a id="event"></a>
@@ -512,7 +512,7 @@ ___
 
 *Inherited from Window.event*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19349*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19349*
 
 ___
 <a id="external"></a>
@@ -523,7 +523,7 @@ ___
 
 *Inherited from Window.external*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19350*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19350*
 
 ___
 <a id="frameelement"></a>
@@ -534,7 +534,7 @@ ___
 
 *Inherited from Window.frameElement*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19351*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19351*
 
 ___
 <a id="frames"></a>
@@ -545,7 +545,7 @@ ___
 
 *Inherited from Window.frames*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19352*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19352*
 
 ___
 <a id="history"></a>
@@ -556,7 +556,7 @@ ___
 
 *Inherited from Window.history*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19353*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19353*
 
 ___
 <a id="indexeddb"></a>
@@ -567,7 +567,7 @@ ___
 
 *Inherited from IDBEnvironment.indexedDB*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19896*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19896*
 
 ___
 <a id="innerheight"></a>
@@ -578,7 +578,7 @@ ___
 
 *Inherited from Window.innerHeight*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19354*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19354*
 
 ___
 <a id="innerwidth"></a>
@@ -589,7 +589,7 @@ ___
 
 *Inherited from Window.innerWidth*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19355*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19355*
 
 ___
 <a id="issecurecontext"></a>
@@ -600,7 +600,7 @@ ___
 
 *Inherited from Window.isSecureContext*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19356*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19356*
 
 ___
 <a id="length"></a>
@@ -611,7 +611,7 @@ ___
 
 *Inherited from Window.length*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19357*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19357*
 
 ___
 <a id="localstorage"></a>
@@ -622,7 +622,7 @@ ___
 
 *Inherited from WindowLocalStorage.localStorage*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20036*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20036*
 
 ___
 <a id="location"></a>
@@ -633,7 +633,7 @@ ___
 
 *Inherited from Window.location*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19358*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19358*
 
 ___
 <a id="locationbar"></a>
@@ -644,7 +644,7 @@ ___
 
 *Inherited from Window.locationbar*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19359*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19359*
 
 ___
 <a id="menubar"></a>
@@ -655,7 +655,7 @@ ___
 
 *Inherited from Window.menubar*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19360*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19360*
 
 ___
 <a id="mozrequestanimationframe"></a>
@@ -664,7 +664,7 @@ ___
 
 **● mozRequestAnimationFrame**: *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)*
 
-*Defined in [util/requestAnimationFrame.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/requestAnimationFrame.ts#L4)*
+*Defined in [util/requestAnimationFrame.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/requestAnimationFrame.ts#L4)*
 
 ___
 <a id="mscontentscript"></a>
@@ -675,7 +675,7 @@ ___
 
 *Inherited from Window.msContentScript*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19361*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19361*
 
 ___
 <a id="mscredentials"></a>
@@ -686,7 +686,7 @@ ___
 
 *Inherited from Window.msCredentials*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19362*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19362*
 
 ___
 <a id="msrequestanimationframe"></a>
@@ -695,7 +695,7 @@ ___
 
 **● msRequestAnimationFrame**: *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)*
 
-*Defined in [util/requestAnimationFrame.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/requestAnimationFrame.ts#L6)*
+*Defined in [util/requestAnimationFrame.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/requestAnimationFrame.ts#L6)*
 
 ___
 <a id="name"></a>
@@ -706,7 +706,7 @@ ___
 
 *Inherited from Window.name*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19363*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19363*
 
 ___
 <a id="navigator"></a>
@@ -717,7 +717,7 @@ ___
 
 *Inherited from Window.navigator*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19364*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19364*
 
 ___
 <a id="orequestanimationframe"></a>
@@ -726,7 +726,7 @@ ___
 
 **● oRequestAnimationFrame**: *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)*
 
-*Defined in [util/requestAnimationFrame.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/util/requestAnimationFrame.ts#L5)*
+*Defined in [util/requestAnimationFrame.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/requestAnimationFrame.ts#L5)*
 
 ___
 <a id="offscreenbuffering"></a>
@@ -738,7 +738,7 @@ ___
 
 *Inherited from Window.offscreenBuffering*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19365*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19365*
 
 ___
 <a id="onabort"></a>
@@ -749,7 +749,7 @@ ___
 
 *Inherited from Window.onabort*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19366*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19366*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`UIEvent`*): `any`
@@ -772,7 +772,7 @@ ___
 
 *Inherited from Window.onafterprint*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19367*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19367*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -795,7 +795,7 @@ ___
 
 *Inherited from Window.onbeforeprint*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19368*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19368*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -818,7 +818,7 @@ ___
 
 *Inherited from Window.onbeforeunload*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19369*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19369*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`BeforeUnloadEvent`*): `any`
@@ -841,7 +841,7 @@ ___
 
 *Inherited from Window.onblur*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19370*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19370*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`FocusEvent`*): `any`
@@ -864,7 +864,7 @@ ___
 
 *Inherited from Window.oncanplay*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19371*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19371*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -887,7 +887,7 @@ ___
 
 *Inherited from Window.oncanplaythrough*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19372*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19372*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -910,7 +910,7 @@ ___
 
 *Inherited from Window.onchange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19373*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19373*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -933,7 +933,7 @@ ___
 
 *Inherited from Window.onclick*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19374*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19374*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -956,7 +956,7 @@ ___
 
 *Inherited from Window.oncompassneedscalibration*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19375*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19375*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -979,7 +979,7 @@ ___
 
 *Inherited from Window.oncontextmenu*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19376*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19376*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`PointerEvent`*): `any`
@@ -1002,7 +1002,7 @@ ___
 
 *Inherited from Window.ondblclick*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19377*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19377*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1025,7 +1025,7 @@ ___
 
 *Inherited from Window.ondevicelight*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19378*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19378*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DeviceLightEvent`*): `any`
@@ -1048,7 +1048,7 @@ ___
 
 *Inherited from Window.ondevicemotion*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19379*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19379*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DeviceMotionEvent`*): `any`
@@ -1071,7 +1071,7 @@ ___
 
 *Inherited from Window.ondeviceorientation*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19380*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19380*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DeviceOrientationEvent`*): `any`
@@ -1094,7 +1094,7 @@ ___
 
 *Inherited from Window.ondrag*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19381*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19381*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1117,7 +1117,7 @@ ___
 
 *Inherited from Window.ondragend*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19382*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19382*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1140,7 +1140,7 @@ ___
 
 *Inherited from Window.ondragenter*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19383*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19383*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1163,7 +1163,7 @@ ___
 
 *Inherited from Window.ondragleave*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19384*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19384*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1186,7 +1186,7 @@ ___
 
 *Inherited from Window.ondragover*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19385*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19385*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1209,7 +1209,7 @@ ___
 
 *Inherited from Window.ondragstart*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19386*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19386*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1232,7 +1232,7 @@ ___
 
 *Inherited from Window.ondrop*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19387*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19387*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`DragEvent`*): `any`
@@ -1255,7 +1255,7 @@ ___
 
 *Inherited from Window.ondurationchange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19388*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19388*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1278,7 +1278,7 @@ ___
 
 *Inherited from Window.onemptied*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19389*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19389*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1301,7 +1301,7 @@ ___
 
 *Inherited from Window.onended*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19390*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19390*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MediaStreamErrorEvent`*): `any`
@@ -1324,7 +1324,7 @@ ___
 
 *Inherited from Window.onerror*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19391*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19391*
 
 ___
 <a id="onfocus"></a>
@@ -1335,7 +1335,7 @@ ___
 
 *Inherited from Window.onfocus*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19392*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19392*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`FocusEvent`*): `any`
@@ -1358,7 +1358,7 @@ ___
 
 *Inherited from Window.onhashchange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19393*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19393*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`HashChangeEvent`*): `any`
@@ -1381,7 +1381,7 @@ ___
 
 *Inherited from Window.oninput*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19394*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19394*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1404,7 +1404,7 @@ ___
 
 *Inherited from Window.oninvalid*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19395*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19395*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1427,7 +1427,7 @@ ___
 
 *Inherited from Window.onkeydown*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19396*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19396*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`KeyboardEvent`*): `any`
@@ -1450,7 +1450,7 @@ ___
 
 *Inherited from Window.onkeypress*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19397*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19397*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`KeyboardEvent`*): `any`
@@ -1473,7 +1473,7 @@ ___
 
 *Inherited from Window.onkeyup*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19398*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19398*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`KeyboardEvent`*): `any`
@@ -1496,7 +1496,7 @@ ___
 
 *Inherited from Window.onload*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19399*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19399*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1519,7 +1519,7 @@ ___
 
 *Inherited from Window.onloadeddata*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19400*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19400*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1542,7 +1542,7 @@ ___
 
 *Inherited from Window.onloadedmetadata*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19401*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19401*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1565,7 +1565,7 @@ ___
 
 *Inherited from Window.onloadstart*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19402*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19402*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -1588,7 +1588,7 @@ ___
 
 *Inherited from Window.onmessage*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19403*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19403*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MessageEvent`*): `any`
@@ -1611,7 +1611,7 @@ ___
 
 *Inherited from Window.onmousedown*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19404*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19404*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1634,7 +1634,7 @@ ___
 
 *Inherited from Window.onmouseenter*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19405*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19405*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1657,7 +1657,7 @@ ___
 
 *Inherited from Window.onmouseleave*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19406*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19406*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1680,7 +1680,7 @@ ___
 
 *Inherited from Window.onmousemove*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19407*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19407*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1703,7 +1703,7 @@ ___
 
 *Inherited from Window.onmouseout*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19408*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19408*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1726,7 +1726,7 @@ ___
 
 *Inherited from Window.onmouseover*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19409*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19409*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1749,7 +1749,7 @@ ___
 
 *Inherited from Window.onmouseup*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19410*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19410*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MouseEvent`*): `any`
@@ -1772,7 +1772,7 @@ ___
 
 *Inherited from Window.onmousewheel*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19411*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19411*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`WheelEvent`*): `any`
@@ -1795,7 +1795,7 @@ ___
 
 *Inherited from Window.onmsgesturechange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19412*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19412*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1818,7 +1818,7 @@ ___
 
 *Inherited from Window.onmsgesturedoubletap*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19413*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19413*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1841,7 +1841,7 @@ ___
 
 *Inherited from Window.onmsgestureend*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19414*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19414*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1864,7 +1864,7 @@ ___
 
 *Inherited from Window.onmsgesturehold*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19415*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19415*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1887,7 +1887,7 @@ ___
 
 *Inherited from Window.onmsgesturestart*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19416*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19416*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1910,7 +1910,7 @@ ___
 
 *Inherited from Window.onmsgesturetap*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19417*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19417*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1933,7 +1933,7 @@ ___
 
 *Inherited from Window.onmsinertiastart*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19418*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19418*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSGestureEvent`*): `any`
@@ -1956,7 +1956,7 @@ ___
 
 *Inherited from Window.onmspointercancel*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19419*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19419*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -1979,7 +1979,7 @@ ___
 
 *Inherited from Window.onmspointerdown*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19420*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19420*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2002,7 +2002,7 @@ ___
 
 *Inherited from Window.onmspointerenter*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19421*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19421*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2025,7 +2025,7 @@ ___
 
 *Inherited from Window.onmspointerleave*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19422*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19422*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2048,7 +2048,7 @@ ___
 
 *Inherited from Window.onmspointermove*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19423*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19423*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2071,7 +2071,7 @@ ___
 
 *Inherited from Window.onmspointerout*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19424*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19424*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2094,7 +2094,7 @@ ___
 
 *Inherited from Window.onmspointerover*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19425*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19425*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2117,7 +2117,7 @@ ___
 
 *Inherited from Window.onmspointerup*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19426*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19426*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`MSPointerEvent`*): `any`
@@ -2140,7 +2140,7 @@ ___
 
 *Inherited from Window.onoffline*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19427*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19427*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2163,7 +2163,7 @@ ___
 
 *Inherited from Window.ononline*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19428*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19428*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2186,7 +2186,7 @@ ___
 
 *Inherited from Window.onorientationchange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19429*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19429*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2209,7 +2209,7 @@ ___
 
 *Inherited from Window.onpagehide*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19430*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19430*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`PageTransitionEvent`*): `any`
@@ -2232,7 +2232,7 @@ ___
 
 *Inherited from Window.onpageshow*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19431*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19431*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`PageTransitionEvent`*): `any`
@@ -2255,7 +2255,7 @@ ___
 
 *Inherited from Window.onpause*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19432*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19432*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2278,7 +2278,7 @@ ___
 
 *Inherited from Window.onplay*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19433*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19433*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2301,7 +2301,7 @@ ___
 
 *Inherited from Window.onplaying*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19434*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19434*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2324,7 +2324,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointercancel*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19861*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19861*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2347,7 +2347,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointerdown*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19862*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19862*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2370,7 +2370,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointerenter*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19863*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19863*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2393,7 +2393,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointerleave*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19864*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19864*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2416,7 +2416,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointermove*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19865*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19865*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2439,7 +2439,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointerout*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19866*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19866*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2462,7 +2462,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointerover*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19867*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19867*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2485,7 +2485,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onpointerup*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19868*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19868*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`PointerEvent`*): `any`
@@ -2508,7 +2508,7 @@ ___
 
 *Inherited from Window.onpopstate*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19435*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19435*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`PopStateEvent`*): `any`
@@ -2531,7 +2531,7 @@ ___
 
 *Inherited from Window.onprogress*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19436*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19436*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`ProgressEvent`*): `any`
@@ -2554,7 +2554,7 @@ ___
 
 *Inherited from Window.onratechange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19437*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19437*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2577,7 +2577,7 @@ ___
 
 *Inherited from Window.onreadystatechange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19438*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19438*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`ProgressEvent`*): `any`
@@ -2600,7 +2600,7 @@ ___
 
 *Inherited from Window.onreset*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19439*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19439*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2623,7 +2623,7 @@ ___
 
 *Inherited from Window.onresize*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19440*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19440*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`UIEvent`*): `any`
@@ -2646,7 +2646,7 @@ ___
 
 *Inherited from Window.onscroll*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19441*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19441*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`UIEvent`*): `any`
@@ -2669,7 +2669,7 @@ ___
 
 *Inherited from Window.onseeked*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19442*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19442*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2692,7 +2692,7 @@ ___
 
 *Inherited from Window.onseeking*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19443*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19443*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2715,7 +2715,7 @@ ___
 
 *Inherited from Window.onselect*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19444*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19444*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`UIEvent`*): `any`
@@ -2738,7 +2738,7 @@ ___
 
 *Inherited from Window.onstalled*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19445*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19445*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2761,7 +2761,7 @@ ___
 
 *Inherited from Window.onstorage*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19446*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19446*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`StorageEvent`*): `any`
@@ -2784,7 +2784,7 @@ ___
 
 *Inherited from Window.onsubmit*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19447*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19447*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2807,7 +2807,7 @@ ___
 
 *Inherited from Window.onsuspend*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19448*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19448*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2830,7 +2830,7 @@ ___
 
 *Inherited from Window.ontimeupdate*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19449*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19449*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2853,7 +2853,7 @@ ___
 
 *Inherited from Window.ontouchcancel*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19450*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19450*
 
 #### Type declaration
 ▸(ev: *`TouchEvent`*): `any`
@@ -2875,7 +2875,7 @@ ___
 
 *Inherited from Window.ontouchend*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19451*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19451*
 
 #### Type declaration
 ▸(ev: *`TouchEvent`*): `any`
@@ -2897,7 +2897,7 @@ ___
 
 *Inherited from Window.ontouchmove*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19452*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19452*
 
 #### Type declaration
 ▸(ev: *`TouchEvent`*): `any`
@@ -2919,7 +2919,7 @@ ___
 
 *Inherited from Window.ontouchstart*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19453*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19453*
 
 #### Type declaration
 ▸(ev: *`TouchEvent`*): `any`
@@ -2941,7 +2941,7 @@ ___
 
 *Inherited from Window.onunload*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19454*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19454*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2964,7 +2964,7 @@ ___
 
 *Inherited from Window.onvolumechange*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19455*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19455*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -2987,7 +2987,7 @@ ___
 
 *Inherited from Window.onwaiting*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19456*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19456*
 
 #### Type declaration
 ▸(this: *`Window`*, ev: *`Event`*): `any`
@@ -3010,7 +3010,7 @@ ___
 
 *Inherited from GlobalEventHandlers.onwheel*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19869*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19869*
 
 #### Type declaration
 ▸(this: *`GlobalEventHandlers`*, ev: *`WheelEvent`*): `any`
@@ -3033,7 +3033,7 @@ ___
 
 *Inherited from Window.opener*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19457*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19457*
 
 ___
 <a id="orientation"></a>
@@ -3045,7 +3045,7 @@ ___
 
 *Inherited from Window.orientation*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19458*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19458*
 
 ___
 <a id="outerheight"></a>
@@ -3056,7 +3056,7 @@ ___
 
 *Inherited from Window.outerHeight*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19459*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19459*
 
 ___
 <a id="outerwidth"></a>
@@ -3067,7 +3067,7 @@ ___
 
 *Inherited from Window.outerWidth*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19460*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19460*
 
 ___
 <a id="pagexoffset"></a>
@@ -3078,7 +3078,7 @@ ___
 
 *Inherited from Window.pageXOffset*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19461*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19461*
 
 ___
 <a id="pageyoffset"></a>
@@ -3089,7 +3089,7 @@ ___
 
 *Inherited from Window.pageYOffset*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19462*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19462*
 
 ___
 <a id="parent"></a>
@@ -3100,7 +3100,7 @@ ___
 
 *Inherited from Window.parent*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19463*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19463*
 
 ___
 <a id="performance"></a>
@@ -3111,7 +3111,7 @@ ___
 
 *Inherited from Window.performance*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19464*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19464*
 
 ___
 <a id="personalbar"></a>
@@ -3122,7 +3122,7 @@ ___
 
 *Inherited from Window.personalbar*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19465*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19465*
 
 ___
 <a id="screen"></a>
@@ -3133,7 +3133,7 @@ ___
 
 *Inherited from Window.screen*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19466*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19466*
 
 ___
 <a id="screenleft"></a>
@@ -3144,7 +3144,7 @@ ___
 
 *Inherited from Window.screenLeft*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19467*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19467*
 
 ___
 <a id="screentop"></a>
@@ -3155,7 +3155,7 @@ ___
 
 *Inherited from Window.screenTop*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19468*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19468*
 
 ___
 <a id="screenx"></a>
@@ -3166,7 +3166,7 @@ ___
 
 *Inherited from Window.screenX*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19469*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19469*
 
 ___
 <a id="screeny"></a>
@@ -3177,7 +3177,7 @@ ___
 
 *Inherited from Window.screenY*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19470*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19470*
 
 ___
 <a id="scrollx"></a>
@@ -3188,7 +3188,7 @@ ___
 
 *Inherited from Window.scrollX*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19472*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19472*
 
 ___
 <a id="scrolly"></a>
@@ -3199,7 +3199,7 @@ ___
 
 *Inherited from Window.scrollY*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19473*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19473*
 
 ___
 <a id="scrollbars"></a>
@@ -3210,7 +3210,7 @@ ___
 
 *Inherited from Window.scrollbars*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19471*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19471*
 
 ___
 <a id="self"></a>
@@ -3221,7 +3221,7 @@ ___
 
 *Inherited from Window.self*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19474*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19474*
 
 ___
 <a id="sessionstorage"></a>
@@ -3232,7 +3232,7 @@ ___
 
 *Inherited from WindowSessionStorage.sessionStorage*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20040*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20040*
 
 ___
 <a id="speechsynthesis"></a>
@@ -3243,7 +3243,7 @@ ___
 
 *Inherited from Window.speechSynthesis*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19475*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19475*
 
 ___
 <a id="status"></a>
@@ -3254,7 +3254,7 @@ ___
 
 *Inherited from Window.status*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19476*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19476*
 
 ___
 <a id="statusbar"></a>
@@ -3265,7 +3265,7 @@ ___
 
 *Inherited from Window.statusbar*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19477*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19477*
 
 ___
 <a id="stylemedia"></a>
@@ -3276,7 +3276,7 @@ ___
 
 *Inherited from Window.styleMedia*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19478*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19478*
 
 ___
 <a id="toolbar"></a>
@@ -3287,7 +3287,7 @@ ___
 
 *Inherited from Window.toolbar*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19479*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19479*
 
 ___
 <a id="top"></a>
@@ -3298,7 +3298,7 @@ ___
 
 *Inherited from Window.top*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19480*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19480*
 
 ___
 <a id="window-1"></a>
@@ -3309,7 +3309,7 @@ ___
 
 *Inherited from Window.window*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19481*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19481*
 
 ___
 
@@ -3327,7 +3327,7 @@ ___
 
 *Overrides EventTarget.addEventListener*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19522*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19522*
 
 **Type parameters:**
 
@@ -3346,7 +3346,7 @@ ___
 
 *Overrides EventTarget.addEventListener*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19523*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19523*
 
 **Parameters:**
 
@@ -3367,7 +3367,7 @@ ___
 
 *Inherited from Window.alert*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19486*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19486*
 
 **Parameters:**
 
@@ -3386,7 +3386,7 @@ ___
 
 *Inherited from WindowBase64.atob*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20027*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20027*
 
 **Parameters:**
 
@@ -3405,7 +3405,7 @@ ___
 
 *Inherited from Window.blur*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19487*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19487*
 
 **Returns:** `void`
 
@@ -3418,7 +3418,7 @@ ___
 
 *Inherited from WindowBase64.btoa*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20028*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20028*
 
 **Parameters:**
 
@@ -3437,7 +3437,7 @@ ___
 
 *Inherited from Window.cancelAnimationFrame*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19488*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19488*
 
 **Parameters:**
 
@@ -3456,7 +3456,7 @@ ___
 
 *Inherited from Window.captureEvents*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19489*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19489*
 
 **Returns:** `void`
 
@@ -3469,7 +3469,7 @@ ___
 
 *Inherited from WindowTimersExtension.clearImmediate*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20053*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20053*
 
 **Parameters:**
 
@@ -3488,7 +3488,7 @@ ___
 
 *Inherited from WindowTimers.clearInterval*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20044*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20044*
 
 **Parameters:**
 
@@ -3507,7 +3507,7 @@ ___
 
 *Inherited from WindowTimers.clearTimeout*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20045*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20045*
 
 **Parameters:**
 
@@ -3526,7 +3526,7 @@ ___
 
 *Inherited from Window.close*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19490*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19490*
 
 **Returns:** `void`
 
@@ -3539,7 +3539,7 @@ ___
 
 *Inherited from Window.confirm*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19491*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19491*
 
 **Parameters:**
 
@@ -3560,7 +3560,7 @@ ___
 
 *Inherited from Window.createImageBitmap*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19517*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19517*
 
 **Parameters:**
 
@@ -3573,7 +3573,7 @@ ___
 
 *Inherited from Window.createImageBitmap*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19518*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19518*
 
 **Parameters:**
 
@@ -3597,7 +3597,7 @@ ___
 
 *Inherited from Window.departFocus*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19492*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19492*
 
 **Parameters:**
 
@@ -3617,7 +3617,7 @@ ___
 
 *Inherited from EventTarget.dispatchEvent*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:9545*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:9545*
 
 **Parameters:**
 
@@ -3636,7 +3636,7 @@ ___
 
 *Inherited from GlobalFetch.fetch*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19877*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19877*
 
 **Parameters:**
 
@@ -3656,7 +3656,7 @@ ___
 
 *Inherited from Window.focus*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19493*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19493*
 
 **Returns:** `void`
 
@@ -3669,7 +3669,7 @@ ___
 
 *Inherited from Window.getComputedStyle*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19494*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19494*
 
 **Parameters:**
 
@@ -3689,7 +3689,7 @@ ___
 
 *Inherited from Window.getMatchedCSSRules*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19495*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19495*
 
 **Parameters:**
 
@@ -3709,7 +3709,7 @@ ___
 
 *Inherited from Window.getSelection*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19496*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19496*
 
 **Returns:** `Selection`
 
@@ -3722,7 +3722,7 @@ ___
 
 *Inherited from Object.hasOwnProperty*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:127*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:127*
 
 Determines whether an object has a property with the specified name.
 
@@ -3743,7 +3743,7 @@ ___
 
 *Inherited from Object.isPrototypeOf*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:133*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:133*
 
 Determines whether an object exists in another object's prototype chain.
 
@@ -3764,7 +3764,7 @@ ___
 
 *Inherited from Window.matchMedia*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19497*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19497*
 
 **Parameters:**
 
@@ -3783,7 +3783,7 @@ ___
 
 *Inherited from Window.moveBy*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19498*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19498*
 
 **Parameters:**
 
@@ -3803,7 +3803,7 @@ ___
 
 *Inherited from Window.moveTo*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19499*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19499*
 
 **Parameters:**
 
@@ -3823,7 +3823,7 @@ ___
 
 *Inherited from Window.msWriteProfilerMark*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19500*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19500*
 
 **Parameters:**
 
@@ -3842,7 +3842,7 @@ ___
 
 *Inherited from Window.open*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19501*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19501*
 
 **Parameters:**
 
@@ -3864,7 +3864,7 @@ ___
 
 *Inherited from Window.postMessage*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19502*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19502*
 
 **Parameters:**
 
@@ -3885,7 +3885,7 @@ ___
 
 *Inherited from Window.print*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19503*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19503*
 
 **Returns:** `void`
 
@@ -3898,7 +3898,7 @@ ___
 
 *Inherited from Window.prompt*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19504*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19504*
 
 **Parameters:**
 
@@ -3918,7 +3918,7 @@ ___
 
 *Inherited from Object.propertyIsEnumerable*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:139*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:139*
 
 Determines whether a specified property is enumerable.
 
@@ -3939,7 +3939,7 @@ ___
 
 *Inherited from Window.releaseEvents*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19505*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19505*
 
 **Returns:** `void`
 
@@ -3956,7 +3956,7 @@ ___
 
 *Overrides EventTarget.removeEventListener*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19524*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19524*
 
 **Type parameters:**
 
@@ -3975,7 +3975,7 @@ ___
 
 *Overrides EventTarget.removeEventListener*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19525*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19525*
 
 **Parameters:**
 
@@ -3996,7 +3996,7 @@ ___
 
 *Inherited from Window.requestAnimationFrame*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19506*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19506*
 
 **Parameters:**
 
@@ -4015,7 +4015,7 @@ ___
 
 *Inherited from Window.resizeBy*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19507*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19507*
 
 **Parameters:**
 
@@ -4035,7 +4035,7 @@ ___
 
 *Inherited from Window.resizeTo*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19508*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19508*
 
 **Parameters:**
 
@@ -4057,7 +4057,7 @@ ___
 
 *Inherited from Window.scroll*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19509*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19509*
 
 **Parameters:**
 
@@ -4070,7 +4070,7 @@ ___
 
 *Inherited from Window.scroll*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19519*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19519*
 
 **Parameters:**
 
@@ -4091,7 +4091,7 @@ ___
 
 *Inherited from Window.scrollBy*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19510*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19510*
 
 **Parameters:**
 
@@ -4104,7 +4104,7 @@ ___
 
 *Inherited from Window.scrollBy*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19521*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19521*
 
 **Parameters:**
 
@@ -4125,7 +4125,7 @@ ___
 
 *Inherited from Window.scrollTo*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19511*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19511*
 
 **Parameters:**
 
@@ -4138,7 +4138,7 @@ ___
 
 *Inherited from Window.scrollTo*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19520*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19520*
 
 **Parameters:**
 
@@ -4159,7 +4159,7 @@ ___
 
 *Inherited from WindowTimersExtension.setImmediate*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20054*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20054*
 
 **Parameters:**
 
@@ -4171,7 +4171,7 @@ ___
 
 *Inherited from WindowTimersExtension.setImmediate*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20055*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20055*
 
 **Parameters:**
 
@@ -4193,7 +4193,7 @@ ___
 
 *Inherited from WindowTimers.setInterval*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20046*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20046*
 
 **Parameters:**
 
@@ -4206,7 +4206,7 @@ ___
 
 *Inherited from WindowTimers.setInterval*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20047*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20047*
 
 **Parameters:**
 
@@ -4229,7 +4229,7 @@ ___
 
 *Inherited from WindowTimers.setTimeout*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20048*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20048*
 
 **Parameters:**
 
@@ -4242,7 +4242,7 @@ ___
 
 *Inherited from WindowTimers.setTimeout*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20049*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:20049*
 
 **Parameters:**
 
@@ -4263,7 +4263,7 @@ ___
 
 *Inherited from Window.stop*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19512*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19512*
 
 **Returns:** `void`
 
@@ -4276,7 +4276,7 @@ ___
 
 *Inherited from Object.toLocaleString*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:118*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:118*
 
 Returns a date converted to a string using the current locale.
 
@@ -4291,7 +4291,7 @@ ___
 
 *Inherited from Object.toString*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:115*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:115*
 
 Returns a string representation of an object.
 
@@ -4306,7 +4306,7 @@ ___
 
 *Inherited from Object.valueOf*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:121*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:121*
 
 Returns the primitive value of the specified object.
 
@@ -4321,7 +4321,7 @@ ___
 
 *Inherited from Window.webkitCancelAnimationFrame*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19513*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19513*
 
 **Parameters:**
 
@@ -4340,7 +4340,7 @@ ___
 
 *Inherited from Window.webkitConvertPointFromNodeToPage*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19514*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19514*
 
 **Parameters:**
 
@@ -4360,7 +4360,7 @@ ___
 
 *Inherited from Window.webkitConvertPointFromPageToNode*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19515*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19515*
 
 **Parameters:**
 
@@ -4380,7 +4380,7 @@ ___
 
 *Inherited from Window.webkitRequestAnimationFrame*
 
-*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19516*
+*Defined in /home/danikaze/dev/terminal-in-canvas/git/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:19516*
 
 **Parameters:**
 

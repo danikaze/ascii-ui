@@ -26,7 +26,7 @@
 
 **● col**: *`number`*
 
-*Defined in [widgets/Grid.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Grid.ts#L27)*
+*Defined in [widgets/Grid.ts:51](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L51)*
 
 x-position in grid columns
 
@@ -37,7 +37,7 @@ ___
 
 **● height**: *`number`*
 
-*Defined in [widgets/Grid.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Grid.ts#L33)*
+*Defined in [widgets/Grid.ts:57](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L57)*
 
 height in grid rows
 
@@ -48,7 +48,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [widgets/Grid.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Grid.ts#L29)*
+*Defined in [widgets/Grid.ts:53](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L53)*
 
 y-position in grid rows
 
@@ -59,7 +59,7 @@ ___
 
 **● widget**: *[Widget](../classes/_widget_.widget.md)*
 
-*Defined in [widgets/Grid.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Grid.ts#L25)*
+*Defined in [widgets/Grid.ts:49](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L49)*
 
 widget instance
 
@@ -70,7 +70,7 @@ ___
 
 **● width**: *`number`*
 
-*Defined in [widgets/Grid.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/widgets/Grid.ts#L31)*
+*Defined in [widgets/Grid.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L55)*
 
 width in grid columns
 

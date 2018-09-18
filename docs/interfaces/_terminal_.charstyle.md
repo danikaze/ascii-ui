@@ -14,6 +14,8 @@
 
 ↳  [BoxTitleOptions](_widgets_box_.boxtitleoptions.md)
 
+↳  [GridBorderOptions](_widgets_grid_.gridborderoptions.md)
+
 ## Index
 
 ### Properties
@@ -34,7 +36,7 @@
 
 **● bg**: *`string`*
 
-*Defined in [Terminal.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L93)*
+*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L94)*
 
 background color (i.e. `#000000`)
 
@@ -45,7 +47,7 @@ ___
 
 **● fg**: *`string`*
 
-*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L91)*
+*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L92)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -56,7 +58,7 @@ ___
 
 **● font**: *`string`*
 
-*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L85)*
+*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L86)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -67,7 +69,7 @@ ___
 
 **● offsetX**: *`number`*
 
-*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L87)*
+*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L88)*
 
 x-offset to apply to each character inside the tile
 
@@ -78,7 +80,7 @@ ___
 
 **● offsetY**: *`number`*
 
-*Defined in [Terminal.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L89)*
+*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L90)*
 
 y-offset to apply to each character inside the tile
 

@@ -35,7 +35,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L93)*
+*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L94)*
 
 background color (i.e. `#000000`)
 
@@ -46,7 +46,7 @@ ___
 
 **● char**: *`string`*
 
-*Defined in [Terminal.ts:142](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L142)*
+*Defined in [Terminal.ts:151](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L151)*
 
 char to display in the tile
 
@@ -59,7 +59,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:91](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L91)*
+*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L92)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -72,7 +72,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L85)*
+*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L86)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -85,7 +85,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Defined in [Terminal.ts:87](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L87)*
+*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L88)*
 
 x-offset to apply to each character inside the tile
 
@@ -98,7 +98,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Defined in [Terminal.ts:89](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L89)*
+*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L90)*
 
 y-offset to apply to each character inside the tile
 

@@ -23,7 +23,7 @@
 
 **● columns**: *`number`*
 
-*Defined in [Terminal.ts:67](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L67)*
+*Defined in [Terminal.ts:68](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L68)*
 
 number of columns of the terminal, in number of tiles
 
@@ -34,7 +34,7 @@ ___
 
 **● rows**: *`number`*
 
-*Defined in [Terminal.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L69)*
+*Defined in [Terminal.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L70)*
 
 number of rows of the terminal, in number of tiles
 

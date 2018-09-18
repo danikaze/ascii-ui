@@ -23,7 +23,7 @@
 
 **● col**: *`number`*
 
-*Defined in [Terminal.ts:74](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L74)*
+*Defined in [Terminal.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L75)*
 
 x-coordinate of a tile in the grid
 
@@ -34,7 +34,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [Terminal.ts:76](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Terminal.ts#L76)*
+*Defined in [Terminal.ts:77](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L77)*
 
 y-coordinate of a tile in the grid
 

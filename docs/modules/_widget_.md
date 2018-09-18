@@ -26,7 +26,7 @@
 
 **ΤWidgetConstructor**: *`object`*
 
-*Defined in [Widget.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/6bf63ab/src/Widget.ts#L5)*
+*Defined in [Widget.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L5)*
 
 #### Type declaration
 

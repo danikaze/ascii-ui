@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
+    "noImplicitAny": true,
     "module": "ES6",
     "moduleResolution": "node",
     "outDir": "./lib/",

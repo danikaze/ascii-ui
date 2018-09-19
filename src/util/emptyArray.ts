@@ -3,7 +3,7 @@
  * It's faster and preserves the same object pointer
  *
  * @param arr Array to empty
- * @return `arr`
+ * @return same, modified array `arr`
  */
 export function emptyArray<T>(arr: T[]): T[] {
   while (arr.length > 0) {

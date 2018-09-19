@@ -11,7 +11,7 @@ import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { emptyArray } from './util/emptyArray';
 import { requestAnimationFrame } from './util/requestAnimationFrame';
 import { Widget, WidgetConstructor } from './Widget';
-import { BidirectionalIterator, WidgetContainer, isWidgetContainer } from './WidgetContainer';
+import { BidirectionalIterator, isWidgetContainer, WidgetContainer } from './WidgetContainer';
 
 export type AcceptedImage = HTMLImageElement | HTMLCanvasElement;
 
@@ -176,19 +176,19 @@ interface DecayTile extends TextTile {
   alpha: number;
 }
 
-type IterateTileCallback = (InternalTile, i) => void;
+type IterateTileCallback = (tile: InternalTile, i: number) => void;
 
 /**
  * Basic terminal features rendered into a Canvas object
  */
 export class Terminal implements WidgetContainer {
   /** Default options for widget instances */
-  static defaultOptions: TerminalOptions;
+  public static defaultOptions: TerminalOptions;
 
   /** focus manager for the Terminal widgets */
-  readonly focusManager: FocusManager;
+  public readonly focusManager: FocusManager;
   /** event manager for this terminal */
-  readonly eventManager: EventManager;
+  public readonly eventManager: EventManager;
   /** terminal options */
   protected readonly options: TerminalOptions = {};
   /** canvas object associated with the terminal */
@@ -244,7 +244,7 @@ export class Terminal implements WidgetContainer {
    *
    * @param options new options to set
    */
-  setOptions(options: TerminalOptions): void {
+  public setOptions(options: TerminalOptions): void {
     const oldColumns = this.options.columns;
     const oldRows = this.options.rows;
 
@@ -288,7 +288,7 @@ export class Terminal implements WidgetContainer {
   /**
    * Clear the whole terminal
    */
-  clear(): void;
+  public clear(): void;
 
   /**
    * Clear only the specified part of the terminal
@@ -298,26 +298,29 @@ export class Terminal implements WidgetContainer {
    * @param width Width of the block to clear
    * @param height Height of the vlock to clear
    */
-  clear(col: number, line: number, width: number, height: number);
+  public clear(col: number, line: number, width: number, height: number): void;
 
-  clear(col?: number, line?: number, width?: number, height?: number): void {
+  public clear(col?: number, line?: number, width?: number, height?: number): void {
     const start = window.performance.now();
     const dirtyTiles = this.dirtyTiles;
     const buffer = this.buffer;
     const options = this.options;
 
-    if (col === undefined) {
-      col = 0;
-      line = 0;
-      width = options.columns;
-      height = options.rows;
+    const x0 = col === undefined ? 0 : col;
+    const y0 = line === undefined ? 0 : line;
+    const w = width === undefined ? options.columns - x0 : width;
+    const h = height === undefined ? options.rows - y0 : height;
+
+    if (x0 === undefined) {
       dirtyTiles.splice(0, dirtyTiles.length);
     }
 
     this.setTextStyle(options.clearStyle);
 
-    for (let y = line, yy = y + height; y < yy; y++) {
-      for (let x = col, xx = x + width; x < xx; x++) {
+    const y1 = y0 + h;
+    for (let y = y0; y < y1; y++) {
+      const x1 = x0 + w;
+      for (let x = x0; x < x1; x++) {
         const tile: InternalTile = {
           // common
           x: x * options.tileWidth,
@@ -339,7 +342,7 @@ export class Terminal implements WidgetContainer {
       }
     }
 
-    this.info(`clear: ${width * height} tiles: ${window.performance.now() - start} ms.`);
+    this.info(`clear: ${w * h} tiles: ${window.performance.now() - start} ms.`);
     if (this.options.autoRender) {
       // maybe this can be optimized with just a this.ctx.fillRect call
       this.render();
@@ -353,7 +356,7 @@ export class Terminal implements WidgetContainer {
    * It's called automatically if `options.autoRender` is `true` (recommended),
    * but can be set to `false` and call this method manually from outside.
    */
-  render(): void {
+  public render(): void {
     if (this.dirtyTiles.length === 0) {
       return;
     }
@@ -442,7 +445,7 @@ export class Terminal implements WidgetContainer {
   /**
    * Forces a render of all the tiles, not only the changed ones
    */
-  renderAll(): void {
+  public renderAll(): void {
     this.dirtyTiles = emptyArray(this.dirtyTiles);
     for (let y = 0; y < this.options.rows; y++) {
       for (let x = 0; x < this.options.columns; x++) {
@@ -457,7 +460,7 @@ export class Terminal implements WidgetContainer {
    *
    * @returns Current viewport of the terminal
    */
-  getViewport(): ViewPortOptions {
+  public getViewport(): ViewPortOptions {
     return { ...this.options.viewport };
   }
 
@@ -466,7 +469,7 @@ export class Terminal implements WidgetContainer {
    *
    * @returns Size of the terminal, measured in tiles
    */
-  getSize(): TileSize {
+  public getSize(): TileSize {
     return {
       columns: this.options.columns,
       rows: this.options.rows,
@@ -478,7 +481,7 @@ export class Terminal implements WidgetContainer {
    *
    * @returns `true` if the cursor is enabled, `false` otherwise
    */
-  isCursorEnabled(): boolean {
+  public isCursorEnabled(): boolean {
     return this.options.cursor;
   }
 
@@ -487,7 +490,7 @@ export class Terminal implements WidgetContainer {
    *
    * @returns current position of the cursor, in tile coordinates
    */
-  getCursor(): TilePosition {
+  public getCursor(): TilePosition {
     return {
       col: this.cursorX,
       line: this.cursorY,
@@ -500,32 +503,34 @@ export class Terminal implements WidgetContainer {
    * @param col x-coordinate of the tile in the grid
    * @param line y-coordinate of the tile in the grid
    */
-  setCursor(col: number, line: number): void {
+  public setCursor(col: number, line: number): void {
     const oldTile = this.buffer[this.cursorY][this.cursorX];
+    let x = col;
+    let y = line;
 
     // correct coordinates
-    if (col >= this.options.columns && line < this.options.rows - 1) {
-      col = 0;
-      line++;
-    } else if (col < 0 && line > 0) {
-      col = this.options.columns - 1;
-      line--;
+    if (x >= this.options.columns && y < this.options.rows - 1) {
+      x = 0;
+      y++;
+    } else if (x < 0 && y > 0) {
+      x = this.options.columns - 1;
+      y--;
     } else {
-      col = Math.max(0, Math.min(col, this.options.columns - 1));
+      x = Math.max(0, Math.min(x, this.options.columns - 1));
     }
 
-    if (line >= this.options.rows) {
-      line = this.options.rows - 1;
-    } else if (line < 0) {
-      line = 0;
+    if (y >= this.options.rows) {
+      y = this.options.rows - 1;
+    } else if (y < 0) {
+      y = 0;
     }
 
     // assign the new position of the cursor
-    this.cursorX = col;
-    this.cursorY = line;
+    this.cursorX = x;
+    this.cursorY = y;
 
     // redraw new and old tiles to update the cursor visibility
-    const newTile = this.buffer[line][col];
+    const newTile = this.buffer[y][x];
     if (oldTile !== newTile) {
       this.addDirtyTile(oldTile, this.dirtyTiles);
       this.addDirtyTile(newTile, this.dirtyTiles);
@@ -542,7 +547,7 @@ export class Terminal implements WidgetContainer {
    * @param col x-coordinate of the tile in the grid
    * @param line y-coordinate of the tile in the grid
    */
-  moveCursor(dx: number, dy: number): void {
+  public moveCursor(dx: number, dy: number): void {
     this.setCursor(this.cursorX + dx, this.cursorY + dy);
   }
 
@@ -553,7 +558,7 @@ export class Terminal implements WidgetContainer {
    * @param x pixels from the left corner in the grid
    * @param y pixels from the top corner in the grid
    */
-  getTilePosition(x: number, y: number): TilePosition {
+  public getTilePosition(x: number, y: number): TilePosition {
     return {
       col: Math.floor(x / this.options.tileWidth),
       line: Math.floor(y / this.options.tileHeight),
@@ -567,14 +572,14 @@ export class Terminal implements WidgetContainer {
    *
    * @param style new style to set for future text
    */
-  setTextStyle(style: CharStyle): void {
+  public setTextStyle(style: CharStyle): void {
     assignCharStyle(this.options, style);
   }
 
   /**
    * Get the current style being applied to the `setText` calls
    */
-  getTextStyle(): CharStyle {
+  public getTextStyle(): CharStyle {
     const ctx = this.ctx;
 
     return {
@@ -597,7 +602,7 @@ export class Terminal implements WidgetContainer {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  setText(text: string, col?: number, line?: number): void {
+  public setText(text: string, col?: number, line?: number): void {
     this.info(`setText: ${text}`);
 
     const dirtyTiles = this.dirtyTiles;
@@ -698,8 +703,8 @@ export class Terminal implements WidgetContainer {
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    * @param crop If only a portion of `img` is to be drawn, cropping parameters are specified here
    */
-  setImage(img: AcceptedImage, col?: number, line?: number, offset?: ImageOffset,
-           size?: ImageSize, crop?: ImageCropParams): void {
+  public setImage(img: AcceptedImage, col?: number, line?: number, offset?: ImageOffset,
+                  size?: ImageSize, crop?: ImageCropParams): void {
     const setTile = (tile: InternalTile) => {
       tile.dstW = size ? size.width : (crop ? crop.srcW : img.width);
       tile.dstH = size ? size.height : (crop ? crop.srcH : img.height);
@@ -720,7 +725,7 @@ export class Terminal implements WidgetContainer {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  getText(size: number = 1, col?: number, line?: number): string {
+  public getText(size: number = 1, col?: number, line?: number): string {
     let text = '';
     const cursorX = this.cursorX;
     const cursorY = this.cursorY;
@@ -747,17 +752,14 @@ export class Terminal implements WidgetContainer {
    * @param col x-position of the starting tile. Current position of the cursor if not specified
    * @param line y-position of the starting tile. Current position of the cursor if not specified
    */
-  setTiles(tiles: TextTile | TextTile[] | ImageTile | ImageTile[], col?: number, line?: number): void {
+  public setTiles(tiles: TextTile | TextTile[] | ImageTile | ImageTile[], col?: number, line?: number): void {
     const dirtyTiles = this.dirtyTiles;
-
-    if (!isArray(tiles)) {
-      tiles = [tiles as TextTile];
-    }
+    const tilesList = isArray(tiles) ? tiles as TextTile[] : [tiles as TextTile];
 
     this.iterateTiles(
-      (tiles as TextTile[]).length,
+      tilesList.length,
       (tile, i) => {
-        Object.assign(tile, tiles[i]);
+        Object.assign(tile, tilesList[i]);
         this.addDirtyTile(tile, dirtyTiles);
       },
       col,
@@ -775,8 +777,8 @@ export class Terminal implements WidgetContainer {
    * @returns parent if any, or `undefined`
    */
   // tslint:disable-next-line:prefer-function-over-method
-  getParent(): WidgetContainer {
-    return undefined;
+  public getParent(): WidgetContainer {
+    return;
   }
 
   /**
@@ -786,7 +788,8 @@ export class Terminal implements WidgetContainer {
    * @param options Options for the widget constructor
    * @return handler of the attached widget. Required to deattach it.
    */
-  attachWidget<WidgetType extends Widget>(WidgetClass: WidgetConstructor<WidgetType>, options?): WidgetType {
+  public attachWidget<WidgetType extends Widget>(WidgetClass: WidgetConstructor<WidgetType>,
+                                                 options?: any): WidgetType { // tslint:disable-line:no-any
     const widget: WidgetType = Reflect.construct(WidgetClass, [
       this,
       options,
@@ -805,7 +808,7 @@ export class Terminal implements WidgetContainer {
    * @param widget Widget to dettach
    * @return `true` if the widget was found (and removed). `false` if not found
    */
-  dettachWidget(widget: Widget): boolean {
+  public dettachWidget(widget: Widget): boolean {
     const index = this.attachedWidgets.findIndex((w) => w === widget);
 
     if (index !== -1) {
@@ -825,14 +828,14 @@ export class Terminal implements WidgetContainer {
    * @param line line of the terminal
    * @return widget or `undefined` if not found (wrong id or previously dettached)
    */
-  getWidgetAt(column: number, line: number): Widget {
+  public getWidgetAt(column: number, line: number): Widget {
     for (const widget of this.attachedWidgets) {
       if (widget.isAt(column, line)) {
         return widget;
       }
     }
 
-    return undefined;
+    return;
   }
 
   /**
@@ -842,7 +845,7 @@ export class Terminal implements WidgetContainer {
    * @param line line of the terminal
    * @return widget or `undefined` if not found
    */
-  getLeafWidgetAt(column: number, line: number): Widget {
+  public getLeafWidgetAt(column: number, line: number): Widget {
     // tslint:disable-next-line:no-this-assignment
     let container: WidgetContainer = this;
     let widget;
@@ -866,7 +869,7 @@ export class Terminal implements WidgetContainer {
    * @param widget Widget to start the list with
    * @returns list of widgets from the `widget` itself (included) to the terminal (not included)
    */
-  getWidgetPath(widget: Widget): Array<Widget | WidgetContainer> {
+  public getWidgetPath(widget: Widget): Array<Widget | WidgetContainer> {
     const branch: Array<Widget | WidgetContainer> = [widget];
     let current = widget.getParent();
 
@@ -883,9 +886,9 @@ export class Terminal implements WidgetContainer {
    *
    * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
    */
-  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
+  public [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
     const data = this.attachedWidgets;
-    let index;
+    let index: number;
 
     const it = {
       next: () => {
@@ -945,40 +948,35 @@ export class Terminal implements WidgetContainer {
     const viewPortBottom = this.options.viewport.bottom || this.options.rows - 1;
     const viewPortLeft = this.options.viewport.left || 0;
 
-    if (typeof col === 'undefined') {
-      col = this.cursorX;
-    }
-    if (typeof line === 'undefined') {
-      line = this.cursorY;
-    }
+    let x = typeof col === 'undefined' ? this.cursorX : col;
+    let y = typeof line === 'undefined' ? this.cursorY : line;
 
-    let c = col;
     for (let i = 0; i < size; i++) {
-      if (c > viewPortRight) {
-        c = viewPortLeft;
-        line++;
+      if (x > viewPortRight) {
+        x = viewPortLeft;
+        y++;
       }
-      if (line > viewPortBottom) {
+      if (y > viewPortBottom) {
         break;
       }
-      if (line < viewPortTop) {
-        c++;
+      if (y < viewPortTop) {
+        x++;
         continue;
       }
       // cursor is updated inside this function in case that `setText` is called nested via escaped commands
-      this.cursorX = c;
-      this.cursorY = line;
-      callback(buffer[line][c], i);
-      c++;
+      this.cursorX = x;
+      this.cursorY = y;
+      callback(buffer[y][x], i);
+      x++;
     }
 
-    if (c >= viewPortRight) {
-      c = viewPortLeft;
-      if (line < viewPortBottom) {
+    if (x >= viewPortRight) {
+      x = viewPortLeft;
+      if (y < viewPortBottom) {
         this.cursorY++;
       }
     }
-    this.cursorX = c;
+    this.cursorX = x;
   }
 
   /**

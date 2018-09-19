@@ -25,14 +25,14 @@ export class FocusManager {
   /**
    * Focus the next widget
    */
-  next(): void {
+  public next(): void {
     this.iterate('next');
   }
 
   /**
    * Focus the previous widget
    */
-  prev(): void {
+  public prev(): void {
     this.iterate('prev');
   }
 
@@ -44,7 +44,7 @@ export class FocusManager {
    * @param newWidget New widget to focus
    * @return `true` if the focus changed
    */
-  focus(newWidget?: Widget): boolean {
+  public focus(newWidget?: Widget): boolean {
     if (newWidget === this.focusedWidget) {
       return false;
     }
@@ -90,7 +90,7 @@ export class FocusManager {
    *
    * @return `true` if the focus changed
    */
-  blur(): boolean {
+  public blur(): boolean {
     return this.focus();
   }
 
@@ -99,7 +99,7 @@ export class FocusManager {
    *
    * @returns focused widget, or `undefined` if none
    */
-  getFocusedWidget(): Widget {
+  public getFocusedWidget(): Widget {
     return this.focusedWidget;
   }
 
@@ -108,7 +108,7 @@ export class FocusManager {
    *
    * @param method `prev` or `next`
    */
-  private iterate(method: string): void {
+  private iterate(method: 'prev' | 'next'): void {
     const startWidget = this.focusedWidget;
     let widget: Widget;
     let found;

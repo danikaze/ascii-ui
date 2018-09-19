@@ -3,14 +3,14 @@ import { isPlainObject } from 'vanilla-type-check/isPlainObject';
 /**
  * Deep assign an object
  */
-export function deepAssign(...args) {
+// tslint:disable-next-line:no-any
+export function deepAssign(...args: any[]) {
   const target = args[0] || {};
 
-  for (let i = 1, n = args.length; i < n; i++) {
+  for (let i = 1; i < args.length; i++) {
     const obj = args[i];
 
-    // tslint:disable:forin
-    for (const key in obj) {
+    Object.keys(obj).forEach((key) => {
       const val = obj[key];
 
       if (isPlainObject(val)) {
@@ -22,7 +22,7 @@ export function deepAssign(...args) {
       } else if (target[key] !== val) {
         target[key] = obj[key];
       }
-    }
+    });
   }
 
   return target;

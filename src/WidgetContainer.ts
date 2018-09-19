@@ -27,7 +27,7 @@ export interface WidgetContainer {
    *
    * @returns Attached Widget instance
    */
-  attachWidget<WidgetClass extends Widget>(...args): WidgetClass;
+  attachWidget<WidgetClass extends Widget>(...args: any[]): WidgetClass; // tslint:disable-line:no-any
 
   /**
    * Dettach a widget from the container

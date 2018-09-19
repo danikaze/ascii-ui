@@ -1,9 +1,10 @@
+import { isEmpty } from 'vanilla-type-check/isEmpty';
+
 import { Terminal, TextTile } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
 import { deepAssign } from '../util/deepAssign';
-import { isEmptyObject } from '../util/isEmptyObject';
 
 export const enum ProgressBarDirection {
   /** The bar has 1 tile height and it's drawn from left to right */
@@ -34,7 +35,7 @@ export interface ProgressBarOptions extends WidgetOptions {
  */
 export class ProgressBar extends Widget<ProgressBarOptions> {
   /** Default options for widget instances */
-  static defaultOptions: ProgressBarOptions;
+  public static defaultOptions: ProgressBarOptions;
 
   constructor(terminal: Terminal, options: ProgressBarOptions, parent?: WidgetContainer) {
     super(
@@ -47,7 +48,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
   /**
    * Render the widget in the associated terminal
    */
-  render(): void {
+  public render(): void {
     if (this.options.direction === ProgressBarDirection.HORIZONTAL) {
       this.renderHorizontal();
     } else {
@@ -58,7 +59,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
   /**
    * Retrieve a reference to the currently selected option
    */
-  getProgress(): number {
+  public getProgress(): number {
     return this.options.progress;
   }
 
@@ -75,7 +76,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
       this.options.width = 1;
     }
 
-    if (!isEmptyObject(changes)) {
+    if (!isEmpty(changes)) {
       this.render();
     }
   }

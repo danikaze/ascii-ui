@@ -14,5 +14,5 @@ export function coalesce(...args: any[]): any {
     }
   }
 
-  return undefined;
+  return;
 }

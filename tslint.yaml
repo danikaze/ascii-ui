@@ -1,0 +1,380 @@
+---
+linterOptions:
+    exclude:
+        - app/lib/**
+        - app/test/**
+        - app/routes/**
+        - app/middleware/**
+        - app/config/**
+        - app/*.ts
+        - dui-core/**
+        - components/**
+        - test/**
+        - layouts/**
+        - gulpfile.ts
+
+rulesDirectory:
+    - ./node_modules/tslint-consistent-codestyle/rules
+    - ./node_modules/tslint-microsoft-contrib
+    - ./node_modules/tslint-eslint-rules/dist/rules
+
+rules:
+    # https://palantir.github.io/tslint/rules/max-line-length/
+    max-line-length:
+      - true
+      - limit: 120
+        ignore-pattern: '^import |new RegExp| = \/'
+
+    # https://palantir.github.io/tslint/rules/file-name-casing/
+    file-name-casing:
+      - true
+      - kebab-case
+      - camel-case
+
+    # https://palantir.github.io/tslint/rules/no-default-export/
+    # reasoning: https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
+    # google also doing that: https://github.com/google/ts-style/blob/master/tslint.json
+    no-default-export: true
+
+    # https://palantir.github.io/tslint/rules/triple-equals/
+    triple-equals: true
+
+    # https://palantir.github.io/tslint/rules/prefer-const/
+    prefer-const: true
+
+    # https://palantir.github.io/tslint/rules/arrow-return-shorthand/
+    arrow-return-shorthand: true
+
+    # https://palantir.github.io/tslint/rules/adjacent-overload-signatures/
+    adjacent-overload-signatures: true
+
+    # https://palantir.github.io/tslint/rules/eofline/
+    eofline: true
+
+    # https://palantir.github.io/tslint/rules/prefer-readonly/
+    prefer-readonly: true
+
+    # https://palantir.github.io/tslint/rules/prefer-for-of/
+    prefer-for-of: true
+
+    # https://palantir.github.io/tslint/rules/member-access/
+    member-access:
+       - true
+
+    # https://palantir.github.io/tslint/rules/member-ordering/
+    member-ordering:
+       - true
+       - order:
+           - public-static-field
+           - protected-static-field
+           - private-static-field
+
+           - public-instance-field
+           - protected-instance-field
+           - private-instance-field
+
+           - public-constructor
+           - protected-constructor
+           - private-constructor
+
+           - public-static-method
+           - protected-static-method
+           - private-static-method
+
+           - public-instance-method
+           - protected-instance-method
+           - private-instance-method
+
+    # https://palantir.github.io/tslint/rules/ordered-imports/
+    ordered-imports:
+        - true
+        - grouped-imports: true
+          named-imports-order: case-insensitive
+
+    # https://palantir.github.io/tslint/rules/no-empty-interface/
+    no-empty-interface: true
+
+    # https://palantir.github.io/tslint/rules/no-inferrable-types/
+    no-inferrable-types:
+        - true
+        - ignore-params
+        - ignore-properties
+
+    # https://palantir.github.io/tslint/rules/no-irregular-whitespace/
+    # Allow Japanese strings
+    no-irregular-whitespace:
+        - false
+
+    # https://palantir.github.io/tslint/rules/no-internal-module/
+    no-internal-module: true
+
+    # https://palantir.github.io/tslint/rules/no-namespace/
+    no-namespace: true
+
+    # https://palantir.github.io/tslint/rules/no-reference/
+    no-reference: true
+
+    # https://palantir.github.io/tslint/rules/only-arrow-functions/
+    # only function expression is banned
+    only-arrow-functions:
+        - true
+        - allow-declararations
+        - allow-named-functions
+
+    # https://palantir.github.io/tslint/rules/ban/
+    # from https://github.com/google/ts-style
+    ban:
+      - true
+      - name: parseInt
+        message: tsstyle#type-coercion
+      - name: parseFloat
+        message: tsstyle#type-coercion
+
+    # https://palantir.github.io/tslint/rules/ban-types/
+    # from https://github.com/google/ts-style
+    ban-types:
+      - true
+      - [Object, "Use {} instead."]
+      - [String, "Use 'string' instead."]
+      - [Number, "Use 'number' instead."]
+      - [Boolean, "Use 'boolean' instead."]
+
+    # https://palantir.github.io/tslint/rules/interface-name/
+    interface-name:
+      - false
+
+    # https://palantir.github.io/tslint/rules/no-console/
+    no-console:
+      - true
+
+    # https://palantir.github.io/tslint/rules/curly/
+    # Make exception for one liners, airbnb and google do the same. very usefull for 'if (something) return;'
+    curly:
+        - true
+        - ignore-same-line
+
+    # https://palantir.github.io/tslint/rules/import-blacklist/
+    # we should use assert form chai, it's more powerfull
+    import-blacklist:
+        - true
+        - assert
+
+    # https://palantir.github.io/tslint/rules/no-conditional-assignment/
+    no-conditional-assignment:
+        - true
+
+    # https://palantir.github.io/tslint/rules/no-invalid-template-strings/
+    no-invalid-template-strings: true
+
+    # https://palantir.github.io/tslint/rules/no-unbound-method/
+    # We can't use this because it don't handle the case when method is bound in constructor
+    # In react it's a good practice. Ohterwise it would be binded/recreated in every re-render.
+    # no-unbound-method: true
+
+    # https://palantir.github.io/tslint/rules/prefer-conditional-expression/
+    prefer-conditional-expression: true
+
+    # https://palantir.github.io/tslint/rules/prefer-object-spread/
+    prefer-object-spread: true
+
+    # https://palantir.github.io/tslint/rules/class-name/
+    class-name: true
+
+    # https://palantir.github.io/tslint/rules/no-consecutive-blank-lines/
+    no-consecutive-blank-lines: true
+
+    # https://palantir.github.io/tslint/rules/quotemark/
+    quotemark:
+        - true
+        - single
+
+    # https://palantir.github.io/tslint/rules/no-eval/
+    no-eval: true
+
+    # https://palantir.github.io/tslint/rules/no-unsafe-finally/
+    no-unsafe-finally: true
+
+    # https://palantir.github.io/tslint/rules/no-any/
+    no-any: true
+
+    # https://palantir.github.io/tslint/rules/no-var-keyword/
+    no-var-keyword: true
+
+    # https://palantir.github.io/tslint/rules/no-magic-numbers/
+    no-magic-numbers:
+        - true
+        - 0
+        - -1
+        - 1
+        - 1000
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/terIndentRule.md
+    # builtin in tslint not really working :( https://github.com/palantir/tslint/issues/2814
+    ter-indent:
+        - true
+        - 2
+        - SwitchCase: 1
+
+    # https://palantir.github.io/tslint/rules/whitespace/
+    whitespace:
+        - true
+        - check-branch
+        - check-decl
+        - check-operator
+        - check-separator
+        - check-rest-spread
+        - check-type
+        - check-typecast
+        - check-type-operator
+
+
+    # https://palantir.github.io/tslint/rules/object-literal-shorthand/
+    object-literal-shorthand: true
+
+    # https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/object-shorthand-properties-first.md
+    object-shorthand-properties-first: true
+
+    # https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/no-collapsible-if.md
+    no-collapsible-if: true
+
+    # https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/no-unnecessary-else.md
+    no-unnecessary-else: true
+
+    # https://palantir.github.io/tslint/rules/no-unnecessary-class/
+    no-unnecessary-class: true
+
+    # https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/no-return-undefined.md
+    no-return-undefined: true
+
+    # https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/no-unnecessary-type-annotation.md
+    no-unnecessary-type-annotation: true
+
+    # https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/prefer-const-enum.md
+    prefer-const-enum: true
+
+    # https://palantir.github.io/tslint/rules/object-literal-key-quotes/
+    object-literal-key-quotes:
+        - true
+        - as-needed
+
+    # https://palantir.github.io/tslint/rules/variable-name/
+    variable-name:
+        - true
+        - check-format
+        - allow-pascal-case
+        - ban-keywords
+
+    # https://palantir.github.io/tslint/rules/space-before-function-paren/
+    space-before-function-paren:
+        - true
+        - never
+
+    # https://github.com/Microsoft/tslint-microsoft-contrib
+    no-banned-terms: true
+
+    # https://github.com/Microsoft/tslint-microsoft-contrib
+    no-for-in: true
+
+    # https://github.com/Microsoft/tslint-microsoft-contrib
+    prefer-array-literal:
+        - true
+        - allow-type-parameters: true
+
+    # https://github.com/Microsoft/tslint-microsoft-contrib
+    react-anchor-blank-noopener: true
+
+    # https://github.com/Microsoft/tslint-microsoft-contrib
+    react-this-binding-issue: true
+
+    # https://palantir.github.io/tslint/rules/no-parameter-reassignment/
+    no-parameter-reassignment: true
+
+    # https://palantir.github.io/tslint/rules/align/
+    # no argument alignment because it's ruined pattern for reduce, which is really convenient
+    # [].reduce((result, item) => {
+    #     /* function here */
+    # }, {})
+    align:
+        - true
+        - parameters
+        - statements
+        - members
+        - elements
+
+    # https://palantir.github.io/tslint/rules/arrow-parens/
+    arrow-parens: true
+
+    # https://palantir.github.io/tslint/rules/no-duplicate-imports/
+    no-duplicate-imports: true
+
+    # https://palantir.github.io/tslint/rules/one-variable-per-declaration/
+    one-variable-per-declaration: true
+
+    # https://palantir.github.io/tslint/rules/no-boolean-literal-compare/
+    no-boolean-literal-compare: true
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/braceStyleRule.md
+    brace-style:
+        - true,
+        - 1tbs,
+        - allowSingleLine: true
+
+    # https://palantir.github.io/tslint/rules/comment-format/
+    comment-format:
+        - true,
+        - check-space
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/spaceInParensRule.md
+    space-in-parens:
+        - true
+        - never
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/arrayBracketSpacingRule.md
+    array-bracket-spacing:
+        - true
+        - never
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/objectCurlySpacingRule.md
+    object-curly-spacing:
+        - true
+        - always
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/blockSpacingRule.md
+    block-spacing: true
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/terComputedPropertySpacingRule.md
+    ter-computed-property-spacing: false
+
+    # https://github.com/buzinas/tslint-eslint-rules/blob/master/src/docs/rules/terFuncCallSpacingRule.md
+    ter-func-call-spacing: true
+
+    # https://palantir.github.io/tslint/rules/no-trailing-whitespace/
+    no-trailing-whitespace: true
+
+    # https://palantir.github.io/tslint/rules/trailing-comma/
+    # not applied for functions, because for function it force to set up comma even after last argument for build-in functions,
+    # which make 0 sense
+    trailing-comma:
+        - true
+        - multiline:
+            arrays: 'always'
+            objects: 'always'
+            imports: 'always'
+            exports: 'always'
+            typeLiterals: 'always'
+        - singleline: "never"
+        - esSpecCompliant: true
+
+    # https://palantir.github.io/tslint/rules/semicolon/
+    semicolon:
+        - true
+        - always
+
+    # https://palantir.github.io/tslint/rules/no-construct/
+    no-construct: true
+
+    # https://palantir.github.io/tslint/rules/radix/
+    radix: true
+
+    # https://palantir.github.io/tslint/rules/no-this-assignment/
+    no-this-assignment: true

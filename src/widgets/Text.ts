@@ -5,7 +5,7 @@ import { WidgetContainer } from '../WidgetContainer';
 import { clamp } from '../util/clamp';
 import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
-import { TokenizerFunction, noWrap, splitText, tokenizer } from '../util/tokenizer';
+import { noWrap, splitText, tokenizer, TokenizerFunction } from '../util/tokenizer';
 
 export interface TextOptions extends WidgetOptions {
   /** Text to display */
@@ -53,14 +53,14 @@ export interface TextOptions extends WidgetOptions {
  */
 export class Text extends Widget<TextOptions> {
   /** Default options for widget instances */
-  static defaultOptions: TextOptions;
+  public static defaultOptions: TextOptions;
 
   /** Text splitted into lines to fit this size */
   private splittedText: string[];
   /** Offset of what line to display first (for the scroll, relative to `splittedText`) */
   private startLine: number = 0;
   /** setTimeout handler to cancel the typewritter effect when the text is scrolled */
-  private typewritterTimer;
+  private typewritterTimer: number;
   /** Line where to start applying the typewritter effect if enabled (relative to `splittedText`) */
   private typewritterLine = 0;
   /** Column where to start applying the typewritter effect if enabled (relative to `splittedText`) */
@@ -78,7 +78,7 @@ export class Text extends Widget<TextOptions> {
   /**
    * Render the widget in the associated terminal
    */
-  render(): void {
+  public render(): void {
     if (!this.splittedText || this.startLine === undefined) {
       return;
     }
@@ -141,7 +141,7 @@ export class Text extends Widget<TextOptions> {
    *
    * @return Size of the full text
    */
-  getTextSize(): TileSize {
+  public getTextSize(): TileSize {
     return {
       columns: this.options.tokenizer ? this.splittedText[0].length : this.options.text.length,
       rows: this.splittedText.length,
@@ -154,7 +154,7 @@ export class Text extends Widget<TextOptions> {
    * @param line First line to draw
    * @return `true` if there is more content after `line`, or `false` if it was the end
    */
-  setScrollLine(line: number): boolean {
+  public setScrollLine(line: number): boolean {
     clearTimeout(this.typewritterTimer);
     const currentOffset = this.startLine;
     const maxLine = this.options.fitPageEnd
@@ -185,7 +185,7 @@ export class Text extends Widget<TextOptions> {
    * @param lines Number of lines to scroll the text
    * @return `true` if there is more content after `line`, or `false` if it was the last line
    */
-  scrollLines(lines: number): boolean {
+  public scrollLines(lines: number): boolean {
     return this.setScrollLine(this.startLine + lines);
   }
 
@@ -195,7 +195,7 @@ export class Text extends Widget<TextOptions> {
    * @param pages Number of pages to scroll
    * @return `true` if there is more pages or `false` if it was the last one
    */
-  scrollPages(pages: number): boolean {
+  public scrollPages(pages: number): boolean {
     return this.setScrollLine(this.startLine + pages * this.options.height);
   }
 
@@ -273,20 +273,18 @@ export class Text extends Widget<TextOptions> {
    */
   private splitText(text: string): string[] {
     if (!this.allocated) {
-      return undefined;
+      return;
     }
 
-    if (this.options.skip) {
-      text = text.substr(this.options.skip);
-    }
+    const txt = this.options.skip ? text.substr(this.options.skip) : text;
 
     if (!this.options.tokenizer) {
-      const noWrappedText = noWrap(text, this.options.width, this.options.ellipsis);
+      const noWrappedText = noWrap(txt, this.options.width, this.options.ellipsis);
 
       return [noWrappedText + ' '.repeat(this.options.width - noWrappedText.length)];
     }
 
-    return splitText(text, this.options.width, this.options.tokenizer);
+    return splitText(txt, this.options.width, this.options.tokenizer);
   }
 }
 
@@ -294,8 +292,8 @@ export class Text extends Widget<TextOptions> {
  * Default options for new instances
  */
 Text.defaultOptions = {
-  text: '',
   tokenizer,
+  text: '',
   ellipsis: '...',
   skip: 0,
   fitPageEnd: false,

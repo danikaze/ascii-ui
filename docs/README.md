@@ -34,6 +34,7 @@ Widgets:
 Others:
 
 *   Added `EventManager.removeListener` (and rename `listen` to `addListener`)
+*   Cleaner code, newer tslint rules
 
 ### 0.1.0
 
@@ -57,7 +58,6 @@ Usable but still in development, so _bugs can happen_.
 * ["util/deepAssign"](modules/_util_deepassign_.md)
 * ["util/deepAssignAndDiff"](modules/_util_deepassignanddiff_.md)
 * ["util/emptyArray"](modules/_util_emptyarray_.md)
-* ["util/isEmptyObject"](modules/_util_isemptyobject_.md)
 * ["util/requestAnimationFrame"](modules/_util_requestanimationframe_.md)
 * ["util/tokenizer"](modules/_util_tokenizer_.md)
 * ["widgets/Box"](modules/_widgets_box_.md)

@@ -6,16 +6,9 @@ import { WidgetContainer } from '../WidgetContainer';
 
 import { deepAssign } from '../util/deepAssign';
 
-export const enum ProgressBarDirection {
-  /** The bar has 1 tile height and it's drawn from left to right */
-  HORIZONTAL = 1,
-  /** The bar has 1 tile width and it's drawn from bottom to top */
-  VERTICAL,
-}
-
 export interface ProgressBarOptions extends WidgetOptions {
   /** Direction of the progress bar */
-  direction?: ProgressBarDirection;
+  direction?: 'horizontal' | 'vertical';
   /** Progress to display (0-1) */
   progress?: number;
   /** Style to use for the completed part of the bar */
@@ -49,7 +42,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
    * Render the widget in the associated terminal
    */
   public render(): void {
-    if (this.options.direction === ProgressBarDirection.HORIZONTAL) {
+    if (this.options.direction === 'horizontal') {
       this.renderHorizontal();
     } else {
       this.renderVertical();
@@ -70,7 +63,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
    * @param changes Object with only the changed options
    */
   protected updateOptions(changes: ProgressBarOptions): void {
-    if (this.options.direction === ProgressBarDirection.HORIZONTAL) {
+    if (this.options.direction === 'horizontal') {
       this.options.height = 1;
     } else {
       this.options.width = 1;
@@ -162,7 +155,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
  */
 ProgressBar.defaultOptions = {
   focusable: false,
-  direction: ProgressBarDirection.HORIZONTAL,
+  direction: 'horizontal',
   progress: 0,
   completedStyle: { char: '', bg: '#00ff00' },
   pendingStyle: { char: '', bg: '#009900' },

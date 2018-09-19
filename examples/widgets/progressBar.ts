@@ -1,5 +1,5 @@
 /* tslint:disable:no-magic-numbers */
-import { ProgressBar, ProgressBarDirection } from '../../src/widgets/ProgressBar';
+import { ProgressBar } from '../../src/widgets/ProgressBar';
 
 import { load } from '../util/load';
 
@@ -89,21 +89,21 @@ function run({ terminal }): void {
 
   terminal.attachWidget(ProgressBar, {
     ...baseOptions,
-    direction: ProgressBarDirection.VERTICAL,
+    direction: 'vertical',
     col: 25,
     progress: 0,
   });
 
   terminal.attachWidget(ProgressBar, {
     ...baseOptions,
-    direction: ProgressBarDirection.VERTICAL,
+    direction: 'vertical',
     col: 27,
     progress: 0.25,
   });
 
   terminal.attachWidget(ProgressBar, {
     ...baseOptions,
-    direction: ProgressBarDirection.VERTICAL,
+    direction: 'vertical',
     col: 29,
     progress: 0.5,
     startStyle: { char: '', bg: '#005500' },
@@ -112,21 +112,21 @@ function run({ terminal }): void {
 
   terminal.attachWidget(ProgressBar, {
     ...baseOptions,
-    direction: ProgressBarDirection.VERTICAL,
+    direction: 'vertical',
     col: 31,
     progress: 0.75,
   });
 
   terminal.attachWidget(ProgressBar, {
     ...baseOptions,
-    direction: ProgressBarDirection.VERTICAL,
+    direction: 'vertical',
     col: 33,
     progress: 1,
   });
 
   const verticalBar: ProgressBar = terminal.attachWidget(ProgressBar, {
     ...baseOptions,
-    direction: ProgressBarDirection.VERTICAL,
+    direction: 'vertical',
     col: 35,
     progress: 0,
     completedStyle: { char: '#', fg: '#00ff00', bg: '#000000' },

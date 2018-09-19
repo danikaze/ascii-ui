@@ -31,7 +31,7 @@
 
 **● bottom**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L72)*
+*Defined in [widgets/Box.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L72)*
 
 ___
 <a id="bottomleft"></a>
@@ -40,7 +40,7 @@ ___
 
 **● bottomLeft**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L71)*
+*Defined in [widgets/Box.ts:71](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L71)*
 
 ___
 <a id="bottomright"></a>
@@ -49,7 +49,7 @@ ___
 
 **● bottomRight**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L73)*
+*Defined in [widgets/Box.ts:73](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L73)*
 
 ___
 <a id="center"></a>
@@ -58,7 +58,7 @@ ___
 
 **● center**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L69)*
+*Defined in [widgets/Box.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L69)*
 
 ___
 <a id="left"></a>
@@ -67,7 +67,7 @@ ___
 
 **● left**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:68](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L68)*
+*Defined in [widgets/Box.ts:68](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L68)*
 
 ___
 <a id="right"></a>
@@ -76,7 +76,7 @@ ___
 
 **● right**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L70)*
+*Defined in [widgets/Box.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L70)*
 
 ___
 <a id="title"></a>
@@ -85,7 +85,7 @@ ___
 
 **● title**: *[TextTile](_terminal_.texttile.md)[]*
 
-*Defined in [widgets/Box.ts:64](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L64)*
+*Defined in [widgets/Box.ts:64](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L64)*
 
 ___
 <a id="top"></a>
@@ -94,7 +94,7 @@ ___
 
 **● top**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:66](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L66)*
+*Defined in [widgets/Box.ts:66](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L66)*
 
 ___
 <a id="topleft"></a>
@@ -103,7 +103,7 @@ ___
 
 **● topLeft**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:65](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L65)*
+*Defined in [widgets/Box.ts:65](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L65)*
 
 ___
 <a id="topright"></a>
@@ -112,7 +112,7 @@ ___
 
 **● topRight**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/Box.ts:67](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L67)*
+*Defined in [widgets/Box.ts:67](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L67)*
 
 ___
 

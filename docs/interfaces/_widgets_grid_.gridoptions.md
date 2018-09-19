@@ -38,7 +38,7 @@
 
 **● borderStyle**: *[GridBorderOptions](_widgets_grid_.gridborderoptions.md)*
 
-*Defined in [widgets/Grid.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L17)*
+*Defined in [widgets/Grid.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L17)*
 
 Style to use for the border when enabled
 
@@ -49,7 +49,7 @@ ___
 
 **● borders**: *`boolean`*
 
-*Defined in [widgets/Grid.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L15)*
+*Defined in [widgets/Grid.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L15)*
 
 Borders enabled (`true`) or disabled (`false`). Disabled by default
 
@@ -62,7 +62,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L9)*
+*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L10)*
 
 x-position of the widget in terminal tiles
 
@@ -73,7 +73,7 @@ ___
 
 **● columns**: *`number`*
 
-*Defined in [widgets/Grid.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L11)*
+*Defined in [widgets/Grid.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L11)*
 
 Number of columns of the grid
 
@@ -86,7 +86,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L17)*
+*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L18)*
 
 if `true`, the widget can be selectable
 
@@ -97,7 +97,7 @@ ___
 
 **● fullSize**: *`boolean`*
 
-*Defined in [widgets/Grid.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L13)*
+*Defined in [widgets/Grid.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L13)*
 
 Expand (or not) to the full size of the terminal (only applies when the parent is the terminal)
 
@@ -110,7 +110,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L15)*
+*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L16)*
 
 widget height in terminal tiles
 
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L11)*
+*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L12)*
 
 y-position of the widget in terminal tiles
 
@@ -134,7 +134,7 @@ ___
 
 **● rows**: *`number`*
 
-*Defined in [widgets/Grid.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L9)*
+*Defined in [widgets/Grid.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L9)*
 
 Number of rows of the grid
 
@@ -147,7 +147,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L19)*
+*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L20)*
 
 value use for ordering the selection order with the keys
 
@@ -160,7 +160,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L13)*
+*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L14)*
 
 widget width in terminal tiles
 
@@ -174,7 +174,7 @@ ___
 
 ▸ **calculateGridSpace**(available: *`number`*, cells: *`number`*, isRow: *`boolean`*, terminal: *[Terminal](../classes/_terminal_.terminal.md)*): `number`[]
 
-*Defined in [widgets/Grid.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Grid.ts#L24)*
+*Defined in [widgets/Grid.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L24)*
 
 Function used to calculate the space for each grid Leave `undefined` to use the default one
 

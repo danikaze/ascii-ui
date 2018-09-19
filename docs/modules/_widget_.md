@@ -24,9 +24,9 @@
 
 ###  WidgetConstructor
 
-**ΤWidgetConstructor**: *`object`*
+**Ƭ WidgetConstructor**: *`object`*
 
-*Defined in [Widget.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L5)*
+*Defined in [Widget.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L5)*
 
 #### Type declaration
 

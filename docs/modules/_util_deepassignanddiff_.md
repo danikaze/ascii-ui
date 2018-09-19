@@ -18,7 +18,7 @@
 
 ▸ **deepAssignAndDiff**(...args: *`any`[]*): `object`
 
-*Defined in [util/deepAssignAndDiff.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/deepAssignAndDiff.ts#L6)*
+*Defined in [util/deepAssignAndDiff.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/deepAssignAndDiff.ts#L6)*
 
 Deep assign an object and return just the difference (`{}` if nothing changed)
 

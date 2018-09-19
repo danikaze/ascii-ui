@@ -30,7 +30,7 @@ Manage triggering, listening and bubbling events across the Terminal Widgets
 
 ⊕ **new EventManager**(terminal: *[Terminal](_terminal_.terminal.md)*): [EventManager](_eventmanager_.eventmanager.md)
 
-*Defined in [EventManager.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/EventManager.ts#L14)*
+*Defined in [EventManager.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/EventManager.ts#L14)*
 
 **Parameters:**
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **addListener**(type: *`string`*, listener: *[EventListener](../modules/_eventmanager_.md#eventlistener)*, widget?: *[Widget](_widget_.widget.md)*): `void`
 
-*Defined in [EventManager.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/EventManager.ts#L27)*
+*Defined in [EventManager.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/EventManager.ts#L27)*
 
 Listen for events of a specific type
 
@@ -71,7 +71,7 @@ ___
 
 ▸ **removeListener**(type: *`string`*, listener: *[EventListener](../modules/_eventmanager_.md#eventlistener)*, widget?: *[Widget](_widget_.widget.md)*): `void`
 
-*Defined in [EventManager.ts:53](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/EventManager.ts#L53)*
+*Defined in [EventManager.ts:53](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/EventManager.ts#L53)*
 
 Remove a previous added listener. Needs to be called with the same parameters as it was added. Does nothing if not found.
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **trigger**(event: *[TerminalEvent](_terminalevent_.terminalevent.md)*, widget?: *[Widget](_widget_.widget.md)*): `void`
 
-*Defined in [EventManager.ts:80](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/EventManager.ts#L80)*
+*Defined in [EventManager.ts:80](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/EventManager.ts#L80)*
 
 Trigger an event. The event will be passed to all the listeners of the target widget and then bubbled to its parent until the root terminal is reached or the event propagation is stopped (`event.stopPropagation`) by one of its listeners
 

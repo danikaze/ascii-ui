@@ -23,7 +23,7 @@
 
 **● boxBorders**: *[BoxBorderOptions](_widgets_box_.boxborderoptions.md)*
 
-*Defined in [widgets/Box.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L47)*
+*Defined in [widgets/Box.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L47)*
 
 Options related to the border of the box
 
@@ -34,7 +34,7 @@ ___
 
 **● boxTitle**: *[BoxTitleOptions](_widgets_box_.boxtitleoptions.md)*
 
-*Defined in [widgets/Box.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L45)*
+*Defined in [widgets/Box.ts:45](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L45)*
 
 Options related to the title, if used
 

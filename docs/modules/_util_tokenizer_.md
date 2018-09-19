@@ -26,9 +26,9 @@
 
 ###  TokenizerFunction
 
-**ΤTokenizerFunction**: *`function`*
+**Ƭ TokenizerFunction**: *`function`*
 
-*Defined in [util/tokenizer.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/tokenizer.ts#L10)*
+*Defined in [util/tokenizer.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/tokenizer.ts#L10)*
 
 #### Type declaration
 ▸(text: *`string`*): [TextToken](../interfaces/_util_tokenizer_.texttoken.md)[]
@@ -51,7 +51,7 @@ ___
 
 ▸ **noWrap**(text: *`string`*, lineWidth: *`number`*, ellipsis?: *`string`*): `string`
 
-*Defined in [util/tokenizer.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/tokenizer.ts#L86)*
+*Defined in [util/tokenizer.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/tokenizer.ts#L86)*
 
 Limit a text to a length, and add a ellipsis character if needed (and specified)
 
@@ -72,7 +72,7 @@ ___
 
 ▸ **splitText**(text: *`string`*, lineWidth: *`number`*, tknzr?: *[TokenizerFunction](_util_tokenizer_.md#tokenizerfunction)*): `string`[]
 
-*Defined in [util/tokenizer.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/tokenizer.ts#L43)*
+*Defined in [util/tokenizer.ts:43](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/tokenizer.ts#L43)*
 
 Splits a text into different lines given a limit width
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **tokenizer**(text: *`string`*): [TextToken](../interfaces/_util_tokenizer_.texttoken.md)[]
 
-*Defined in [util/tokenizer.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/tokenizer.ts#L18)*
+*Defined in [util/tokenizer.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/tokenizer.ts#L18)*
 
 Given a text, it will split it into words
 

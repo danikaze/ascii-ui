@@ -39,7 +39,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L94)*
+*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L94)*
 
 background color (i.e. `#000000`)
 
@@ -50,7 +50,7 @@ ___
 
 **● bottom**: *`string`*
 
-*Defined in [widgets/Box.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L19)*
+*Defined in [widgets/Box.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L19)*
 
 ___
 <a id="bottomleft"></a>
@@ -59,7 +59,7 @@ ___
 
 **● bottomLeft**: *`string`*
 
-*Defined in [widgets/Box.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L18)*
+*Defined in [widgets/Box.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L18)*
 
 ___
 <a id="bottomright"></a>
@@ -68,7 +68,7 @@ ___
 
 **● bottomRight**: *`string`*
 
-*Defined in [widgets/Box.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L20)*
+*Defined in [widgets/Box.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L20)*
 
 ___
 <a id="center"></a>
@@ -77,7 +77,7 @@ ___
 
 **● center**: *`string`*
 
-*Defined in [widgets/Box.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L16)*
+*Defined in [widgets/Box.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L16)*
 
 ___
 <a id="fg"></a>
@@ -88,7 +88,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L92)*
+*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L92)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -101,7 +101,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L86)*
+*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L86)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -112,7 +112,7 @@ ___
 
 **● left**: *`string`*
 
-*Defined in [widgets/Box.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L15)*
+*Defined in [widgets/Box.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L15)*
 
 ___
 <a id="offsetx"></a>
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L88)*
+*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L88)*
 
 x-offset to apply to each character inside the tile
 
@@ -136,7 +136,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L90)*
+*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L90)*
 
 y-offset to apply to each character inside the tile
 
@@ -147,7 +147,7 @@ ___
 
 **● right**: *`string`*
 
-*Defined in [widgets/Box.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L17)*
+*Defined in [widgets/Box.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L17)*
 
 ___
 <a id="top"></a>
@@ -156,7 +156,7 @@ ___
 
 **● top**: *`string`*
 
-*Defined in [widgets/Box.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L13)*
+*Defined in [widgets/Box.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L13)*
 
 ___
 <a id="topleft"></a>
@@ -165,7 +165,7 @@ ___
 
 **● topLeft**: *`string`*
 
-*Defined in [widgets/Box.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L12)*
+*Defined in [widgets/Box.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L12)*
 
 ___
 <a id="topright"></a>
@@ -174,7 +174,7 @@ ___
 
 **● topRight**: *`string`*
 
-*Defined in [widgets/Box.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Box.ts#L14)*
+*Defined in [widgets/Box.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Box.ts#L14)*
 
 ___
 

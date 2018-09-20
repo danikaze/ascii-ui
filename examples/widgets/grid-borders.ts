@@ -1,8 +1,7 @@
 /* tslint:disable:no-magic-numbers */
 import { Grid, GridOptions } from '../../src/widgets/Grid';
 import { Text } from '../../src/widgets/Text';
-
-import { LoadData, load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 function run({ terminal }: LoadData): void {
   const options: GridOptions = {

@@ -1,10 +1,10 @@
 /* tslint:disable:no-magic-numbers */
 import { ProgressBar } from '../../src/widgets/ProgressBar';
 
-import { load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 function enableTimeProgress(bars: ProgressBar[]): void {
-  function changeProgress(bar, time, delta) {
+  function changeProgress(bar: ProgressBar, time: number, delta: number) {
     let progress = bar.getProgress() + delta;
     if (progress > 1) {
       progress = 1;
@@ -18,7 +18,7 @@ function enableTimeProgress(bars: ProgressBar[]): void {
     }
   }
 
-  function resetProgress(bar) {
+  function resetProgress(bar: ProgressBar) {
     bar.setOptions({ progress: 0 });
     const time = Math.random() * 600 + 200;
     const delta = Math.random() / 20 + 0.01;
@@ -32,7 +32,7 @@ function enableTimeProgress(bars: ProgressBar[]): void {
   });
 }
 
-function run({ terminal }): void {
+function run({ terminal }: LoadData): void {
   const baseOptions = {
     col: 1,
     line: 1,
@@ -74,7 +74,7 @@ function run({ terminal }): void {
     progress: 1,
   });
 
-  const horizontalBar: ProgressBar = terminal.attachWidget(ProgressBar, {
+  const horizontalBar = terminal.attachWidget(ProgressBar, {
     ...baseOptions,
     line: 11,
     progress: 0,
@@ -124,7 +124,7 @@ function run({ terminal }): void {
     progress: 1,
   });
 
-  const verticalBar: ProgressBar = terminal.attachWidget(ProgressBar, {
+  const verticalBar = terminal.attachWidget(ProgressBar, {
     ...baseOptions,
     direction: 'vertical',
     col: 35,

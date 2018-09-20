@@ -84,7 +84,7 @@ export function traverseObject(object: GenericObject | GenericArray, route: stri
       name,
     } : (parent as GenericObject)[name];
   } catch (e) {
-    return undefined;
+    return;
   }
 }
 
@@ -128,7 +128,7 @@ export function createObjectFromRoute(route: string, data: any): object {
 // tslint:disable-next-line:no-any
 export function getRouteFromObject(object: any, data: any, all: boolean = false): string | string[] {
   if (object === data) {
-    return undefined;
+    return;
   }
 
   return internalGetRouteFromObject(object, data, '', all ? [] : undefined);
@@ -148,7 +148,7 @@ function internalGetRouteFromObject(object: any, data: any, currentRoute: string
   }
 
   if (isPlainObject(object)) {
-    // tslint:disable-next-line:forin
+    // tslint:disable-next-line:no-for-in
     for (const key in object) {
       const nextRoute = currentRoute ? `${currentRoute}.${key}` : key;
       const res = internalGetRouteFromObject(object[key], data, nextRoute, multiRes);

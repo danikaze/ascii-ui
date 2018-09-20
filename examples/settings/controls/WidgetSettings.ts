@@ -3,6 +3,11 @@ import { ReferencedObject, traverseObject } from '../../util/traverseObject';
 
 import { SettingComponent } from './SettingComponent';
 
+export interface WidgetConfig {
+  // tslint:disable-next-line:no-any
+  [key: string]: any;
+}
+
 export interface SettingsCol {
   id?: string;
   title?: string;
@@ -30,7 +35,7 @@ export interface SettingsLayout {
 export interface WidgetSettingsOptions {
   button?: {
     text: string;
-    callback(settings: WidgetSettings, event): void;
+    callback(settings: WidgetSettings, event: MouseEvent): void;
   };
 }
 
@@ -38,7 +43,7 @@ export interface WidgetSettingsOptions {
  *
  */
 export class WidgetSettings {
-  onChange?: (settings: WidgetSettings, setting: SettingComponent) => void;
+  public onChange?: (settings: WidgetSettings, setting: SettingComponent) => void;
 
   private components: { [key: string]: SettingComponent } = {};
   private readonly card: HTMLDivElement;
@@ -52,14 +57,15 @@ export class WidgetSettings {
   /**
    *
    */
-  getCard(): HTMLDivElement {
+  public getCard(): HTMLDivElement {
     return this.card;
   }
 
   /**
    *
    */
-  getConfig(ignoredValues = []) {
+  // tslint:disable-next-line:no-any
+  public getConfig(ignoredValues: any[] = []) {
     const config = {};
 
     Object.keys(this.components)
@@ -79,7 +85,7 @@ export class WidgetSettings {
   /**
    *
    */
-  setConfig(config: object) {
+  public setConfig(config: WidgetConfig) {
     Object.keys(this.components)
       .forEach((name) => {
         let value = config[name];
@@ -95,7 +101,7 @@ export class WidgetSettings {
   /**
    *
    */
-  setSections(sections: SettingsSection[]): void {
+  public setSections(sections: SettingsSection[]): void {
     const config = this.getConfig();
     this.card.querySelector('.card-body').innerHTML = '';
     this.components = {};
@@ -160,7 +166,7 @@ export class WidgetSettings {
         sectionContents.hidden = true;
       }
 
-      sectionTitle = createElement('h4', {
+      sectionTitle = createElement<HTMLTitleElement>('h4', {
         class: 'settings-section-title',
         html: `<span class="settings-section-arrow">▶︎</span> ${section.title}`,
         attrs: {

@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --env=dev",
-    "lint": "tslint -p tsconfig.json",
+    "lint": "tslint -p tsconfig.lint.json",
     "clean": "rimraf lib",
     "build": "tsc && yarn docs",
     "examples": "webpack",
@@ -30,6 +30,7 @@
     "vanilla-type-check": "^2.0.0"
   },
   "devDependencies": {
+    "@types/fontfaceobserver": "^0.0.6",
     "@types/node": "^10.5.2",
     "@types/webpack-env": "^1.13.5",
     "autoprefixer": "^9.0.0",

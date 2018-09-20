@@ -2,7 +2,7 @@ import { Terminal } from '../../src/Terminal';
 import { Widget, WidgetOptions } from '../../src/Widget';
 import { Box } from '../../src/widgets/Box';
 import { Grid, GridOptions } from '../../src/widgets/Grid';
-import { LoadData, load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingButton } from './controls/SettingButton';
@@ -247,16 +247,17 @@ function updatePageSettings(pSettings: WidgetSettings) {
     return;
   }
 
-  const config: DemoConfig = pSettings.getConfig(['']) as DemoConfig;
+  const config = pSettings.getConfig(['']) as DemoConfig;
 
   /*
    * Transform the config object into an array of configs
    */
-  const boxes = {};
+
+  const boxes = {} as { [k: string]: any }; // tslint:disable-line:no-any
   const MATCH_PROP = 1;
   const MATCH_ID = 2;
   Object.keys(config)
-    .forEach((key) => {
+    .forEach((key: 'show' | 'text') => {
       const match = /([^-]+)-([0-9]+)/.exec(key);
       if (!boxes[match[MATCH_ID]]) {
         boxes[match[MATCH_ID]] = {};
@@ -267,8 +268,8 @@ function updatePageSettings(pSettings: WidgetSettings) {
   /*
    * Reset the grid
    */
-  const widgetOptions: GridOptions = widgetSettings.getConfig(['']) as GridOptions;
-  const gridWidget: Grid = createWidget(pageTerminal, widgetOptions) as Grid;
+  const widgetOptions = widgetSettings.getConfig(['']) as GridOptions;
+  const gridWidget = createWidget(pageTerminal, widgetOptions) as Grid;
   page.updateWidget(gridWidget, widgetOptions);
 
   /*
@@ -348,12 +349,12 @@ load()
     pageTerminal = terminal;
     page = new SettingsPage<GridOptions>({
       terminal,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...Grid.defaultOptions },
       widgetInitialSettings,
       createPageSettings,
       createWidget,
       createWidgetSettings,
       filterCode,
       preUpdateWidgeSettings,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...Grid.defaultOptions },
     });
   });

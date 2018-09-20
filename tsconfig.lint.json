@@ -6,9 +6,6 @@
     "noUnusedLocals": true,
     "module": "ES6",
     "moduleResolution": "node",
-    "outDir": "./lib/",
-    "removeComments": true,
-    "sourceMap": true,
     "target": "ES6",
     "paths": {
       "@src/*": ["src/*"]
@@ -17,5 +14,6 @@
   "include": [
    "global.d.ts",
    "src/**/*.ts",
+   "examples/**/*.ts"
  ]
 }

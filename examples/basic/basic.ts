@@ -1,8 +1,6 @@
-/* tslint:disable:typedef */
-
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { Terminal, EscapeCommandParams } from '../../src/Terminal';
+import { EscapeCommandParams, Terminal } from '../../src/Terminal';
 
 interface TestWindow extends Window {
   terminal: Terminal;
@@ -15,7 +13,7 @@ const KEY_RIGHT = 39;
 const KEY_BACKSPACE = 8;
 const KEY_DELETE = 46;
 const KEY_ENTER = 13;
-const imgs = [];
+const imgs: HTMLImageElement[] = [];
 
 function hideLoad() {
   const elem = document.getElementById('loading');
@@ -44,7 +42,7 @@ function loadImages() {
 }
 
 function bindKeys(terminal: Terminal) {
-  const directionMap = {
+  const directionMap: { [k: number]: [number, number] } = {
     [KEY_UP]: [0, -1],
     [KEY_DOWN]: [0, 1],
     [KEY_LEFT]: [-1, 0],

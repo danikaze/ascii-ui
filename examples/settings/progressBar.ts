@@ -122,7 +122,7 @@ function createWidgetSettings() {
 /**
  * List of settings presets to display
  */
-const presets: Array<Preset<ProgressBarOptions>> = (() => {
+const presets = (() => {
   const horizontal = {
     col: 1,
     line: 1,

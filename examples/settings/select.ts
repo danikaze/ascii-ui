@@ -1,16 +1,16 @@
 import { Terminal } from '../../src/Terminal';
+import { Widget, WidgetOptions } from '../../src/Widget';
 import { Box, BoxOptions } from '../../src/widgets/Box';
 import { Select, SelectOptions } from '../../src/widgets/Select';
-import { Widget, WidgetOptions } from '../../src/Widget';
-import { LoadData, load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingButton } from './controls/SettingButton';
 import { SettingNumber } from './controls/SettingNumber';
-import { SettingText } from './controls/SettingText';
 import { SettingsPage } from './controls/SettingsPage';
+import { SettingText } from './controls/SettingText';
 import { basicSection } from './controls/widgetBasicSection';
-import { SettingsLayout, SettingsRow, SettingsSection, WidgetSettings } from './controls/WidgetSettings';
+import { SettingsLayout, SettingsRow, SettingsSection, WidgetConfig, WidgetSettings } from './controls/WidgetSettings';
 
 let boxWidget: Box;
 let selectWidget: Select<string>;
@@ -244,7 +244,7 @@ function addSelectOption(): void {
 /**
  *
  */
-function postUpdateWidgetSettings(options) {
+function postUpdateWidgetSettings(options: WidgetConfig) {
   boxWidget.setOptions({
     col: options.col - 1,
     line: options.line - 1,
@@ -296,16 +296,16 @@ function updatePageSettings(pSettings: WidgetSettings) {
     return;
   }
 
-  const config: DemoConfig = pSettings.getConfig(['']) as DemoConfig;
+  const config = pSettings.getConfig(['']) as DemoConfig;
   boxWidget.setOptions(config.showBox ? visibleBox : hiddenBox);
 }
 
 /**
  * Transform the config object into an array of configs
  */
-function transformOptions(config) {
-  const input = {};
-  const options = [];
+function transformOptions(config: WidgetConfig): WidgetConfig {
+  const input: { [k: string]: any } = {}; // tslint:disable-line:no-any
+  const options: any[] = []; // tslint:disable-line:no-any
   const MATCH_PROP = 1;
   const MATCH_ID = 2;
 
@@ -359,7 +359,7 @@ const widgetInitialSettings = {
   line: 2,
   width: 20,
   height: 3,
-  options: [],
+  options: [] as any[], // tslint:disable-line:no-any
 };
 
 /*
@@ -369,7 +369,6 @@ load()
   .then(({ terminal }: LoadData) => {
     page = new SettingsPage<SelectOptions<string>>({
       terminal,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...Select.defaultOptions },
       widgetInitialSettings,
       createPageSettings,
       createWidget,
@@ -377,5 +376,6 @@ load()
       transformOptions,
       preUpdateWidgeSettings,
       postUpdateWidgetSettings,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...Select.defaultOptions },
     });
   });

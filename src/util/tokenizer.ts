@@ -17,7 +17,7 @@ export type TokenizerFunction = (text: string) => TextToken[];
  */
 export function tokenizer(text: string): TextToken[] {
   const re = /(\s+)|(\S+)/g;
-  const res: TextToken[] = [];
+  const res = [];
   let match = re.exec(text);
 
   while (match) {
@@ -41,18 +41,18 @@ export function tokenizer(text: string): TextToken[] {
  * @return Splitted text for each line
  */
 export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunction = tokenizer): string[] {
- const res = [];
- const tokenizedText = tknzr(text);
- let line = '';
+  const res: string[] = [];
+  const tokenizedText = tknzr(text);
+  let line = '';
 
- tokenizedText.forEach((token) => {
-   if (!token || (line.length === 0 && token.isSeparator)) {
-     return;
-   }
+  tokenizedText.forEach((token) => {
+    if (!token || (line.length === 0 && token.isSeparator)) {
+      return;
+    }
 
-   if (line.length + token.text.length <= lineWidth) {
+    if (line.length + token.text.length <= lineWidth) {
       line += token.text;
-   } else {
+    } else {
       if (line.length > 0) {
         res.push(line + ' '.repeat(lineWidth - line.length));
       }
@@ -66,14 +66,14 @@ export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunct
         }
         line = token.text;
       }
-   }
- });
+    }
+  });
 
- if (line.length > 0) {
-   res.push(line + ' '.repeat(lineWidth - line.length));
- }
+  if (line.length > 0) {
+    res.push(line + ' '.repeat(lineWidth - line.length));
+  }
 
- return res;
+  return res;
 }
 
 /**
@@ -85,8 +85,7 @@ export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunct
  */
 export function noWrap(text: string, lineWidth: number, ellipsis: string = ''): string {
   if (text && text.length > lineWidth) {
-    text = (`${text.substr(0, lineWidth - ellipsis.length)}`
-      + `${ellipsis}`).substr(0, lineWidth);
+    return (`${text.substr(0, lineWidth - ellipsis.length)}${ellipsis}`).substr(0, lineWidth);
   }
 
   return text;

@@ -1,7 +1,7 @@
 import { Terminal } from '../../src/Terminal';
 import { Widget, WidgetOptions } from '../../src/Widget';
-import { ProgressBar, ProgressBarDirection, ProgressBarOptions } from '../../src/widgets/ProgressBar';
-import { LoadData, load } from '../util/load';
+import { ProgressBar, ProgressBarOptions } from '../../src/widgets/ProgressBar';
+import { load, LoadData } from '../util/load';
 
 import { SettingEnum } from './controls/SettingEnum';
 import { SettingNumber } from './controls/SettingNumber';
@@ -20,8 +20,8 @@ const widgetSettingsSection: SettingsSection = {
           contents: [
             new SettingEnum({
               name: 'direction', map: {
-                HORIZONTAL: ProgressBarDirection.HORIZONTAL,
-                VERTICAL: ProgressBarDirection.VERTICAL,
+                HORIZONTAL: 'horizontal',
+                VERTICAL: 'vertical',
               },
             }),
           ],
@@ -122,22 +122,22 @@ function createWidgetSettings() {
 /**
  * List of settings presets to display
  */
-const presets: Array<Preset<ProgressBarOptions>> = (() => {
+const presets = (() => {
   const horizontal = {
     col: 1,
     line: 1,
     width: 25,
     height: 1,
-    direction: ProgressBarDirection.HORIZONTAL,
-  };
+    direction: 'horizontal',
+  } as ProgressBarOptions;
 
   const vertical = {
     col: 1,
     line: 1,
     width: 1,
     height: 15,
-    direction: ProgressBarDirection.VERTICAL,
-  };
+    direction: 'vertical',
+  } as ProgressBarOptions;
 
   const baseStyle = {
     completedStyle: ProgressBar.defaultOptions.completedStyle,
@@ -187,9 +187,9 @@ load()
     new SettingsPage<ProgressBarOptions>({
       terminal,
       presets,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...ProgressBar.defaultOptions },
-      widgetInitialSettings: presets[0].options,
       createWidget,
       createWidgetSettings,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...ProgressBar.defaultOptions },
+      widgetInitialSettings: presets[0].options,
     });
   });

@@ -4,7 +4,7 @@ import { WidgetContainer } from '../WidgetContainer';
 
 import { coalesce } from '../util/coalesce';
 import { deepAssign } from '../util/deepAssign';
-import { TokenizerFunction, splitText } from '../util/tokenizer';
+import { splitText, TokenizerFunction } from '../util/tokenizer';
 
 export const UNSELECTED_INDEX = -1;
 
@@ -44,7 +44,7 @@ export interface SelectOptions<T> extends WidgetOptions {
  */
 export class Select<T> extends Widget<SelectOptions<T>> {
   /** Default options for widget instances */
-  static defaultOptions: SelectOptions<any>; // tslint:disable-line:no-any
+  public static defaultOptions: SelectOptions<any>; // tslint:disable-line:no-any
 
   /** Currently selected option index */
   private selectedIndex: number = UNSELECTED_INDEX;
@@ -72,7 +72,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
   /**
    * Render the widget in the associated terminal
    */
-  render(): void {
+  public render(): void {
     if (!this.optionsText) {
       return;
     }
@@ -113,7 +113,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    *
    * @return Object specified in `options.options`.
    */
-  getSelectedOption(): SelectOption<T> {
+  public getSelectedOption(): SelectOption<T> {
     return this.options.options[this.selectedIndex];
   }
 
@@ -122,7 +122,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    *
    * @return index of the selected option or `UNSELECTED_INDEX` if no one is selected
    */
-  getSelectedIndex(): number {
+  public getSelectedIndex(): number {
     return this.selectedIndex;
   }
 
@@ -133,9 +133,9 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    * @param line line of the terminal
    * @return option or `undefined` if not found
    */
-  getOptionAt(column: number, line: number): SelectOption<T> {
+  public getOptionAt(column: number, line: number): SelectOption<T> {
     if (column < this.options.col || column >= this.options.col + this.options.width) {
-      return undefined;
+      return;
     }
 
     let terminalLine = this.options.line;
@@ -155,7 +155,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
       }
     }
 
-    return undefined;
+    return;
   }
 
   /**
@@ -165,7 +165,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    * @param index New index to set as selected (starting on 0)
    * @return `true` if the selected option has changed, `false` otherwise
    */
-  selectIndex(index: number): boolean {
+  public selectIndex(index: number): boolean {
     const oldIndex = this.selectedIndex;
 
     if (this.optionsText[index]) {
@@ -207,7 +207,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    * @param value Value to search the option by
    * @return `true` if the selected option has changed, `false` otherwise
    */
-  selectValue(value: T): boolean {
+  public selectValue(value: T): boolean {
     let found = false;
     const options = this.options.options;
     for (let i = 0; i < options.length; i++) {
@@ -230,7 +230,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    * @param option Explicit option to select
    * @return `true` if the selected option has changed, `false` otherwise
    */
-  selectOption(option: SelectOption<T>): boolean {
+  public selectOption(option: SelectOption<T>): boolean {
     let found = false;
     const options = this.options.options;
     for (let i = 0; i < options.length; i++) {
@@ -251,7 +251,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    *
    * @return `true` if the selected option has changed, `false` otherwise
    */
-  prev(): boolean {
+  public prev(): boolean {
     return this.moveSelection(-1);
   }
 
@@ -260,7 +260,7 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    *
    * @return `true` if the selected option has changed, `false` otherwise
    */
-  next(): boolean {
+  public next(): boolean {
     return this.moveSelection(+1);
   }
 
@@ -332,7 +332,9 @@ export class Select<T> extends Widget<SelectOptions<T>> {
   private getAspectOptions(optionIndex: number): CharStyle {
     if (optionIndex === this.selectedIndex) {
       return this.options.selected;
-    } else if (this.options.options[optionIndex] && this.options.options[optionIndex].disabled) {
+    }
+
+    if (this.options.options[optionIndex] && this.options.options[optionIndex].disabled) {
       return this.options.disabled;
     }
 

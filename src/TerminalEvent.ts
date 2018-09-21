@@ -8,16 +8,17 @@ export interface EventOptions {
  */
 export class TerminalEvent {
   /** Event type. Used to listen for this kind of events when triggered */
-  readonly type: string;
+  public readonly type: string;
   /** Data that can be passed from the trigger moment to the listeners */
-  readonly data: any; // tslint:disable-line:no-any
+  public readonly data: any; // tslint:disable-line:no-any
 
   /** Controls if the event propagation can be stopped */
-  private readonly cancellable;
+  private readonly cancellable: boolean;
   /** Controls if the event propagation has been stopped */
   private cancelled = false;
 
-  constructor(options: EventOptions | string, data?) {
+  // tslint:disable-next-line:no-any
+  constructor(options: EventOptions | string, data?: any) {
     if (typeof options === 'string') {
       this.type = options;
       this.cancellable = true;
@@ -32,7 +33,7 @@ export class TerminalEvent {
    * Stops the propagation of the event.
    * Called from a listener so the event is not passed to the next one.
    */
-  stopPropagation(): void {
+  public stopPropagation(): void {
     if (this.cancellable) {
       this.cancelled = true;
     }
@@ -43,7 +44,7 @@ export class TerminalEvent {
    *
    * @returns `true` if still propagating, `false` if `stopPropagation()` was called
    */
-  isCancelled(): boolean {
+  public isCancelled(): boolean {
     return this.cancelled;
   }
 }

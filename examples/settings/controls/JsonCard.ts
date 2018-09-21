@@ -8,7 +8,7 @@ const JSON_INDENT_SPACES = 2;
 function removeEmptyFields(obj: { [key: string]: any }): boolean {
   let empty = true;
 
-  for (const key in obj) {
+  Object.keys(obj).forEach((key) => {
     if (typeof obj[key] === 'object') {
       if (removeEmptyFields(obj[key])) {
         delete obj[key];
@@ -18,7 +18,7 @@ function removeEmptyFields(obj: { [key: string]: any }): boolean {
     } else if (obj[key] !== undefined) {
       empty = false;
     }
-  }
+  });
 
   return empty;
 }
@@ -44,14 +44,14 @@ export class JsonCard {
   /**
    *
    */
-  getCard(): HTMLDivElement {
+  public getCard(): HTMLDivElement {
     return this.cardElem;
   }
 
   /**
    *
    */
-  setConfig(obj: object): void {
+  public setConfig(obj: object): void {
     this.settings = obj;
     this.updateCode();
   }

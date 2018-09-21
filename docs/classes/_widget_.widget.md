@@ -62,7 +62,7 @@ A widget is just a self-contained graphic part of the terminal, which manages it
 
 ⊕ **new Widget**(terminal: *[Terminal](_terminal_.terminal.md)*, options?: *`OptionsType`*, parent?: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*): [Widget](_widget_.widget.md)
 
-*Defined in [Widget.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L38)*
+*Defined in [Widget.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L39)*
 
 A Widget is created in the context of a specific terminal, in a position and with a provided height
 
@@ -86,7 +86,7 @@ ___
 
 **● allocated**: *`boolean`*
 
-*Defined in [Widget.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L38)*
+*Defined in [Widget.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L39)*
 
 If the widget has been allocated or not
 
@@ -97,7 +97,7 @@ ___
 
 **● focused**: *`boolean`*
 
-*Defined in [Widget.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L36)*
+*Defined in [Widget.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L37)*
 
 If the widget is focused or not
 
@@ -108,7 +108,7 @@ ___
 
 **● options**: *`OptionsType`* =  {} as any
 
-*Defined in [Widget.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L34)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L35)*
 
 Widget options
 
@@ -119,7 +119,7 @@ ___
 
 **● parent**: *[WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)*
 
-*Defined in [Widget.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L32)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L33)*
 
 container of the widget, if any
 
@@ -130,7 +130,7 @@ ___
 
 **● terminal**: *[Terminal](_terminal_.terminal.md)*
 
-*Defined in [Widget.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L30)*
+*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L31)*
 
 Reference to the parent terminal where it should be rendered
 
@@ -141,7 +141,7 @@ ___
 
 **● defaultOptions**: *[WidgetOptions](../interfaces/_widget_.widgetoptions.md)*
 
-*Defined in [Widget.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L27)*
+*Defined in [Widget.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L28)*
 
 Default options for widget instances
 
@@ -155,7 +155,7 @@ ___
 
 ▸ **blur**(): `boolean`
 
-*Defined in [Widget.ts:175](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L175)*
+*Defined in [Widget.ts:176](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L176)*
 
 Remove the focus from this widget. Usually done by a upper level that controls other widgets.
 
@@ -169,7 +169,7 @@ ___
 
 ▸ **destruct**(): `void`
 
-*Defined in [Widget.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L60)*
+*Defined in [Widget.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L61)*
 
 Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
 
@@ -182,7 +182,7 @@ ___
 
 ▸ **focus**(): `boolean`
 
-*Defined in [Widget.ts:155](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L155)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L156)*
 
 Set this Widget as focused. Usually done by a upper level that controls other widgets (so the previously focused widget is blurred)
 
@@ -196,7 +196,7 @@ ___
 
 ▸ **getParent**(): [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 
-*Defined in [Widget.ts:69](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L69)*
+*Defined in [Widget.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L70)*
 
 Get the reference to the parent of the widget, if any
 
@@ -210,7 +210,7 @@ ___
 
 ▸ **getPosition**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-*Defined in [Widget.ts:117](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L117)*
+*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L118)*
 
 Get the position of the widget, in tile coordinates
 
@@ -224,7 +224,7 @@ ___
 
 ▸ **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
-*Defined in [Widget.ts:105](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L105)*
+*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L106)*
 
 Get the widget size, measured in tiles
 
@@ -238,7 +238,7 @@ ___
 
 ▸ **isAt**(column: *`number`*, line: *`number`*): `boolean`
 
-*Defined in [Widget.ts:131](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L131)*
+*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L132)*
 
 Check if the widget is (overlaps) the specified position
 
@@ -259,7 +259,7 @@ ___
 
 ▸ **isFocusable**(): `boolean`
 
-*Defined in [Widget.ts:145](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L145)*
+*Defined in [Widget.ts:146](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L146)*
 
 Check if this widget is focusable (when cycling over widgets)
 
@@ -273,7 +273,7 @@ ___
 
 ▸ **isFocused**(): `boolean`
 
-*Defined in [Widget.ts:190](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L190)*
+*Defined in [Widget.ts:191](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L191)*
 
 Check if the widget is currently focused or not
 
@@ -287,7 +287,7 @@ ___
 
 ▸ **render**(): `void`
 
-*Defined in [Widget.ts:197](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L197)*
+*Defined in [Widget.ts:198](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L198)*
 
 Render the widget in the associated terminal (if any)
 
@@ -300,7 +300,7 @@ ___
 
 ▸ **setOptions**(options: *`OptionsType`*): `void`
 
-*Defined in [Widget.ts:85](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L85)*
+*Defined in [Widget.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L86)*
 
 Update the options. Always use this setter so the widget knows about the change instead of changing the (protected) variable directly. The widget might do some internal calcs when this method is called.
 
@@ -324,7 +324,7 @@ ___
 
 ▸ **updateOptions**(changedOptions: *`OptionsType`*): `void`
 
-*Defined in [Widget.ts:205](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L205)*
+*Defined in [Widget.ts:206](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L206)*
 
 `setOptions` will assign the options to `this.options`, but any derivated calculation should be done here.
 

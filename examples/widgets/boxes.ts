@@ -4,7 +4,7 @@ import { Terminal } from '../../src/Terminal';
 import { Box, BoxOptions } from '../../src/widgets/Box';
 import { Text, TextOptions } from '../../src/widgets/Text';
 
-import { load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 interface TestWindow extends Window {
   terminal: Terminal;
@@ -60,7 +60,7 @@ function autoSkipText(texts: Text[], size: number) {
   });
 }
 
-function run({ terminal, canvas }) {
+function run({ terminal, canvas }: LoadData) {
   /* tslint:disable:no-magic-numbers */
   canvas.parentElement.style.width = `${canvas.width}px`;
   canvas.parentElement.style.height = `${canvas.height}px`;
@@ -80,7 +80,7 @@ function run({ terminal, canvas }) {
 
   options.line = 13;
   options.title = 'Very long title for real';
-  options.padding = { top: 0, bottom: 0, right: 0, left: 0};
+  options.padding = { top: 0, bottom: 0, right: 0, left: 0 };
   const box3 = terminal.attachWidget(Box, options) as Box;
   const text2 = box3.attachWidget(Text, {
     typewritterDelay: 50,

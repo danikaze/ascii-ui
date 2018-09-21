@@ -3,7 +3,7 @@ import { deepAssign } from '../../src/util/deepAssign';
 import { Widget, WidgetOptions } from '../../src/Widget';
 import { Box, BoxOptions } from '../../src/widgets/Box';
 import { Text } from '../../src/widgets/Text';
-import { LoadData, load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingNumber } from './controls/SettingNumber';
@@ -271,7 +271,7 @@ function updateDemoSettings(settings: WidgetSettings) {
     text: string;
   }
 
-  const config: DemoConfig = settings.getConfig() as DemoConfig;
+  const config = settings.getConfig() as DemoConfig;
 
   if (config.show) {
     textWidget.setOptions({ text: config.text });
@@ -286,7 +286,7 @@ function updateDemoSettings(settings: WidgetSettings) {
 function createPageSettings(): WidgetSettings {
   const demoSettingsLayout: SettingsLayout = {
     title: 'Demo options',
-    sections: [ pageSettingsSection ],
+    sections: [pageSettingsSection],
   };
   const demoSettings = new WidgetSettings(demoSettingsLayout);
   demoSettings.setConfig({
@@ -316,7 +316,7 @@ function createPageSettings(): WidgetSettings {
 /**
  * List of settings presets to display
  */
-const presets: Array<Preset<BoxOptions>> = (() => {
+const presets = (() => {
   const basicConfig = deepAssign(
     {},
     Widget.defaultOptions,
@@ -359,10 +359,10 @@ load()
     new SettingsPage<BoxOptions>({
       terminal,
       presets,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...Box.defaultOptions },
-      widgetInitialSettings: presets[0].options,
       createPageSettings,
       createWidget,
       createWidgetSettings,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...Box.defaultOptions },
+      widgetInitialSettings: presets[0].options,
     });
   });

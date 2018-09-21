@@ -18,7 +18,7 @@ function hideLoad() {
   elem.parentElement.removeChild(elem);
 }
 
-function terminalResizedHandler(canvas) {
+function terminalResizedHandler(canvas: HTMLCanvasElement) {
   canvas.parentElement.style.width = `${canvas.width}px`;
   canvas.parentElement.style.height = `${canvas.height}px`;
 }
@@ -43,7 +43,7 @@ export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
     /*
      * TAB key
      */
-    function tabWidget(event) {
+    function tabWidget(event: KeyboardEvent) {
       if (event.key === 'Tab') {
         event.preventDefault();
         event.stopPropagation();
@@ -56,9 +56,9 @@ export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
     });
     document.getElementById('canvasContainer')
     .addEventListener('click', (event) => {
-        event.stopPropagation();
-        document.addEventListener('keydown', tabWidget);
-      });
+      event.stopPropagation();
+      document.addEventListener('keydown', tabWidget);
+    });
 
     /*
      * Mouse CLICK

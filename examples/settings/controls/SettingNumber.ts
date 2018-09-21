@@ -18,8 +18,8 @@ export class SettingNumber extends SettingComponent<HTMLInputElement> {
       step: options.step !== undefined ? String(options.step) : '',
     };
     this.elem = createElement<HTMLInputElement>('input', {
-      class: 'setting-component-number',
       attrs,
+      class: 'setting-component-number',
     });
 
     this.elem.addEventListener('input', () => {
@@ -27,13 +27,14 @@ export class SettingNumber extends SettingComponent<HTMLInputElement> {
     });
   }
 
-  getValue() {
+  public getValue() {
+    // tslint:disable-next-line:ban
     const n = parseFloat(this.elem.value);
 
     return isNaN(n) ? '' : n;
   }
 
-  setValue(value: number) {
+  public setValue(value: number) {
     this.elem.value = String(value);
   }
 }

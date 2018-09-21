@@ -16,9 +16,9 @@
 
 ###  emptyArray
 
-▸ **emptyArray**T(arr: *`T`[]*): `T`[]
+▸ **emptyArray**<`T`>(arr: *`T`[]*): `T`[]
 
-*Defined in [util/emptyArray.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/emptyArray.ts#L8)*
+*Defined in [util/emptyArray.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/util/emptyArray.ts#L8)*
 
 Empty an array without having to reassign it with `arr = []`. It's faster and preserves the same object pointer
 
@@ -32,7 +32,7 @@ Empty an array without having to reassign it with `arr = []`. It's faster and pr
 | arr | `T`[] |  Array to empty |
 
 **Returns:** `T`[]
-`arr`
+same, modified array `arr`
 
 ___
 

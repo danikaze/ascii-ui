@@ -1,4 +1,4 @@
-import * as isEmptyObject from 'is-empty-object';
+import { isEmpty } from 'vanilla-type-check/isEmpty';
 
 import { CharStyle, Terminal, TextTile } from '../Terminal';
 import { assignCharStyle } from '../util/assignCharStyle';
@@ -79,7 +79,7 @@ interface BoxPoolTiles {
  */
 export class Box extends Widget<BoxOptions> implements WidgetContainer {
   /** Default options for widget instances */
-  static defaultOptions: BoxOptions;
+  public static defaultOptions: BoxOptions;
   /** Pool of Tiles to avoid creating always new objects */
   private static readonly boxTilesPool: BoxPoolTiles = {
     title: [],
@@ -112,7 +112,7 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
   /**
    * Render the widget in the associated terminal
    */
-  render(): void {
+  public render(): void {
     if (!this.allocated) {
       return;
     }
@@ -143,7 +143,8 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
    * @param options Options for the widget constructor
    * @return Created widget instance attached to the box
    */
-  attachWidget<WidgetType extends Widget>(WidgetClass: WidgetConstructor<WidgetType>, options): WidgetType {
+  // tslint:disable-next-line:no-any
+  public attachWidget<WidgetType extends Widget>(WidgetClass: WidgetConstructor<WidgetType>, options: any): WidgetType {
     const positionOptions = this.getAvailableSpace();
 
     const newWidgetOptions = {
@@ -167,15 +168,15 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
    * @param widget Widget to dettach
    * @return `true` if the widget was found (and removed). `false` if not found
    */
-  dettachWidget(widget: Widget): boolean {
+  public dettachWidget(widget: Widget): boolean {
     if (widget !== this.attachedWidget) {
       return false;
     }
 
-    widget = this.attachedWidget;
+    const oldWidget = this.attachedWidget;
     this.attachedWidget = undefined;
 
-    if (widget) {
+    if (oldWidget) {
       // tslint:disable:no-magic-numbers
       this.terminal.clear(
         this.options.col + 1,
@@ -196,7 +197,7 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
    * @param line line of the terminal
    * @return widget or `undefined` if not found
    */
-  getWidgetAt(column: number, line: number): Widget {
+  public getWidgetAt(column: number, line: number): Widget {
     return (this.attachedWidget && this.attachedWidget.isAt(column, line))
       ? this.attachedWidget
       : undefined;
@@ -207,9 +208,9 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
    *
    * @param startWidget if specified, the next call will start with this widget (return the next or previous one)
    */
-  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
+  public [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
     const widget = this.attachedWidget;
-    let index;
+    let index: number;
 
     const it = {
       next: () => {
@@ -259,14 +260,13 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
    * @param changedOptions Object with only the changed options
    */
   protected updateOptions(changes: BoxOptions): void {
-    if (!isEmptyObject(changes)) {
+    if (!isEmpty(changes)) {
       this.optionsFocus = deepAssign(this.optionsFocus, this.options.base, this.options.focus);
       this.optionsDisabled = deepAssign(this.optionsDisabled, this.options.base, this.options.disabled);
 
-      if (coalesce(changes.width, changes.height, changes.col, changes.line, changes.padding) !== undefined) {
-        if (this.attachedWidget) {
-          this.attachedWidget.setOptions(this.getAvailableSpace());
-        }
+      if (this.attachedWidget
+        && coalesce(changes.width, changes.height, changes.col, changes.line, changes.padding) !== undefined) {
+        this.attachedWidget.setOptions(this.getAvailableSpace());
       }
 
       this.render();
@@ -367,7 +367,9 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
   private getAspectOptions(): BoxAspectOptions {
     if (!this.options.focusable) {
       return this.optionsDisabled;
-    } else if (this.isFocused()) {
+    }
+
+    if (this.isFocused()) {
       return this.optionsFocus;
     }
 

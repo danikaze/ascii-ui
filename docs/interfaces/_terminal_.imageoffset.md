@@ -23,7 +23,7 @@
 
 **● x**: *`number`*
 
-*Defined in [Terminal.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L28)*
+*Defined in [Terminal.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L28)*
 
 Number of pixels inside the terminal tile to offset the image horizontally
 
@@ -34,7 +34,7 @@ ___
 
 **● y**: *`number`*
 
-*Defined in [Terminal.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Terminal.ts#L30)*
+*Defined in [Terminal.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L30)*
 
 Number of pixels inside the terminal tile to offset the image vertically
 

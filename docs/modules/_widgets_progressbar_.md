@@ -4,10 +4,6 @@
 
 ## Index
 
-### Enumerations
-
-* [ProgressBarDirection](../enums/_widgets_progressbar_.progressbardirection.md)
-
 ### Classes
 
 * [ProgressBar](../classes/_widgets_progressbar_.progressbar.md)

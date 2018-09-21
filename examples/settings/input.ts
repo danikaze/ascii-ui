@@ -2,7 +2,7 @@ import { Terminal } from '../../src/Terminal';
 import { Widget, WidgetOptions } from '../../src/Widget';
 import { Box, BoxOptions } from '../../src/widgets/Box';
 import { Input, InputOptions } from '../../src/widgets/Input';
-import { LoadData, load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingNumber } from './controls/SettingNumber';
@@ -53,13 +53,13 @@ const pageSettingsSection: SettingsSection = {
   rows: [
     {
       cols: [
-      {
-        contents: [
-          new SettingBoolean({ name: 'showBox' }),
-          ' Show test box',
-        ],
-      },
-    ],
+        {
+          contents: [
+            new SettingBoolean({ name: 'showBox' }),
+            ' Show test box',
+          ],
+        },
+      ],
     },
     {
       cols: [
@@ -136,7 +136,7 @@ function updatePageSettings(pageSettings: WidgetSettings) {
     text: string;
   }
 
-  const config: DemoConfig = pageSettings.getConfig() as DemoConfig;
+  const config = pageSettings.getConfig() as DemoConfig;
 
   if (config.showText) {
     inputWidget.setValue(config.text);
@@ -153,7 +153,7 @@ function updatePageSettings(pageSettings: WidgetSettings) {
 function createPageSettings(): WidgetSettings {
   const demoSettingsLayout: SettingsLayout = {
     title: 'Demo options',
-    sections: [ pageSettingsSection ],
+    sections: [pageSettingsSection],
   };
   const demoSettings = new WidgetSettings(demoSettingsLayout);
   demoSettings.setConfig({
@@ -176,7 +176,7 @@ function postUpdateWidgetSettings() {
  * List of settings presets to display
  */
 const presets: Array<Preset<InputOptions>> = (() => {
-  const res: Array<Preset<InputOptions>> = [
+  const res = [
     {
       text: 'Basic text input',
       options: {
@@ -223,11 +223,11 @@ load()
     new SettingsPage<InputOptions>({
       terminal,
       presets,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...Input.defaultOptions },
-      widgetInitialSettings: presets[0].options,
       createPageSettings,
       createWidget,
       createWidgetSettings,
       postUpdateWidgetSettings,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...Input.defaultOptions },
+      widgetInitialSettings: presets[0].options,
     });
   });

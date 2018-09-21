@@ -2,7 +2,8 @@ import { Terminal, TilePosition, TileSize } from './Terminal';
 import { deepAssignAndDiff } from './util/deepAssignAndDiff';
 import { WidgetContainer } from './WidgetContainer';
 
-export type WidgetConstructor<WidgetClass> = new(terminal: Terminal, options?, parent?: WidgetContainer) => WidgetClass;
+export type WidgetConstructor<WidgetClass>
+  = new(terminal: Terminal, options?: any, parent?: WidgetContainer) => WidgetClass; // tslint:disable-line:no-any
 
 export interface WidgetOptions {
   /** x-position of the widget in terminal tiles */
@@ -24,7 +25,7 @@ export interface WidgetOptions {
  */
 export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> {
   /** Default options for widget instances */
-  static defaultOptions: WidgetOptions;
+  public static defaultOptions: WidgetOptions;
 
   /** Reference to the parent terminal where it should be rendered */
   protected terminal: Terminal;
@@ -57,7 +58,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    * Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
    */
   // tslint:disable-next-line:prefer-function-over-method
-  destruct() {
+  public destruct() {
     // by default, do nothing.
   }
 
@@ -66,7 +67,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @returns parent if any, or `undefined`
    */
-  getParent(): WidgetContainer {
+  public getParent(): WidgetContainer {
     return this.parent;
   }
 
@@ -82,7 +83,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    * @final
    * @see updateOptions
    */
-  setOptions(options: OptionsType): void {
+  public setOptions(options: OptionsType): void {
     const changes = deepAssignAndDiff(this.options, options) as OptionsType;
 
     if (!this.options.focusable && this.focused) {
@@ -102,7 +103,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @returns Size of the widget, measured in tiles
    */
-  getSize(): TileSize {
+  public getSize(): TileSize {
     return {
       columns: this.options.width,
       rows: this.options.height,
@@ -114,7 +115,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @returns current position of the widget, in tile coordinates
    */
-  getPosition(): TilePosition {
+  public getPosition(): TilePosition {
     return {
       col: this.options.col,
       line: this.options.line,
@@ -128,7 +129,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    * @param line y-position of the terminal (in tiles)
    * @return `true` if the specified tile is _inside_ the widget
    */
-  isAt(column: number, line: number): boolean {
+  public isAt(column: number, line: number): boolean {
     const options = this.options;
 
     return column >= options.col
@@ -142,7 +143,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @returns `true` if focusable, `false` if not
    */
-  isFocusable(): boolean {
+  public isFocusable(): boolean {
     return this.options.focusable;
   }
 
@@ -152,7 +153,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @return `true` if it wasn't focused and focused properly
    */
-  focus(): boolean {
+  public focus(): boolean {
     if (this.options.focusable) {
       const wasFocused = this.focused;
       this.focused = true;
@@ -172,7 +173,7 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @return `true` if it was focused and blurred properly
    */
-  blur(): boolean {
+  public blur(): boolean {
     const wasFocused = this.focused;
     this.focused = false;
     if (wasFocused) {
@@ -187,14 +188,14 @@ export abstract class Widget<OptionsType extends WidgetOptions = WidgetOptions> 
    *
    * @returns if the widget is focused or not.
    */
-  isFocused(): boolean {
+  public isFocused(): boolean {
     return this.focused;
   }
 
   /**
    * Render the widget in the associated terminal (if any)
    */
-  abstract render(): void;
+  public abstract render(): void;
 
   /**
    * `setOptions` will assign the options to `this.options`,

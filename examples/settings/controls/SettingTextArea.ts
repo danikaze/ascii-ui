@@ -15,11 +15,11 @@ export class SettingTextArea extends SettingComponent<HTMLTextAreaElement> {
     });
   }
 
-  getValue() {
+  public getValue() {
     return this.elem.value;
   }
 
-  setValue(value: string) {
+  public setValue(value: string) {
     this.elem.value = value;
   }
 }

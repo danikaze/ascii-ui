@@ -18,7 +18,7 @@
 
 ▸ **coalesce**(...args: *`any`[]*): `any`
 
-*Defined in [util/coalesce.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/util/coalesce.ts#L8)*
+*Defined in [util/coalesce.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/util/coalesce.ts#L8)*
 
 Find the first not undefined/null value of the parameter list
 

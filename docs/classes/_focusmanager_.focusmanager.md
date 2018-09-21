@@ -32,7 +32,7 @@ Manage the focus behavior around the widgets of a Terminal
 
 ⊕ **new FocusManager**(terminal: *[Terminal](_terminal_.terminal.md)*, canvas: *`HTMLCanvasElement`*): [FocusManager](_focusmanager_.focusmanager.md)
 
-*Defined in [FocusManager.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/FocusManager.ts#L17)*
+*Defined in [FocusManager.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/FocusManager.ts#L17)*
 
 **Parameters:**
 
@@ -53,7 +53,7 @@ ___
 
 ▸ **blur**(): `boolean`
 
-*Defined in [FocusManager.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/FocusManager.ts#L93)*
+*Defined in [FocusManager.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/FocusManager.ts#L93)*
 
 Remove the focus from the current focused widget
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **focus**(newWidget?: *[Widget](_widget_.widget.md)*): `boolean`
 
-*Defined in [FocusManager.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/FocusManager.ts#L47)*
+*Defined in [FocusManager.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/FocusManager.ts#L47)*
 
 Set the specified `newWidget` as focused, and blur the changed part of the path. Instead of setting all the previous path unfocused and then focus the new path, it just unfocus and focus the differences to avoid possible flickering
 
@@ -87,7 +87,7 @@ ___
 
 ▸ **getFocusedWidget**(): [Widget](_widget_.widget.md)
 
-*Defined in [FocusManager.ts:102](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/FocusManager.ts#L102)*
+*Defined in [FocusManager.ts:102](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/FocusManager.ts#L102)*
 
 Retrieve the currently focused widget
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **next**(): `void`
 
-*Defined in [FocusManager.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/FocusManager.ts#L28)*
+*Defined in [FocusManager.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/FocusManager.ts#L28)*
 
 Focus the next widget
 
@@ -114,7 +114,7 @@ ___
 
 ▸ **prev**(): `void`
 
-*Defined in [FocusManager.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/FocusManager.ts#L35)*
+*Defined in [FocusManager.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/FocusManager.ts#L35)*
 
 Focus the previous widget
 

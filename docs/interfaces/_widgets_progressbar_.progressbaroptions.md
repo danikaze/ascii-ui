@@ -38,7 +38,7 @@
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L9)*
+*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L10)*
 
 x-position of the widget in terminal tiles
 
@@ -49,7 +49,7 @@ ___
 
 **● completedStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L21)*
+*Defined in [widgets/ProgressBar.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L15)*
 
 Style to use for the completed part of the bar
 
@@ -60,7 +60,7 @@ ___
 
 **● currentStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L25)*
+*Defined in [widgets/ProgressBar.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L19)*
 
 Style to use for current point of the bar. If not specified will be replaced by treated as a completed part
 
@@ -69,9 +69,10 @@ ___
 
 ### `<Optional>` direction
 
-**● direction**: *[ProgressBarDirection](../enums/_widgets_progressbar_.progressbardirection.md)*
+**● direction**: * "horizontal" &#124; "vertical"
+*
 
-*Defined in [widgets/ProgressBar.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L17)*
+*Defined in [widgets/ProgressBar.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L11)*
 
 Direction of the progress bar
 
@@ -82,7 +83,7 @@ ___
 
 **● endStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L29)*
+*Defined in [widgets/ProgressBar.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L23)*
 
 Style to use for the end point of the bar (as a border)
 
@@ -95,7 +96,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L17)*
+*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L18)*
 
 if `true`, the widget can be selectable
 
@@ -108,7 +109,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L15)*
+*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L16)*
 
 widget height in terminal tiles
 
@@ -121,7 +122,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L11)*
+*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L12)*
 
 y-position of the widget in terminal tiles
 
@@ -132,7 +133,7 @@ ___
 
 **● pendingStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:23](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L23)*
+*Defined in [widgets/ProgressBar.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L17)*
 
 Style to use for the pending part of the bar
 
@@ -143,7 +144,7 @@ ___
 
 **● progress**: *`number`*
 
-*Defined in [widgets/ProgressBar.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L19)*
+*Defined in [widgets/ProgressBar.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L13)*
 
 Progress to display (0-1)
 
@@ -154,7 +155,7 @@ ___
 
 **● startStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [widgets/ProgressBar.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/ProgressBar.ts#L27)*
+*Defined in [widgets/ProgressBar.ts:21](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L21)*
 
 Style to use for the start point of the bar (as a border)
 
@@ -167,7 +168,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L19)*
+*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L20)*
 
 value use for ordering the selection order with the keys
 
@@ -180,7 +181,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L13)*
+*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L14)*
 
 widget width in terminal tiles
 

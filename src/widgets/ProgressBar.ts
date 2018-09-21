@@ -1,20 +1,14 @@
+import { isEmpty } from 'vanilla-type-check/isEmpty';
+
 import { Terminal, TextTile } from '../Terminal';
 import { Widget, WidgetOptions } from '../Widget';
 import { WidgetContainer } from '../WidgetContainer';
 
 import { deepAssign } from '../util/deepAssign';
-import { isEmptyObject } from '../util/isEmptyObject';
-
-export const enum ProgressBarDirection {
-  /** The bar has 1 tile height and it's drawn from left to right */
-  HORIZONTAL = 1,
-  /** The bar has 1 tile width and it's drawn from bottom to top */
-  VERTICAL,
-}
 
 export interface ProgressBarOptions extends WidgetOptions {
   /** Direction of the progress bar */
-  direction?: ProgressBarDirection;
+  direction?: 'horizontal' | 'vertical';
   /** Progress to display (0-1) */
   progress?: number;
   /** Style to use for the completed part of the bar */
@@ -34,7 +28,7 @@ export interface ProgressBarOptions extends WidgetOptions {
  */
 export class ProgressBar extends Widget<ProgressBarOptions> {
   /** Default options for widget instances */
-  static defaultOptions: ProgressBarOptions;
+  public static defaultOptions: ProgressBarOptions;
 
   constructor(terminal: Terminal, options: ProgressBarOptions, parent?: WidgetContainer) {
     super(
@@ -47,8 +41,8 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
   /**
    * Render the widget in the associated terminal
    */
-  render(): void {
-    if (this.options.direction === ProgressBarDirection.HORIZONTAL) {
+  public render(): void {
+    if (this.options.direction === 'horizontal') {
       this.renderHorizontal();
     } else {
       this.renderVertical();
@@ -58,7 +52,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
   /**
    * Retrieve a reference to the currently selected option
    */
-  getProgress(): number {
+  public getProgress(): number {
     return this.options.progress;
   }
 
@@ -69,13 +63,13 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
    * @param changes Object with only the changed options
    */
   protected updateOptions(changes: ProgressBarOptions): void {
-    if (this.options.direction === ProgressBarDirection.HORIZONTAL) {
+    if (this.options.direction === 'horizontal') {
       this.options.height = 1;
     } else {
       this.options.width = 1;
     }
 
-    if (!isEmptyObject(changes)) {
+    if (!isEmpty(changes)) {
       this.render();
     }
   }
@@ -161,7 +155,7 @@ export class ProgressBar extends Widget<ProgressBarOptions> {
  */
 ProgressBar.defaultOptions = {
   focusable: false,
-  direction: ProgressBarDirection.HORIZONTAL,
+  direction: 'horizontal',
   progress: 0,
   completedStyle: { char: '', bg: '#00ff00' },
   pendingStyle: { char: '', bg: '#009900' },

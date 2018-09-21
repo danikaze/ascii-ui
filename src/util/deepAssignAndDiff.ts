@@ -3,15 +3,14 @@ import { isPlainObject } from 'vanilla-type-check/isPlainObject';
 /**
  * Deep assign an object and return just the difference (`{}` if nothing changed)
  */
-export function deepAssignAndDiff(...args): object {
+export function deepAssignAndDiff(...args: any[]): object { // tslint:disable-line:no-any
   const target = args[0];
-  const diff = {};
+  const diff: any = {}; // tslint:disable-line:no-any
 
-  for (let i = 1, n = args.length; i < n; i++) {
+  for (let i = 1; i < args.length; i++) {
     const obj = args[i];
 
-    // tslint:disable:forin
-    for (const key in obj) {
+    Object.keys(obj).forEach((key) => {
       const val = obj[key];
 
       if (isPlainObject(val)) {
@@ -25,7 +24,7 @@ export function deepAssignAndDiff(...args): object {
         diff[key] = val;
         target[key] = obj[key];
       }
-    }
+    });
   }
 
   return diff;

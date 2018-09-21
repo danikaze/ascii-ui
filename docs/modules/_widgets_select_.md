@@ -27,7 +27,7 @@
 
 **● UNSELECTED_INDEX**: *`-1`* =  -1
 
-*Defined in [widgets/Select.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L9)*
+*Defined in [widgets/Select.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L9)*
 
 ___
 

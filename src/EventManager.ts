@@ -24,7 +24,7 @@ export class EventManager {
    * @param listener function to call when an event is triggered on this target
    * @param widget widget to listen the event on (the terminal itself by default)
    */
-  addListener(type: string, listener: EventListener, widget?: Widget): void {
+  public addListener(type: string, listener: EventListener, widget?: Widget): void {
     const target = widget || this.terminal;
 
     let targets = this.listeners.get(type);
@@ -50,7 +50,7 @@ export class EventManager {
    * @param listener function to call when an event is triggered on this target
    * @param widget widget to listen the event on (the terminal itself by default)
    */
-  removeListener(type: string, listener: EventListener, widget?: Widget): void {
+  public removeListener(type: string, listener: EventListener, widget?: Widget): void {
     const target = widget || this.terminal;
 
     const targets = this.listeners.get(type);
@@ -77,7 +77,7 @@ export class EventManager {
    * @param event event to trigger
    * @param widget widget where trigger the event (the terminal by default)
    */
-  trigger(event: TerminalEvent, widget?: Widget): void {
+  public trigger(event: TerminalEvent, widget?: Widget): void {
     const path = widget ? [...this.terminal.getWidgetPath(widget), this.terminal] : [this.terminal];
     const targets = this.listeners.get(event.type);
 

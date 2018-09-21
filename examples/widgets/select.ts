@@ -3,7 +3,7 @@ import { Terminal } from '../../src/Terminal';
 import { Box } from '../../src/widgets/Box';
 import { Select } from '../../src/widgets/Select';
 
-import { load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 function enableInteraction(selects: Array<Select<number>>, terminal: Terminal, canvas: HTMLCanvasElement): void {
   document.addEventListener('keyup', (event) => {
@@ -32,7 +32,7 @@ function enableInteraction(selects: Array<Select<number>>, terminal: Terminal, c
   });
 }
 
-function run({ terminal, canvas }): void {
+function run({ terminal, canvas }: LoadData): void {
   const zeroPadding = {
     top: 0,
     bottom: 0,
@@ -45,13 +45,13 @@ function run({ terminal, canvas }): void {
     padding: zeroPadding,
   };
 
-  const s1: Select<number> = terminal.attachWidget(Box, {
+  const s1 = terminal.attachWidget(Box, {
     ...boxOptions,
     title: '[Select-A]',
     col: 1,
     line: 1,
   })
-  .attachWidget(Select, {
+  .attachWidget<Select<number>>(Select, {
     options: [
       { text: 'Option 1', value: 1 },
       { text: 'Option 2 (disabled)', value: 2, disabled: true },
@@ -59,13 +59,13 @@ function run({ terminal, canvas }): void {
     ],
   });
 
-  const s2: Select<number> = terminal.attachWidget(Box, {
+  const s2 = terminal.attachWidget(Box, {
     ...boxOptions,
     title: '[Select-B]',
     col: 1,
     line: 7,
   })
-  .attachWidget(Select, {
+  .attachWidget<Select<number>>(Select, {
     options: [
       { text: 'Option 1', value: 1 },
       { text: 'Option 2 takes two lines', value: 2 },
@@ -74,7 +74,7 @@ function run({ terminal, canvas }): void {
     ],
   });
 
-  const s3: Select<number> = terminal.attachWidget(Box, {
+  const s3 = terminal.attachWidget(Box, {
     ...boxOptions,
     title: '[Select-C]',
     col: 1,
@@ -82,7 +82,7 @@ function run({ terminal, canvas }): void {
     width: 30,
     height: 7,
   })
-  .attachWidget(Select, {
+  .attachWidget<Select<number>>(Select, {
     selectedIndex: 0,
     options: [
       { text: 'Option 1 (default)', value: 1 },

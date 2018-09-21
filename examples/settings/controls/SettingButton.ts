@@ -19,12 +19,12 @@ export class SettingButton extends SettingComponent<HTMLButtonElement> {
   }
 
   // tslint:disable-next-line:prefer-function-over-method
-  getValue() {
-    return undefined;
+  public getValue() {
+    return;
   }
 
   // tslint:disable-next-line:prefer-function-over-method
-  setValue(value: boolean): void {
+  public setValue(value: boolean): void {
     // nothing to do
   }
 }

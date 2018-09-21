@@ -17,11 +17,11 @@ export class SettingBoolean extends SettingComponent<HTMLInputElement> {
     });
   }
 
-  getValue() {
+  public getValue() {
     return this.elem.checked;
   }
 
-  setValue(value: boolean): void {
+  public setValue(value: boolean): void {
     this.elem.checked = !!value;
   }
 }

@@ -19,7 +19,7 @@ export interface InputOptions extends WidgetOptions {
  */
 export class Input extends Widget<InputOptions> {
   /** Default options for widget instances */
-  static defaultOptions: InputOptions;
+  public static defaultOptions: InputOptions;
 
   /** Current value of the widget */
   private value: string = '';
@@ -39,7 +39,7 @@ export class Input extends Widget<InputOptions> {
   /**
    * Render the widget in the associated terminal
    */
-  render(): void {
+  public render(): void {
     if (typeof this.value === 'undefined') {
       return;
     }
@@ -60,7 +60,7 @@ export class Input extends Widget<InputOptions> {
    * @param showPassword if this is not `true` when the input is set as password, the returned value will be hidden
    * @return current value
    */
-  getValue(showPassword?: boolean): string {
+  public getValue(showPassword?: boolean): string {
     return !this.options.password || showPassword
       ? this.value
       : this.options.passwordCharacter.repeat(this.value.length);
@@ -71,7 +71,7 @@ export class Input extends Widget<InputOptions> {
    *
    * @param value new value to be set
    */
-  setValue(value: string): void {
+  public setValue(value: string): void {
     if (value !== undefined) {
       this.value = this.options.maxLength > 0 ? value.substr(0, this.options.maxLength) : value;
       this.offset = Math.max(0, this.value.length - this.options.width + 1);
@@ -83,7 +83,7 @@ export class Input extends Widget<InputOptions> {
    * Set this Widget as focused. Usually done by a upper level that controls other widgets
    * (so the previously focused widget is blurred)
    */
-  focus(): boolean {
+  public focus(): boolean {
     const changed = super.focus();
 
     if (changed) {
@@ -98,7 +98,7 @@ export class Input extends Widget<InputOptions> {
    * Remove the focus from this widget.
    * Usually done by a upper level that controls other widgets.
    */
-  blur(): boolean {
+  public blur(): boolean {
     const changed = super.blur();
 
     if (changed) {

@@ -2,7 +2,7 @@ import { Terminal } from '../../src/Terminal';
 import { Widget, WidgetOptions } from '../../src/Widget';
 import { Box, BoxOptions } from '../../src/widgets/Box';
 import { Text, TextOptions } from '../../src/widgets/Text';
-import { LoadData, load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 import { SettingBoolean } from './controls/SettingBoolean';
 import { SettingButton } from './controls/SettingButton';
@@ -11,7 +11,7 @@ import { Preset, SettingsPage } from './controls/SettingsPage';
 import { SettingText } from './controls/SettingText';
 import { SettingTextArea } from './controls/SettingTextArea';
 import { basicSection } from './controls/widgetBasicSection';
-import { SettingsLayout, SettingsSection, WidgetSettings } from './controls/WidgetSettings';
+import { SettingsLayout, SettingsSection, WidgetConfig, WidgetSettings } from './controls/WidgetSettings';
 
 let boxWidget: Box;
 let textWidget: Text;
@@ -229,7 +229,7 @@ const styleSettingsSection: SettingsSection = {
 function createPageSettings(): WidgetSettings {
   const demoSettingsLayout: SettingsLayout = {
     title: 'Demo options',
-    sections: [ pageSettingsSection, textControlsSection ],
+    sections: [pageSettingsSection, textControlsSection],
   };
   const demoSettings = new WidgetSettings(demoSettingsLayout);
   demoSettings.setConfig({
@@ -252,7 +252,7 @@ function updatePageSettings(pageSettings: WidgetSettings) {
     text: string;
   }
 
-  const config: DemoConfig = pageSettings.getConfig() as DemoConfig;
+  const config = pageSettings.getConfig() as DemoConfig;
 
   boxWidget.setOptions(config.showBox ? visibleBox : hiddenBox);
 }
@@ -260,7 +260,7 @@ function updatePageSettings(pageSettings: WidgetSettings) {
 /**
  *
  */
-function postUpdateWidgetSettings(options) {
+function postUpdateWidgetSettings(options: WidgetConfig) {
   boxWidget.setOptions({
     col: options.col - 1,
     line: options.line - 1,
@@ -305,7 +305,8 @@ function createWidgetSettings() {
 /**
  *
  */
-function preUpdateWidgeSettings(options) {
+// tslint:disable-next-line:no-any
+function preUpdateWidgeSettings(options: any) {
   if (options.tokenizer) {
     options.tokenizer = Text.defaultOptions.tokenizer;
   }
@@ -316,7 +317,7 @@ function preUpdateWidgeSettings(options) {
 /**
  * List of settings presets to display
  */
-const presets: Array<Preset<TextOptions>> = (() => {
+const presets = (() => {
   const base = {
     col: 2,
     line: 2,
@@ -356,12 +357,12 @@ load()
     new SettingsPage<TextOptions>({
       terminal,
       presets,
-      widgetDefaultSettings: { ...Widget.defaultOptions, ...Text.defaultOptions },
-      widgetInitialSettings: preUpdateWidgeSettings(presets[0].options),
       createPageSettings,
       createWidget,
       createWidgetSettings,
       postUpdateWidgetSettings,
       preUpdateWidgeSettings,
+      widgetDefaultSettings: { ...Widget.defaultOptions, ...Text.defaultOptions },
+      widgetInitialSettings: preUpdateWidgeSettings(presets[0].options),
     });
   });

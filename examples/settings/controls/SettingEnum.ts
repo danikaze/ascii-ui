@@ -32,13 +32,13 @@ export class SettingEnum extends SettingComponent<HTMLSelectElement> {
     });
   }
 
-  getValue() {
+  public getValue() {
     const key = this.elem.options[this.elem.selectedIndex].label;
 
     return this.map[key];
   }
 
-  setValue(value: string | number): void {
+  public setValue(value: string | number): void {
     this.elem.value = String(value);
   }
 }

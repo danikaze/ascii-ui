@@ -1,8 +1,7 @@
 /* tslint:disable:no-magic-numbers */
 import { Box } from '../../src/widgets/Box';
 import { Input } from '../../src/widgets/Input';
-
-import { load } from '../util/load';
+import { load, LoadData } from '../util/load';
 
 function enableInteraction(inputs: Input[]): void {
   document.addEventListener('keyup', (event) => {
@@ -24,7 +23,7 @@ function enableInteraction(inputs: Input[]): void {
   });
 }
 
-function run({ terminal }): void {
+function run({ terminal }: LoadData): void {
   const zeroPadding = {
     top: 0,
     bottom: 0,

@@ -72,7 +72,7 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
     this.codeCard.setConfig(options.widgetInitialSettings);
   }
 
-  updateWidget(widget: Widget, settings: OptionsType): void {
+  public updateWidget(widget: Widget, settings: OptionsType): void {
     this.options.terminal.dettachWidget(this.widget);
     this.options.terminal.clear();
     this.widget.destruct();
@@ -93,7 +93,8 @@ export class SettingsPage<OptionsType extends WidgetOptions> {
     }
 
     if (this.options.preUpdateWidgeSettings) {
-      cancel = this.options.preUpdateWidgeSettings(options) === false;
+      cancel = this.options.preUpdateWidgeSettings(options)
+        && this.options.preUpdateWidgeSettings(options) !== undefined;
     }
 
     if (!cancel) {

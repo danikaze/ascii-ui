@@ -13,8 +13,8 @@ export class SettingText extends SettingComponent<HTMLInputElement> {
       maxlength: options.maxLength ? String(options.maxLength) : undefined,
     };
     this.elem = createElement<HTMLInputElement>('input', {
-      class: 'setting-component-text',
       attrs,
+      class: 'setting-component-text',
     });
 
     if (options.maxLength) {
@@ -26,11 +26,11 @@ export class SettingText extends SettingComponent<HTMLInputElement> {
     });
   }
 
-  getValue() {
+  public getValue() {
     return this.elem.value;
   }
 
-  setValue(value: string) {
+  public setValue(value: string) {
     this.elem.value = value;
   }
 }

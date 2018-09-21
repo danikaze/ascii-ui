@@ -39,7 +39,7 @@
 
 **● allowUnselect**: *`boolean`*
 
-*Defined in [widgets/Select.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L28)*
+*Defined in [widgets/Select.ts:28](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L28)*
 
 If `true`, will unselect any selected option if try to select a non-existing one
 
@@ -50,7 +50,7 @@ ___
 
 **● base**: *[CharStyle](_terminal_.charstyle.md)*
 
-*Defined in [widgets/Select.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L35)*
+*Defined in [widgets/Select.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L35)*
 
 Character Style for base options
 
@@ -63,7 +63,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L9)*
+*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L10)*
 
 x-position of the widget in terminal tiles
 
@@ -74,7 +74,7 @@ ___
 
 **● disabled**: *[CharStyle](_terminal_.charstyle.md)*
 
-*Defined in [widgets/Select.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L39)*
+*Defined in [widgets/Select.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L39)*
 
 Character Style for disabled options
 
@@ -87,7 +87,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L17)*
+*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L18)*
 
 if `true`, the widget can be selectable
 
@@ -100,7 +100,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L15)*
+*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L16)*
 
 widget height in terminal tiles
 
@@ -113,7 +113,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L11)*
+*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L12)*
 
 y-position of the widget in terminal tiles
 
@@ -124,7 +124,7 @@ ___
 
 **● loop**: *`boolean`*
 
-*Defined in [widgets/Select.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L24)*
+*Defined in [widgets/Select.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L24)*
 
 If `true`, the first option will be highlighted after the last one, and viceversa
 
@@ -135,7 +135,7 @@ ___
 
 **● options**: *`Array`<[SelectOption](_widgets_select_.selectoption.md)<`T`>>*
 
-*Defined in [widgets/Select.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L22)*
+*Defined in [widgets/Select.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L22)*
 
 List of options, in order, to display. Editing this value (via `setOptions` will reset the selected one)
 
@@ -146,7 +146,7 @@ ___
 
 **● selected**: *[CharStyle](_terminal_.charstyle.md)*
 
-*Defined in [widgets/Select.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L37)*
+*Defined in [widgets/Select.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L37)*
 
 Character Style for selected options
 
@@ -157,7 +157,7 @@ ___
 
 **● selectedIndex**: *`number`*
 
-*Defined in [widgets/Select.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L26)*
+*Defined in [widgets/Select.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L26)*
 
 Selected option index by default
 
@@ -170,7 +170,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:19](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L19)*
+*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L20)*
 
 value use for ordering the selection order with the keys
 
@@ -181,7 +181,7 @@ ___
 
 **● tokenizer**: *[TokenizerFunction](../modules/_util_tokenizer_.md#tokenizerfunction)*
 
-*Defined in [widgets/Select.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/widgets/Select.ts#L33)*
+*Defined in [widgets/Select.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L33)*
 
 How to split the text (for new lines, etc.) A custom TokenizerFunction can be provided. Leave undefined to use the default one
 
@@ -194,7 +194,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/Widget.ts#L13)*
+*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L14)*
 
 widget width in terminal tiles
 

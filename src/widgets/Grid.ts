@@ -68,7 +68,7 @@ interface TileList {
  */
 export class Grid extends Widget<GridOptions> implements WidgetContainer {
   /** Default options for widget instances */
-  static defaultOptions: GridOptions;
+  public static defaultOptions: GridOptions;
 
   /** List of attached widgets */
   private readonly attachedWidgets: AttachedWidget[] = [];
@@ -115,7 +115,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
   /**
    * Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
    */
-  destruct() {
+  public destruct() {
     // tslint:disable-next-line:no-unbound-method
     this.terminal.eventManager.removeListener('resized', this.resizedEventHandler);
   }
@@ -123,7 +123,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
   /**
    * Render all the attached widgets to the grid
    */
-  render(): void {
+  public render(): void {
     if (this.options.borders) {
       this.renderBorders();
     }
@@ -138,7 +138,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * Widgets won't be placed properly until this method is not called (to avoid duplicated calculations)
    * This is called automatically when using `attachWidget` but is provided in case it needs to be called manually
    */
-  align(): void {
+  public align(): void {
     this.alignWidgets();
   }
 
@@ -153,8 +153,9 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * @param options Options to pass to the Widget when creating it
    * @return widget instance
    */
-  attachWidget<WidgetType>(col: number, line: number, width: number, height: number,
-                           WidgetClass: WidgetConstructor<WidgetType>, options): WidgetType {
+  public attachWidget<WidgetType>(col: number, line: number, width: number, height: number,
+                                  WidgetClass: WidgetConstructor<WidgetType>,
+                                  options: any): WidgetType { // tslint:disable-line:no-any
     const widget = Reflect.construct(WidgetClass, [
       this.terminal,
       options,
@@ -180,7 +181,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * @param handler Value returned by `attachWidget`
    * @return `true` if the widget was found (and removed). `false` if not found
    */
-  dettachWidget(widget: Widget): boolean {
+  public dettachWidget(widget: Widget): boolean {
     const index = this.attachedWidgets.findIndex((instance) => instance.widget === widget);
 
     if (index !== -1) {
@@ -200,14 +201,14 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * @param line line of the terminal
    * @return widget or `undefined` if not found
    */
-  getWidgetAt(column: number, line: number): Widget {
+  public getWidgetAt(column: number, line: number): Widget {
     for (const instance of this.attachedWidgets) {
       if (instance.widget.isAt(column, line)) {
         return instance.widget;
       }
     }
 
-    return undefined;
+    return;
   }
 
   /**
@@ -215,9 +216,9 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    *
    * @param startWidget if specified, the iterator will start with this widget
    */
-  [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
+  public [Symbol.iterator](startWidget?: Widget | number): BidirectionalIterator<Widget> {
     const data = this.attachedWidgets;
-    let index;
+    let index: number;
 
     const it = {
       next: () => {
@@ -267,7 +268,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * @param line line of the grid
    * @return widget or `undefined` if not found
    */
-  getWidgetGrid(column: number, line: number): Widget {
+  public getWidgetGrid(column: number, line: number): Widget {
     const attachedWidget = this.attachedWidgets.filter((instance) => instance.col >= column
       && instance.col < column + instance.width
       && instance.line >= line
@@ -283,7 +284,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
    * @param line line of the grid
    * @return size of a cell
    */
-  getCellSize(column: number, line: number): TileSize {
+  public getCellSize(column: number, line: number): TileSize {
     return {
       columns: this.columnStarts[column + 1] - this.columnStarts[column],
       rows: this.rowStarts[line + 1] - this.rowStarts[line],
@@ -341,28 +342,32 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
 
     /** Get the correct tile based on its surroundings */
     function getBorderTile(col: number, line: number, char: string): TextTile {
+      let c;
+
       if (checkTile(col, line, [0, -1], [1, 0], [0, 1], [-1, 0])) {
-        char = borderStyle.cross;
+        c = borderStyle.cross;
       } else if (checkTile(col, line, [1, 0], [0, 1], [-1, 0])) {
-        char = borderStyle.noTop;
+        c = borderStyle.noTop;
       } else if (checkTile(col, line, [0, -1], [0, 1], [-1, 0])) {
-        char = borderStyle.noLeft;
+        c = borderStyle.noLeft;
       } else if (checkTile(col, line, [0, -1], [1, 0], [-1, 0])) {
-        char = borderStyle.noBottom;
+        c = borderStyle.noBottom;
       } else if (checkTile(col, line, [0, -1], [1, 0], [0, 1])) {
-        char = borderStyle.noRight;
+        c = borderStyle.noRight;
       } else if (checkTile(col, line, [1, 0], [0, 1])) {
-        char = borderStyle.topLeft;
+        c = borderStyle.topLeft;
       } else if (checkTile(col, line, [-1, 0], [0, 1])) {
-        char = borderStyle.topRight;
+        c = borderStyle.topRight;
       } else if (checkTile(col, line, [-1, 0], [0, -1])) {
-        char = borderStyle.bottomRight;
+        c = borderStyle.bottomRight;
       } else if (checkTile(col, line, [1, 0], [0, -1])) {
-        char = borderStyle.bottomLeft;
+        c = borderStyle.bottomLeft;
+      } else {
+        c = char;
       }
 
       return {
-        char,
+        char: c,
         font: borderStyle.font,
         offsetX: borderStyle.offsetX,
         offsetY: borderStyle.offsetY,
@@ -419,7 +424,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
       const line = borders[y];
       let lastCol = -1;
       let chunkStart = -1;
-      let chunk;
+      let chunk: TextTile[];
 
       Object.keys(line)
       .forEach((keyX) => {
@@ -436,7 +441,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
           chunkStart = x;
         }
         lastCol = x;
-        chunk.push(getBorderTile(x, y, borders[keyY][keyX]));
+        chunk.push(getBorderTile(x, y, borders[y][x]));
       });
 
       newTiles.push({
@@ -503,7 +508,7 @@ export class Grid extends Widget<GridOptions> implements WidgetContainer {
 
     /** Get the list of spaces for each grid and returns the start of each one */
     function spaceToStarts(first: number, spaces: number[], max: number): number[] {
-      const starts = [];
+      const starts: number[] = [];
       let acc = first;
       spaces.forEach((space, i) => {
         starts.push(acc + (options.borders ? i + 1 : 0));
@@ -603,6 +608,7 @@ function calculateGridSpace(available: number, cells: number): number[] {
  * Default options for new instances
  */
 Grid.defaultOptions = {
+  calculateGridSpace,
   rows: undefined,
   columns: undefined,
   borderStyle: {
@@ -629,5 +635,4 @@ Grid.defaultOptions = {
     // 4 lines
     cross: '┼',
   },
-  calculateGridSpace,
 };

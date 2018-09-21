@@ -20,9 +20,9 @@
 
 ###  EventListener
 
-**ΤEventListener**: *`function`*
+**Ƭ EventListener**: *`function`*
 
-*Defined in [EventManager.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/13134dd/src/EventManager.ts#L5)*
+*Defined in [EventManager.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/EventManager.ts#L5)*
 
 #### Type declaration
 ▸(event: *[TerminalEvent](../classes/_terminalevent_.terminalevent.md)*, target: * [Terminal](../classes/_terminal_.terminal.md) &#124; [Widget](../classes/_widget_.widget.md)*): `void`

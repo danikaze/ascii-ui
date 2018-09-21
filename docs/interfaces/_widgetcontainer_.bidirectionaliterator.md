@@ -53,7 +53,7 @@ ___
 
 ▸ **prev**(): `IteratorResult`<`T`>
 
-*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L8)*
+*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L8)*
 
 **Returns:** `IteratorResult`<`T`>
 
@@ -83,7 +83,7 @@ ___
 
 ▸ **seek**(value?: * `T` &#124; `number`*): `void`
 
-*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L9)*
+*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L9)*
 
 **Parameters:**
 

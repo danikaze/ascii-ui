@@ -34,7 +34,7 @@ Widgets:
 Others:
 
 *   Added `EventManager.removeListener` (and rename `listen` to `addListener`)
-*   Cleaner code, newer tslint rules
+*   Cleaner code with new tslint rules
 
 ### 0.1.0
 

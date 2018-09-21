@@ -39,7 +39,7 @@
 
 **● col**: *`number`*
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L10)*
+*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L10)*
 
 x-position of the widget in terminal tiles
 
@@ -50,7 +50,7 @@ ___
 
 **● focusable**: *`boolean`*
 
-*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L18)*
+*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L18)*
 
 if `true`, the widget can be selectable
 
@@ -61,7 +61,7 @@ ___
 
 **● height**: *`number`*
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L16)*
+*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L16)*
 
 widget height in terminal tiles
 
@@ -72,7 +72,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L12)*
+*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L12)*
 
 y-position of the widget in terminal tiles
 
@@ -83,7 +83,7 @@ ___
 
 **● tabIndex**: *`number`*
 
-*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L20)*
+*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L20)*
 
 value use for ordering the selection order with the keys
 
@@ -94,7 +94,7 @@ ___
 
 **● width**: *`number`*
 
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L14)*
+*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L14)*
 
 widget width in terminal tiles
 

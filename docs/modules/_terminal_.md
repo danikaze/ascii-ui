@@ -41,7 +41,7 @@
 **Ƭ AcceptedImage**: * `HTMLImageElement` &#124; `HTMLCanvasElement`
 *
 
-*Defined in [Terminal.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L16)*
+*Defined in [Terminal.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L16)*
 
 ___
 <a id="escapecallback"></a>
@@ -50,7 +50,7 @@ ___
 
 **Ƭ EscapeCallback**: *`function`*
 
-*Defined in [Terminal.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L24)*
+*Defined in [Terminal.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L24)*
 
 Function called when the matching command is found
 *__param__*: The whole text
@@ -77,7 +77,7 @@ ___
 
 **Ƭ IterateTileCallback**: *`function`*
 
-*Defined in [Terminal.ts:179](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L179)*
+*Defined in [Terminal.ts:179](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L179)*
 
 #### Type declaration
 ▸(tile: *[InternalTile](../interfaces/_terminal_.internaltile.md)*, i: *`number`*): `void`

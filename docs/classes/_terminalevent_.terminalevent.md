@@ -34,7 +34,7 @@ Type of Events that can be triggered on Terminal's widgets, and bubble through i
 
 ⊕ **new TerminalEvent**(options: * [EventOptions](../interfaces/_terminalevent_.eventoptions.md) &#124; `string`*, data?: *`any`*): [TerminalEvent](_terminalevent_.terminalevent.md)
 
-*Defined in [TerminalEvent.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/TerminalEvent.ts#L18)*
+*Defined in [TerminalEvent.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/TerminalEvent.ts#L18)*
 
 **Parameters:**
 
@@ -55,7 +55,7 @@ ___
 
 **● data**: *`any`*
 
-*Defined in [TerminalEvent.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/TerminalEvent.ts#L13)*
+*Defined in [TerminalEvent.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/TerminalEvent.ts#L13)*
 
 Data that can be passed from the trigger moment to the listeners
 
@@ -66,7 +66,7 @@ ___
 
 **● type**: *`string`*
 
-*Defined in [TerminalEvent.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/TerminalEvent.ts#L11)*
+*Defined in [TerminalEvent.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/TerminalEvent.ts#L11)*
 
 Event type. Used to listen for this kind of events when triggered
 
@@ -80,7 +80,7 @@ ___
 
 ▸ **isCancelled**(): `boolean`
 
-*Defined in [TerminalEvent.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/TerminalEvent.ts#L47)*
+*Defined in [TerminalEvent.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/TerminalEvent.ts#L47)*
 
 Check if the event is still propagating
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **stopPropagation**(): `void`
 
-*Defined in [TerminalEvent.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/TerminalEvent.ts#L36)*
+*Defined in [TerminalEvent.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/TerminalEvent.ts#L36)*
 
 Stops the propagation of the event. Called from a listener so the event is not passed to the next one.
 

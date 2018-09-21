@@ -24,7 +24,7 @@
 
 **● col**: *`number`*
 
-*Defined in [widgets/Grid.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L62)*
+*Defined in [widgets/Grid.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L62)*
 
 ___
 <a id="line"></a>
@@ -33,7 +33,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [widgets/Grid.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L63)*
+*Defined in [widgets/Grid.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L63)*
 
 ___
 <a id="tiles"></a>
@@ -42,7 +42,7 @@ ___
 
 **● tiles**: *[TextTile](_terminal_.texttile.md)[]*
 
-*Defined in [widgets/Grid.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L61)*
+*Defined in [widgets/Grid.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L61)*
 
 ___
 

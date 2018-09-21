@@ -53,7 +53,7 @@ Display a progress bar
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/ProgressBar.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/ProgressBar.ts#L38)*
+*Defined in [widgets/ProgressBar.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L31)*
 
 **Parameters:**
 
@@ -77,7 +77,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L39)*
+*Defined in [Widget.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L39)*
 
 If the widget has been allocated or not
 
@@ -90,7 +90,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L37)*
+*Defined in [Widget.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L37)*
 
 If the widget is focused or not
 
@@ -103,7 +103,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L35)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L35)*
 
 Widget options
 
@@ -116,7 +116,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L33)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L33)*
 
 container of the widget, if any
 
@@ -129,7 +129,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L31)*
+*Defined in [Widget.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L31)*
 
 Reference to the parent terminal where it should be rendered
 
@@ -142,7 +142,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/ProgressBar.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/ProgressBar.ts#L38)*
+*Defined in [widgets/ProgressBar.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L31)*
 
 Default options for widget instances
 
@@ -158,7 +158,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:176](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L176)*
+*Defined in [Widget.ts:176](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L176)*
 
 Remove the focus from this widget. Usually done by a upper level that controls other widgets.
 
@@ -174,7 +174,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[destruct](_widget_.widget.md#destruct)*
 
-*Defined in [Widget.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L61)*
+*Defined in [Widget.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L61)*
 
 Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
 
@@ -189,7 +189,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L156)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L156)*
 
 Set this Widget as focused. Usually done by a upper level that controls other widgets (so the previously focused widget is blurred)
 
@@ -205,7 +205,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L70)*
+*Defined in [Widget.ts:70](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L70)*
 
 Get the reference to the parent of the widget, if any
 
@@ -221,7 +221,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L118)*
+*Defined in [Widget.ts:118](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L118)*
 
 Get the position of the widget, in tile coordinates
 
@@ -235,7 +235,7 @@ ___
 
 ▸ **getProgress**(): `number`
 
-*Defined in [widgets/ProgressBar.ts:62](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/ProgressBar.ts#L62)*
+*Defined in [widgets/ProgressBar.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L55)*
 
 Retrieve a reference to the currently selected option
 
@@ -250,7 +250,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L106)*
+*Defined in [Widget.ts:106](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L106)*
 
 Get the widget size, measured in tiles
 
@@ -266,7 +266,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L132)*
+*Defined in [Widget.ts:132](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L132)*
 
 Check if the widget is (overlaps) the specified position
 
@@ -289,7 +289,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:146](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L146)*
+*Defined in [Widget.ts:146](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L146)*
 
 Check if this widget is focusable (when cycling over widgets)
 
@@ -305,7 +305,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:191](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L191)*
+*Defined in [Widget.ts:191](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L191)*
 
 Check if the widget is currently focused or not
 
@@ -321,7 +321,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/ProgressBar.ts:51](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/ProgressBar.ts#L51)*
+*Defined in [widgets/ProgressBar.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L44)*
 
 Render the widget in the associated terminal
 
@@ -336,7 +336,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Widget.ts#L86)*
+*Defined in [Widget.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Widget.ts#L86)*
 
 Update the options. Always use this setter so the widget knows about the change instead of changing the (protected) variable directly. The widget might do some internal calcs when this method is called.
 
@@ -362,7 +362,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/ProgressBar.ts:72](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/ProgressBar.ts#L72)*
+*Defined in [widgets/ProgressBar.ts:65](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/ProgressBar.ts#L65)*
 
 `setOptions` will assign the options to `this.options`, but any derivated calculation should be done here.
 

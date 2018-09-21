@@ -26,7 +26,7 @@
 
 **● disabled**: *`boolean`*
 
-*Defined in [widgets/Select.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Select.ts#L17)*
+*Defined in [widgets/Select.ts:17](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L17)*
 
 If `true`, the option won't be selectable
 
@@ -37,7 +37,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in [widgets/Select.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Select.ts#L13)*
+*Defined in [widgets/Select.ts:13](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L13)*
 
 Displayed text of the option
 
@@ -48,7 +48,7 @@ ___
 
 **● value**: *`T`*
 
-*Defined in [widgets/Select.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Select.ts#L15)*
+*Defined in [widgets/Select.ts:15](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L15)*
 
 Value of the option. Will be available when selected
 

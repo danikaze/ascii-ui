@@ -34,7 +34,7 @@ A Widget that can contain other Widgets should implement several common methods 
 
 ▸ **__@iterator**(startWidget?: * [Widget](../classes/_widget_.widget.md) &#124; `number`*): [BidirectionalIterator](_widgetcontainer_.bidirectionaliterator.md)<[Widget](../classes/_widget_.widget.md)>
 
-*Defined in [WidgetContainer.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L83)*
+*Defined in [WidgetContainer.ts:83](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L83)*
 
 Get a bidirectional iterator to move across the attached widgets of the container
 *__example__*: // Given the items \[A, B, C, D\] of the WidgetContainer w it = wSymbol.iterator; it.next(); // A it.next(); // B it.next(); // C it.prev(); // B it.next(); // C it.next(); // D it.next(); // null
@@ -66,7 +66,7 @@ ___
 
 ▸ **attachWidget**<`WidgetClass`>(...args: *`any`[]*): `WidgetClass`
 
-*Defined in [WidgetContainer.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L30)*
+*Defined in [WidgetContainer.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L30)*
 
 Attach a Widget to the container. The parameters depends on each container
 
@@ -89,7 +89,7 @@ ___
 
 ▸ **dettachWidget**(widget: *[Widget](../classes/_widget_.widget.md)*): `boolean`
 
-*Defined in [WidgetContainer.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L38)*
+*Defined in [WidgetContainer.ts:38](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L38)*
 
 Dettach a widget from the container
 
@@ -109,7 +109,7 @@ ___
 
 ▸ **getParent**(): [WidgetContainer](_widgetcontainer_.widgetcontainer.md)
 
-*Defined in [WidgetContainer.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L22)*
+*Defined in [WidgetContainer.ts:22](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L22)*
 
 Get the reference to the parent of the widget, if any
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **getWidgetAt**(column: *`number`*, line: *`number`*): [Widget](../classes/_widget_.widget.md)
 
-*Defined in [WidgetContainer.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/WidgetContainer.ts#L47)*
+*Defined in [WidgetContainer.ts:47](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L47)*
 
 Get a previously attached widget by its position
 

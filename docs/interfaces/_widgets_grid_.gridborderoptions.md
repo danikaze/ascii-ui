@@ -43,7 +43,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L94)*
+*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L94)*
 
 background color (i.e. `#000000`)
 
@@ -54,7 +54,7 @@ ___
 
 **● bottom**: *`string`*
 
-*Defined in [widgets/Grid.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L31)*
+*Defined in [widgets/Grid.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L31)*
 
 ___
 <a id="bottomleft"></a>
@@ -63,7 +63,7 @@ ___
 
 **● bottomLeft**: *`string`*
 
-*Defined in [widgets/Grid.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L37)*
+*Defined in [widgets/Grid.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L37)*
 
 ___
 <a id="bottomright"></a>
@@ -72,7 +72,7 @@ ___
 
 **● bottomRight**: *`string`*
 
-*Defined in [widgets/Grid.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L36)*
+*Defined in [widgets/Grid.ts:36](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L36)*
 
 ___
 <a id="cross"></a>
@@ -81,7 +81,7 @@ ___
 
 **● cross**: *`string`*
 
-*Defined in [widgets/Grid.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L44)*
+*Defined in [widgets/Grid.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L44)*
 
 ___
 <a id="fg"></a>
@@ -92,7 +92,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L92)*
+*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L92)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L86)*
+*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L86)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -116,7 +116,7 @@ ___
 
 **● left**: *`string`*
 
-*Defined in [widgets/Grid.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L32)*
+*Defined in [widgets/Grid.ts:32](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L32)*
 
 ___
 <a id="nobottom"></a>
@@ -125,7 +125,7 @@ ___
 
 **● noBottom**: *`string`*
 
-*Defined in [widgets/Grid.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L41)*
+*Defined in [widgets/Grid.ts:41](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L41)*
 
 ___
 <a id="noleft"></a>
@@ -134,7 +134,7 @@ ___
 
 **● noLeft**: *`string`*
 
-*Defined in [widgets/Grid.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L42)*
+*Defined in [widgets/Grid.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L42)*
 
 ___
 <a id="noright"></a>
@@ -143,7 +143,7 @@ ___
 
 **● noRight**: *`string`*
 
-*Defined in [widgets/Grid.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L40)*
+*Defined in [widgets/Grid.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L40)*
 
 ___
 <a id="notop"></a>
@@ -152,7 +152,7 @@ ___
 
 **● noTop**: *`string`*
 
-*Defined in [widgets/Grid.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L39)*
+*Defined in [widgets/Grid.ts:39](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L39)*
 
 ___
 <a id="offsetx"></a>
@@ -163,7 +163,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L88)*
+*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L88)*
 
 x-offset to apply to each character inside the tile
 
@@ -176,7 +176,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/Terminal.ts#L90)*
+*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L90)*
 
 y-offset to apply to each character inside the tile
 
@@ -187,7 +187,7 @@ ___
 
 **● right**: *`string`*
 
-*Defined in [widgets/Grid.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L30)*
+*Defined in [widgets/Grid.ts:30](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L30)*
 
 ___
 <a id="top"></a>
@@ -196,7 +196,7 @@ ___
 
 **● top**: *`string`*
 
-*Defined in [widgets/Grid.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L29)*
+*Defined in [widgets/Grid.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L29)*
 
 ___
 <a id="topleft"></a>
@@ -205,7 +205,7 @@ ___
 
 **● topLeft**: *`string`*
 
-*Defined in [widgets/Grid.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L34)*
+*Defined in [widgets/Grid.ts:34](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L34)*
 
 ___
 <a id="topright"></a>
@@ -214,7 +214,7 @@ ___
 
 **● topRight**: *`string`*
 
-*Defined in [widgets/Grid.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/widgets/Grid.ts#L35)*
+*Defined in [widgets/Grid.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L35)*
 
 ___
 

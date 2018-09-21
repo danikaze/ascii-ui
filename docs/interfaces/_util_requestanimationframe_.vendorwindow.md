@@ -664,7 +664,7 @@ ___
 
 **● mozRequestAnimationFrame**: *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)*
 
-*Defined in [util/requestAnimationFrame.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/requestAnimationFrame.ts#L4)*
+*Defined in [util/requestAnimationFrame.ts:4](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/util/requestAnimationFrame.ts#L4)*
 
 ___
 <a id="mscontentscript"></a>
@@ -695,7 +695,7 @@ ___
 
 **● msRequestAnimationFrame**: *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)*
 
-*Defined in [util/requestAnimationFrame.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/requestAnimationFrame.ts#L6)*
+*Defined in [util/requestAnimationFrame.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/util/requestAnimationFrame.ts#L6)*
 
 ___
 <a id="name"></a>
@@ -726,7 +726,7 @@ ___
 
 **● oRequestAnimationFrame**: *[requestAnimationFrameFn](../modules/_util_requestanimationframe_.md#requestanimationframefn)*
 
-*Defined in [util/requestAnimationFrame.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/a5ea4f7/src/util/requestAnimationFrame.ts#L5)*
+*Defined in [util/requestAnimationFrame.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/util/requestAnimationFrame.ts#L5)*
 
 ___
 <a id="offscreenbuffering"></a>

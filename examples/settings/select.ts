@@ -112,6 +112,22 @@ const selectSettingsSection: SettingsSection = {
         },
       ],
     },
+    {
+      cols: [
+        {
+          title: 'Selected prefix',
+          contents: [
+            new SettingText({ name: 'selectedPrefix'}),
+          ],
+        },
+        {
+          title: 'Unselected prefix',
+          contents: [
+            new SettingText({ name: 'unselectedPrefix'}),
+          ],
+        },
+      ],
+    },
   ],
 };
 
@@ -236,6 +252,7 @@ function addSelectOption(): void {
   selectOptionsSettingRows.push(newRow);
   widgetSettingsLayout.sections[1].rows = [
     widgetSettingsLayout.sections[1].rows[0],
+    widgetSettingsLayout.sections[1].rows[1],
     ...selectOptionsSettingRows,
   ];
   widgetSettings.setSections(widgetSettingsLayout.sections);
@@ -349,7 +366,7 @@ function createPageSettings(): WidgetSettings {
 function preUpdateWidgeSettings(): boolean {
   updatePageSettings(pageSettings);
 
-  return true;
+  return false;
 }
 
 const widgetInitialSettings = {

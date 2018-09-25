@@ -84,6 +84,7 @@ function run({ terminal, canvas }: LoadData): void {
   })
   .attachWidget<Select<number>>(Select, {
     selectedIndex: 0,
+    selectedPrefix: '>',
     options: [
       { text: 'Option 1 (default)', value: 1 },
       { text: 'Option 2', value: 2 },

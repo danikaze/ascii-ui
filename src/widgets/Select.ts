@@ -37,6 +37,10 @@ export interface SelectOptions<T> extends WidgetOptions {
   selected?: CharStyle;
   /** Character Style for disabled options */
   disabled?: CharStyle;
+  /** Prefix to add to the selected options */
+  selectedPrefix?: string;
+  /** Prefix to add to the non selected options */
+  unselectedPrefix? : string;
 }
 
 /**
@@ -52,6 +56,12 @@ export class Select<T> extends Widget<SelectOptions<T>> {
   private firstLine: number = 0;
   /** Processed options text */
   private optionsText: string[][];
+  /** Processed indentation text */
+  private indentation: string;
+  /** Processed selected prefix text  */
+  private selectedPrefix: string;
+  /** Processed unselected prefix text */
+  private unselectedPrefix: string;
 
   constructor(terminal: Terminal, options: SelectOptions<T>, parent?: WidgetContainer) {
     super(
@@ -93,8 +103,19 @@ export class Select<T> extends Widget<SelectOptions<T>> {
     }
 
     this.terminal.setTextStyle(this.getAspectOptions(option));
+    const col = this.options.col;
+    const indentedCol = col + (this.indentation.length);
     while (option < this.optionsText.length && terminalLine < lastLine) {
-      this.terminal.setText(this.optionsText[option][optionLine], this.options.col, terminalLine);
+      if (col !== indentedCol) {
+        if (optionLine > 0) {
+          this.terminal.setText(this.indentation, col, terminalLine);
+        } else if (this.selectedIndex === option) {
+          this.terminal.setText(this.selectedPrefix, col, terminalLine);
+        } else {
+          this.terminal.setText(this.unselectedPrefix, col, terminalLine);
+        }
+      }
+      this.terminal.setText(this.optionsText[option][optionLine], indentedCol, terminalLine);
       terminalLine++;
       optionLine++;
       if (optionLine >= this.optionsText[option].length) {
@@ -271,15 +292,52 @@ export class Select<T> extends Widget<SelectOptions<T>> {
    * @param changes Object with only the changed options
    */
   protected updateOptions(changes: SelectOptions<T>): void {
-    const dirtyText = coalesce(changes.options, changes.width) !== undefined;
-    const reDraw = coalesce(changes.col, changes.line, changes.height) !== undefined;
+    function fixString(str: string, length: number): string {
+      if (str === undefined) {
+        ' '.repeat(length);
+      }
+      if (str.length === length) {
+        return str;
+      }
+      return str.substr(0, length) + ' '.repeat(length - str.length);
+    }
+
+    const dirtyText = coalesce(
+      changes.options,
+      changes.width,
+      changes.selectedPrefix,
+      changes.unselectedPrefix,
+    ) !== undefined;
+    const reDraw = coalesce(
+      changes.col,
+      changes.line,
+      changes.height,
+      changes.base,
+      changes.selected,
+      changes.disabled,
+    ) !== undefined;
     let drawn = false;
 
+    if (coalesce(changes.selectedPrefix, changes.unselectedPrefix) !== undefined) {
+      const prefixLength = Math.max(
+        this.options.selectedPrefix ? this.options.selectedPrefix.length : 0,
+        this.options.unselectedPrefix ? this.options.unselectedPrefix.length : 0,
+      );
+      this.indentation = ' '.repeat(prefixLength);
+      this.selectedPrefix = fixString(this.options.selectedPrefix, prefixLength);
+      this.unselectedPrefix = fixString(this.options.unselectedPrefix, prefixLength);
+    }
+
     if (dirtyText && this.options.options) {
+      if (this.indentation === undefined) {
+        this.indentation = '';
+      }
+      const width = this.options.width - this.indentation.length;
       this.optionsText = this.options.options.map((option) =>
-      splitText(option.text, this.options.width, this.options.tokenizer));
+        splitText(option.text, width, this.options.tokenizer));
       drawn = this.selectIndex(this.options.selectedIndex);
     }
+
     if (!drawn && (dirtyText || reDraw)) {
       this.render();
     }
@@ -352,4 +410,7 @@ Select.defaultOptions = {
   base: { fg: '#00ff00', bg: '#000000' },
   selected: { fg: '#00ff00', bg: '#009900' },
   disabled: { fg: '#009900', bg: '#000000' },
+  selectedIndex: UNSELECTED_INDEX,
+  selectedPrefix: '',
+  unselectedPrefix: '',
 };

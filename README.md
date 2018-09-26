@@ -8,11 +8,11 @@ And thanks to my lack of empathy this project allows you to have access to a low
 
 ![Input Widget demo](assets/demo-input.gif)
 
-You can check some prepared examples [https://terminal-in-canvas.danikaze.com](already deployed here), and [examples](check their code) to see how to use the library.
+You can check some prepared examples [already deployed here](https://terminal-in-canvas.danikaze.com), and [check their code](./examples) to see how to use the library.
 
 This examples can be built with the `npm run examples` or `yarn examples` command, or just be deployed in the development server via `npm run start` or `yarn start`.
 
-Also, you can check the [docs](api documentation here), if you want to know more details about the library usage.
+Also, you can check the [api documentation here](./docs), if you want to know more details about the library usage.
 
 ## Changelog
 

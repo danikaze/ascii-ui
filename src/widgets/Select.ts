@@ -279,20 +279,10 @@ export class Select<T> extends Widget<SelectOptions<T>> {
       return SELECT_INDEX_NONE;
     }
 
-    let terminalLine = this.options.line;
-    let optionLine = 0;
-    let optionIndex = 0;
-
-    while (optionIndex < this.selectOptions.length && terminalLine < maxHeight) {
-      if (terminalLine === line) {
-        return optionIndex;
-      }
-
-      terminalLine++;
-      optionLine++;
-      if (optionLine >= this.selectOptions[optionIndex].processedText.length) {
-        optionIndex++;
-        optionLine = 0;
+    const realLine = this.firstLine + line - this.options.line;
+    for (let i = 0; i < this.selectOptions.length; i++) {
+      if (this.selectOptions[i].endLine > realLine) {
+        return i;
       }
     }
 

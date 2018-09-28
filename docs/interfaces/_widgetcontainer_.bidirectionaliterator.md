@@ -36,7 +36,7 @@ Extended Iterator interface that will return a `next` and a `prev` methods.
 
 *Overrides Iterator.next*
 
-*Defined in /Users/daniel.berlanga/Dev/other/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4798*
+*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4798*
 
 **Parameters:**
 
@@ -53,7 +53,7 @@ ___
 
 ▸ **prev**(): `IteratorResult`<`T`>
 
-*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L8)*
+*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/WidgetContainer.ts#L8)*
 
 **Returns:** `IteratorResult`<`T`>
 
@@ -66,7 +66,7 @@ ___
 
 *Inherited from Iterator.return*
 
-*Defined in /Users/daniel.berlanga/Dev/other/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4799*
+*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4799*
 
 **Parameters:**
 
@@ -83,7 +83,7 @@ ___
 
 ▸ **seek**(value?: * `T` &#124; `number`*): `void`
 
-*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L9)*
+*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/WidgetContainer.ts#L9)*
 
 **Parameters:**
 
@@ -102,7 +102,7 @@ ___
 
 *Inherited from Iterator.throw*
 
-*Defined in /Users/daniel.berlanga/Dev/other/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4800*
+*Defined in C:/dev/others/terminal-in-canvas/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4800*
 
 **Parameters:**
 

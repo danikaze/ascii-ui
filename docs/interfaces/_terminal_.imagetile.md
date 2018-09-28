@@ -28,7 +28,7 @@
 
 **● crop**: *[ImageCropParams](_terminal_.imagecropparams.md)*
 
-*Defined in [Terminal.ts:164](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L164)*
+*Defined in [Terminal.ts:164](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L164)*
 
 Crop parameters for `img`
 
@@ -39,7 +39,7 @@ ___
 
 **● dstH**: *`number`*
 
-*Defined in [Terminal.ts:160](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L160)*
+*Defined in [Terminal.ts:160](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L160)*
 
 destiny height
 
@@ -50,7 +50,7 @@ ___
 
 **● dstW**: *`number`*
 
-*Defined in [Terminal.ts:158](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L158)*
+*Defined in [Terminal.ts:158](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L158)*
 
 destiny width
 
@@ -61,7 +61,7 @@ ___
 
 **● image**: *[AcceptedImage](../modules/_terminal_.md#acceptedimage)*
 
-*Defined in [Terminal.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L156)*
+*Defined in [Terminal.ts:156](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L156)*
 
 image to draw
 
@@ -72,7 +72,7 @@ ___
 
 **● offset**: *[ImageOffset](_terminal_.imageoffset.md)*
 
-*Defined in [Terminal.ts:162](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/Terminal.ts#L162)*
+*Defined in [Terminal.ts:162](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L162)*
 
 Offset in the destiny coordinates
 

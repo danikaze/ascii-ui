@@ -1,25 +1,24 @@
-[terminal-in-canvas](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxTitleOptions](../interfaces/_widgets_box_.boxtitleoptions.md)
+[terminal-in-canvas](../README.md) > ["widgets/Select"](../modules/_widgets_select_.md) > [SelectOptionStyle](../interfaces/_widgets_select_.selectoptionstyle.md)
 
-# Interface: BoxTitleOptions
+# Interface: SelectOptionStyle
 
 ## Hierarchy
 
  [CharStyle](_terminal_.charstyle.md)
 
-**↳ BoxTitleOptions**
+**↳ SelectOptionStyle**
 
 ## Index
 
 ### Properties
 
-* [bg](_widgets_box_.boxtitleoptions.md#bg)
-* [ellipsis](_widgets_box_.boxtitleoptions.md#ellipsis)
-* [fg](_widgets_box_.boxtitleoptions.md#fg)
-* [font](_widgets_box_.boxtitleoptions.md#font)
-* [marginLeft](_widgets_box_.boxtitleoptions.md#marginleft)
-* [marginRight](_widgets_box_.boxtitleoptions.md#marginright)
-* [offsetX](_widgets_box_.boxtitleoptions.md#offsetx)
-* [offsetY](_widgets_box_.boxtitleoptions.md#offsety)
+* [bg](_widgets_select_.selectoptionstyle.md#bg)
+* [fg](_widgets_select_.selectoptionstyle.md#fg)
+* [font](_widgets_select_.selectoptionstyle.md#font)
+* [offsetX](_widgets_select_.selectoptionstyle.md#offsetx)
+* [offsetY](_widgets_select_.selectoptionstyle.md#offsety)
+* [prefix](_widgets_select_.selectoptionstyle.md#prefix)
+* [suffix](_widgets_select_.selectoptionstyle.md#suffix)
 
 ---
 
@@ -36,17 +35,6 @@
 *Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L94)*
 
 background color (i.e. `#000000`)
-
-___
-<a id="ellipsis"></a>
-
-### `<Optional>` ellipsis
-
-**● ellipsis**: *`string`*
-
-*Defined in [widgets/Box.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L29)*
-
-String to use when the title doesn't fit in the box
 
 ___
 <a id="fg"></a>
@@ -75,28 +63,6 @@ ___
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
 ___
-<a id="marginleft"></a>
-
-### `<Optional>` marginLeft
-
-**● marginLeft**: *`number`*
-
-*Defined in [widgets/Box.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L25)*
-
-Number of border tiles to leave to the left of the title
-
-___
-<a id="marginright"></a>
-
-### `<Optional>` marginRight
-
-**● marginRight**: *`number`*
-
-*Defined in [widgets/Box.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L27)*
-
-Number of border tiles to leave to the right of the title
-
-___
 <a id="offsetx"></a>
 
 ### `<Optional>` offsetX
@@ -121,6 +87,28 @@ ___
 *Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L90)*
 
 y-offset to apply to each character inside the tile
+
+___
+<a id="prefix"></a>
+
+### `<Optional>` prefix
+
+**● prefix**: *`string`*
+
+*Defined in [widgets/Select.ts:24](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L24)*
+
+Text to add to the option at the beginning
+
+___
+<a id="suffix"></a>
+
+### `<Optional>` suffix
+
+**● suffix**: *`string`*
+
+*Defined in [widgets/Select.ts:26](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L26)*
+
+Text to add to the option at the end
 
 ___
 

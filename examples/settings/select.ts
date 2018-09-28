@@ -72,17 +72,17 @@ const pageSettingsLayout: SettingsLayout = {
               contents: [
                 new SettingButton({
                   text: '↓',
-                  callback: () => { selectWidget.next(); },
+                  callback: () => { selectWidget.focusNext(); },
                 }),
                 ' ',
                 new SettingButton({
                   text: '↑',
-                  callback: () => { selectWidget.prev(); },
+                  callback: () => { selectWidget.focusPrev(); },
                 }),
                 ' ',
                 new SettingButton({
                   text: 'Unselect',
-                  callback: () => { selectWidget.selectIndex(-1); },
+                  callback: () => { selectWidget.toggleIndex(-1); },
                 }),
               ],
             },
@@ -108,6 +108,22 @@ const selectSettingsSection: SettingsSection = {
           title: 'Allow unselect',
           contents: [
             new SettingBoolean({ name: 'allowUnselect' }),
+          ],
+        },
+      ],
+    },
+    {
+      cols: [
+        {
+          title: 'Selected prefix',
+          contents: [
+            new SettingText({ name: 'selectedPrefix'}),
+          ],
+        },
+        {
+          title: 'Unselected prefix',
+          contents: [
+            new SettingText({ name: 'unselectedPrefix'}),
           ],
         },
       ],
@@ -236,6 +252,7 @@ function addSelectOption(): void {
   selectOptionsSettingRows.push(newRow);
   widgetSettingsLayout.sections[1].rows = [
     widgetSettingsLayout.sections[1].rows[0],
+    widgetSettingsLayout.sections[1].rows[1],
     ...selectOptionsSettingRows,
   ];
   widgetSettings.setSections(widgetSettingsLayout.sections);
@@ -349,7 +366,7 @@ function createPageSettings(): WidgetSettings {
 function preUpdateWidgeSettings(): boolean {
   updatePageSettings(pageSettings);
 
-  return true;
+  return false;
 }
 
 const widgetInitialSettings = {

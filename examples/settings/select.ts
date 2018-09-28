@@ -72,17 +72,17 @@ const pageSettingsLayout: SettingsLayout = {
               contents: [
                 new SettingButton({
                   text: '↓',
-                  callback: () => { selectWidget.next(); },
+                  callback: () => { selectWidget.focusNext(); },
                 }),
                 ' ',
                 new SettingButton({
                   text: '↑',
-                  callback: () => { selectWidget.prev(); },
+                  callback: () => { selectWidget.focusPrev(); },
                 }),
                 ' ',
                 new SettingButton({
                   text: 'Unselect',
-                  callback: () => { selectWidget.selectIndex(-1); },
+                  callback: () => { selectWidget.toggleIndex(-1); },
                 }),
               ],
             },

@@ -312,6 +312,42 @@ export class Select<T> extends Widget<SelectOptions<T>> {
   }
 
   /**
+   * Check if the option with the specified index is selected or not
+   *
+   * @param index index of the option to check
+   * @returns `true` if selected, `false` if not. `undefined` if the option is not found
+   */
+  public isIndexSelected(index: number): boolean {
+    const item = this.selectOptions[index];
+
+    return item ? item.selected : undefined;
+  }
+
+  /**
+   * Check if an option is selected or not
+   *
+   * @param option option to check
+   * @returns `true` if selected, `false` if not. `undefined` if the option is not found
+   */
+  public isOptionSelected(option: SelectOption<T>): boolean {
+    const index = this.getIndexFromOption(option);
+
+    return index === SELECT_INDEX_NONE ? undefined : this.selectOptions[index].selected;
+  }
+
+  /**
+   * Check if the option with the specified value is selected or not
+   *
+   * @param value value to check
+   * @returns `true` if selected, `false` if not. `undefined` if the option is not found
+   */
+  public isValueSelected(value: T): boolean {
+    const index = this.getIndexFromValue(value);
+
+    return index === SELECT_INDEX_NONE ? undefined : this.selectOptions[index].selected;
+  }
+
+  /**
    * Select the option with the specified index.
    * This will do nothing if the option is disabled or the index is invalid.
    * If `options.multiple` is `false`, then it will unselect any previously selected option.

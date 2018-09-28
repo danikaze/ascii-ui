@@ -23,7 +23,7 @@
 
 ▸ **isWidgetContainer**(object: *`any`*): `boolean`
 
-*Defined in [WidgetContainer.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/WidgetContainer.ts#L93)*
+*Defined in [WidgetContainer.ts:93](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/WidgetContainer.ts#L93)*
 
 Check if an object implements the `WidgetContainer` interface
 

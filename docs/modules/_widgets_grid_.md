@@ -29,7 +29,7 @@
 
 ▸ **calculateGridSpace**(available: *`number`*, cells: *`number`*): `number`[]
 
-*Defined in [widgets/Grid.ts:585](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Grid.ts#L585)*
+*Defined in [widgets/Grid.ts:585](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Grid.ts#L585)*
 
 Function that calculates the space of each grid the most equitative way. Some cells can be bigger than others in no specific order, but with only 1 unit of difference as most.
 

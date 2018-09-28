@@ -25,6 +25,7 @@ Core:
 
 Widgets:
 - Added border feature in `widgets/Grid`
+- Improved `widgets/Select` with new methods and styling options
 
 Others:
 - Added `EventManager.removeListener` (and rename `listen` to `addListener`)

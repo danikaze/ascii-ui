@@ -10,24 +10,45 @@
 
 ### Interfaces
 
+* [InternalOption](../interfaces/_widgets_select_.internaloption.md)
 * [SelectOption](../interfaces/_widgets_select_.selectoption.md)
+* [SelectOptionStyle](../interfaces/_widgets_select_.selectoptionstyle.md)
 * [SelectOptions](../interfaces/_widgets_select_.selectoptions.md)
+
+### Type aliases
+
+* [StyleStates](_widgets_select_.md#stylestates)
 
 ### Variables
 
-* [UNSELECTED_INDEX](_widgets_select_.md#unselected_index)
+* [SELECT_INDEX_NONE](_widgets_select_.md#select_index_none)
 
 ---
 
+## Type aliases
+
+<a id="stylestates"></a>
+
+###  StyleStates
+
+**Ƭ StyleStates**: * "baseStyle" &#124; "baseFocusedStyle" &#124; "selectedStyle" &#124; "selectedFocusedStyle" &#124; "disabledStyle" &#124; "disabledSelectedStyle"
+*
+
+*Defined in [widgets/Select.ts:59](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L59)*
+
+___
+
 ## Variables
 
-<a id="unselected_index"></a>
+<a id="select_index_none"></a>
 
-### `<Const>` UNSELECTED_INDEX
+### `<Const>` SELECT_INDEX_NONE
 
-**● UNSELECTED_INDEX**: *`-1`* =  -1
+**● SELECT_INDEX_NONE**: *`-1`* =  -1
 
-*Defined in [widgets/Select.ts:9](https://github.com/danikaze/terminal-in-canvas/blob/ad1033f/src/widgets/Select.ts#L9)*
+*Defined in [widgets/Select.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L11)*
+
+Value used for an option index when no option is selected or found
 
 ___
 

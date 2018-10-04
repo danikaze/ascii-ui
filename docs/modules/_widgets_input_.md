@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["widgets/Input"](../modules/_widgets_input_.md)
+[ascii-ui API documentation](../README.md) > ["widgets/Input"](../modules/_widgets_input_.md)
 
 # External module: "widgets/Input"
 

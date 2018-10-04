@@ -3,6 +3,9 @@ module.exports = {
   mode: 'modules',
   module: 'umd',
   excludePrivate: true,
+  excludeNotExported: true,
   hideGenerator: true,
-  theme: 'markdown'
+  name: 'ascii-ui API documentation',
+  theme: 'markdown',
+  readme: 'none'
 };

@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [TilePosition](../interfaces/_terminal_.tileposition.md)
+[ascii-ui API documentation](../README.md) > ["Terminal"](../modules/_terminal_.md) > [TilePosition](../interfaces/_terminal_.tileposition.md)
 
 # Interface: TilePosition
 
@@ -23,7 +23,7 @@
 
 **● col**: *`number`*
 
-*Defined in [Terminal.ts:75](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L75)*
+*Defined in [Terminal.ts:75](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L75)*
 
 x-coordinate of a tile in the grid
 
@@ -34,7 +34,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [Terminal.ts:77](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L77)*
+*Defined in [Terminal.ts:77](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L77)*
 
 y-coordinate of a tile in the grid
 

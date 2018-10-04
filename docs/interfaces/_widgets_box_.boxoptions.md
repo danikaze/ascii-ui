@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxOptions](../interfaces/_widgets_box_.boxoptions.md)
+[ascii-ui API documentation](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxOptions](../interfaces/_widgets_box_.boxoptions.md)
 
 # Interface: BoxOptions
 
@@ -34,7 +34,7 @@
 
 **● base**: *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)*
 
-*Defined in [widgets/Box.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L56)*
+*Defined in [widgets/Box.ts:56](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L56)*
 
 Options used when the widget is focuseable but not focused
 
@@ -47,7 +47,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L10)*
+*Defined in [Widget.ts:10](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L10)*
 
 x-position of the widget in terminal tiles
 
@@ -58,7 +58,7 @@ ___
 
 **● disabled**: *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)*
 
-*Defined in [widgets/Box.ts:60](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L60)*
+*Defined in [widgets/Box.ts:60](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L60)*
 
 Options used when the widget is not focuseable
 
@@ -69,7 +69,7 @@ ___
 
 **● focus**: *[BoxAspectOptions](_widgets_box_.boxaspectoptions.md)*
 
-*Defined in [widgets/Box.ts:58](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L58)*
+*Defined in [widgets/Box.ts:58](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L58)*
 
 Options used when the widget is focused
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L18)*
+*Defined in [Widget.ts:18](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L18)*
 
 if `true`, the widget can be selectable
 
@@ -95,7 +95,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L16)*
+*Defined in [Widget.ts:16](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L16)*
 
 widget height in terminal tiles
 
@@ -108,7 +108,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L12)*
+*Defined in [Widget.ts:12](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L12)*
 
 y-position of the widget in terminal tiles
 
@@ -119,7 +119,7 @@ ___
 
 **● padding**: *[BoxPaddingOptions](_widgets_box_.boxpaddingoptions.md)*
 
-*Defined in [widgets/Box.ts:54](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L54)*
+*Defined in [widgets/Box.ts:54](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L54)*
 
 Number of blank tiles to leave between the border and the attached widget
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L20)*
+*Defined in [Widget.ts:20](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L20)*
 
 value use for ordering the selection order with the keys
 
@@ -143,7 +143,7 @@ ___
 
 **● title**: *`string`*
 
-*Defined in [widgets/Box.ts:52](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L52)*
+*Defined in [widgets/Box.ts:52](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L52)*
 
 Title to display at the top of the box
 
@@ -156,7 +156,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L14)*
+*Defined in [Widget.ts:14](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L14)*
 
 widget width in terminal tiles
 

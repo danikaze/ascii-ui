@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [ImageSize](../interfaces/_terminal_.imagesize.md)
+[ascii-ui API documentation](../README.md) > ["Terminal"](../modules/_terminal_.md) > [ImageSize](../interfaces/_terminal_.imagesize.md)
 
 # Interface: ImageSize
 
@@ -23,7 +23,7 @@
 
 **● height**: *`number`*
 
-*Defined in [Terminal.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L37)*
+*Defined in [Terminal.ts:37](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L37)*
 
 Image height
 
@@ -34,7 +34,7 @@ ___
 
 **● width**: *`number`*
 
-*Defined in [Terminal.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L35)*
+*Defined in [Terminal.ts:35](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L35)*
 
 Image width
 

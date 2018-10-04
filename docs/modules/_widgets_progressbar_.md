@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["widgets/ProgressBar"](../modules/_widgets_progressbar_.md)
+[ascii-ui API documentation](../README.md) > ["widgets/ProgressBar"](../modules/_widgets_progressbar_.md)
 
 # External module: "widgets/ProgressBar"
 

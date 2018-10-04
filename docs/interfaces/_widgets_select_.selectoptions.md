@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["widgets/Select"](../modules/_widgets_select_.md) > [SelectOptions](../interfaces/_widgets_select_.selectoptions.md)
+[ascii-ui API documentation](../README.md) > ["widgets/Select"](../modules/_widgets_select_.md) > [SelectOptions](../interfaces/_widgets_select_.selectoptions.md)
 
 # Interface: SelectOptions
 
@@ -42,7 +42,7 @@
 
 **● allowUnselect**: *`boolean`*
 
-*Defined in [widgets/Select.ts:37](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L37)*
+*Defined in [widgets/Select.ts:37](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L37)*
 
 If `true`, will unselect any selected option if try to select a non-existing one
 
@@ -53,7 +53,7 @@ ___
 
 **● baseFocusedStyle**: *[SelectOptionStyle](_widgets_select_.selectoptionstyle.md)*
 
-*Defined in [widgets/Select.ts:42](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L42)*
+*Defined in [widgets/Select.ts:42](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L42)*
 
 Character Style for base options when focused
 
@@ -64,7 +64,7 @@ ___
 
 **● baseStyle**: *[SelectOptionStyle](_widgets_select_.selectoptionstyle.md)*
 
-*Defined in [widgets/Select.ts:40](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L40)*
+*Defined in [widgets/Select.ts:40](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L40)*
 
 Character Style for base options
 
@@ -77,7 +77,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[col](_widget_.widgetoptions.md#col)*
 
-*Defined in [Widget.ts:10](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L10)*
+*Defined in [Widget.ts:10](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L10)*
 
 x-position of the widget in terminal tiles
 
@@ -88,7 +88,7 @@ ___
 
 **● disabledSelectedStyle**: *[SelectOptionStyle](_widgets_select_.selectoptionstyle.md)*
 
-*Defined in [widgets/Select.ts:50](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L50)*
+*Defined in [widgets/Select.ts:50](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L50)*
 
 Character Style for disabled options when selected
 
@@ -99,7 +99,7 @@ ___
 
 **● disabledStyle**: *[SelectOptionStyle](_widgets_select_.selectoptionstyle.md)*
 
-*Defined in [widgets/Select.ts:48](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L48)*
+*Defined in [widgets/Select.ts:48](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L48)*
 
 Character Style for disabled options
 
@@ -112,7 +112,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[focusable](_widget_.widgetoptions.md#focusable)*
 
-*Defined in [Widget.ts:18](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L18)*
+*Defined in [Widget.ts:18](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L18)*
 
 if `true`, the widget can be selectable
 
@@ -125,7 +125,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[height](_widget_.widgetoptions.md#height)*
 
-*Defined in [Widget.ts:16](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L16)*
+*Defined in [Widget.ts:16](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L16)*
 
 widget height in terminal tiles
 
@@ -138,7 +138,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[line](_widget_.widgetoptions.md#line)*
 
-*Defined in [Widget.ts:12](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L12)*
+*Defined in [Widget.ts:12](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L12)*
 
 y-position of the widget in terminal tiles
 
@@ -149,7 +149,7 @@ ___
 
 **● loop**: *`boolean`*
 
-*Defined in [widgets/Select.ts:33](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L33)*
+*Defined in [widgets/Select.ts:33](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L33)*
 
 If `true`, the first option will be highlighted after the last one, and viceversa
 
@@ -160,7 +160,7 @@ ___
 
 **● multiple**: *`boolean`*
 
-*Defined in [widgets/Select.ts:35](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L35)*
+*Defined in [widgets/Select.ts:35](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L35)*
 
 When `false`, it will be only one option selected at most
 
@@ -171,7 +171,7 @@ ___
 
 **● options**: *`Array`<[SelectOption](_widgets_select_.selectoption.md)<`T`>>*
 
-*Defined in [widgets/Select.ts:31](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L31)*
+*Defined in [widgets/Select.ts:31](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L31)*
 
 List of options, in order, to display. Editing this value (via `setOptions` will reset the selected one)
 
@@ -182,7 +182,7 @@ ___
 
 **● selectedFocusedStyle**: *[SelectOptionStyle](_widgets_select_.selectoptionstyle.md)*
 
-*Defined in [widgets/Select.ts:46](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L46)*
+*Defined in [widgets/Select.ts:46](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L46)*
 
 Character Style for selected options when focused
 
@@ -193,7 +193,7 @@ ___
 
 **● selectedStyle**: *[SelectOptionStyle](_widgets_select_.selectoptionstyle.md)*
 
-*Defined in [widgets/Select.ts:44](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L44)*
+*Defined in [widgets/Select.ts:44](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L44)*
 
 Character Style for selected options
 
@@ -206,7 +206,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[tabIndex](_widget_.widgetoptions.md#tabindex)*
 
-*Defined in [Widget.ts:20](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L20)*
+*Defined in [Widget.ts:20](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L20)*
 
 value use for ordering the selection order with the keys
 
@@ -217,7 +217,7 @@ ___
 
 **● tokenizer**: *[TokenizerFunction](../modules/_util_tokenizer_.md#tokenizerfunction)*
 
-*Defined in [widgets/Select.ts:56](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Select.ts#L56)*
+*Defined in [widgets/Select.ts:56](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L56)*
 
 How to split the text (for new lines, etc.) A custom TokenizerFunction can be provided. Leave undefined to use the default one
 
@@ -230,7 +230,7 @@ ___
 
 *Inherited from [WidgetOptions](_widget_.widgetoptions.md).[width](_widget_.widgetoptions.md#width)*
 
-*Defined in [Widget.ts:14](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Widget.ts#L14)*
+*Defined in [Widget.ts:14](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L14)*
 
 widget width in terminal tiles
 

@@ -1,4 +1,5 @@
 const path = require('path');
+const packageJson = require('./package.json');
 
 /**
  * @param {string} pathFromProjectRoot path specified from the root of the project (where package.json is)
@@ -33,7 +34,7 @@ module.exports = {
     devHost: 'localhost',
     minimizeBuild: false,
     libraryTarget: 'umd',
-    auxiliaryComment: 'terminal-in-canvas',
+    auxiliaryComment: packageJson.name,
   },
   // aliases need to be defined also in tsconfig.json (compilerOptions.paths)
   alias: {

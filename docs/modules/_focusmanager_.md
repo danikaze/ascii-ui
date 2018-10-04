@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["FocusManager"](../modules/_focusmanager_.md)
+[ascii-ui API documentation](../README.md) > ["FocusManager"](../modules/_focusmanager_.md)
 
 # External module: "FocusManager"
 

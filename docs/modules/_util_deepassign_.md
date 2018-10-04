@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["util/deepAssign"](../modules/_util_deepassign_.md)
+[ascii-ui API documentation](../README.md) > ["util/deepAssign"](../modules/_util_deepassign_.md)
 
 # External module: "util/deepAssign"
 
@@ -18,7 +18,7 @@
 
 ▸ **deepAssign**(...args: *`any`[]*): `any`
 
-*Defined in [util/deepAssign.ts:7](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/util/deepAssign.ts#L7)*
+*Defined in [util/deepAssign.ts:7](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/deepAssign.ts#L7)*
 
 Deep assign an object
 

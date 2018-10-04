@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["EventManager"](../modules/_eventmanager_.md)
+[ascii-ui API documentation](../README.md) > ["EventManager"](../modules/_eventmanager_.md)
 
 # External module: "EventManager"
 
@@ -22,7 +22,7 @@
 
 **Ƭ EventListener**: *`function`*
 
-*Defined in [EventManager.ts:5](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/EventManager.ts#L5)*
+*Defined in [EventManager.ts:5](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/EventManager.ts#L5)*
 
 #### Type declaration
 ▸(event: *[TerminalEvent](../classes/_terminalevent_.terminalevent.md)*, target: * [Terminal](../classes/_terminal_.terminal.md) &#124; [Widget](../classes/_widget_.widget.md)*): `void`

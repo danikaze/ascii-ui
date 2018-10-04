@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["TerminalEvent"](../modules/_terminalevent_.md)
+[ascii-ui API documentation](../README.md) > ["TerminalEvent"](../modules/_terminalevent_.md)
 
 # External module: "TerminalEvent"
 

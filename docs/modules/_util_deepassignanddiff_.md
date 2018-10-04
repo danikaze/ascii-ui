@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["util/deepAssignAndDiff"](../modules/_util_deepassignanddiff_.md)
+[ascii-ui API documentation](../README.md) > ["util/deepAssignAndDiff"](../modules/_util_deepassignanddiff_.md)
 
 # External module: "util/deepAssignAndDiff"
 
@@ -18,7 +18,7 @@
 
 ▸ **deepAssignAndDiff**(...args: *`any`[]*): `object`
 
-*Defined in [util/deepAssignAndDiff.ts:6](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/util/deepAssignAndDiff.ts#L6)*
+*Defined in [util/deepAssignAndDiff.ts:6](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/deepAssignAndDiff.ts#L6)*
 
 Deep assign an object and return just the difference (`{}` if nothing changed)
 

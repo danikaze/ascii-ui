@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["Terminal"](../modules/_terminal_.md) > [EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md)
+[ascii-ui API documentation](../README.md) > ["Terminal"](../modules/_terminal_.md) > [EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md)
 
 # Interface: EscapeCommandParams
 
@@ -27,7 +27,7 @@
 
 **● col**: *`number`*
 
-*Defined in [Terminal.ts:59](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L59)*
+*Defined in [Terminal.ts:59](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L59)*
 
 Column of the terminal where the matching expression starts
 
@@ -38,7 +38,7 @@ ___
 
 **● index**: *`number`*
 
-*Defined in [Terminal.ts:55](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L55)*
+*Defined in [Terminal.ts:55](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L55)*
 
 Index of the matched expression in `text`
 
@@ -49,7 +49,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [Terminal.ts:61](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L61)*
+*Defined in [Terminal.ts:61](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L61)*
 
 Line of the terminal where the matching expression starts
 
@@ -60,7 +60,7 @@ ___
 
 **● match**: *`string`*
 
-*Defined in [Terminal.ts:57](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L57)*
+*Defined in [Terminal.ts:57](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L57)*
 
 Matched expression
 
@@ -71,7 +71,7 @@ ___
 
 **● terminal**: *[Terminal](../classes/_terminal_.terminal.md)*
 
-*Defined in [Terminal.ts:63](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L63)*
+*Defined in [Terminal.ts:63](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L63)*
 
 Associated terminal
 
@@ -82,7 +82,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in [Terminal.ts:53](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L53)*
+*Defined in [Terminal.ts:53](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L53)*
 
 Full text set
 

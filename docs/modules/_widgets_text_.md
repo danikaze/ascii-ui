@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["widgets/Text"](../modules/_widgets_text_.md)
+[ascii-ui API documentation](../README.md) > ["widgets/Text"](../modules/_widgets_text_.md)
 
 # External module: "widgets/Text"
 

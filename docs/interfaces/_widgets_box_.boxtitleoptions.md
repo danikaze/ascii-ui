@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxTitleOptions](../interfaces/_widgets_box_.boxtitleoptions.md)
+[ascii-ui API documentation](../README.md) > ["widgets/Box"](../modules/_widgets_box_.md) > [BoxTitleOptions](../interfaces/_widgets_box_.boxtitleoptions.md)
 
 # Interface: BoxTitleOptions
 
@@ -33,7 +33,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:94](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L94)*
+*Defined in [Terminal.ts:94](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L94)*
 
 background color (i.e. `#000000`)
 
@@ -44,7 +44,7 @@ ___
 
 **● ellipsis**: *`string`*
 
-*Defined in [widgets/Box.ts:29](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L29)*
+*Defined in [widgets/Box.ts:29](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L29)*
 
 String to use when the title doesn't fit in the box
 
@@ -57,7 +57,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:92](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L92)*
+*Defined in [Terminal.ts:92](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L92)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:86](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L86)*
+*Defined in [Terminal.ts:86](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L86)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -81,7 +81,7 @@ ___
 
 **● marginLeft**: *`number`*
 
-*Defined in [widgets/Box.ts:25](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L25)*
+*Defined in [widgets/Box.ts:25](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L25)*
 
 Number of border tiles to leave to the left of the title
 
@@ -92,7 +92,7 @@ ___
 
 **● marginRight**: *`number`*
 
-*Defined in [widgets/Box.ts:27](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/widgets/Box.ts#L27)*
+*Defined in [widgets/Box.ts:27](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L27)*
 
 Number of border tiles to leave to the right of the title
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Defined in [Terminal.ts:88](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L88)*
+*Defined in [Terminal.ts:88](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L88)*
 
 x-offset to apply to each character inside the tile
 
@@ -118,7 +118,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Defined in [Terminal.ts:90](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/Terminal.ts#L90)*
+*Defined in [Terminal.ts:90](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L90)*
 
 y-offset to apply to each character inside the tile
 

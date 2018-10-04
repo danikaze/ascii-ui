@@ -1,4 +1,4 @@
-[terminal-in-canvas](../README.md) > ["util/assignCharStyle"](../modules/_util_assigncharstyle_.md)
+[ascii-ui API documentation](../README.md) > ["util/assignCharStyle"](../modules/_util_assigncharstyle_.md)
 
 # External module: "util/assignCharStyle"
 
@@ -18,7 +18,7 @@
 
 ▸ **assignCharStyle**(target: *[CharStyle](../interfaces/_terminal_.charstyle.md)*, source: *[CharStyle](../interfaces/_terminal_.charstyle.md)*): [CharStyle](../interfaces/_terminal_.charstyle.md)
 
-*Defined in [util/assignCharStyle.ts:11](https://github.com/danikaze/terminal-in-canvas/blob/bacbdf6/src/util/assignCharStyle.ts#L11)*
+*Defined in [util/assignCharStyle.ts:11](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/assignCharStyle.ts#L11)*
 
 Copy the `CharStyle` properties of `source` into `target`. Properties will be copied only if defined, and others will be ignored as well
 

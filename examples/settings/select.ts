@@ -117,13 +117,13 @@ const selectSettingsSection: SettingsSection = {
         {
           title: 'Selected prefix',
           contents: [
-            new SettingText({ name: 'selectedPrefix'}),
+            new SettingText({ name: 'selectedPrefix' }),
           ],
         },
         {
           title: 'Unselected prefix',
           contents: [
-            new SettingText({ name: 'unselectedPrefix'}),
+            new SettingText({ name: 'unselectedPrefix' }),
           ],
         },
       ],

@@ -1,5 +1,7 @@
 # ascii-ui
 
+[![Build Status](https://travis-ci.org/danikaze/ascii-ui.svg?branch=master)](https://travis-ci.org/danikaze/ascii-ui)
+
 There are several projects [[1]](https://www.npmjs.com/package/term-canvas) allowing you to use the JavaScript canvas in the terminal, while other projects [[1]](https://github.com/chjj/blessed)[[2]](https://github.com/ghaiklor/terminal-canvas)[[3]](https://www.npmjs.com/package/terminal-kit) give you some IU tools to create text-based interfaces in the terminal, but... have you ever needed (or just wanted) to use a text-based UI in a HTML page?
 
 No? _Really_, not even once?

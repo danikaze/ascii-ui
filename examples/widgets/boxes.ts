@@ -86,15 +86,16 @@ function run({ terminal, canvas }: LoadData) {
     typewritterDelay: 50,
     text: ''
     //  |--------------------| // box size
-      + 'This is a long '
-      + 'text inside a box '
-      + 'with no margins '
-      + 'but it doesn\'t fit '
-      + 'it all. However, '
-      + 'it continues for '
+      + 'This is a\n '
+      + 'long text inside\na '
+      + 'box with 0 margins '
+      + 'but it doesn\'t fit it'
+      + 'all. However, it '
+      + 'continues for '
       + 'several lines like '
       + 'this variable is '
-      + 'defined.',
+      + 'defined in the '
+      + 'code',
     //  |--------------------| // box size
   });
 

@@ -41,6 +41,22 @@ export function tokenizer(text: string): TextToken[] {
  * @return Splitted text for each line
  */
 export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunction = tokenizer): string[] {
+  function pushLine(token: TextToken): void {
+    if (line.length > 0) {
+      res.push(line + ' '.repeat(lineWidth - line.length));
+    }
+    if (token.isSeparator) {
+      line = '';
+    } else {
+      while (token.text.length > lineWidth) {
+        res.push(token.text.substr(0, lineWidth));
+        token.text = token.text.substr(lineWidth);
+        token.index += lineWidth;
+      }
+      line = token.text;
+    }
+  }
+
   const res: string[] = [];
   const tokenizedText = tknzr(text);
   let line = '';
@@ -50,22 +66,15 @@ export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunct
       return;
     }
 
+    if (token.text[0] === '\n') {
+      pushLine(token);
+      return;
+    }
+
     if (line.length + token.text.length <= lineWidth) {
       line += token.text;
     } else {
-      if (line.length > 0) {
-        res.push(line + ' '.repeat(lineWidth - line.length));
-      }
-      if (token.isSeparator) {
-        line = '';
-      } else {
-        while (token.text.length > lineWidth) {
-          res.push(token.text.substr(0, lineWidth));
-          token.text = token.text.substr(lineWidth);
-          token.index += lineWidth;
-        }
-        line = token.text;
-      }
+      pushLine(token);
     }
   });
 

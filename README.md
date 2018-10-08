@@ -24,6 +24,10 @@ Just remember that this is a 0.x.x version and the interface can change from tim
 
 ## Changelog
 
+### 0.3.0
+- `Text` (`tokenizer`) now supports new lines with `\n`
+-
+
 ### 0.2.0
 
 Core:
@@ -34,7 +38,6 @@ Core:
 Widgets:
 - Added border feature in `widgets/Grid`
 - Improved `widgets/Select` with new methods and styling options
-- `Text` (`tokenizer`) now supports new lines with `\n`
 
 Others:
 - Added `EventManager.removeListener` (and rename `listen` to `addListener`)

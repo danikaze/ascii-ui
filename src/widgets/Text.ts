@@ -281,7 +281,7 @@ export class Text extends Widget<TextOptions> {
     if (!this.options.tokenizer) {
       const noWrappedText = noWrap(txt, this.options.width, this.options.ellipsis);
 
-      return [noWrappedText + ' '.repeat(this.options.width - noWrappedText.length)];
+      return noWrappedText.map((line) => line + ' '.repeat(this.options.width - line.length));
     }
 
     return splitText(txt, this.options.width, this.options.tokenizer);

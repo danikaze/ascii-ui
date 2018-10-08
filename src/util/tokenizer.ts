@@ -92,10 +92,25 @@ export function splitText(text: string, lineWidth: number, tknzr: TokenizerFunct
  * @param lineWidth maximum length of the text
  * @param ellipsis string to add in the end if the text is too long
  */
-export function noWrap(text: string, lineWidth: number, ellipsis: string = ''): string {
-  if (text && text.length > lineWidth) {
-    return (`${text.substr(0, lineWidth - ellipsis.length)}${ellipsis}`).substr(0, lineWidth);
+export function noWrap(text: string, lineWidth: number, ellipsis: string = ''): string[] {
+  const res: string[] = [];
+  let start = 0;
+  let end = text.indexOf('\n');
+
+  while (end !== -1) {
+    res.push(text.substring(start, end));
+    start = end + 1;
+    end = text.indexOf('\n', start);
+  }
+  if (end + 1 <  text.length) {
+    res.push(text.substr(start));
   }
 
-  return text;
+  res.forEach((line, i) => {
+    if (line.length > lineWidth) {
+      res[i] = line.substr(0, lineWidth - ellipsis.length);
+    }
+  });
+
+  return res;
 }

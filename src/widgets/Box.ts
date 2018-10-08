@@ -124,7 +124,7 @@ export class Box extends Widget<BoxOptions> implements WidgetContainer {
       // tslint:disable-next-line:no-magic-numbers (2 is because of the corners)
       this.options.width - boxTitle.marginLeft - boxTitle.marginRight - 2,
       baseOptions.boxTitle.ellipsis,
-    );
+    )[0];
 
     const tiles = this.getBoxTiles(title);
     for (let j = 0; j < tiles.length; j++) {

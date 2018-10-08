@@ -3,6 +3,12 @@ import * as FontFaceObserver from 'fontfaceobserver';
 import { Terminal, TerminalOptions } from '../../src/Terminal';
 import { TerminalEvent } from '../../src/TerminalEvent';
 
+export interface LoadOptions {
+  bindResize?: boolean;
+  bindMouse?: boolean;
+  bindFocus?: boolean;
+}
+
 export interface TestWindow extends Window {
   terminal: Terminal;
   TerminalEvent: typeof TerminalEvent;
@@ -23,8 +29,15 @@ function terminalResizedHandler(canvas: HTMLCanvasElement) {
   canvas.parentElement.style.height = `${canvas.height}px`;
 }
 
-export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
+const defaultLoadOptions = {
+  bindResize: true,
+  bindMouse: true,
+  bindFocus: true,
+};
+
+export function load(terminalOptions?: TerminalOptions, loadOptions?: LoadOptions): Promise<LoadData> {
   const font = new FontFaceObserver('Terminal_VT220');
+  const extendedLoadOptions = { ...defaultLoadOptions, ...loadOptions };
 
   function enableFocusInteraction(terminal: Terminal, canvas: HTMLCanvasElement): void {
     /*
@@ -79,14 +92,23 @@ export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
   }
 
   function enableResizeButtons(terminal: Terminal, canvas: HTMLCanvasElement) {
-    document.getElementById('left')
-      .addEventListener('click', resizeTerminal.bind(undefined, terminal, -1, 0));
-    document.getElementById('right')
-      .addEventListener('click', resizeTerminal.bind(undefined, terminal, +1, 0));
-    document.getElementById('up')
-      .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
-    document.getElementById('down')
-      .addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
+    const buttonLeft = document.getElementById('left');
+    const buttonRight = document.getElementById('right');
+    const buttonUp = document.getElementById('up');
+    const buttonDown = document.getElementById('down');
+
+    if (buttonLeft) {
+      buttonLeft.addEventListener('click', resizeTerminal.bind(undefined, terminal, -1, 0));
+    }
+    if (buttonRight) {
+      buttonRight.addEventListener('click', resizeTerminal.bind(undefined, terminal, +1, 0));
+    }
+    if (buttonUp) {
+      buttonUp.addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, -1));
+    }
+    if (buttonDown) {
+      buttonDown.addEventListener('click', resizeTerminal.bind(undefined, terminal, 0, 1));
+    }
   }
 
   return font.load()
@@ -101,11 +123,17 @@ export function load(terminalOptions?: TerminalOptions): Promise<LoadData> {
         cursor: false,
       };
       const terminal = new Terminal(canvas, { ...defaultTerminalOptions, ...terminalOptions });
-      enableFocusInteraction(terminal, canvas);
-      enableResizeButtons(terminal, canvas);
 
-      terminalResizedHandler(canvas);
-      terminal.eventManager.addListener('resized', terminalResizedHandler.bind(0, canvas));
+      if (extendedLoadOptions.bindFocus) {
+        enableFocusInteraction(terminal, canvas);
+      }
+      if (extendedLoadOptions.bindResize) {
+        terminalResizedHandler(canvas);
+      }
+      if (extendedLoadOptions.bindResize) {
+        terminal.eventManager.addListener('resized', terminalResizedHandler.bind(0, canvas));
+        enableResizeButtons(terminal, canvas);
+      }
 
       (window as TestWindow).terminal = terminal;
       (window as TestWindow).TerminalEvent = TerminalEvent;

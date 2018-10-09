@@ -455,8 +455,9 @@ export class Terminal implements WidgetContainer {
       }
     }
 
-    this.info(`render: ${nTiles} tiles: ${this.lastRenderTime - start} ms.`);
-    this.lastRenderTime = start;
+    const now = performance.now();
+    this.info(`render: ${nTiles} tiles: ${now - start} ms.`);
+    this.lastRenderTime = now;
 
     this.dirtyTiles = tilesToRedraw;
     if (tilesToRedraw.length > 0 && this.options.autoRender) {

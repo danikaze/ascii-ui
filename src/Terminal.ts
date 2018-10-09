@@ -1095,7 +1095,8 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
-   * Add a tile to be drawn in the next `render` only if it's not already queued
+   * Add a tile to be drawn in the next `render`.
+   * If it's already queued, combines with the previous value
    *
    * @param dirtyTile tile to queue to draw
    * @param container usually `this.dirtyTiles`, but can be another temporal container
@@ -1104,6 +1105,7 @@ export class Terminal implements WidgetContainer {
     if (this.options.avoidDoubleRendering) {
       for (const tile of container) {
         if (tile.x === dirtyTile.x && tile.y === dirtyTile.y) {
+          Object.assign(tile, dirtyTile);
           return;
         }
       }

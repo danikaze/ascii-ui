@@ -25,8 +25,12 @@ Just remember that this is a 0.x.x version and the interface can change from tim
 ## Changelog
 
 ### 0.3.0
+
+Core:
+- Added `Terminal.pushState` and `Terminal.popState`
+
+Widgets:
 - `Text` (`tokenizer`) now supports new lines with `\n`
--
 
 ### 0.2.0
 
@@ -46,7 +50,7 @@ Others:
 
 ### 0.1.0
 
-First _version_ of the `Terminal` with a few widgets (`Box`, `Grid`, `Input`, `ProgressBar`, `Select`, `Text`), a `FocusManager` and an `EventManager`.
+First _version_ of the `Terminal` with a few widgets (`Box`, `Grid`, `Input`, `ProgressBar`, `Select`, `Text`), a `FocusManager` and an `EventManager`
 
 Usable but still in development, so the interface could change and _bugs can happen_.
 

@@ -176,6 +176,26 @@ interface DecayTile extends TextTile {
   alpha: number;
 }
 
+interface TerminalState {
+  cursorX: number;
+  cursorY: number;
+  cursorVisible: boolean;
+  updateCursorInterval: number;
+  options: {
+    font: string;
+    offsetX: number;
+    offsetY: number;
+    fg: string;
+    bg: string;
+    cursor: boolean;
+    cursorFrequency: number;
+    decayTime: number;
+    decayInitialAlpha: number;
+    viewport: ViewPortOptions;
+    clearStyle: TextTile;
+  };
+}
+
 type IterateTileCallback = (tile: InternalTile, i: number) => void;
 
 /**
@@ -217,6 +237,8 @@ export class Terminal implements WidgetContainer {
   private lastRenderTime: number = 0;
   /** list of attached widgets */
   private readonly attachedWidgets: Widget[] = [];
+  /** Stack of Terminal states */
+  private readonly states: TerminalState[] = [];
 
   /**
    * Creates a Terminal associated to a canvas element.
@@ -453,6 +475,23 @@ export class Terminal implements WidgetContainer {
       }
     }
     this.render();
+  }
+
+  /**
+   * Stores the current state to restore it later via `popState()`
+   */
+  public pushState(): void {
+    this.states.push(this.getState());
+  }
+
+  /**
+   * Restore a previous pushed state via `pushState`
+   */
+  public popState(): void {
+    const state = this.states.pop();
+    if (state) {
+      this.setState(state);
+    }
   }
 
   /**
@@ -977,6 +1016,49 @@ export class Terminal implements WidgetContainer {
       }
     }
     this.cursorX = x;
+  }
+
+  /**
+   * Get a copy of the Terminal state
+   *
+   * @returns object with all the values to store the terminal state
+   */
+  private getState(): TerminalState {
+    const options = this.options;
+
+    return {
+      cursorX: this.cursorX,
+      cursorY: this.cursorY,
+      cursorVisible: this.cursorVisible,
+      updateCursorInterval: this.updateCursorInterval,
+      options: {
+        font: options.font,
+        offsetX: options.offsetX,
+        offsetY: options.offsetY,
+        fg: options.fg,
+        bg: options.bg,
+        cursor: options.cursor,
+        cursorFrequency: options.cursorFrequency,
+        decayTime: options.decayTime,
+        decayInitialAlpha: options.decayInitialAlpha,
+        viewport: { ...options.viewport },
+        clearStyle: { ...options.clearStyle },
+      },
+    };
+  }
+
+  /**
+   * Replaces the current state of the Terminal with the given one
+   *
+   * @param state state to set (from `getState`)
+   */
+  private setState(state: TerminalState): void {
+    this.cursorX = state.cursorX;
+    this.cursorY = state.cursorY;
+    this.cursorVisible = state.cursorVisible;
+    this.updateCursorInterval = state.updateCursorInterval;
+
+    this.setOptions(state.options);
   }
 
   /**

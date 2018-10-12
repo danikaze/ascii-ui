@@ -23,7 +23,7 @@
 
 **● columns**: *`number`*
 
-*Defined in [Terminal.ts:68](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L68)*
+*Defined in [Terminal.ts:86](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L86)*
 
 number of columns of the terminal, in number of tiles
 
@@ -34,7 +34,7 @@ ___
 
 **● rows**: *`number`*
 
-*Defined in [Terminal.ts:70](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L70)*
+*Defined in [Terminal.ts:88](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L88)*
 
 number of rows of the terminal, in number of tiles
 

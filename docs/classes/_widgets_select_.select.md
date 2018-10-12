@@ -78,7 +78,7 @@ Display a list of selectable options. The focused option is where the cursor is.
 
 *Overrides [Widget](_widget_.widget.md).[constructor](_widget_.widget.md#constructor)*
 
-*Defined in [widgets/Select.ts:93](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L93)*
+*Defined in [widgets/Select.ts:93](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L93)*
 
 **Parameters:**
 
@@ -102,7 +102,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[allocated](_widget_.widget.md#allocated)*
 
-*Defined in [Widget.ts:39](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L39)*
+*Defined in [Widget.ts:39](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L39)*
 
 If the widget has been allocated or not
 
@@ -115,7 +115,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focused](_widget_.widget.md#focused)*
 
-*Defined in [Widget.ts:37](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L37)*
+*Defined in [Widget.ts:37](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L37)*
 
 If the widget is focused or not
 
@@ -128,7 +128,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[options](_widget_.widget.md#options)*
 
-*Defined in [Widget.ts:35](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L35)*
+*Defined in [Widget.ts:35](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L35)*
 
 Widget options
 
@@ -141,7 +141,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[parent](_widget_.widget.md#parent)*
 
-*Defined in [Widget.ts:33](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L33)*
+*Defined in [Widget.ts:33](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L33)*
 
 container of the widget, if any
 
@@ -154,7 +154,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[terminal](_widget_.widget.md#terminal)*
 
-*Defined in [Widget.ts:31](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L31)*
+*Defined in [Widget.ts:31](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L31)*
 
 Reference to the parent terminal where it should be rendered
 
@@ -167,7 +167,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[defaultOptions](_widget_.widget.md#defaultoptions)*
 
-*Defined in [widgets/Select.ts:86](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L86)*
+*Defined in [widgets/Select.ts:86](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L86)*
 
 Default options for widget instances
 
@@ -183,7 +183,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[blur](_widget_.widget.md#blur)*
 
-*Defined in [Widget.ts:176](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L176)*
+*Defined in [Widget.ts:176](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L176)*
 
 Remove the focus from this widget. Usually done by a upper level that controls other widgets.
 
@@ -199,7 +199,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[destruct](_widget_.widget.md#destruct)*
 
-*Defined in [Widget.ts:61](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L61)*
+*Defined in [Widget.ts:61](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L61)*
 
 Method to call when the widget is not going to be used anymore, so it can clean whatever it set in the constructor
 
@@ -214,7 +214,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[focus](_widget_.widget.md#focus)*
 
-*Defined in [Widget.ts:156](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L156)*
+*Defined in [Widget.ts:156](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L156)*
 
 Set this Widget as focused. Usually done by a upper level that controls other widgets (so the previously focused widget is blurred)
 
@@ -228,7 +228,7 @@ ___
 
 ▸ **focusIndex**(index: *`number`*): `boolean`
 
-*Defined in [widgets/Select.ts:416](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L416)*
+*Defined in [widgets/Select.ts:416](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L416)*
 
 Focus the option with the specified index. This will do nothing if the option is already focused or the index is invalid. The list will scroll to show the focused option if needed.
 
@@ -248,7 +248,7 @@ ___
 
 ▸ **focusNext**(): `boolean`
 
-*Defined in [widgets/Select.ts:483](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L483)*
+*Defined in [widgets/Select.ts:483](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L483)*
 
 Select the next option to the current one
 
@@ -262,7 +262,7 @@ ___
 
 ▸ **focusOption**(option: *[SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>*): `boolean`
 
-*Defined in [widgets/Select.ts:453](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L453)*
+*Defined in [widgets/Select.ts:453](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L453)*
 
 Focus the the specified option This will do nothing if the option is already focused or not found The list will scroll to show the focused option if needed.
 
@@ -282,7 +282,7 @@ ___
 
 ▸ **focusPrev**(): `boolean`
 
-*Defined in [widgets/Select.ts:474](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L474)*
+*Defined in [widgets/Select.ts:474](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L474)*
 
 Focus the previous option to the current one
 
@@ -296,7 +296,7 @@ ___
 
 ▸ **focusValue**(value: *`T`*): `boolean`
 
-*Defined in [widgets/Select.ts:465](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L465)*
+*Defined in [widgets/Select.ts:465](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L465)*
 
 Focus the option with the specified value This will do nothing if the option is already focused or not found The list will scroll to show the focused option if needed.
 
@@ -316,7 +316,7 @@ ___
 
 ▸ **getFocusedIndex**(): `number`
 
-*Defined in [widgets/Select.ts:245](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L245)*
+*Defined in [widgets/Select.ts:245](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L245)*
 
 Retrieve the index of the focused option
 
@@ -330,7 +330,7 @@ ___
 
 ▸ **getFocusedOption**(): [SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>
 
-*Defined in [widgets/Select.ts:254](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L254)*
+*Defined in [widgets/Select.ts:254](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L254)*
 
 Retrieve the focused option
 
@@ -344,7 +344,7 @@ ___
 
 ▸ **getFocusedValue**(): `T`
 
-*Defined in [widgets/Select.ts:263](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L263)*
+*Defined in [widgets/Select.ts:263](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L263)*
 
 Retrieve the value of the focused option
 
@@ -358,7 +358,7 @@ ___
 
 ▸ **getIndexAt**(column: *`number`*, line: *`number`*): `number`
 
-*Defined in [widgets/Select.ts:274](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L274)*
+*Defined in [widgets/Select.ts:274](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L274)*
 
 Get the index of the option at the specified terminal position (absolute)
 
@@ -379,7 +379,7 @@ ___
 
 ▸ **getIndexFromOption**(option: *[SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>*): `number`
 
-*Defined in [widgets/Select.ts:177](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L177)*
+*Defined in [widgets/Select.ts:177](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L177)*
 
 Get the index of the desired option
 
@@ -399,7 +399,7 @@ ___
 
 ▸ **getIndexFromValue**(value: *`T`*): `number`
 
-*Defined in [widgets/Select.ts:193](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L193)*
+*Defined in [widgets/Select.ts:193](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L193)*
 
 Get the index of the desired value
 
@@ -419,7 +419,7 @@ ___
 
 ▸ **getOptionAt**(column: *`number`*, line: *`number`*): [SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>
 
-*Defined in [widgets/Select.ts:299](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L299)*
+*Defined in [widgets/Select.ts:299](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L299)*
 
 Get the option at the specified terminal position (absolute)
 
@@ -440,7 +440,7 @@ ___
 
 ▸ **getOptionFromIndex**(index: *`number`*): [SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>
 
-*Defined in [widgets/Select.ts:153](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L153)*
+*Defined in [widgets/Select.ts:153](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L153)*
 
 Get the provided option from the specified index
 
@@ -462,7 +462,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getParent](_widget_.widget.md#getparent)*
 
-*Defined in [Widget.ts:70](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L70)*
+*Defined in [Widget.ts:70](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L70)*
 
 Get the reference to the parent of the widget, if any
 
@@ -478,7 +478,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getPosition](_widget_.widget.md#getposition)*
 
-*Defined in [Widget.ts:118](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L118)*
+*Defined in [Widget.ts:118](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L118)*
 
 Get the position of the widget, in tile coordinates
 
@@ -492,7 +492,7 @@ ___
 
 ▸ **getSelectedIndexes**(): `number`[]
 
-*Defined in [widgets/Select.ts:208](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L208)*
+*Defined in [widgets/Select.ts:208](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L208)*
 
 Retrieve a list of indexes of the selected options.
 
@@ -506,7 +506,7 @@ ___
 
 ▸ **getSelectedOptions**(): [SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>[]
 
-*Defined in [widgets/Select.ts:227](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L227)*
+*Defined in [widgets/Select.ts:227](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L227)*
 
 Retrieve a list of selected options. Even if this is a list of references to the given options, refrain of modifying them directly. Use `setOptions` instead.
 
@@ -520,7 +520,7 @@ ___
 
 ▸ **getSelectedValues**(): `T`[]
 
-*Defined in [widgets/Select.ts:236](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L236)*
+*Defined in [widgets/Select.ts:236](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L236)*
 
 Retrieve a list of selected values.
 
@@ -536,7 +536,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[getSize](_widget_.widget.md#getsize)*
 
-*Defined in [Widget.ts:106](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L106)*
+*Defined in [Widget.ts:106](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L106)*
 
 Get the widget size, measured in tiles
 
@@ -550,7 +550,7 @@ ___
 
 ▸ **getValueAt**(column: *`number`*, line: *`number`*): `T`
 
-*Defined in [widgets/Select.ts:310](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L310)*
+*Defined in [widgets/Select.ts:310](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L310)*
 
 Get the value of the option at the specified terminal position (absolute)
 
@@ -571,7 +571,7 @@ ___
 
 ▸ **getValueFromIndex**(index: *`number`*): `T`
 
-*Defined in [widgets/Select.ts:165](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L165)*
+*Defined in [widgets/Select.ts:165](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L165)*
 
 Get the provided value from the specified index
 
@@ -593,7 +593,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isAt](_widget_.widget.md#isat)*
 
-*Defined in [Widget.ts:132](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L132)*
+*Defined in [Widget.ts:132](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L132)*
 
 Check if the widget is (overlaps) the specified position
 
@@ -616,7 +616,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocusable](_widget_.widget.md#isfocusable)*
 
-*Defined in [Widget.ts:146](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L146)*
+*Defined in [Widget.ts:146](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L146)*
 
 Check if this widget is focusable (when cycling over widgets)
 
@@ -632,7 +632,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[isFocused](_widget_.widget.md#isfocused)*
 
-*Defined in [Widget.ts:191](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L191)*
+*Defined in [Widget.ts:191](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L191)*
 
 Check if the widget is currently focused or not
 
@@ -646,7 +646,7 @@ ___
 
 ▸ **isIndexSelected**(index: *`number`*): `boolean`
 
-*Defined in [widgets/Select.ts:320](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L320)*
+*Defined in [widgets/Select.ts:320](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L320)*
 
 Check if the option with the specified index is selected or not
 
@@ -666,7 +666,7 @@ ___
 
 ▸ **isOptionSelected**(option: *[SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>*): `boolean`
 
-*Defined in [widgets/Select.ts:332](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L332)*
+*Defined in [widgets/Select.ts:332](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L332)*
 
 Check if an option is selected or not
 
@@ -686,7 +686,7 @@ ___
 
 ▸ **isValueSelected**(value: *`T`*): `boolean`
 
-*Defined in [widgets/Select.ts:344](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L344)*
+*Defined in [widgets/Select.ts:344](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L344)*
 
 Check if the option with the specified value is selected or not
 
@@ -708,7 +708,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[render](_widget_.widget.md#render)*
 
-*Defined in [widgets/Select.ts:108](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L108)*
+*Defined in [widgets/Select.ts:108](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L108)*
 
 Render the widget in the associated terminal
 
@@ -721,7 +721,7 @@ ___
 
 ▸ **selectOption**(option: *[SelectOption](../interfaces/_widgets_select_.selectoption.md)<`T`>*): `boolean`
 
-*Defined in [widgets/Select.ts:393](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L393)*
+*Defined in [widgets/Select.ts:393](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L393)*
 
 Select the first option with the specified. This will do nothing if all the options with that value are disabled
 
@@ -741,7 +741,7 @@ ___
 
 ▸ **selectValue**(value: *`T`*): `boolean`
 
-*Defined in [widgets/Select.ts:404](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L404)*
+*Defined in [widgets/Select.ts:404](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L404)*
 
 Select the first option with the specified value. This will do nothing if all the options with that value are disabled
 
@@ -763,7 +763,7 @@ ___
 
 *Inherited from [Widget](_widget_.widget.md).[setOptions](_widget_.widget.md#setoptions)*
 
-*Defined in [Widget.ts:86](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L86)*
+*Defined in [Widget.ts:86](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L86)*
 
 Update the options. Always use this setter so the widget knows about the change instead of changing the (protected) variable directly. The widget might do some internal calcs when this method is called.
 
@@ -787,7 +787,7 @@ ___
 
 ▸ **toggleIndex**(index: *`number`*, selected?: *`boolean`*): `boolean`
 
-*Defined in [widgets/Select.ts:362](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L362)*
+*Defined in [widgets/Select.ts:362](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L362)*
 
 Select the option with the specified index. This will do nothing if the option is disabled or the index is invalid. If `options.multiple` is `false`, then it will unselect any previously selected option. The list won't focus the option and therefore, the scroll won't change.
 
@@ -810,7 +810,7 @@ ___
 
 *Overrides [Widget](_widget_.widget.md).[updateOptions](_widget_.widget.md#updateoptions)*
 
-*Defined in [widgets/Select.ts:493](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L493)*
+*Defined in [widgets/Select.ts:493](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L493)*
 
 `setOptions` will assign the options to `this.options`, but any derivated calculation should be done here.
 

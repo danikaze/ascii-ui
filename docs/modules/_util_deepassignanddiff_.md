@@ -18,7 +18,7 @@
 
 ▸ **deepAssignAndDiff**(...args: *`any`[]*): `object`
 
-*Defined in [util/deepAssignAndDiff.ts:6](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/deepAssignAndDiff.ts#L6)*
+*Defined in [util/deepAssignAndDiff.ts:6](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/deepAssignAndDiff.ts#L6)*
 
 Deep assign an object and return just the difference (`{}` if nothing changed)
 

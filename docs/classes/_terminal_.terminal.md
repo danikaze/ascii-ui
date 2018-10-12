@@ -34,6 +34,7 @@ Basic terminal features rendered into a Canvas object
 * [getCursor](_terminal_.terminal.md#getcursor)
 * [getLeafWidgetAt](_terminal_.terminal.md#getleafwidgetat)
 * [getParent](_terminal_.terminal.md#getparent)
+* [getRawText](_terminal_.terminal.md#getrawtext)
 * [getSize](_terminal_.terminal.md#getsize)
 * [getText](_terminal_.terminal.md#gettext)
 * [getTextStyle](_terminal_.terminal.md#gettextstyle)
@@ -43,6 +44,8 @@ Basic terminal features rendered into a Canvas object
 * [getWidgetPath](_terminal_.terminal.md#getwidgetpath)
 * [isCursorEnabled](_terminal_.terminal.md#iscursorenabled)
 * [moveCursor](_terminal_.terminal.md#movecursor)
+* [popState](_terminal_.terminal.md#popstate)
+* [pushState](_terminal_.terminal.md#pushstate)
 * [render](_terminal_.terminal.md#render)
 * [renderAll](_terminal_.terminal.md#renderall)
 * [setCursor](_terminal_.terminal.md#setcursor)
@@ -62,7 +65,7 @@ Basic terminal features rendered into a Canvas object
 
 ⊕ **new Terminal**(canvas: *`HTMLCanvasElement`*, options?: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): [Terminal](_terminal_.terminal.md)
 
-*Defined in [Terminal.ts:219](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L219)*
+*Defined in [Terminal.ts:259](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L259)*
 
 Creates a Terminal associated to a canvas element.
 
@@ -85,7 +88,7 @@ ___
 
 **● eventManager**: *[EventManager](_eventmanager_.eventmanager.md)*
 
-*Defined in [Terminal.ts:191](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L191)*
+*Defined in [Terminal.ts:229](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L229)*
 
 event manager for this terminal
 
@@ -96,7 +99,7 @@ ___
 
 **● focusManager**: *[FocusManager](_focusmanager_.focusmanager.md)*
 
-*Defined in [Terminal.ts:189](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L189)*
+*Defined in [Terminal.ts:227](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L227)*
 
 focus manager for the Terminal widgets
 
@@ -107,7 +110,7 @@ ___
 
 **● options**: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*
 
-*Defined in [Terminal.ts:193](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L193)*
+*Defined in [Terminal.ts:231](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L231)*
 
 terminal options
 
@@ -118,7 +121,7 @@ ___
 
 **● defaultOptions**: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*
 
-*Defined in [Terminal.ts:186](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L186)*
+*Defined in [Terminal.ts:224](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L224)*
 
 Default options for widget instances
 
@@ -134,7 +137,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[__@iterator](../interfaces/_widgetcontainer_.widgetcontainer.md#___iterator)*
 
-*Defined in [Terminal.ts:889](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L889)*
+*Defined in [Terminal.ts:1056](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L1056)*
 
 Get a bidirectional iterator to move across the attached widgets of the container
 
@@ -153,7 +156,7 @@ ___
 
 ▸ **attachWidget**<`WidgetType`>(WidgetClass: *[WidgetConstructor](../modules/_widget_.md#widgetconstructor)<`WidgetType`>*, options?: *`any`*): `WidgetType`
 
-*Defined in [Terminal.ts:791](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L791)*
+*Defined in [Terminal.ts:958](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L958)*
 
 Create and attach a widget to this instance of the terminal
 
@@ -179,13 +182,13 @@ ___
 
 ▸ **clear**(col: *`number`*, line: *`number`*, width: *`number`*, height: *`number`*): `void`
 
-*Defined in [Terminal.ts:291](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L291)*
+*Defined in [Terminal.ts:331](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L331)*
 
 Clear the whole terminal
 
 **Returns:** `void`
 
-*Defined in [Terminal.ts:301](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L301)*
+*Defined in [Terminal.ts:341](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L341)*
 
 Clear only the specified part of the terminal
 
@@ -209,7 +212,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[dettachWidget](../interfaces/_widgetcontainer_.widgetcontainer.md#dettachwidget)*
 
-*Defined in [Terminal.ts:811](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L811)*
+*Defined in [Terminal.ts:978](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L978)*
 
 Dettach a widget from the terminal
 
@@ -229,7 +232,7 @@ ___
 
 ▸ **getCursor**(): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-*Defined in [Terminal.ts:493](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L493)*
+*Defined in [Terminal.ts:551](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L551)*
 
 Get the position of the cursor, in tile coordinates
 
@@ -243,7 +246,7 @@ ___
 
 ▸ **getLeafWidgetAt**(column: *`number`*, line: *`number`*): [Widget](_widget_.widget.md)
 
-*Defined in [Terminal.ts:848](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L848)*
+*Defined in [Terminal.ts:1015](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L1015)*
 
 Traverse the containers to get the last possible widget at the specified position
 
@@ -266,12 +269,32 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getParent](../interfaces/_widgetcontainer_.widgetcontainer.md#getparent)*
 
-*Defined in [Terminal.ts:780](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L780)*
+*Defined in [Terminal.ts:947](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L947)*
 
 Get the reference to the parent of the widget, if any
 
 **Returns:** [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)
 parent if any, or `undefined`
+
+___
+<a id="getrawtext"></a>
+
+###  getRawText
+
+▸ **getRawText**(text: *`string`*): `string`
+
+*Defined in [Terminal.ts:658](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L658)*
+
+Given a text, get it's parsed version (resulting test without commands)
+
+**Parameters:**
+
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| text | `string` |  Formatted text |
+
+**Returns:** `string`
+raw version of the parsed text
 
 ___
 <a id="getsize"></a>
@@ -280,7 +303,7 @@ ___
 
 ▸ **getSize**(): [TileSize](../interfaces/_terminal_.tilesize.md)
 
-*Defined in [Terminal.ts:472](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L472)*
+*Defined in [Terminal.ts:530](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L530)*
 
 Get the terminal size, measured in tiles
 
@@ -294,7 +317,7 @@ ___
 
 ▸ **getText**(size?: *`number`*, col?: *`number`*, line?: *`number`*): `string`
 
-*Defined in [Terminal.ts:728](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L728)*
+*Defined in [Terminal.ts:895](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L895)*
 
 Get the text of the terminal. By default gets the text from the current position of the cursor. If the `size` is reaches the end of the line, it will continue in the next one.
 
@@ -315,7 +338,7 @@ ___
 
 ▸ **getTextStyle**(): [CharStyle](../interfaces/_terminal_.charstyle.md)
 
-*Defined in [Terminal.ts:582](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L582)*
+*Defined in [Terminal.ts:640](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L640)*
 
 Get the current style being applied to the `setText` calls
 
@@ -328,7 +351,7 @@ ___
 
 ▸ **getTilePosition**(x: *`number`*, y: *`number`*): [TilePosition](../interfaces/_terminal_.tileposition.md)
 
-*Defined in [Terminal.ts:561](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L561)*
+*Defined in [Terminal.ts:619](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L619)*
 
 Given a position in pixels relative to the top-left corner of the terminal, get the corresponding tile
 
@@ -348,7 +371,7 @@ ___
 
 ▸ **getViewport**(): [ViewPortOptions](../interfaces/_terminal_.viewportoptions.md)
 
-*Defined in [Terminal.ts:463](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L463)*
+*Defined in [Terminal.ts:521](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L521)*
 
 Get the drawing limits (viewport) of the terminal
 
@@ -364,7 +387,7 @@ ___
 
 *Implementation of [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md).[getWidgetAt](../interfaces/_widgetcontainer_.widgetcontainer.md#getwidgetat)*
 
-*Defined in [Terminal.ts:831](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L831)*
+*Defined in [Terminal.ts:998](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L998)*
 
 Get a previously attached widget by its position
 
@@ -385,7 +408,7 @@ ___
 
 ▸ **getWidgetPath**(widget: *[Widget](_widget_.widget.md)*): `Array`< [Widget](_widget_.widget.md) &#124; [WidgetContainer](../interfaces/_widgetcontainer_.widgetcontainer.md)>
 
-*Defined in [Terminal.ts:872](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L872)*
+*Defined in [Terminal.ts:1039](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L1039)*
 
 Get the list of widgets from the widget until the terminal itself (not included) The result will be `undefined` if the widget is not found as a descendant of this terminal
 
@@ -405,7 +428,7 @@ ___
 
 ▸ **isCursorEnabled**(): `boolean`
 
-*Defined in [Terminal.ts:484](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L484)*
+*Defined in [Terminal.ts:542](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L542)*
 
 Get the current status of the cursor
 
@@ -419,7 +442,7 @@ ___
 
 ▸ **moveCursor**(dx: *`number`*, dy: *`number`*): `void`
 
-*Defined in [Terminal.ts:550](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L550)*
+*Defined in [Terminal.ts:608](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L608)*
 
 Set the new position of the cursor, relative to the current one
 
@@ -433,13 +456,39 @@ Set the new position of the cursor, relative to the current one
 **Returns:** `void`
 
 ___
+<a id="popstate"></a>
+
+###  popState
+
+▸ **popState**(): `void`
+
+*Defined in [Terminal.ts:509](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L509)*
+
+Restore a previous pushed state via `pushState`
+
+**Returns:** `void`
+
+___
+<a id="pushstate"></a>
+
+###  pushState
+
+▸ **pushState**(): `void`
+
+*Defined in [Terminal.ts:502](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L502)*
+
+Stores the current state to restore it later via `popState()`
+
+**Returns:** `void`
+
+___
 <a id="render"></a>
 
 ###  render
 
 ▸ **render**(): `void`
 
-*Defined in [Terminal.ts:359](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L359)*
+*Defined in [Terminal.ts:399](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L399)*
 
 Render the terminal status into the canvas context. It works with a list of _dirty_ tiles so it only renders what's changed.
 
@@ -454,7 +503,7 @@ ___
 
 ▸ **renderAll**(): `void`
 
-*Defined in [Terminal.ts:448](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L448)*
+*Defined in [Terminal.ts:489](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L489)*
 
 Forces a render of all the tiles, not only the changed ones
 
@@ -467,7 +516,7 @@ ___
 
 ▸ **setCursor**(col: *`number`*, line: *`number`*): `void`
 
-*Defined in [Terminal.ts:506](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L506)*
+*Defined in [Terminal.ts:564](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L564)*
 
 Set the new position of the cursor
 
@@ -487,7 +536,7 @@ ___
 
 ▸ **setImage**(img: *[AcceptedImage](../modules/_terminal_.md#acceptedimage)*, col?: *`number`*, line?: *`number`*, offset?: *[ImageOffset](../interfaces/_terminal_.imageoffset.md)*, size?: *[ImageSize](../interfaces/_terminal_.imagesize.md)*, crop?: *[ImageCropParams](../interfaces/_terminal_.imagecropparams.md)*): `void`
 
-*Defined in [Terminal.ts:706](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L706)*
+*Defined in [Terminal.ts:873](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L873)*
 
 Draws an image to the terminal.
 
@@ -511,7 +560,7 @@ ___
 
 ▸ **setOptions**(options: *[TerminalOptions](../interfaces/_terminal_.terminaloptions.md)*): `void`
 
-*Defined in [Terminal.ts:247](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L247)*
+*Defined in [Terminal.ts:287](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L287)*
 
 Update the values of the Terminal options
 
@@ -530,7 +579,7 @@ ___
 
 ▸ **setText**(text: *`string`*, col?: *`number`*, line?: *`number`*): `void`
 
-*Defined in [Terminal.ts:605](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L605)*
+*Defined in [Terminal.ts:731](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L731)*
 
 Input a simple text in the terminal. By default the text will be set in the current position of the cursor. If the text reaches the right side of the terminal, will break into a new line as is (there's no word begin-end control when breaking a word). There's no character escape done (such as \\n)
 
@@ -551,7 +600,7 @@ ___
 
 ▸ **setTextStyle**(style: *[CharStyle](../interfaces/_terminal_.charstyle.md)*): `void`
 
-*Defined in [Terminal.ts:575](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L575)*
+*Defined in [Terminal.ts:633](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L633)*
 
 Set the style to apply in the `setText` calls. Passed `style` object can have other properties, but only the ones related to the style will be applied.
 
@@ -570,7 +619,7 @@ ___
 
 ▸ **setTiles**(tiles: * [TextTile](../interfaces/_terminal_.texttile.md) &#124; [TextTile](../interfaces/_terminal_.texttile.md)[] &#124; [ImageTile](../interfaces/_terminal_.imagetile.md) &#124; [ImageTile](../interfaces/_terminal_.imagetile.md)[]*, col?: *`number`*, line?: *`number`*): `void`
 
-*Defined in [Terminal.ts:755](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L755)*
+*Defined in [Terminal.ts:922](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L922)*
 
 Works like `setText` but specifying all the properties of a tile, not only the text.
 

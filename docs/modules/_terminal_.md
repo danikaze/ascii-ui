@@ -11,7 +11,8 @@
 ### Interfaces
 
 * [CharStyle](../interfaces/_terminal_.charstyle.md)
-* [EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md)
+* [CommandAction](../interfaces/_terminal_.commandaction.md)
+* [CommandParams](../interfaces/_terminal_.commandparams.md)
 * [ImageCropParams](../interfaces/_terminal_.imagecropparams.md)
 * [ImageOffset](../interfaces/_terminal_.imageoffset.md)
 * [ImageSize](../interfaces/_terminal_.imagesize.md)
@@ -25,7 +26,7 @@
 ### Type aliases
 
 * [AcceptedImage](_terminal_.md#acceptedimage)
-* [EscapeCallback](_terminal_.md#escapecallback)
+* [CommandCallback](_terminal_.md#commandcallback)
 
 ---
 
@@ -38,16 +39,16 @@
 **Ƭ AcceptedImage**: * `HTMLImageElement` &#124; `HTMLCanvasElement`
 *
 
-*Defined in [Terminal.ts:16](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L16)*
+*Defined in [Terminal.ts:16](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L16)*
 
 ___
-<a id="escapecallback"></a>
+<a id="commandcallback"></a>
 
-###  EscapeCallback
+###  CommandCallback
 
-**Ƭ EscapeCallback**: *`function`*
+**Ƭ CommandCallback**: *`function`*
 
-*Defined in [Terminal.ts:24](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L24)*
+*Defined in [Terminal.ts:24](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L24)*
 
 Function called when the matching command is found
 *__param__*: The whole text
@@ -57,15 +58,15 @@ Function called when the matching command is found
 *__returns__*: index where the text processing should be continued
 
 #### Type declaration
-▸(params: *[EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md)*): `number`
+▸(params: *[CommandParams](../interfaces/_terminal_.commandparams.md)*):  [CommandAction](../interfaces/_terminal_.commandaction.md) &#124; `number`
 
 **Parameters:**
 
 | Param | Type |
 | ------ | ------ |
-| params | [EscapeCommandParams](../interfaces/_terminal_.escapecommandparams.md) |
+| params | [CommandParams](../interfaces/_terminal_.commandparams.md) |
 
-**Returns:** `number`
+**Returns:**  [CommandAction](../interfaces/_terminal_.commandaction.md) &#124; `number`
 
 ___
 

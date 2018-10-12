@@ -18,7 +18,7 @@
 
 ▸ **clamp**(x: *`number`*, min: *`number`*, max: *`number`*): `number`
 
-*Defined in [util/clamp.ts:8](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/clamp.ts#L8)*
+*Defined in [util/clamp.ts:8](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/clamp.ts#L8)*
 
 Clamp a number between two values
 

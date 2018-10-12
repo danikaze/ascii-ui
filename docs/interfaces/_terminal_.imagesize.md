@@ -23,7 +23,7 @@
 
 **● height**: *`number`*
 
-*Defined in [Terminal.ts:37](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L37)*
+*Defined in [Terminal.ts:70](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L70)*
 
 Image height
 
@@ -34,7 +34,7 @@ ___
 
 **● width**: *`number`*
 
-*Defined in [Terminal.ts:35](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L35)*
+*Defined in [Terminal.ts:68](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L68)*
 
 Image width
 

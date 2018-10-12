@@ -26,7 +26,7 @@
 
 **● crop**: *[ImageCropParams](_terminal_.imagecropparams.md)*
 
-*Defined in [Terminal.ts:164](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L164)*
+*Defined in [Terminal.ts:182](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L182)*
 
 Crop parameters for `img`
 
@@ -37,7 +37,7 @@ ___
 
 **● dstH**: *`number`*
 
-*Defined in [Terminal.ts:160](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L160)*
+*Defined in [Terminal.ts:178](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L178)*
 
 destiny height
 
@@ -48,7 +48,7 @@ ___
 
 **● dstW**: *`number`*
 
-*Defined in [Terminal.ts:158](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L158)*
+*Defined in [Terminal.ts:176](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L176)*
 
 destiny width
 
@@ -59,7 +59,7 @@ ___
 
 **● image**: *[AcceptedImage](../modules/_terminal_.md#acceptedimage)*
 
-*Defined in [Terminal.ts:156](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L156)*
+*Defined in [Terminal.ts:174](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L174)*
 
 image to draw
 
@@ -70,7 +70,7 @@ ___
 
 **● offset**: *[ImageOffset](_terminal_.imageoffset.md)*
 
-*Defined in [Terminal.ts:162](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L162)*
+*Defined in [Terminal.ts:180](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L180)*
 
 Offset in the destiny coordinates
 

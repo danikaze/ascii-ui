@@ -26,7 +26,7 @@
 
 **Ƭ WidgetConstructor**: *`object`*
 
-*Defined in [Widget.ts:5](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Widget.ts#L5)*
+*Defined in [Widget.ts:5](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Widget.ts#L5)*
 
 #### Type declaration
 

@@ -26,7 +26,7 @@
 
 **● disabled**: *`boolean`*
 
-*Defined in [widgets/Select.ts:19](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L19)*
+*Defined in [widgets/Select.ts:19](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L19)*
 
 If `true`, the option won't be selectable
 
@@ -37,7 +37,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in [widgets/Select.ts:15](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L15)*
+*Defined in [widgets/Select.ts:15](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L15)*
 
 Displayed text of the option
 
@@ -48,7 +48,7 @@ ___
 
 **● value**: *`T`*
 
-*Defined in [widgets/Select.ts:17](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L17)*
+*Defined in [widgets/Select.ts:17](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L17)*
 
 Value of the option. Will be available when selected
 

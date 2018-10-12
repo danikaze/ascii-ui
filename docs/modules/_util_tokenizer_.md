@@ -28,7 +28,7 @@
 
 **Ƭ TokenizerFunction**: *`function`*
 
-*Defined in [util/tokenizer.ts:10](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L10)*
+*Defined in [util/tokenizer.ts:10](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L10)*
 
 #### Type declaration
 ▸(text: *`string`*): [TextToken](../interfaces/_util_tokenizer_.texttoken.md)[]
@@ -49,9 +49,9 @@ ___
 
 ###  noWrap
 
-▸ **noWrap**(text: *`string`*, lineWidth: *`number`*, ellipsis?: *`string`*): `string`
+▸ **noWrap**(text: *`string`*, lineWidth: *`number`*, ellipsis?: *`string`*): `string`[]
 
-*Defined in [util/tokenizer.ts:86](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L86)*
+*Defined in [util/tokenizer.ts:95](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L95)*
 
 Limit a text to a length, and add a ellipsis character if needed (and specified)
 
@@ -63,7 +63,7 @@ Limit a text to a length, and add a ellipsis character if needed (and specified)
 | lineWidth | `number` | - |  maximum length of the text |
 | `Default value` ellipsis | `string` | &quot;&quot; |  string to add in the end if the text is too long |
 
-**Returns:** `string`
+**Returns:** `string`[]
 
 ___
 <a id="splittext"></a>
@@ -72,7 +72,7 @@ ___
 
 ▸ **splitText**(text: *`string`*, lineWidth: *`number`*, tknzr?: *[TokenizerFunction](_util_tokenizer_.md#tokenizerfunction)*): `string`[]
 
-*Defined in [util/tokenizer.ts:43](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L43)*
+*Defined in [util/tokenizer.ts:43](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L43)*
 
 Splits a text into different lines given a limit width
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **tokenizer**(text: *`string`*): [TextToken](../interfaces/_util_tokenizer_.texttoken.md)[]
 
-*Defined in [util/tokenizer.ts:18](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L18)*
+*Defined in [util/tokenizer.ts:18](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L18)*
 
 Given a text, it will split it into words
 

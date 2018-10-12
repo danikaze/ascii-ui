@@ -22,7 +22,7 @@
 
 **Ƭ EventListener**: *`function`*
 
-*Defined in [EventManager.ts:5](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/EventManager.ts#L5)*
+*Defined in [EventManager.ts:5](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/EventManager.ts#L5)*
 
 #### Type declaration
 ▸(event: *[TerminalEvent](../classes/_terminalevent_.terminalevent.md)*, target: * [Terminal](../classes/_terminal_.terminal.md) &#124; [Widget](../classes/_widget_.widget.md)*): `void`

@@ -25,7 +25,7 @@
 
 **● bottom**: *`number`*
 
-*Defined in [Terminal.ts:103](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L103)*
+*Defined in [Terminal.ts:121](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L121)*
 
 Bottom coordinate (in tiles) of the Terminal viewport (-1 to stick always to `height`)
 
@@ -36,7 +36,7 @@ ___
 
 **● left**: *`number`*
 
-*Defined in [Terminal.ts:105](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L105)*
+*Defined in [Terminal.ts:123](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L123)*
 
 Left coordinate (in tiles) of the Terminal viewport (-1 to stick always to `0`)
 
@@ -47,7 +47,7 @@ ___
 
 **● right**: *`number`*
 
-*Defined in [Terminal.ts:101](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L101)*
+*Defined in [Terminal.ts:119](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L119)*
 
 Right coordinate (in tiles) of the Terminal viewport (-1 to stick always to `width`)
 
@@ -58,7 +58,7 @@ ___
 
 **● top**: *`number`*
 
-*Defined in [Terminal.ts:99](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L99)*
+*Defined in [Terminal.ts:117](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L117)*
 
 Top coordinate (in tiles) of the Terminal viewport (-1 to stick always to 0)
 

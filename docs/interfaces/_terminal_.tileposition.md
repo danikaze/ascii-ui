@@ -23,7 +23,7 @@
 
 **● col**: *`number`*
 
-*Defined in [Terminal.ts:75](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L75)*
+*Defined in [Terminal.ts:93](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L93)*
 
 x-coordinate of a tile in the grid
 
@@ -34,7 +34,7 @@ ___
 
 **● line**: *`number`*
 
-*Defined in [Terminal.ts:77](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L77)*
+*Defined in [Terminal.ts:95](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L95)*
 
 y-coordinate of a tile in the grid
 

@@ -33,7 +33,7 @@
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:94](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L94)*
+*Defined in [Terminal.ts:112](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L112)*
 
 background color (i.e. `#000000`)
 
@@ -44,7 +44,7 @@ ___
 
 **● ellipsis**: *`string`*
 
-*Defined in [widgets/Box.ts:29](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L29)*
+*Defined in [widgets/Box.ts:29](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Box.ts#L29)*
 
 String to use when the title doesn't fit in the box
 
@@ -57,7 +57,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:92](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L92)*
+*Defined in [Terminal.ts:110](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L110)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:86](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L86)*
+*Defined in [Terminal.ts:104](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L104)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -81,7 +81,7 @@ ___
 
 **● marginLeft**: *`number`*
 
-*Defined in [widgets/Box.ts:25](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L25)*
+*Defined in [widgets/Box.ts:25](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Box.ts#L25)*
 
 Number of border tiles to leave to the left of the title
 
@@ -92,7 +92,7 @@ ___
 
 **● marginRight**: *`number`*
 
-*Defined in [widgets/Box.ts:27](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Box.ts#L27)*
+*Defined in [widgets/Box.ts:27](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Box.ts#L27)*
 
 Number of border tiles to leave to the right of the title
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Defined in [Terminal.ts:88](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L88)*
+*Defined in [Terminal.ts:106](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L106)*
 
 x-offset to apply to each character inside the tile
 
@@ -118,7 +118,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Defined in [Terminal.ts:90](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L90)*
+*Defined in [Terminal.ts:108](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L108)*
 
 y-offset to apply to each character inside the tile
 

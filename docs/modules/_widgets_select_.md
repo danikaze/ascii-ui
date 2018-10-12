@@ -28,7 +28,7 @@
 
 **● SELECT_INDEX_NONE**: *`-1`* =  -1
 
-*Defined in [widgets/Select.ts:11](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/widgets/Select.ts#L11)*
+*Defined in [widgets/Select.ts:11](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/widgets/Select.ts#L11)*
 
 Value used for an option index when no option is selected or found
 

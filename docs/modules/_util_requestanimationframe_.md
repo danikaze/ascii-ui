@@ -22,7 +22,7 @@
 
 **Ƭ requestAnimationFrameFn**: *`function`*
 
-*Defined in [util/requestAnimationFrame.ts:1](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/requestAnimationFrame.ts#L1)*
+*Defined in [util/requestAnimationFrame.ts:1](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/requestAnimationFrame.ts#L1)*
 
 #### Type declaration
 ▸(callback: *`FrameRequestCallback`*): `number`
@@ -50,7 +50,7 @@ ___
   (window as VendorWindow).msRequestAnimationFrame.bind(window) ||
   customRequestAnimationFrame
 
-*Defined in [util/requestAnimationFrame.ts:22](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/requestAnimationFrame.ts#L22)*
+*Defined in [util/requestAnimationFrame.ts:22](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/requestAnimationFrame.ts#L22)*
 
 ___
 

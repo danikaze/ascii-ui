@@ -18,7 +18,7 @@
 
 ▸ **emptyArray**<`T`>(arr: *`T`[]*): `T`[]
 
-*Defined in [util/emptyArray.ts:8](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/emptyArray.ts#L8)*
+*Defined in [util/emptyArray.ts:8](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/emptyArray.ts#L8)*
 
 Empty an array without having to reassign it with `arr = []`. It's faster and preserves the same object pointer
 

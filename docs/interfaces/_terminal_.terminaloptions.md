@@ -47,7 +47,7 @@
 
 **● autoRender**: *`boolean`*
 
-*Defined in [Terminal.ts:126](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L126)*
+*Defined in [Terminal.ts:144](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L144)*
 
 `true` to let the terminal manage the screen changes
 
@@ -58,7 +58,7 @@ ___
 
 **● autoSize**: *`boolean`*
 
-*Defined in [Terminal.ts:128](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L128)*
+*Defined in [Terminal.ts:146](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L146)*
 
 if `true`, the containing canvas will be resized to contain the grid
 
@@ -69,7 +69,7 @@ ___
 
 **● avoidDoubleRendering**: *`boolean`*
 
-*Defined in [Terminal.ts:142](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L142)*
+*Defined in [Terminal.ts:160](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L160)*
 
 Optimization? If `true` it will check if the tile to render is already in the queue to avoid rendering it twice
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[bg](_terminal_.charstyle.md#bg)*
 
-*Defined in [Terminal.ts:94](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L94)*
+*Defined in [Terminal.ts:112](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L112)*
 
 background color (i.e. `#000000`)
 
@@ -93,7 +93,7 @@ ___
 
 **● clearStyle**: *[TextTile](_terminal_.texttile.md)*
 
-*Defined in [Terminal.ts:146](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L146)*
+*Defined in [Terminal.ts:164](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L164)*
 
 Style used when calling `clear`
 
@@ -104,7 +104,7 @@ ___
 
 **● columns**: *`number`*
 
-*Defined in [Terminal.ts:114](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L114)*
+*Defined in [Terminal.ts:132](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L132)*
 
 number of columns of the terminal, in number of tiles
 
@@ -115,13 +115,13 @@ ___
 
 **● commands**: *`object`*
 
-*Defined in [Terminal.ts:138](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L138)*
+*Defined in [Terminal.ts:156](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L156)*
 
 escape secuences to parse and their callback functions
 
 #### Type declaration
 
-[key: `string`]: [EscapeCallback](../modules/_terminal_.md#escapecallback)
+[key: `string`]: [CommandCallback](../modules/_terminal_.md#commandcallback)
 
 ___
 <a id="cursor"></a>
@@ -130,7 +130,7 @@ ___
 
 **● cursor**: *`boolean`*
 
-*Defined in [Terminal.ts:130](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L130)*
+*Defined in [Terminal.ts:148](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L148)*
 
 `true` to show the cursor
 
@@ -141,7 +141,7 @@ ___
 
 **● cursorFrequency**: *`number`*
 
-*Defined in [Terminal.ts:132](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L132)*
+*Defined in [Terminal.ts:150](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L150)*
 
 blinking frequency of the cursor. If set to `0` the blink will be disabled
 
@@ -152,7 +152,7 @@ ___
 
 **● decayInitialAlpha**: *`number`*
 
-*Defined in [Terminal.ts:136](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L136)*
+*Defined in [Terminal.ts:154](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L154)*
 
 initial opacity for the decay tile, from 0 to 1
 
@@ -163,7 +163,7 @@ ___
 
 **● decayTime**: *`number`*
 
-*Defined in [Terminal.ts:134](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L134)*
+*Defined in [Terminal.ts:152](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L152)*
 
 if > 0, milliseconds that the characters will take before disapear when changing
 
@@ -176,7 +176,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[fg](_terminal_.charstyle.md#fg)*
 
-*Defined in [Terminal.ts:92](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L92)*
+*Defined in [Terminal.ts:110](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L110)*
 
 foreground color (i.e. `#00ff00`)
 
@@ -189,7 +189,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[font](_terminal_.charstyle.md#font)*
 
-*Defined in [Terminal.ts:86](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L86)*
+*Defined in [Terminal.ts:104](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L104)*
 
 font or font-family to use in the terminal The format is in this order: \[style\] \[variant\] \[weight\] \[family\]
 
@@ -200,7 +200,7 @@ ___
 
 **● maxColumns**: *`number`*
 
-*Defined in [Terminal.ts:122](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L122)*
+*Defined in [Terminal.ts:140](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L140)*
 
 maximum number of columns (tiles) allowed
 
@@ -211,7 +211,7 @@ ___
 
 **● maxRows**: *`number`*
 
-*Defined in [Terminal.ts:124](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L124)*
+*Defined in [Terminal.ts:142](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L142)*
 
 maximum number of rows (tiles) allowed
 
@@ -222,7 +222,7 @@ ___
 
 **● minColumns**: *`number`*
 
-*Defined in [Terminal.ts:118](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L118)*
+*Defined in [Terminal.ts:136](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L136)*
 
 minimum number of columns (tiles) allowed
 
@@ -233,7 +233,7 @@ ___
 
 **● minRows**: *`number`*
 
-*Defined in [Terminal.ts:120](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L120)*
+*Defined in [Terminal.ts:138](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L138)*
 
 minimum number of rows (tiles) allowed
 
@@ -246,7 +246,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetX](_terminal_.charstyle.md#offsetx)*
 
-*Defined in [Terminal.ts:88](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L88)*
+*Defined in [Terminal.ts:106](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L106)*
 
 x-offset to apply to each character inside the tile
 
@@ -259,7 +259,7 @@ ___
 
 *Inherited from [CharStyle](_terminal_.charstyle.md).[offsetY](_terminal_.charstyle.md#offsety)*
 
-*Defined in [Terminal.ts:90](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L90)*
+*Defined in [Terminal.ts:108](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L108)*
 
 y-offset to apply to each character inside the tile
 
@@ -270,7 +270,7 @@ ___
 
 **● rows**: *`number`*
 
-*Defined in [Terminal.ts:116](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L116)*
+*Defined in [Terminal.ts:134](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L134)*
 
 number of rows of the terminal, in number of tiles
 
@@ -281,7 +281,7 @@ ___
 
 **● tileHeight**: *`number`*
 
-*Defined in [Terminal.ts:112](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L112)*
+*Defined in [Terminal.ts:130](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L130)*
 
 height of a tile in px
 
@@ -292,7 +292,7 @@ ___
 
 **● tileWidth**: *`number`*
 
-*Defined in [Terminal.ts:110](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L110)*
+*Defined in [Terminal.ts:128](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L128)*
 
 width of a tile in px
 
@@ -303,7 +303,7 @@ ___
 
 **● verbose**: *`boolean`*
 
-*Defined in [Terminal.ts:144](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L144)*
+*Defined in [Terminal.ts:162](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L162)*
 
 `true` to enable debug console messages options, `false` to disable them
 
@@ -314,7 +314,7 @@ ___
 
 **● viewport**: *[ViewPortOptions](_terminal_.viewportoptions.md)*
 
-*Defined in [Terminal.ts:140](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L140)*
+*Defined in [Terminal.ts:158](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L158)*
 
 Limit within the Terminal will draw
 

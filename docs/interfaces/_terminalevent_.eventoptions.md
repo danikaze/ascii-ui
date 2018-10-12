@@ -23,7 +23,7 @@
 
 **● cancellable**: *`boolean`*
 
-*Defined in [TerminalEvent.ts:3](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/TerminalEvent.ts#L3)*
+*Defined in [TerminalEvent.ts:3](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/TerminalEvent.ts#L3)*
 
 ___
 <a id="type"></a>
@@ -32,7 +32,7 @@ ___
 
 **● type**: *`string`*
 
-*Defined in [TerminalEvent.ts:2](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/TerminalEvent.ts#L2)*
+*Defined in [TerminalEvent.ts:2](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/TerminalEvent.ts#L2)*
 
 ___
 

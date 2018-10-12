@@ -18,7 +18,7 @@
 
 ▸ **deepAssign**(...args: *`any`[]*): `any`
 
-*Defined in [util/deepAssign.ts:7](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/deepAssign.ts#L7)*
+*Defined in [util/deepAssign.ts:7](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/deepAssign.ts#L7)*
 
 Deep assign an object
 

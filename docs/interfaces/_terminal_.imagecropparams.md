@@ -25,7 +25,7 @@
 
 **● srcH**: *`number`*
 
-*Defined in [Terminal.ts:48](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L48)*
+*Defined in [Terminal.ts:81](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L81)*
 
 height (pixels) of the section to crop in the source image
 
@@ -36,7 +36,7 @@ ___
 
 **● srcW**: *`number`*
 
-*Defined in [Terminal.ts:46](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L46)*
+*Defined in [Terminal.ts:79](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L79)*
 
 width (pixels) of the section to crop in the source image
 
@@ -47,7 +47,7 @@ ___
 
 **● srcX**: *`number`*
 
-*Defined in [Terminal.ts:42](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L42)*
+*Defined in [Terminal.ts:75](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L75)*
 
 x-position (pixels) of the section to crop in the source image
 
@@ -58,7 +58,7 @@ ___
 
 **● srcY**: *`number`*
 
-*Defined in [Terminal.ts:44](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L44)*
+*Defined in [Terminal.ts:77](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L77)*
 
 y-position (pixels) of the section to crop in the source image
 

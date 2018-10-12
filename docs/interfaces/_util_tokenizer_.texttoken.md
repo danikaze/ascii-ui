@@ -24,7 +24,7 @@
 
 **● index**: *`number`*
 
-*Defined in [util/tokenizer.ts:7](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L7)*
+*Defined in [util/tokenizer.ts:7](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L7)*
 
 Index of the string where it starts
 
@@ -35,7 +35,7 @@ ___
 
 **● isSeparator**: *`boolean`*
 
-*Defined in [util/tokenizer.ts:5](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L5)*
+*Defined in [util/tokenizer.ts:5](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L5)*
 
 If the matched text is a separator or not. It should alternate between true/false
 
@@ -46,7 +46,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in [util/tokenizer.ts:3](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/util/tokenizer.ts#L3)*
+*Defined in [util/tokenizer.ts:3](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/util/tokenizer.ts#L3)*
 
 Matched text. It shouldn't contain non-renderizable characters
 

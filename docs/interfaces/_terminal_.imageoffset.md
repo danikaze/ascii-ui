@@ -23,7 +23,7 @@
 
 **● x**: *`number`*
 
-*Defined in [Terminal.ts:28](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L28)*
+*Defined in [Terminal.ts:61](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L61)*
 
 Number of pixels inside the terminal tile to offset the image horizontally
 
@@ -34,7 +34,7 @@ ___
 
 **● y**: *`number`*
 
-*Defined in [Terminal.ts:30](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/Terminal.ts#L30)*
+*Defined in [Terminal.ts:63](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/Terminal.ts#L63)*
 
 Number of pixels inside the terminal tile to offset the image vertically
 

@@ -28,6 +28,8 @@ Just remember that this is a 0.x.x version and the interface can change from tim
 
 Core:
 - Added `Terminal.pushState` and `Terminal.popState`
+- Added `Terminal.getRawText`
+- Improved behavior for `Terminal.options.avoidDoubleRendering`
 
 Widgets:
 - `Text` (`tokenizer`) now supports new lines with `\n`

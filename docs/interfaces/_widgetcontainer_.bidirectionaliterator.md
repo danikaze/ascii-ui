@@ -36,7 +36,7 @@ Extended Iterator interface that will return a `next` and a `prev` methods.
 
 *Overrides Iterator.next*
 
-*Defined in C:/dev/others/ascii-ui/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4798*
+*Defined in D:/webs/ascii-ui/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4798*
 
 **Parameters:**
 
@@ -53,7 +53,7 @@ ___
 
 ▸ **prev**(): `IteratorResult`<`T`>
 
-*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/WidgetContainer.ts#L8)*
+*Defined in [WidgetContainer.ts:8](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/WidgetContainer.ts#L8)*
 
 **Returns:** `IteratorResult`<`T`>
 
@@ -66,7 +66,7 @@ ___
 
 *Inherited from Iterator.return*
 
-*Defined in C:/dev/others/ascii-ui/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4799*
+*Defined in D:/webs/ascii-ui/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4799*
 
 **Parameters:**
 
@@ -83,7 +83,7 @@ ___
 
 ▸ **seek**(value?: * `T` &#124; `number`*): `void`
 
-*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/WidgetContainer.ts#L9)*
+*Defined in [WidgetContainer.ts:9](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/WidgetContainer.ts#L9)*
 
 **Parameters:**
 
@@ -102,7 +102,7 @@ ___
 
 *Inherited from Iterator.throw*
 
-*Defined in C:/dev/others/ascii-ui/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4800*
+*Defined in D:/webs/ascii-ui/node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:4800*
 
 **Parameters:**
 

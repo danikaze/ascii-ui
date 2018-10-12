@@ -23,7 +23,7 @@
 
 ▸ **isWidgetContainer**(object: *`any`*): `boolean`
 
-*Defined in [WidgetContainer.ts:93](https://github.com/danikaze/ascii-ui/blob/cfe4704/src/WidgetContainer.ts#L93)*
+*Defined in [WidgetContainer.ts:93](https://github.com/danikaze/ascii-ui/blob/da18f7c/src/WidgetContainer.ts#L93)*
 
 Check if an object implements the `WidgetContainer` interface
 

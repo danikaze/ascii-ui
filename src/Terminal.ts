@@ -21,7 +21,40 @@ export type AcceptedImage = HTMLImageElement | HTMLCanvasElement;
  * @param index Position of the matching commmand in the text
  * @return index where the text processing should be continued
  */
-export type EscapeCallback = (params: EscapeCommandParams) => number;
+export type CommandCallback = (params: CommandParams) => CommandAction | number;
+
+export interface CommandParams {
+  /** Full text set */
+  text: string;
+  /** Index of the matched expression in `text` */
+  index: number;
+  /** Matched expression */
+  match: string;
+  /** Column of the terminal where the matching expression starts */
+  col: number;
+  /** Line of the terminal where the matching expression starts */
+  line: number;
+}
+
+export interface CommandAction {
+  /** Number of consumed characters by the action. Needed to know where to continue parsing the text */
+  consumedCharacters: number;
+  /** New value for the column cursor. Leave `undefined` to continue in the current position */
+  col?: number;
+  /** New value for the column line. Leave `undefined` to continue in the current position */
+  line?: number;
+  /** Text style to apply */
+  style?: CharStyle;
+  /** Text to inject in the current cursor position (or specified location by `col` and `line`) */
+  text?: string;
+  /** Image to inject in the current cursor position (or specified location by `col` and `line`) */
+  image?: {
+    img: AcceptedImage;
+    offset?: ImageOffset;
+    size?: ImageSize;
+    crop?: ImageCropParams;
+  };
+}
 
 export interface ImageOffset {
   /** Number of pixels inside the terminal tile to offset the image horizontally */
@@ -46,21 +79,6 @@ export interface ImageCropParams {
   srcW: number;
   /** height (pixels) of the section to crop in the source image */
   srcH: number;
-}
-
-export interface EscapeCommandParams {
-  /** Full text set */
-  text: string;
-  /** Index of the matched expression in `text` */
-  index: number;
-  /** Matched expression */
-  match: string;
-  /** Column of the terminal where the matching expression starts */
-  col: number;
-  /** Line of the terminal where the matching expression starts */
-  line: number;
-  /** Associated terminal */
-  terminal: Terminal;
 }
 
 export interface TileSize {
@@ -135,7 +153,7 @@ export interface TerminalOptions extends CharStyle {
   /** initial opacity for the decay tile, from 0 to 1 */
   decayInitialAlpha?: number;
   /** escape secuences to parse and their callback functions */
-  commands?: { [key: string]: EscapeCallback };
+  commands?: { [key: string]: CommandCallback };
   /** Limit within the Terminal will draw */
   viewport?: ViewPortOptions;
   /** Optimization? If `true` it will check if the tile to render is already in the queue to avoid rendering it twice */
@@ -650,6 +668,7 @@ export class Terminal implements WidgetContainer {
     const decayEnabled = !!this.decayChange;
     const options = this.options;
     const addDirtyTile = this.addDirtyTile.bind(this);
+    let txt = text;
     let textOffset = 0;
     let regExp;
     let match;
@@ -661,7 +680,7 @@ export class Terminal implements WidgetContainer {
     if (this.escapeCharactersRegExpString) {
       // regExp is created in each setText in case of nested calls
       regExp = new RegExp(this.escapeCharactersRegExpString, 'g');
-      match = regExp.exec(text);
+      match = regExp.exec(txt);
     }
 
     // tslint:disable-next-line:completed-docs
@@ -678,7 +697,7 @@ export class Terminal implements WidgetContainer {
       }
 
       delete tile.image;
-      tile.char = text[i + textOffset];
+      tile.char = txt[i + textOffset];
       tile.font = options.font;
       tile.offsetX = options.offsetX;
       tile.offsetY = options.offsetY;
@@ -689,7 +708,7 @@ export class Terminal implements WidgetContainer {
 
     // no text-parse
     if (!match) {
-      this.iterateTiles(text.length, setTile, col, line);
+      this.iterateTiles(txt.length, setTile, col, line);
 
       // with text-parse
     } else {
@@ -704,25 +723,63 @@ export class Terminal implements WidgetContainer {
         this.cursorY = line;
       }
 
-      const commandParams: Partial<EscapeCommandParams> = {
-        text,
-        terminal: this,
+      const commandParams: Partial<CommandParams> = {
+        text: txt,
       };
 
-      while (i < text.length && match) {
+      while (i < txt.length && match) {
+        // print the characters before the found command
         textOffset = i;
         this.iterateTiles(match.index - i, setTile);
+
+        // execute the command
         commandParams.index = match.index;
         commandParams.match = match[0];
         commandParams.col = this.cursorX;
         commandParams.line = this.cursorY;
-        i = this.options.commands[match[0]](commandParams as EscapeCommandParams);
-        match = regExp.exec(text);
+        const action = this.options.commands[match[0]](commandParams as CommandParams);
+
+        // take actions specified by the command
+        if (typeof action === 'number') {
+          i = match.index + action;
+        } else {
+          i = match.index + action.consumedCharacters;
+          // change cursor position
+          if (action.col !== undefined || action.line !== undefined) {
+            this.setCursor(
+              action.col === undefined ? this.cursorX : action.col,
+              action.line === undefined ? this.cursorY : action.line,
+            );
+          }
+          // set text style
+          if (action.style) {
+            this.setTextStyle(action.style);
+          }
+          // inject text
+          if (action.text) {
+            txt = action.text + txt.substring(i);
+            commandParams.text = txt;
+            i = 0;
+          }
+          // inject image
+          if (action.image) {
+            this.setImage(
+              action.image.img,
+              this.cursorX,
+              this.cursorY,
+              action.image.offset,
+              action.image.size,
+              action.image.crop,
+            );
+          }
+
+        }
+        match = regExp.exec(txt);
       }
 
-      if (i < text.length) {
+      if (i < txt.length) {
         textOffset = i;
-        this.iterateTiles(text.length - i, setTile);
+        this.iterateTiles(txt.length - i, setTile);
       }
     }
 

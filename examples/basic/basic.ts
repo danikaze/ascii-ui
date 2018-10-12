@@ -1,6 +1,6 @@
 import * as FontFaceObserver from 'fontfaceobserver';
 
-import { EscapeCommandParams, Terminal } from '../../src/Terminal';
+import { CommandAction, CommandParams, Terminal } from '../../src/Terminal';
 
 interface TestWindow extends Window {
   terminal: Terminal;
@@ -76,27 +76,41 @@ function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
   });
 }
 
-function setColor({ terminal, text, index }: EscapeCommandParams): number {
+function setColor({ text, index }: CommandParams): CommandAction {
   const ESCAPE_TXT_LENGTH = 2;
   const COLOR_TXT_LENGTH = 7;
   const color = text.substr(index + ESCAPE_TXT_LENGTH, COLOR_TXT_LENGTH);
-  terminal.setOptions({ fg: color });
 
-  return index + ESCAPE_TXT_LENGTH + COLOR_TXT_LENGTH;
+  return {
+    consumedCharacters: ESCAPE_TXT_LENGTH + COLOR_TXT_LENGTH,
+    style: { fg: color },
+  };
 }
 
-function injectText({ terminal, index }: EscapeCommandParams) {
+function injectText(): CommandAction {
   const ESCAPED_TEXT_LENGTH = 3;
-  terminal.setText('injected text');
 
-  return index + ESCAPED_TEXT_LENGTH;
+  return {
+    consumedCharacters: ESCAPED_TEXT_LENGTH,
+    text: 'injected text',
+  };
 }
 
-function drawSprite({ terminal, match, index, col, line }: EscapeCommandParams) {
-  const img = imgs[match === ':happy:' ? 0 : 1];
-  terminal.setImage(img, col, line, { x: 0, y: 4 }, { width: 18, height: 18 });
+function drawSprite({ match }: CommandParams): CommandAction | number {
+  const imgMap: { [k: string]: HTMLImageElement } = {
+    ':happy:': imgs[0],
+    ':sad:': imgs[1],
+  };
+  const img = imgMap[match];
 
-  return index + match.length;
+  return img ? {
+    consumedCharacters: match.length,
+    image: {
+      img,
+      offset: { x: 0, y: 4 },
+      size: { width: 18, height: 18 },
+    },
+  } as CommandAction : match.length;
 }
 
 function run() {

@@ -76,10 +76,15 @@ function bindMouse(terminal: Terminal, canvas: HTMLCanvasElement) {
   });
 }
 
-function setColor({ text, index }: CommandParams): CommandAction {
+function setColor({ text, index }: CommandParams): CommandAction | number {
   const ESCAPE_TXT_LENGTH = 2;
   const COLOR_TXT_LENGTH = 7;
   const color = text.substr(index + ESCAPE_TXT_LENGTH, COLOR_TXT_LENGTH);
+
+  // if the color is not a valid rgb value, ignore this command
+  if (!/#[0-9a-f]{6}/i.test(color)) {
+    return 0;
+  }
 
   return {
     consumedCharacters: ESCAPE_TXT_LENGTH + COLOR_TXT_LENGTH,

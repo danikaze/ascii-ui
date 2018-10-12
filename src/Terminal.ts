@@ -650,6 +650,74 @@ export class Terminal implements WidgetContainer {
   }
 
   /**
+   * Given a text, get it's parsed version (resulting test without commands)
+   *
+   * @param text Formatted text
+   * @returns raw version of the parsed text
+   */
+  public getRawText(text: string): string {
+    if (!this.escapeCharactersRegExpString) {
+      return text;
+    }
+
+    this.pushState();
+    const regExp = new RegExp(this.escapeCharactersRegExpString, 'g');
+    const commandParams: Partial<CommandParams> = { text };
+    let txt = text;
+    let match = regExp.exec(txt);
+    let i = 0;
+    let raw = '';
+
+    while (match) {
+      // add the basic text part before the command
+      raw += txt.substring(i, match.index);
+
+      // execute the command
+      commandParams.index = match.index;
+      commandParams.match = match[0];
+      commandParams.col = this.cursorX;
+      commandParams.line = this.cursorY;
+      const action = this.options.commands[match[0]](commandParams as CommandParams);
+
+      // no actions to take
+      if (typeof action === 'number') {
+        i = match.index + action;
+        match = regExp.exec(txt);
+        continue;
+      }
+
+      /* take actions specified by the command */
+      i = match.index + action.consumedCharacters;
+      // change cursor position
+      if (action.col !== undefined || action.line !== undefined) {
+        this.setCursor(
+          action.col === undefined ? this.cursorX : action.col,
+          action.line === undefined ? this.cursorY : action.line,
+        );
+      }
+      // inject text
+      if (action.text) {
+        txt = txt.substring(0, match.index) + action.text + txt.substring(i);
+        commandParams.text = txt;
+        i -= action.consumedCharacters;
+      }
+      // inject image just adds one blank char
+      if (action.image) {
+        raw += ' ';
+        this.iterateTiles(1, () => {});
+      }
+
+      match = regExp.exec(txt);
+    }
+
+    // add the text after the last command
+    raw += txt.substring(i);
+
+    this.popState();
+    return raw;
+  }
+
+  /**
    * Input a simple text in the terminal. By default the text will be set in the current position
    * of the cursor.
    * If the text reaches the right side of the terminal, will break into a new line as is
@@ -723,9 +791,7 @@ export class Terminal implements WidgetContainer {
         this.cursorY = line;
       }
 
-      const commandParams: Partial<CommandParams> = {
-        text: txt,
-      };
+      const commandParams: Partial<CommandParams> = { text: txt };
 
       while (i < txt.length && match) {
         // print the characters before the found command
@@ -739,44 +805,48 @@ export class Terminal implements WidgetContainer {
         commandParams.line = this.cursorY;
         const action = this.options.commands[match[0]](commandParams as CommandParams);
 
-        // take actions specified by the command
+        // no actions to take
         if (typeof action === 'number') {
           i = match.index + action;
-        } else {
-          i = match.index + action.consumedCharacters;
-          // change cursor position
-          if (action.col !== undefined || action.line !== undefined) {
-            this.setCursor(
-              action.col === undefined ? this.cursorX : action.col,
-              action.line === undefined ? this.cursorY : action.line,
-            );
-          }
-          // set text style
-          if (action.style) {
-            this.setTextStyle(action.style);
-          }
-          // inject text
-          if (action.text) {
-            txt = action.text + txt.substring(i);
-            commandParams.text = txt;
-            i = 0;
-          }
-          // inject image
-          if (action.image) {
-            this.setImage(
-              action.image.img,
-              this.cursorX,
-              this.cursorY,
-              action.image.offset,
-              action.image.size,
-              action.image.crop,
-            );
-          }
-
+          match = regExp.exec(txt);
+          continue;
         }
+
+        /* take actions specified by the command */
+        i = match.index + action.consumedCharacters;
+        // change cursor position
+        if (action.col !== undefined || action.line !== undefined) {
+          this.setCursor(
+            action.col === undefined ? this.cursorX : action.col,
+            action.line === undefined ? this.cursorY : action.line,
+          );
+        }
+        // set text style
+        if (action.style) {
+          this.setTextStyle(action.style);
+        }
+        // inject text
+        if (action.text) {
+          txt = action.text + txt.substring(i);
+          commandParams.text = txt;
+          i = 0;
+        }
+        // inject image
+        if (action.image) {
+          this.setImage(
+            action.image.img,
+            this.cursorX,
+            this.cursorY,
+            action.image.offset,
+            action.image.size,
+            action.image.crop,
+          );
+        }
+
         match = regExp.exec(txt);
       }
 
+      // print the characters after the last command
       if (i < txt.length) {
         textOffset = i;
         this.iterateTiles(txt.length - i, setTile);
